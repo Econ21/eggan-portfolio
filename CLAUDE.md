@@ -38,8 +38,13 @@ hitam/putih/biru per `DESIGN_BRIEF.md`.
   `/halaman` maupun `/en/halaman` / `/id/halaman`):
   - `profile-nobg.png` — foto hero (background merah sudah dihapus via chroma-key)
   - `about-speaking.jpg` — foto "Critical Grounds" (dia bicara di panggung depan penonton penuh)
-  - `leadership/*.jpg` — 1 foto per entry Leadership & Community (8 dari 10 entry punya foto; Titik
-    Terang & YouthRanger.id sengaja text-only card karena tidak ada foto personal yang layak)
+  - `leadership/*.jpg` — foto per entry Leadership & Community. Beberapa entry (PT Pindad, Timur
+    Growth, UNESCO & UNDP, Study Hub) punya **beberapa foto** — file dinamai `<slug>-1.jpg`,
+    `<slug>-2.jpg`, dst, direferensikan via field `images: [...]` (array) di `data.js`, dirender
+    sebagai carousel manual (prev/next + counter) di dalam kartu leadership itu sendiri — LIHAT
+    "Revision round 2026-08-14b" di bawah. Entry lain (ICCN, Indonesia Mengglobal, Biru Muda, KUTU IT)
+    tetap 1 foto via field `img` (string tunggal). Titik Terang, ILUNI UI & YouthRanger.id sengaja
+    text-only card (tidak ada foto personal yang layak).
   - `gallery/*.jpg` — foto "Field Notes" (community/lapangan)
   - `research/{tokyo,jurnal,proposal-p3,reef-welfare}/*.jpg` — halaman PDF di-rasterize jadi gambar,
     zero-padded 2-digit (`slug-01.jpg`, dst — konsisten di semua 4, jangan campur pola padding lagi)
@@ -130,9 +135,11 @@ satu) — cuma menghilangkan tombol "Download" & toolbar PDF browser dari alur n
   Kalau sumber foto memang resolusi rendah (screenshot-di-dalam-screenshot), cari sumber lain yang
   lebih tajam (contoh: entry ICCN Director akhirnya pakai official appointment graphic, bukan crop
   dari mosaic Instagram screenshot yang buram).
-- Gelar master ketiga (Artificial Intelligence, Lübeck University) — **BELUM dikonfirmasi user**,
-  cuma muncul di bio kartu VP Indonesia Mengglobal. `data.js` `EDUCATION` sengaja cuma 2 entry
-  (UI + Den Haag). JANGAN tambah entry ketiga tanpa konfirmasi eksplisit dari user.
+- Gelar master ketiga (Artificial Intelligence, Lübeck University) — **DIKONFIRMASI TIDAK ADA**
+  (2026-08-14b): CV asli user (dibaca penuh) sama sekali tidak menyebut Lübeck atau gelar AI apa pun
+  — cuma muncul dulu di bio kartu VP Indonesia Mengglobal (sumber tidak resmi). `EDUCATION` di
+  `data.js` sekarang **4 entry** (UI Diploma Administrasi + UI S1 + ITB + Den Haag Master, sesuai CV),
+  Lübeck sengaja TIDAK ditambahkan — keputusan ini final, bukan lagi "menunggu konfirmasi".
 - Bahasa default: **Belanda**, bukan Inggris — ini instruksi eksplisit user, override dari asumsi
   default ChatGPT di `DESIGN_BRIEF.md` bagian §32.
 - Arsitektur: tetap static HTML generated (vanilla, TANPA framework/build-tool React/Next), tapi
@@ -186,6 +193,67 @@ kosong, berarti versi lama yang ke-deploy lagi).
   dst) tetap lengkap. Kalau nambah riset lain yang punya halaman serupa (tanda tangan resmi + data
   pribadi orang lain), terapkan pola yang sama — jangan asumsikan semua halaman PDF akademik aman
   dipublikasikan mentah-mentah.
+
+## Revision round 2026-08-14b (CV integration + image rework + theme toggle + bug fixes)
+User kirim CV asli (`CV - EGGAN NACHSON.pdf`) + 3 keluhan visual setelah redesign pertama. Semua sudah
+dikerjakan:
+- **Nama lengkap**: "Eggan Nachson" → **"Eggan Nachson Silueta"** di semua tempat (navbar, footer,
+  page `<title>`, meta description, `alt` text) — 8 titik di `build-portfolio.js`, verified via grep.
+- **Red background di foto profil**: root cause `.hero-photo { background: #C81E1E }` (CSS-ku
+  sendiri, bukan artefak dari foto sumber) — fixed ke `var(--gray-dark)`.
+- **CV jadi sumber otoritatif** untuk konten profesional — `data.js` sekarang punya 3 array baru
+  (`EXPERIENCE`, `COURSES`, `ACHIEVEMENTS`, di-export lewat `module.exports` + di-`require` di
+  `build-portfolio.js`), dirender di halaman `/education` sebagai 2 section baru (section-white
+  "Professional Experience" pakai `.timeline` layout yang sama dengan Education Timeline; section-off
+  2 kolom "Courses & Certifications" + "Achievements"). Ini yang jawab komplain "kenapa course doang" —
+  sekarang riwayat pendidikan (`EDUCATION`) DAN pengalaman kerja DAN course/sertifikasi DAN
+  achievement semua ada, terpisah jelas. Beberapa role/stat LEADERSHIP juga dikoreksi dari CV (paling
+  signifikan: Titik Terang `Chief Branding & Creative` → **`Chief Operating Officer`**, ditambah entry
+  baru ILUNI UI yang sebelumnya tidak ada sama sekali).
+- **Leadership images — total re-crop dari sumber PDF asli** (bukan lagi crop dari screenshot
+  composite/contact-sheet lama yang ternyata masih menyisakan sliver foto tetangga + teks slide
+  bocor di pinggir — komplain user "kenapa masih di-crop, seperti puzzle"). Proses: identifikasi
+  halaman PDF sumber per entry di `photos-inbox/pdf-pages/leadership-XX.png` (raster 4000×2250 dari
+  `Portofolio_Eggan Nachson.pdf`), re-crop presisi per foto individual pakai PIL langsung dari raster
+  resolusi penuh (bukan dari crop lama yang sudah rusak), lalu untuk entry yang punya ≥2 foto bersih
+  (PT Pindad ×4, Timur Growth ×4, UNESCO & UNDP ×2, Study Hub ×2) dibuatkan **carousel manual di
+  dalam kartu** — pola baru `leadershipCardHtml()` menerima `l.images` (array) alih-alih `l.img`
+  (string tunggal), render `.lead-carousel`/`.lead-slide`/`.lead-car-btn`/`.lead-car-counter` (CSS +
+  JS `leadNext()`/`leadPrev()`, mirip pola project-modal carousel yang sudah ada — inilah yang
+  dimaksud user "seperti cap gitu slide shownya"). Entry dengan cuma 1 foto bersih (ICCN, KUTU IT)
+  di-re-crop lebih ketat tanpa carousel (buang panah navigasi UI/teks nyangkut dari sumber asli).
+- **Kontak — 2 nomor WhatsApp terpisah**: `CONTACT` di `data.js` diubah dari 1 field `waLink`/`phone`
+  jadi `waIndonesia`/`waNetherlands` (masing-masing `{phone, link, label}`), `buildContact()` render 2
+  tombol CTA + 2 baris kontak terpisah, masing-masing berlabel jelas negaranya.
+- **Bug halaman Contact "hitam-lalu-putih kosong"**: root cause — halaman Contact cuma 1 section
+  pendek (beda dari halaman lain yang 2+ section), jadi total tinggi konten (navbar+section+footer)
+  seringkali LEBIH PENDEK dari tinggi viewport → sisa area viewport di bawah konten menampilkan
+  background `<html>`/canvas default (nyaris putih), kontras tajam dengan section hitam di atasnya.
+  Fix generik (bukan cuma tambal Contact): `body` sekarang `display:flex;flex-direction:column;
+  min-height:100vh`, `bodyHtml` dibungkus `<main class="page-main">`, dan
+  `.page-main > section:last-of-type { flex: 1 0 auto }` — section TERAKHIR di halaman manapun (bukan
+  cuma Contact) otomatis melar mengisi sisa viewport kalau kontennya pendek, jadi tidak akan pernah
+  ada celah warna aneh lagi di halaman pendek manapun ke depannya.
+- **Light/dark theme toggle** — tombol ☀/☾ baru di navbar (kanan lang-switch), simpan preferensi ke
+  `localStorage('cap_portfolio_theme')`, di-apply via `data-theme` attribute di `<html>` (inline
+  blocking script `THEME_INIT_JS` di `<head>` SEBELUM `<style>` supaya tidak ada flash tema salah saat
+  load). CSS custom-property jadi semantic token (`--ink`, `--ink-soft`, dan `--off-white`/`--white`/
+  `--gray-light`/`--text-muted`/`--border` di-override total di bawah `html[data-theme="dark"]`) — SISI
+  "editorial dark sections" (navbar/hero/section-dark/footer/modal, yang sengaja hitam sebagai bagian
+  desain, BUKAN terkait tema) tidak berubah antar tema (tetap gelap di kedua mode, itu memang bagian
+  konten desainnya, bukan "dark mode"), yang berubah HANYA section yang tadinya putih/off-white
+  (Selected Work, Skills, dll) — di dark theme jadi charcoal gelap (`#121317`/`#1A1B20`), bukan
+  langsung ke hitam solid tema Contact. **Juga**: user bilang dark section yang SUDAH ada terasa
+  "warna item doang, jelek" — jadi SEMUA permukaan hitam editorial (navbar/hero/section-dark/modal/
+  footer/lead-card) sekarang pakai `--black-surface` (radial-gradient halus, bukan `#050505` flat)
+  supaya ada kedalaman/depth di kedua tema, bukan cuma toggle-nya yang baru.
+- **Verifikasi**: build lokal (`node build-portfolio.js`) + browser-preview (localhost via
+  `python3 -m http.server`, BUKAN live site) — semua fix di atas diverifikasi visual: nama lengkap ✓,
+  foto profil tanpa background merah ✓, carousel leadership 4-foto & 2-foto jalan (klik next/prev,
+  counter update) ✓, halaman Education render 3 section baru ✓, Contact 2 tombol WA + link `wa.me`
+  benar + tidak ada celah putih ✓, theme toggle switch dua arah + section putih berubah charcoal
+  (bukan hitam solid) ✓. **Belum di-deploy ke live URL saat dokumentasi ini ditulis** — commit &
+  push masih perlu dilakukan setelah ini (lihat "Cara update konten" di atas untuk langkah baku).
 
 ## Yang masih belum dikerjakan / disederhanakan dari DESIGN_BRIEF.md
 - Custom cursor (§24) — belum ada

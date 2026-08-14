@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { LANGS, UI, EDUCATION, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
+const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
@@ -43,16 +43,27 @@ const CSS = `
 :root {
   --black: #050505; --off-white: #F7F7F4; --white: #FFFFFF;
   --gray-light: #E9E9E6; --gray-dark: #181818; --blue: #2457FF; --blue-dark: #1638B8;
+  --ink: #050505; --ink-soft: #4A4A46;
   --text-muted: #6B6B66; --border: #DEDEDA; --border-dark: #2A2A2A;
+  --black-surface: radial-gradient(130% 170% at 18% -15%, #1D1E25 0%, #0A0A0D 45%, #050505 100%);
   --serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html[data-theme="dark"] {
+  --off-white: #121317; --white: #1A1B20; --gray-light: #24252B;
+  --ink: #EDEDEF; --ink-soft: #B7B7BC;
+  --text-muted: #8B8B92; --border: #2C2D34;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  margin: 0; background: var(--off-white); color: var(--black);
+  margin: 0; background: var(--off-white); color: var(--ink);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   line-height: 1.55; -webkit-font-smoothing: antialiased;
+  display: flex; flex-direction: column; min-height: 100vh;
+  transition: background-color .2s ease, color .2s ease;
 }
+.page-main { flex: 1 0 auto; display: flex; flex-direction: column; }
+.page-main > section:last-of-type { flex: 1 0 auto; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 ::selection { background: var(--blue); color: #fff; }
@@ -65,7 +76,7 @@ img { max-width: 100%; display: block; }
 .rule-blue { display: inline-block; width: 22px; height: 2px; background: var(--blue); margin-right: 10px; vertical-align: middle; }
 
 /* Navbar */
-.navbar { position: sticky; top: 0; z-index: 100; background: var(--black); border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.navbar { position: sticky; top: 0; z-index: 100; background: var(--black-surface); border-bottom: 1px solid transparent; transition: border-color .2s ease; }
 .navbar.scrolled { border-bottom-color: var(--border-dark); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 14px; color: #fff; }
@@ -80,15 +91,21 @@ img { max-width: 100%; display: block; }
 .lang-menu a { display: block; padding: 10px 14px; font-size: 12.5px; color: #C8C8C4; }
 .lang-menu a:hover { background: rgba(255,255,255,0.06); color: #fff; }
 .lang-menu a.active { color: var(--blue); font-weight: 700; }
+.theme-btn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border-dark); background: none; color: #fff; cursor: pointer; font-size: 13px; position: relative; }
+.theme-btn:hover { border-color: #4A4A48; }
+.theme-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transition: opacity .15s ease, transform .15s ease; }
+.theme-icon-moon { opacity: 0; transform: scale(0.6); }
+html[data-theme="dark"] .theme-icon-sun { opacity: 0; transform: scale(0.6); }
+html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .nav-burger { display: none; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
 @media (max-width: 860px) {
-  .nav-links { position: fixed; inset: 68px 0 0 0; background: var(--black); flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 22px; display: none; }
+  .nav-links { position: fixed; inset: 68px 0 0 0; background: var(--black-surface); flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 22px; display: none; }
   .nav-links.open { display: flex; }
   .nav-burger { display: block; }
 }
 
 /* Hero */
-.hero { background: var(--black); color: #fff; padding: 64px 0 0; }
+.hero { background: var(--black-surface); color: #fff; padding: 64px 0 0; }
 .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; min-height: 76vh; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; min-height: auto; } }
 .hero-eyebrow { color: var(--blue); margin-bottom: 22px; }
@@ -100,7 +117,7 @@ img { max-width: 100%; display: block; }
 .btn-outline { border: 1px solid #3A3A38; color: #fff; }
 .btn-outline:hover { border-color: #fff; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
-.hero-photo { aspect-ratio: 1/1.08; background: #C81E1E; border-radius: 2px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+.hero-photo { aspect-ratio: 1/1.08; background: var(--gray-dark); border-radius: 2px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .hero-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; border-top: 1px solid var(--border-dark); padding: 26px 0 40px; }
 @media (max-width: 720px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
@@ -109,7 +126,7 @@ img { max-width: 100%; display: block; }
 
 /* Section header */
 .section { padding: 90px 0; }
-.section-dark { background: var(--black); color: #fff; }
+.section-dark { background: var(--black-surface); color: #fff; }
 .section-off { background: var(--off-white); }
 .section-white { background: var(--white); }
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
@@ -129,7 +146,7 @@ img { max-width: 100%; display: block; }
 .project-num { color: var(--blue); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; }
 .project-name { font-size: 19px; font-weight: 800; margin: 0; }
 .project-tag { font-size: 12.5px; color: var(--text-muted); margin: -4px 0 0; }
-.project-desc { font-size: 14px; color: #4A4A46; margin: 4px 0 0; }
+.project-desc { font-size: 14px; color: var(--ink-soft); margin: 4px 0 0; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B66; border: 1px solid var(--border); padding: 4px 9px; border-radius: 2px; }
 .project-links { display: flex; align-items: center; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
@@ -140,7 +157,7 @@ img { max-width: 100%; display: block; }
 /* Modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 200; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
-.modal { background: var(--black); color: #fff; max-width: 880px; width: 100%; margin: auto; border-radius: 4px; overflow: hidden; }
+.modal { background: var(--black-surface); color: #fff; max-width: 880px; width: 100%; margin: auto; border-radius: 4px; overflow: hidden; }
 .modal-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 26px; border-bottom: 1px solid var(--border-dark); }
 .modal-eyebrow { font-size: 11px; color: #8A8A86; letter-spacing: 0.08em; }
 .modal-name { font-size: 17px; font-weight: 800; margin-top: 2px; }
@@ -159,7 +176,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
 .about-photo { aspect-ratio: 4/3.1; overflow: hidden; border-radius: 2px; }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-.about-body p { font-size: 15.5px; color: #4A4A46; margin: 0 0 16px; }
+.about-body p { font-size: 15.5px; color: var(--ink-soft); margin: 0 0 16px; }
 .pullquote { font-size: 19px; font-weight: 700; color: var(--blue); border-left: 3px solid var(--blue); padding-left: 16px; margin: 26px 0 0; text-wrap: balance; }
 .timeline { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 40px; }
 .timeline-item { display: grid; grid-template-columns: 130px 20px 1fr; gap: 6px; padding: 22px 0; border-bottom: 1px solid var(--border); }
@@ -170,14 +187,30 @@ img { max-width: 100%; display: block; }
 .timeline-school { font-size: 16px; font-weight: 800; margin: 0; }
 .timeline-degree { font-size: 14px; color: var(--text-muted); margin: 3px 0 0; }
 .timeline-place { font-size: 12.5px; color: #9A9A96; margin: 3px 0 0; }
+.exp-desc { font-size: 13.5px; color: var(--ink-soft); margin: 8px 0 0; max-width: 62ch; line-height: 1.6; }
 @media (max-width: 600px) { .timeline-item { grid-template-columns: 20px 1fr; } .timeline-period { grid-column: 1/-1; margin-bottom: 4px; } .timeline-dot-col { grid-row: 2; } }
+
+/* Courses & achievements */
+.courses-achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+@media (max-width: 800px) { .courses-achievements-grid { grid-template-columns: 1fr; gap: 40px; } }
+.course-item { display: grid; grid-template-columns: 50px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.course-item:first-child { border-top: 1px solid var(--border); }
+.course-year { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+.course-name { font-size: 14px; font-weight: 700; margin: 0; }
+.course-org { font-size: 12.5px; color: var(--text-muted); margin: 2px 0 0; }
+.course-score { font-size: 13px; font-weight: 800; color: var(--blue); white-space: nowrap; }
+.achievement-item { display: grid; grid-template-columns: 50px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.achievement-item:first-child { border-top: 1px solid var(--border); }
+.achievement-year { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+.achievement-title { font-size: 14px; font-weight: 700; margin: 0; text-wrap: balance; }
+.achievement-desc { font-size: 12.5px; color: var(--ink-soft); margin: 5px 0 0; line-height: 1.55; }
 
 /* Skills */
 .skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
 @media (max-width: 800px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
 .skill-col-label { color: var(--blue); margin-bottom: 14px; display: block; }
 .skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-.skill-list li { font-size: 14px; color: #3A3A36; }
+.skill-list li { font-size: 14px; color: var(--ink-soft); }
 
 /* Services */
 .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 30px; }
@@ -190,11 +223,16 @@ img { max-width: 100%; display: block; }
 /* Leadership timeline */
 .lead-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
 @media (max-width: 820px) { .lead-grid { grid-template-columns: 1fr; } }
-.lead-card { background: var(--black); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+.lead-card { background: var(--black-surface); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; }
 .lead-card.has-img { padding: 0; }
-.lead-img { aspect-ratio: 16/10; overflow: hidden; }
+.lead-img { aspect-ratio: 16/10; overflow: hidden; position: relative; }
 .lead-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-.lead-card:hover .lead-img img { transform: scale(1.03); }
+.lead-card:hover .lead-img:not(.lead-carousel) img { transform: scale(1.03); }
+.lead-carousel .lead-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
+.lead-carousel .lead-slide.active { opacity: 1; }
+.lead-car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 15px; z-index: 2; }
+.lead-car-prev { left: 10px; } .lead-car-next { right: 10px; }
+.lead-car-counter { position: absolute; top: 10px; right: 10px; font-size: 10.5px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.55); padding: 3px 9px; border-radius: 999px; z-index: 2; }
 .lead-card-body { padding: 22px 24px 26px; }
 .lead-year { font-size: 11px; color: #8A8A86; font-weight: 700; letter-spacing: 0.06em; }
 .lead-org { font-size: 17px; font-weight: 800; margin: 6px 0 2px; }
@@ -234,7 +272,7 @@ img { max-width: 100%; display: block; }
 .research-badge { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--blue); border: 1px solid var(--blue); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
 .research-title { font-size: 17px; font-weight: 800; margin: 0 0 6px; text-wrap: balance; }
 .research-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
-.research-abstract { font-size: 13.5px; color: #4A4A46; max-width: 62ch; }
+.research-abstract { font-size: 13.5px; color: var(--ink-soft); max-width: 62ch; }
 .reader-overlay { display: none; position: fixed; inset: 0; background: #000; z-index: 300; flex-direction: column; }
 .reader-overlay.open { display: flex; }
 .reader-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; color: #fff; }
@@ -244,10 +282,12 @@ img { max-width: 100%; display: block; }
 .reader-nav { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 18px; color: #fff; font-size: 12.5px; font-weight: 700; }
 
 /* Contact */
+.contact-section { display: flex; align-items: center; }
 .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: end; }
 @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
 .contact-title { font-size: clamp(28px, 4vw, 42px); margin: 0 0 16px; text-wrap: balance; }
 .contact-body { color: #B8B8B4; font-size: 15px; max-width: 46ch; margin-bottom: 30px; }
+.contact-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 .contact-block { margin-bottom: 20px; }
 .contact-block .label { color: #8A8A86; margin-bottom: 6px; display: block; }
 .contact-val { font-size: 14.5px; font-weight: 700; color: #fff; }
@@ -258,7 +298,7 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* Footer */
-.footer { background: var(--black); color: #8A8A86; padding: 26px 0; }
+.footer { background: var(--black-surface); color: #8A8A86; padding: 26px 0; }
 .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; }
 .footer-brand { color: #fff; font-weight: 800; }
 `;
@@ -273,13 +313,16 @@ function navbar(lang, activeKey) {
   return `
   <nav class="navbar" id="navbar">
     <div class="wrap nav-inner">
-      <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN NACHSON</a>
+      <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN NACHSON SILUETA</a>
       <div style="display:flex;align-items:center;gap:22px">
         <div class="nav-links" id="navLinks">${links}</div>
         <div class="lang-switch" id="langSwitch">
           <button class="lang-btn" id="langBtn">${langLabels[lang]} ▾</button>
           <div class="lang-menu">${langMenu}</div>
         </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark theme">
+          <span class="theme-icon theme-icon-sun">☀</span><span class="theme-icon theme-icon-moon">☾</span>
+        </button>
         <button class="nav-burger" id="navBurger">☰</button>
       </div>
     </div>
@@ -290,7 +333,7 @@ function footer(lang) {
   return `
   <footer class="footer">
     <div class="wrap footer-row">
-      <span class="footer-brand">EGGAN NACHSON</span>
+      <span class="footer-brand">EGGAN NACHSON SILUETA</span>
       <span>${t(UI.footerTagline, lang)}</span>
       <span>© 2026 ${t(UI.footerRights, lang)}</span>
     </div>
@@ -310,6 +353,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var langBtn = document.getElementById('langBtn');
   if (langBtn) langBtn.addEventListener('click', function (e) { e.stopPropagation(); langSwitch.classList.toggle('open'); });
   document.addEventListener('click', function () { if (langSwitch) langSwitch.classList.remove('open'); });
+
+  var themeBtn = document.getElementById('themeBtn');
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('cap_portfolio_theme', next); } catch (e) {}
+  });
 
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
@@ -331,12 +381,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 `;
 
+// Blocking, pre-paint theme read — avoids a flash of the wrong theme on load.
+const THEME_INIT_JS = `(function(){try{var t=localStorage.getItem('cap_portfolio_theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
+
 function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = '' }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>${THEME_INIT_JS}</script>
 <title>${title}</title>
 <meta name="description" content="${description}">
 <meta property="og:title" content="${title}">
@@ -346,7 +400,9 @@ function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = ''
 </head>
 <body>
 ${navbar(lang, activeKey)}
+<main class="page-main">
 ${bodyHtml}
+</main>
 ${footer(lang)}
 <script>${SHARED_JS}${extraJs}</script>
 </body>
@@ -355,8 +411,8 @@ ${footer(lang)}
 
 // ── Page builders ────────────────────────────────────────────────────────────
 function buildHome(lang) {
-  const title = 'Eggan Nachson — Technology, Strategy & Leadership';
-  const desc = 'Eggan Nachson is a technology consultant, product builder and community leader working across digital products, AI, data and public impact.';
+  const title = 'Eggan Nachson Silueta — Technology, Strategy & Leadership';
+  const desc = 'Eggan Nachson Silueta is a technology consultant, product builder and community leader working across digital products, AI, data and public impact.';
   const meta = [
     [t(UI.metaBasedIn, lang), t(UI.metaBasedInVal, lang)],
     [t(UI.metaEducation, lang), t(UI.metaEducationVal, lang)],
@@ -365,7 +421,7 @@ function buildHome(lang) {
   ].map(([l, v]) => `<div><p class="label hero-meta-label">${l}</p><p class="hero-meta-val">${v}</p></div>`).join('');
 
   const topProjects = PROJECTS.slice(0, 2).map(p => projectCardHtml(p, lang)).join('');
-  const topLeadership = LEADERSHIP.slice(0, 4).map(l => leadershipCardHtml(l, lang)).join('');
+  const topLeadership = LEADERSHIP.slice(0, 4).map((l, i) => leadershipCardHtml(l, lang, 'home-' + i)).join('');
 
   const body = `
   <section class="hero">
@@ -379,7 +435,7 @@ function buildHome(lang) {
           <a class="btn btn-outline" href="${urlFor('contact', lang)}">${t(UI.heroCtaContact, lang)} ↗</a>
         </div>
       </div>
-      <div class="hero-photo"><img src="${assetUrl('profile-nobg.png')}" alt="Eggan Nachson" /></div>
+      <div class="hero-photo"><img src="${assetUrl('profile-nobg.png')}" alt="Eggan Nachson Silueta" /></div>
     </div>
     <div class="wrap hero-meta">${meta}</div>
   </section>
@@ -405,7 +461,7 @@ function buildHome(lang) {
   </section>
   ${projectModals(lang)}`;
 
-  return pageShell({ lang, activeKey: 'home', title, description: desc, bodyHtml: body, extraJs: PROJECT_MODAL_JS });
+  return pageShell({ lang, activeKey: 'home', title, description: desc, bodyHtml: body, extraJs: LEAD_CAROUSEL_JS + PROJECT_MODAL_JS });
 }
 
 function timelineHtml(lang) {
@@ -418,6 +474,36 @@ function timelineHtml(lang) {
         <p class="timeline-degree">${t(e.degree, lang)}</p>
         <p class="timeline-place">${t(e.place, lang)}</p>
       </div>
+    </div>`).join('');
+}
+
+function experienceHtml(lang) {
+  return EXPERIENCE.map(e => `
+    <div class="timeline-item reveal">
+      <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
+      <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
+      <div>
+        <p class="timeline-school">${e.org}</p>
+        <p class="timeline-degree">${t(e.role, lang)}</p>
+        <p class="exp-desc">${t(e.desc, lang)}</p>
+      </div>
+    </div>`).join('');
+}
+
+function coursesHtml(lang) {
+  return COURSES.map(c => `
+    <div class="course-item reveal">
+      <span class="course-year">${c.year}</span>
+      <div class="course-body"><p class="course-name">${t(c.name, lang)}</p><p class="course-org">${c.org}</p></div>
+      <span class="course-score">${c.score}</span>
+    </div>`).join('');
+}
+
+function achievementsHtml(lang) {
+  return ACHIEVEMENTS.map(a => `
+    <div class="achievement-item reveal">
+      <span class="achievement-year">${a.year}</span>
+      <div><p class="achievement-title">${t(a.title, lang)}</p><p class="achievement-desc">${t(a.desc, lang)}</p></div>
     </div>`).join('');
 }
 
@@ -436,13 +522,13 @@ function skillsHtml(lang) {
 }
 
 function buildEducation(lang) {
-  const title = `Eggan Nachson — ${t(UI.navEducation, lang)}`;
+  const title = `Eggan Nachson Silueta — ${t(UI.navEducation, lang)}`;
   const body = `
   <section class="section section-off">
     <div class="wrap">
       <p class="label label-blue">${t(UI.eduPageEyebrow, lang)}</p>
       <div class="about-grid" style="margin-top:20px">
-        <div class="about-photo"><img src="${assetUrl('about-speaking.jpg')}" alt="Eggan Nachson speaking" /></div>
+        <div class="about-photo"><img src="${assetUrl('about-speaking.jpg')}" alt="Eggan Nachson Silueta speaking" /></div>
         <div class="about-body">
           <h1 class="font-display" style="font-size:clamp(24px,3.2vw,36px);margin:0 0 18px;text-wrap:balance">${t(UI.eduPageTitle, lang)}</h1>
           <p>${t(UI.eduPageBody, lang)}</p>
@@ -452,6 +538,24 @@ function buildEducation(lang) {
       <div class="timeline">
         <p class="label label-blue" style="margin-bottom:20px">${t(UI.eduTimelineTitle, lang)}</p>
         ${timelineHtml(lang)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-white">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.experienceTitle, lang)}</p>
+      <div class="timeline" style="margin-top:20px;border-top:none;padding-top:0">${experienceHtml(lang)}</div>
+    </div>
+  </section>
+  <section class="section section-off">
+    <div class="wrap courses-achievements-grid">
+      <div>
+        <p class="label label-blue">${t(UI.coursesTitle, lang)}</p>
+        <div class="courses-list" style="margin-top:22px">${coursesHtml(lang)}</div>
+      </div>
+      <div>
+        <p class="label label-blue">${t(UI.achievementsTitle, lang)}</p>
+        <div class="achievements-list" style="margin-top:22px">${achievementsHtml(lang)}</div>
       </div>
     </div>
   </section>
@@ -533,7 +637,7 @@ document.addEventListener('keydown', function (e) {
 `;
 
 function buildWork(lang) {
-  const title = `Eggan Nachson — ${t(UI.navWork, lang)}`;
+  const title = `Eggan Nachson Silueta — ${t(UI.navWork, lang)}`;
   const services = [
     { name: { nl: 'Digitale Productontwikkeling', en: 'Digital Product Development', id: 'Pengembangan Produk Digital' }, desc: { nl: 'Van idee tot productieklare webapplicatie.', en: 'From idea to production-ready web application.', id: 'Dari ide hingga aplikasi web siap produksi.' } },
     { name: { nl: 'AI-integratie', en: 'AI Integration', id: 'Integrasi AI' }, desc: { nl: 'AI-gedreven automatisering en intelligente ervaringen.', en: 'AI-driven automation and intelligent experiences.', id: 'Otomasi berbasis AI dan pengalaman cerdas.' } },
@@ -562,24 +666,53 @@ function buildWork(lang) {
   return pageShell({ lang, activeKey: 'work', title, description: title, bodyHtml: body, extraJs: PROJECT_MODAL_JS });
 }
 
-function leadershipCardHtml(l, lang) {
+function leadershipCardHtml(l, lang, idx) {
+  const yearText = l.year + (l.yearSuffix ? ' ' + t(l.yearSuffix, lang) : '');
   const inner = `
-    <p class="lead-year">${l.year}</p>
+    <p class="lead-year">${yearText}</p>
     <p class="lead-org">${l.org}</p>
     <p class="lead-role">${t(l.role, lang)}</p>
     ${l.stat ? `<p class="lead-stat">${l.stat}</p><p class="lead-stat-label">${t(l.statLabel, lang)}</p>` : ''}
     <p class="lead-desc">${t(l.desc, lang)}</p>`;
-  if (l.img) {
+  const images = l.images || (l.img ? [l.img] : []);
+  if (images.length > 1) {
+    const id = 'lead-' + idx;
+    const slides = images.map((img, i) => `<div class="lead-slide${i === 0 ? ' active' : ''}"><img src="${assetUrl('leadership/' + img)}" alt="${l.org}" loading="lazy" /></div>`).join('');
     return `<div class="lead-card has-img reveal">
-      <div class="lead-img"><img src="${assetUrl('leadership/' + l.img)}" alt="${l.org}" loading="lazy" /></div>
+      <div class="lead-img lead-carousel" id="${id}">
+        ${slides}
+        <button type="button" class="lead-car-btn lead-car-prev" onclick="event.preventDefault();leadPrev('${id}',${images.length})">‹</button>
+        <button type="button" class="lead-car-btn lead-car-next" onclick="event.preventDefault();leadNext('${id}',${images.length})">›</button>
+        <span class="lead-car-counter" id="${id}-counter">1 / ${images.length}</span>
+      </div>
+      <div class="lead-card-body">${inner}</div>
+    </div>`;
+  }
+  if (images.length === 1) {
+    return `<div class="lead-card has-img reveal">
+      <div class="lead-img"><img src="${assetUrl('leadership/' + images[0])}" alt="${l.org}" loading="lazy" /></div>
       <div class="lead-card-body">${inner}</div>
     </div>`;
   }
   return `<div class="lead-card reveal">${inner}</div>`;
 }
 
+const LEAD_CAROUSEL_JS = `
+function leadShow(id, idx) {
+  var car = document.getElementById(id);
+  if (!car) return;
+  var slides = car.querySelectorAll('.lead-slide');
+  slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+  car.dataset.idx = idx;
+  var counter = document.getElementById(id + '-counter');
+  if (counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
+}
+function leadNext(id, count) { var car = document.getElementById(id); var idx = ((car.dataset.idx | 0) + 1) % count; leadShow(id, idx); }
+function leadPrev(id, count) { var car = document.getElementById(id); var idx = ((car.dataset.idx | 0) - 1 + count) % count; leadShow(id, idx); }
+`;
+
 function buildLeadership(lang) {
-  const title = `Eggan Nachson — ${t(UI.navLeadership, lang)}`;
+  const title = `Eggan Nachson Silueta — ${t(UI.navLeadership, lang)}`;
   const gallerySlides = GALLERY.map((g, i) => `
     <div class="gallery-slide${i === 0 ? ' active' : ''}" data-idx="${i}">
       <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" onclick="openLightbox(galIdx)" />
@@ -595,7 +728,7 @@ function buildLeadership(lang) {
     <div class="wrap">
       <p class="label label-blue" style="color:var(--blue)">${t(UI.leadershipPageEyebrow, lang)}</p>
       <h1 class="font-display section-title">${t(UI.leadershipPageTitle, lang)}</h1>
-      <div class="lead-grid" style="margin-top:40px">${LEADERSHIP.map(l => leadershipCardHtml(l, lang)).join('')}</div>
+      <div class="lead-grid" style="margin-top:40px">${LEADERSHIP.map((l, i) => leadershipCardHtml(l, lang, i)).join('')}</div>
     </div>
   </section>
   <section class="section section-off">
@@ -620,7 +753,7 @@ function buildLeadership(lang) {
     <span class="lightbox-counter" id="lbCounter">1 / ${GALLERY.length}</span>
   </div>`;
 
-  const js = `
+  const js = LEAD_CAROUSEL_JS + `
   var GAL_CAPTIONS = ${JSON.stringify(GALLERY.map(g => t(g.caption, lang)))};
   var galIdx = 0; var GAL_COUNT = ${GALLERY.length};
   function renderGallery() {
@@ -656,7 +789,7 @@ function buildLeadership(lang) {
 }
 
 function buildResearch(lang) {
-  const title = `Eggan Nachson — ${t(UI.navResearch, lang)}`;
+  const title = `Eggan Nachson Silueta — ${t(UI.navResearch, lang)}`;
   const items = RESEARCH.map(r => `
     <div class="research-item reveal" onclick="openReader('${r.slug}')">
       <div>
@@ -723,19 +856,23 @@ function buildResearch(lang) {
 }
 
 function buildContact(lang) {
-  const title = `Eggan Nachson — ${t(UI.navContact, lang)}`;
+  const title = `Eggan Nachson Silueta — ${t(UI.navContact, lang)}`;
   const body = `
-  <section class="section section-dark" style="min-height:60vh;display:flex;align-items:center">
+  <section class="section section-dark contact-section">
     <div class="wrap contact-grid">
       <div>
         <h1 class="font-display contact-title">${t(UI.contactTitle, lang)}</h1>
         <p class="contact-body">${t(UI.contactBody, lang)}</p>
-        <a class="btn btn-primary" href="${CONTACT.waLink}" target="_blank" rel="noopener noreferrer">${t(UI.contactCta, lang)} ↗</a>
+        <div class="contact-cta-row">
+          <a class="btn btn-primary" href="${CONTACT.waIndonesia.link}" target="_blank" rel="noopener noreferrer">${t(CONTACT.waIndonesia.label, lang)} ↗</a>
+          <a class="btn btn-primary" href="${CONTACT.waNetherlands.link}" target="_blank" rel="noopener noreferrer">${t(CONTACT.waNetherlands.label, lang)} ↗</a>
+        </div>
       </div>
       <div>
         <div class="contact-block"><span class="label">${t(UI.contactLocation, lang)}</span><p class="contact-val">${t(CONTACT.location, lang)}</p></div>
         <div class="contact-block"><span class="label">${t(UI.contactEmail, lang)}</span><p class="contact-val"><a href="mailto:${CONTACT.email}">${CONTACT.email}</a></p></div>
-        <div class="contact-block"><span class="label">${t(UI.contactPhone, lang)}</span><p class="contact-val"><a href="${CONTACT.waLink}" target="_blank" rel="noopener noreferrer">${CONTACT.phone}</a></p></div>
+        <div class="contact-block"><span class="label">${t(CONTACT.waIndonesia.label, lang)}</span><p class="contact-val"><a href="${CONTACT.waIndonesia.link}" target="_blank" rel="noopener noreferrer">${CONTACT.waIndonesia.phone}</a></p></div>
+        <div class="contact-block"><span class="label">${t(CONTACT.waNetherlands.label, lang)}</span><p class="contact-val"><a href="${CONTACT.waNetherlands.link}" target="_blank" rel="noopener noreferrer">${CONTACT.waNetherlands.phone}</a></p></div>
       </div>
     </div>
   </section>`;

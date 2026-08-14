@@ -54,6 +54,9 @@ const UI = {
     id: 'Bagaimana teknologi bisa menciptakan sesuatu yang berguna melampaui layar?',
   },
   eduTimelineTitle: { nl: 'OPLEIDINGSTRAJECT', en: 'EDUCATION TIMELINE', id: 'RIWAYAT PENDIDIKAN' },
+  experienceTitle: { nl: 'WERKERVARING', en: 'PROFESSIONAL EXPERIENCE', id: 'PENGALAMAN PROFESIONAL' },
+  coursesTitle: { nl: 'CURSUSSEN & CERTIFICERINGEN', en: 'COURSES & CERTIFICATIONS', id: 'KURSUS & SERTIFIKASI' },
+  achievementsTitle: { nl: 'PRESTATIES', en: 'ACHIEVEMENTS', id: 'PENCAPAIAN' },
   skillsTitle:  { nl: 'VAARDIGHEDEN & EXPERTISE', en: 'SKILLS & EXPERTISE', id: 'KEAHLIAN & KEPAKARAN' },
   skillBuild:   { nl: 'BOUWEN', en: 'BUILD', id: 'BUILD' },
   skillAi:      { nl: 'AI', en: 'AI', id: 'AI' },
@@ -102,12 +105,15 @@ const UI = {
 };
 
 // ── Education timeline ──────────────────────────────────────────────────────
-// Only the two CONFIRMED degrees — a third (AI, Lübeck University) appears in
-// one source card's bio but is unconfirmed as of this build; do not add it
-// until the user confirms status. See DESIGN_BRIEF.md "open questions".
+// Source of truth: CV - EGGAN NACHSON.pdf (supplied by user 2026-08-14). This
+// replaces the earlier 3-entry version — the CV confirms only 2 master's-level
+// items exist (no Lübeck AI degree, that VP-card bio detail is not on the CV
+// and stays excluded), but adds a 4th entry (Diploma in Administration) that
+// wasn't on the site at all before. Hague program hasn't started yet — CV
+// marks it "Perkiraan" (estimated/expected), Sep 2026 – Aug 2027.
 const EDUCATION = [
   {
-    period: '2026 — ' , periodSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
+    period: '2026 — 2027', periodSuffix: { nl: 'VERWACHT', en: 'EXPECTED', id: 'PERKIRAAN' },
     school: 'The Hague University of Applied Sciences',
     degree: { nl: 'MSc Data-Driven Business', en: 'MSc Data-Driven Business', id: 'MSc Data-Driven Business' },
     place: { nl: 'Den Haag, Nederland', en: 'The Hague, Netherlands', id: 'Den Haag, Belanda' },
@@ -115,14 +121,98 @@ const EDUCATION = [
   {
     period: '2023 — 2025',
     school: 'Universitas Indonesia',
-    degree: { nl: 'MSc Strategic Intelligence', en: 'MSc Strategic Intelligence', id: 'MSc Strategic Intelligence' },
+    degree: { nl: 'MSc Strategic Intelligence · GPA 3.80/4.00', en: 'MSc Strategic Intelligence · GPA 3.80/4.00', id: 'MSc Strategic Intelligence · IPK 3.80/4.00' },
     place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
   },
   {
     period: '2018 — 2022',
     school: 'ITB Swadharma',
-    degree: { nl: 'BSc Informatics Engineering', en: 'BSc Informatics Engineering', id: 'BSc Informatics Engineering' },
+    degree: { nl: 'BSc Informatics Engineering · GPA 3.18/4.00', en: 'BSc Informatics Engineering · GPA 3.18/4.00', id: 'BSc Informatics Engineering · IPK 3.18/4.00' },
     place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
+  },
+  {
+    period: '2017 — 2020',
+    school: 'Universitas Indonesia',
+    degree: { nl: 'Diploma Bestuurskunde · GPA 3.42/4.00', en: 'Diploma in Administration · GPA 3.42/4.00', id: 'Diploma Administrasi · IPK 3.42/4.00' },
+    place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
+  },
+];
+
+// ── Professional experience (Pengalaman Kerja) ──────────────────────────────
+// NEW 2026-08-14, from CV — was entirely missing from the site before. Kept
+// separate from LEADERSHIP below: this is paid employment, LEADERSHIP is
+// volunteer/organizational roles. RISE Research Team entry is the formal
+// employment record behind the P3/Reef-to-Welfare research entries already
+// on /research and the LUMBUNG Jakut case study already on /work.
+const EXPERIENCE = [
+  {
+    period: '2023 — ', periodSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
+    org: 'MatchupSkills.id', role: { nl: 'AI Product Lead', en: 'AI Product Lead', id: 'AI Product Lead' },
+    desc: {
+      nl: 'AI-gedreven EdTech-platform gericht op gepersonaliseerde matching tussen vaardigheden en carrière. Herontwierp de AI content-generatiepipeline (parallel-chunk verwerking met automatische retry/fallback), wat generatiefouten met meer dan 90% verminderde over alle test-prep modules.',
+      en: 'AI-driven EdTech platform focused on personalized skill-to-career matching. Redesigned the platform\'s AI content-generation pipeline (parallel-chunk processing with automatic retry/fallback), cutting generation failures by over 90% across all test-prep modules. Directs cross-functional operations for a four-division community and recruitment program.',
+      id: 'Platform EdTech berbasis AI yang fokus pada pencocokan skill-ke-karier yang dipersonalisasi. Merancang ulang pipeline AI content-generation platform (pemrosesan parallel-chunk dengan retry/fallback otomatis), menurunkan kegagalan generate lebih dari 90% di semua modul test-prep. Memimpin operasi lintas-divisi untuk program komunitas & rekrutmen 4 divisi.',
+    },
+  },
+  {
+    period: '2025 — 2026',
+    org: 'Universitas Indonesia — RISE Research Team', role: { nl: 'AI & Data Research Assistant (Parttime)', en: 'AI & Data Research Assistant (Part-Time)', id: 'AI & Data Research Assistant (Paruh Waktu)' },
+    desc: {
+      nl: 'Ontwierp en bouwde een AI- en OSINT-gebaseerd voedselzekerheid-monitoringdashboard voor zes districten in Noord-Jakarta. Droeg bij aan AI-systeemontwerp binnen twee gefinancierde onderzoeksinitiatieven — een universiteitsinnovatiebeurs en een nationale onderzoekscompetitie (zie /onderzoek). Schreef maandelijkse beleidsnota\'s en veerkracht-indexrapporten.',
+      en: 'Designed and built an AI- and OSINT-based food-security monitoring dashboard for six districts in North Jakarta, integrating real-time spatial, pricing, and household-harvest data for a government food-security agency partner. Contributed AI-system design across two funded research initiatives — a university innovation grant and a national research competition (see /research) — aligned with FAO\'s Food Insecurity Experience Scale (FIES). Authored monthly policy briefs and resilience-index reports for public-sector partners.',
+      id: 'Merancang dan membangun dashboard monitoring ketahanan pangan berbasis AI dan OSINT untuk enam kecamatan di Jakarta Utara, mengintegrasikan data spasial, harga, dan hasil panen rumah tangga real-time untuk mitra instansi ketahanan pangan pemerintah. Berkontribusi pada desain sistem AI di dua inisiatif riset yang didanai — hibah inovasi universitas dan kompetisi riset nasional (lihat /riset) — selaras dengan Food Insecurity Experience Scale (FIES) FAO. Menulis policy brief bulanan dan laporan indeks ketahanan.',
+    },
+  },
+  {
+    period: '2021 — 2025',
+    org: 'Bank BRI', role: { nl: 'Relationship Manager, Banking Office', en: 'Relationship Manager, Banking Office', id: 'Relationship Manager, Banking Office' },
+    desc: {
+      nl: 'Beheerde een MKB-portefeuille van 500+ klanten in het retailsegment. Behaalde 98% claimgoedkeuring en 97% tijdige uitbetaling; verminderde verwerkingsfouten met 90% en verbeterde efficiëntie met 95%.',
+      en: 'Managed an MSME portfolio of 500+ clients across the retail segment. Achieved 98% claim approval and 97% on-time disbursement; reduced processing errors by 90% and improved efficiency by 95%.',
+      id: 'Mengelola portofolio UMKM 500+ klien di segmen retail. Meraih 98% persetujuan klaim dan 97% pencairan tepat waktu; menurunkan kesalahan proses 90% dan meningkatkan efisiensi 95%.',
+    },
+  },
+];
+
+// ── Courses & certifications (Keterampilan, Prestasi & pengalaman lain) ─────
+// NEW 2026-08-14, from CV — the "just a degree list" gap the user flagged.
+const COURSES = [
+  { year: '2023', name: 'Product Vision', org: 'MySkill.id', score: '95%' },
+  { year: '2022', name: { nl: 'Java Database & Stored Procedures', en: 'Java Database & Stored Procedures', id: 'Java Database & Store Procedure' }, org: 'Dibimbing Bootcamp', score: '86%' },
+  { year: '2022', name: 'Java OOP', org: 'Dibimbing Bootcamp', score: '89%' },
+  { year: '2022', name: { nl: 'Android-fundamenten met Kotlin', en: 'Fundamental Android with Kotlin', id: 'Fundamental Android dengan Kotlin' }, org: 'Codingstudio', score: '80%' },
+  { year: '2022', name: { nl: 'Cybersecurity op de Linux command line', en: 'Cybersecurity on the Linux Command Line', id: 'Cyber Security via Command Line Linux' }, org: 'Codingstudio', score: '86%' },
+  { year: '2022', name: { nl: 'Business Analyst met Power BI', en: 'Business Analyst with Power BI', id: 'Business Analyst dengan Power BI' }, org: 'Habis Kerja', score: '95%' },
+];
+
+// ── Achievements ──────────────────────────────────────────────────────────
+const ACHIEVEMENTS = [
+  {
+    year: '2025',
+    title: { nl: 'Finalist, Universitas Indonesia Hackathon', en: 'Finalist, University of Indonesia Hackathon', id: 'Finalis, Hackathon Universitas Indonesia' },
+    desc: {
+      nl: 'Ontwikkelde AI Match, een AI-gedreven matchmaking-oplossing die gebruikers koppelt op basis van vaardigheden en leerdoelen.',
+      en: 'Developed AI Match, an AI-powered matchmaking solution designed to connect users based on skills and learning goals.',
+      id: 'Mengembangkan AI Match, solusi matchmaking berbasis AI yang menghubungkan pengguna berdasarkan skill dan tujuan belajar.',
+    },
+  },
+  {
+    year: '2025',
+    title: { nl: 'Finalist, Indonesia Incubate (Kemenparekraf)', en: 'Finalist, Indonesia Incubate Program (Ministry of Tourism & Creative Economy)', id: 'Finalis, Program Indonesia Incubate (Kemenparekraf)' },
+    desc: {
+      nl: 'Ontwikkelde AI Match, een AI-gebaseerd platform dat lerenden koppelt aan relevante vaardigheden en groeipaden.',
+      en: 'Developed AI Match, an AI-based platform designed to connect learners with relevant skills and growth pathways.',
+      id: 'Mengembangkan AI Match, platform berbasis AI yang menghubungkan pembelajar dengan skill dan jalur pertumbuhan relevan.',
+    },
+  },
+  {
+    year: '2021',
+    title: { nl: '1e Plaats, Business Competition FEB Yarsi', en: '1st Place, Business Competition FEB Yarsi', id: 'Juara 1, Business Competition FEB Yarsi' },
+    desc: {
+      nl: 'Creëerde een duurzaam bedrijfsmodel dat lage onderwijskwaliteit en job-mismatch oplost door een onderwijsplatform te combineren met een vacaturemarktplaats.',
+      en: 'Created a sustainable business model addressing low education quality and job mismatch, by merging an education platform with a job-marketplace business model.',
+      id: 'Menciptakan model bisnis berkelanjutan yang mengatasi rendahnya kualitas pendidikan dan job-mismatch, menggabungkan platform edukasi dengan marketplace lowongan kerja.',
+    },
   },
 ];
 
@@ -181,31 +271,31 @@ const PROJECTS = [
 // instead of forcing a mismatched image.
 const LEADERSHIP = [
   {
-    year: '2025 — 2028', img: 'iccn-director.jpg',
+    year: '2025 — ', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: 'iccn-director.jpg',
     org: 'Indonesian Creative Cities Network',
     role: { nl: 'Directeur Talentontwikkeling & Certificering', en: 'Director of Talent Development & Certification', id: 'Direktur Pengembangan Talenta & Sertifikasi' },
-    stat: '20K+',
-    statLabel: { nl: 'Netwerk & gemeenschap', en: 'Network & Community', id: 'Jaringan & Komunitas' },
+    stat: '25K+',
+    statLabel: { nl: 'Leden in het ecosysteem', en: 'Ecosystem Members', id: 'Anggota Ekosistem' },
     desc: {
-      nl: 'Leidt landelijke initiatieven om creatief menselijk kapitaal in heel Indonesië te versterken — talentontwikkeling, professionele training, certificering en samenwerking met de industrie.',
-      en: 'Leading national initiatives to strengthen creative human capital across Indonesia — talent development, professional training, certification pathways, and industry linkage.',
-      id: 'Memimpin inisiatif nasional untuk memperkuat SDM kreatif di seluruh Indonesia — pengembangan talenta, pelatihan profesional, jalur sertifikasi, dan kolaborasi industri.',
+      nl: 'Leidt nationale AI- en digitale-economiecertificeringsinitiatieven met het Ministerie van Creatieve Economie in 38 provincies. Beheert 120+ regionale leiders binnen een landelijke talentontwikkelingsstructuur; schaalde ecosysteembetrokkenheid naar 25.000+ leden.',
+      en: 'Leading national AI and digital-economy certification initiatives with the Ministry of Creative Economy across 38 provinces. Managing 120+ regional leaders under a nationwide talent development structure; scaled ecosystem engagement to 25,000+ members.',
+      id: 'Memimpin inisiatif sertifikasi AI dan ekonomi digital nasional bersama Kementerian Ekonomi Kreatif di 38 provinsi. Mengelola 120+ pemimpin regional dalam struktur pengembangan talenta nasional; menskalakan keterlibatan ekosistem hingga 25.000+ anggota.',
     },
   },
   {
-    year: '2026 — 2028', img: 'indonesia-mengglobal.jpg',
+    year: '2026', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: 'indonesia-mengglobal.jpg',
     org: 'Indonesia Mengglobal',
     role: { nl: 'VP Strategische Partnerschappen & Communicatie', en: 'VP Strategic Partnerships & Communications', id: 'VP Kemitraan Strategis & Komunikasi' },
     stat: '10K+',
     statLabel: { nl: 'Studenten & leden', en: 'Scholars & Members', id: 'Scholars & Anggota' },
     desc: {
-      nl: 'Beheert partnerschappen en communicatie voor Indonesië\'s grootste mentorschapsgemeenschap voor studeren in het buitenland — "Connected, Empowered, Educated".',
-      en: 'Managing partnerships and communications for Indonesia\'s largest overseas-education mentorship community — "Connected, Empowered, Educated".',
-      id: 'Mengelola kemitraan dan komunikasi untuk komunitas mentorship studi luar negeri terbesar di Indonesia — "Connected, Empowered, Educated".',
+      nl: 'Leidt de divisies Partnerschappen, Events, en Branding & Communicatie. Ontwikkelt strategische samenwerkingen met universiteiten, bedrijven, NGO\'s en internationale organisaties voor Indonesië\'s grootste mentorschapsgemeenschap voor studeren in het buitenland — "Connected, Empowered, Educated".',
+      en: 'Leading the Partnerships, Events, and Branding & Communications divisions. Developing strategic collaborations with universities, corporations, NGOs, and international organizations for Indonesia\'s largest overseas-education mentorship community — "Connected, Empowered, Educated".',
+      id: 'Memimpin divisi Partnerships, Events, dan Branding & Communications. Mengembangkan kolaborasi strategis dengan universitas, korporasi, NGO, dan organisasi internasional untuk komunitas mentorship studi luar negeri terbesar di Indonesia — "Connected, Empowered, Educated".',
     },
   },
   {
-    year: '2025', img: 'unesco-undp.jpg',
+    year: '2025', images: ['unesco-undp-1.jpg', 'unesco-undp-2.jpg'],
     org: 'UNESCO & UNDP Indonesia',
     role: { nl: 'Spreker, Digitale Geletterdheid Forum', en: 'Speaker, Digital Literacy Forum', id: 'Pembicara, Forum Literasi Digital' },
     stat: '100+',
@@ -217,7 +307,7 @@ const LEADERSHIP = [
     },
   },
   {
-    year: '2026', img: 'timur-growth.jpg',
+    year: '2026', images: ['timur-growth-1.jpg', 'timur-growth-2.jpg', 'timur-growth-3.jpg', 'timur-growth-4.jpg'],
     org: 'Timur Growth 2 Startup Competition',
     role: { nl: 'Spreker & Jurylid', en: 'Speaker & Panelist', id: 'Pembicara & Panelis' },
     stat: null, statLabel: null,
@@ -228,19 +318,34 @@ const LEADERSHIP = [
     },
   },
   {
-    year: '2024 — heden', img: null,
-    org: 'Titik Terang',
-    role: { nl: 'Chief Branding & Creative', en: 'Chief Branding & Creative', id: 'Chief Branding & Creative' },
-    stat: '218K+',
-    statLabel: { nl: 'Views bereikt', en: 'Content Reach', id: 'Jangkauan Konten' },
+    // Role corrected 2026-08-14 from user's CV: he's COO there, not "Chief
+    // Branding & Creative" (that title came from an older self-made slide
+    // deck and undersold his actual scope — CV is the authoritative source).
+    year: '2024', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: null,
+    org: 'Titik Terang Community',
+    role: { nl: 'Chief Operating Officer', en: 'Chief Operating Officer', id: 'Chief Operating Officer' },
+    stat: '1.000+',
+    statLabel: { nl: 'Community-leden', en: 'Community Members', id: 'Anggota Komunitas' },
     desc: {
-      nl: 'Leidt merkpositionering en creatieve strategie — content bereikte 123.508 views met 99,1% van de impressies afkomstig van niet-volgers.',
-      en: 'Leading brand positioning and creative strategy — content generated 123,508 views, with 99.1% of impressions coming from non-followers.',
-      id: 'Memimpin positioning brand dan strategi kreatif — konten meraih 123.508 views, 99,1% impresi berasal dari non-follower.',
+      nl: 'Leidt 3 divisies met 102 medewerkers binnen creatieve en projectinitiatieven. Bouwde en beheert een creatieve-economie- en AI-community van 1.000+ leden; voerde 5+ strategische programma\'s uit met een voltooiingsgraad van 95%+.',
+      en: 'Leading 3 divisions managing 102 contributors across creative and project initiatives. Grew and manages a 1,000+ member creative-economy and AI community; executed 5+ strategic programs with a 95%+ completion rate.',
+      id: 'Memimpin 3 divisi dengan 102 kontributor di berbagai inisiatif kreatif dan proyek. Membangun dan mengelola komunitas ekonomi kreatif & AI dengan 1.000+ anggota; menjalankan 5+ program strategis dengan tingkat penyelesaian 95%+.',
     },
   },
   {
-    year: '2024 — heden', img: null,
+    year: '2025', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: null,
+    org: 'ILUNI UI',
+    role: { nl: 'Kesekjenan (Secretariaat-Generaal)', en: 'Secretariat-General', id: 'Kesekjenan' },
+    stat: '11',
+    statLabel: { nl: 'Divisies onder toezicht', en: 'Divisions Overseen', id: 'Divisi Diawasi' },
+    desc: {
+      nl: 'Officiële alumnivereniging van Universitas Indonesia. Leidt monitoring & evaluatie over 11 divisies en 100+ organisatorische events; ontwierp een gestructureerd project-monitoringsysteem dat de coördinatie-efficiëntie tot 2× verbeterde.',
+      en: 'Official alumni association of Universitas Indonesia. Leads monitoring & evaluation across 11 divisions and 100+ organizational events; designed a structured project-monitoring and reporting system that improved coordination efficiency by up to 2×.',
+      id: 'Asosiasi alumni resmi Universitas Indonesia. Memimpin monitoring & evaluasi lintas 11 divisi dan 100+ event organisasi; merancang sistem monitoring & pelaporan proyek terstruktur yang meningkatkan efisiensi koordinasi hingga 2×.',
+    },
+  },
+  {
+    year: '2024', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: null,
     org: 'YouthRanger.id',
     role: { nl: 'Creatief Consultant', en: 'Creative Consultant', id: 'Konsultan Kreatif' },
     stat: '218K+',
@@ -264,7 +369,7 @@ const LEADERSHIP = [
     },
   },
   {
-    year: '2023', img: 'pt-pindad.jpg',
+    year: '2023', images: ['pt-pindad-1.jpg', 'pt-pindad-2.jpg', 'pt-pindad-3.jpg', 'pt-pindad-4.jpg'],
     org: 'Studi Ekskursi PT Pindad',
     role: { nl: 'Chief Project', en: 'Chief Project', id: 'Chief Project' },
     stat: '55',
@@ -276,7 +381,7 @@ const LEADERSHIP = [
     },
   },
   {
-    year: '2022', img: 'study-hub.jpg',
+    year: '2022', images: ['study-hub-1.jpg', 'study-hub-2.jpg'],
     org: 'Study Hub — PUSAT AHLI × PT Sentra Solusi',
     role: { nl: 'BD Mentor', en: 'BD Mentor', id: 'BD Mentor' },
     stat: '225',
@@ -367,9 +472,12 @@ const RESEARCH = [
 
 const CONTACT = {
   location: { nl: 'Den Haag, Nederland · Jakarta, Indonesië', en: 'The Hague, Netherlands · Jakarta, Indonesia', id: 'Den Haag, Belanda · Jakarta, Indonesia' },
-  email: 'mahesacloude@gmail.com',
-  phone: '+62 814-0198-1855',
-  waLink: 'https://wa.me/6281401981855',
+  email: 'nachson21@gmail.com',
+  // Two separate WhatsApp lines — Indonesian number for Indonesia-based
+  // contacts, Dutch number for Netherlands-based contacts (both from CV /
+  // user's explicit instruction 2026-08-14, replacing the single old number).
+  waIndonesia: { phone: '+62 814-0198-1855', link: 'https://wa.me/6281401981855', label: { nl: 'WhatsApp (Indonesië)', en: 'WhatsApp (Indonesia)', id: 'WhatsApp (Indonesia)' } },
+  waNetherlands: { phone: '+31 6 85527266', link: 'https://wa.me/31685527266', label: { nl: 'WhatsApp (Nederland)', en: 'WhatsApp (Netherlands)', id: 'WhatsApp (Belanda)' } },
 };
 
-module.exports = { LANGS, UI, EDUCATION, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT };
+module.exports = { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT };
