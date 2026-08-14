@@ -1,0 +1,6 @@
+{
+  "buildCommand": "node build-portfolio.js",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
