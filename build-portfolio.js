@@ -117,8 +117,8 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .btn-outline { border: 1px solid #3A3A38; color: #fff; }
 .btn-outline:hover { border-color: #fff; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
-.hero-photo { aspect-ratio: 1/1.08; background: var(--gray-dark); border-radius: 2px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.hero-photo { aspect-ratio: 1/1.08; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+.hero-photo img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
 .hero-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; border-top: 1px solid var(--border-dark); padding: 26px 0 40px; }
 @media (max-width: 720px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
 .hero-meta-label { color: #7A7A76; margin-bottom: 6px; }
