@@ -36,6 +36,9 @@ const UI = {
   viewAll:      { nl: 'Bekijk alles', en: 'View all', id: 'Lihat semua' },
   readMore:     { nl: 'Meer lezen', en: 'Read more', id: 'Baca selengkapnya' },
   viewCaseStudy:{ nl: 'Bekijk case study', en: 'View case study', id: 'Lihat studi kasus' },
+  visitSite:    { nl: 'Bezoek live site', en: 'Visit live site', id: 'Kunjungi situs live' },
+  viewScreens:  { nl: 'Bekijk screenshots', en: 'View screenshots', id: 'Lihat screenshot' },
+  projectLabel: { nl: 'PROJECT', en: 'PROJECT', id: 'PROYEK' },
   close:        { nl: 'SLUITEN', en: 'CLOSE', id: 'TUTUP' },
 
   eduPageEyebrow: { nl: 'OVER MIJ', en: 'ABOUT ME', id: 'TENTANG SAYA' },
@@ -143,7 +146,7 @@ const PROJECTS = [
       id: 'Platform berbasis AI untuk generate konten gambar, video, dan iklan. Terintegrasi dengan berbagai model AI, sistem kredit, dan langganan via Xendit.',
     },
     stack: ['Next.js', 'Supabase', 'Clerk', 'Xendit', 'fal.ai'],
-    dir: 'cap', thumb: 'home.jpg',
+    dir: 'cap', thumb: 'home.jpg', url: 'https://www.creativeaipartner.id',
   },
   {
     num: '02', slug: 'matchupskills',
@@ -155,22 +158,10 @@ const PROJECTS = [
       id: 'Platform edtech berbasis AI yang mencocokkan siswa dengan jalur belajar yang tepat. Termasuk AI tutor, manajemen pembelajaran, dan analitik progres.',
     },
     stack: ['Next.js', 'Supabase', 'Midtrans'],
-    dir: 'ms', thumb: 'home.jpg',
+    dir: 'ms', thumb: 'home.jpg', url: 'https://www.matchupskills.id',
   },
   {
-    num: '03', slug: 'operations-system',
-    name: { nl: 'Operationeel systeem', en: 'Operations System', id: 'Sistem Operasional' },
-    tag: { nl: 'Intern bedrijfsdashboard', en: 'Internal Business Dashboard', id: 'Dashboard Bisnis Internal' },
-    desc: {
-      nl: 'Intern systeem voor het beheren van operaties, projecten, klanten en teamprestaties in één centraal dashboard.',
-      en: 'Internal system to manage operations, projects, clients, and team performance in one centralized dashboard.',
-      id: 'Sistem internal untuk mengelola operasional, proyek, klien, dan performa tim dalam satu dashboard terpusat.',
-    },
-    stack: ['Next.js', 'PostgreSQL', 'Role-Based Access'],
-    dir: null, thumb: 'msadmin-login.jpg',
-  },
-  {
-    num: '04', slug: 'lumbung-jakut',
+    num: '03', slug: 'lumbung-jakut',
     name: 'Lumbung Jakut',
     tag: { nl: 'Voedselzekerheidsplatform', en: 'Food Resilience Platform', id: 'Platform Ketahanan Pangan' },
     desc: {
@@ -179,7 +170,7 @@ const PROJECTS = [
       id: 'Platform untuk Pemerintah Kota Jakarta Utara mengelola stok pangan, distribusi, dan data komunitas untuk ketahanan pangan.',
     },
     stack: ['Next.js', 'PWA', 'Report Automation'],
-    dir: 'lumbung', thumb: 'home.jpg',
+    dir: 'lumbung', thumb: 'home.jpg', url: 'https://lumbung.vercel.app',
   },
 ];
 

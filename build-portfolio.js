@@ -132,7 +132,10 @@ img { max-width: 100%; display: block; }
 .project-desc { font-size: 14px; color: #4A4A46; margin: 4px 0 0; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B66; border: 1px solid var(--border); padding: 4px 9px; border-radius: 2px; }
-.project-cta { font-size: 12px; font-weight: 700; color: var(--blue); margin-top: 6px; }
+.project-links { display: flex; align-items: center; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
+.project-cta { font-size: 12px; font-weight: 700; color: var(--blue); }
+.project-cta-secondary { background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; color: var(--text-muted); }
+.project-cta-secondary:hover { color: var(--blue); }
 
 /* Modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 200; padding: 24px; overflow-y: auto; }
@@ -200,15 +203,22 @@ img { max-width: 100%; display: block; }
 .lead-stat-label { font-size: 11px; color: #8A8A86; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
 .lead-desc { font-size: 13.5px; color: #C8C8C4; line-height: 1.55; }
 
-/* Gallery */
-.gallery-strip { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
-.gallery-strip::-webkit-scrollbar { height: 6px; }
-.gallery-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-.gallery-item { flex: 0 0 300px; scroll-snap-align: start; cursor: pointer; }
-.gallery-item img { aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; }
-.gallery-caption { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
-.gallery-nav { display: flex; gap: 8px; margin-top: 20px; }
-.gnav-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 15px; }
+/* Gallery — big single-photo slideshow (matches the project-modal carousel
+   language) with a thumbnail strip underneath so every photo is visible at
+   a glance, not just reachable by clicking into a lightbox. */
+.gallery-main { position: relative; aspect-ratio: 16/9.5; background: #000; border-radius: 2px; overflow: hidden; }
+.gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; }
+.gallery-slide.active { opacity: 1; }
+.gallery-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: zoom-in; }
+.gallery-main .car-btn { width: 44px; height: 44px; font-size: 18px; }
+.gallery-caption-bar { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 20px 16px; background: linear-gradient(to top, rgba(0,0,0,.75), transparent); color: #fff; font-size: 13px; font-weight: 600; }
+.gallery-thumbs { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 8px; margin-top: 16px; }
+.gallery-thumbs::-webkit-scrollbar { height: 6px; }
+.gallery-thumbs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.gallery-thumb { flex: 0 0 92px; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; cursor: pointer; opacity: .5; border: 2px solid transparent; transition: opacity .15s ease, border-color .15s ease; background: none; padding: 0; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumb.active { opacity: 1; border-color: var(--blue); }
+@media (max-width: 640px) { .gallery-thumb { flex-basis: 68px; } }
 .lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 90vw; max-height: 80vh; object-fit: contain; }
@@ -241,6 +251,11 @@ img { max-width: 100%; display: block; }
 .contact-block { margin-bottom: 20px; }
 .contact-block .label { color: #8A8A86; margin-bottom: 6px; display: block; }
 .contact-val { font-size: 14.5px; font-weight: 700; color: #fff; }
+
+/* Motion — restrained scroll-reveal, respects prefers-reduced-motion */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* Footer */
 .footer { background: var(--black); color: #8A8A86; padding: 26px 0; }
@@ -295,6 +310,24 @@ document.addEventListener('DOMContentLoaded', function () {
   var langBtn = document.getElementById('langBtn');
   if (langBtn) langBtn.addEventListener('click', function (e) { e.stopPropagation(); langSwitch.classList.toggle('open'); });
   document.addEventListener('click', function () { if (langSwitch) langSwitch.classList.remove('open'); });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 6, 5) * 60 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  }
 });
 `;
 
@@ -377,7 +410,7 @@ function buildHome(lang) {
 
 function timelineHtml(lang) {
   return EDUCATION.map(e => `
-    <div class="timeline-item">
+    <div class="timeline-item reveal">
       <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
       <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
       <div>
@@ -433,8 +466,11 @@ function buildEducation(lang) {
 
 function projectCardHtml(p, lang) {
   const dir = p.dir ? `${p.dir}/` : '';
+  // Whole card links straight to the real, live product — that's the primary
+  // proof-of-work action. Screenshots stay one click away via a secondary
+  // trigger (stopPropagation) instead of eating the main click target.
   return `
-  <button class="project-card" onclick="openModal('${p.slug}')">
+  <a class="project-card reveal" href="${p.url}" target="_blank" rel="noopener noreferrer">
     <div class="project-thumb"><img src="${assetUrl('work/' + dir + p.thumb)}" alt="${t(p.name, lang)}" loading="lazy" /></div>
     <div class="project-body">
       <span class="project-num">${p.num}</span>
@@ -442,9 +478,12 @@ function projectCardHtml(p, lang) {
       <p class="project-tag">${t(p.tag, lang)}</p>
       <p class="project-desc">${t(p.desc, lang)}</p>
       <div class="tag-row">${p.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>
-      <p class="project-cta">${t(UI.viewCaseStudy, lang)} →</p>
+      <div class="project-links">
+        <span class="project-cta">${t(UI.visitSite, lang)} ↗</span>
+        <button type="button" class="project-cta project-cta-secondary" onclick="event.preventDefault();event.stopPropagation();openModal('${p.slug}')">${t(UI.viewScreens, lang)} →</button>
+      </div>
     </div>
-  </button>`;
+  </a>`;
 }
 
 function projectModals(lang) {
@@ -456,7 +495,7 @@ function projectModals(lang) {
     <div class="modal-overlay" id="modal-${p.slug}" onclick="if(event.target===this) closeModal('${p.slug}')">
       <div class="modal">
         <div class="modal-top">
-          <div><p class="modal-eyebrow">PROJECT ${p.num}</p><p class="modal-name">${t(p.name, lang)}</p></div>
+          <div><p class="modal-eyebrow">${t(UI.projectLabel, lang)} ${p.num}</p><p class="modal-name">${t(p.name, lang)}</p></div>
           <button class="modal-close" onclick="closeModal('${p.slug}')">${t(UI.close, lang)} ✕</button>
         </div>
         <div class="carousel" id="car-${p.slug}">
@@ -515,7 +554,7 @@ function buildWork(lang) {
       <div class="skills-grid" style="margin-top:26px">${skillsHtml(lang)}</div>
       <p class="label label-blue" style="margin-top:60px">${t(UI.servicesTitle, lang)}</p>
       <div class="services-grid">${services.map((s, i) => `
-        <div class="service-card"><p class="service-num">0${i + 1}</p><p class="service-name">${t(s.name, lang)}</p><p class="service-desc">${t(s.desc, lang)}</p></div>
+        <div class="service-card reveal"><p class="service-num">0${i + 1}</p><p class="service-name">${t(s.name, lang)}</p><p class="service-desc">${t(s.desc, lang)}</p></div>
       `).join('')}</div>
     </div>
   </section>
@@ -531,21 +570,24 @@ function leadershipCardHtml(l, lang) {
     ${l.stat ? `<p class="lead-stat">${l.stat}</p><p class="lead-stat-label">${t(l.statLabel, lang)}</p>` : ''}
     <p class="lead-desc">${t(l.desc, lang)}</p>`;
   if (l.img) {
-    return `<div class="lead-card has-img">
+    return `<div class="lead-card has-img reveal">
       <div class="lead-img"><img src="${assetUrl('leadership/' + l.img)}" alt="${l.org}" loading="lazy" /></div>
       <div class="lead-card-body">${inner}</div>
     </div>`;
   }
-  return `<div class="lead-card">${inner}</div>`;
+  return `<div class="lead-card reveal">${inner}</div>`;
 }
 
 function buildLeadership(lang) {
   const title = `Eggan Nachson — ${t(UI.navLeadership, lang)}`;
-  const galleryItems = GALLERY.map((g, i) => `
-    <div class="gallery-item" onclick="openLightbox(${i})">
-      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" />
-      <p class="gallery-caption">${t(g.caption, lang)}</p>
+  const gallerySlides = GALLERY.map((g, i) => `
+    <div class="gallery-slide${i === 0 ? ' active' : ''}" data-idx="${i}">
+      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" onclick="openLightbox(galIdx)" />
     </div>`).join('');
+  const galleryThumbs = GALLERY.map((g, i) => `
+    <button type="button" class="gallery-thumb${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="goGallery(${i})">
+      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" />
+    </button>`).join('');
   const lightboxSlides = GALLERY.map((g, i) => `<img class="lb-slide" data-idx="${i}" src="${assetUrl('gallery/' + g.img)}" style="display:${i === 0 ? 'block' : 'none'}" alt="${t(g.caption, lang)}" />`).join('');
 
   const body = `
@@ -560,11 +602,14 @@ function buildLeadership(lang) {
     <div class="wrap">
       <p class="label label-blue">${t(UI.galleryTitle, lang)}</p>
       <p class="section-note">${t(UI.galleryNote, lang)}</p>
-      <div class="gallery-strip" id="galleryStrip" style="margin-top:24px">${galleryItems}</div>
-      <div class="gallery-nav">
-        <button class="gnav-btn" onclick="scrollGallery(-1)">←</button>
-        <button class="gnav-btn" onclick="scrollGallery(1)">→</button>
+      <div class="gallery-main" id="galleryMain" style="margin-top:24px">
+        ${gallerySlides}
+        <button class="car-btn car-prev" onclick="galNav(-1)">‹</button>
+        <button class="car-btn car-next" onclick="galNav(1)">›</button>
+        <span class="car-counter" id="galCounter">1 / ${GALLERY.length}</span>
+        <div class="gallery-caption-bar" id="galCaption">${t(GALLERY[0].caption, lang)}</div>
       </div>
+      <div class="gallery-thumbs" id="galleryThumbs">${galleryThumbs}</div>
     </div>
   </section>
   <div class="lightbox" id="lightbox">
@@ -576,7 +621,19 @@ function buildLeadership(lang) {
   </div>`;
 
   const js = `
-  function scrollGallery(dir) { document.getElementById('galleryStrip').scrollBy({ left: dir * 320, behavior: 'smooth' }); }
+  var GAL_CAPTIONS = ${JSON.stringify(GALLERY.map(g => t(g.caption, lang)))};
+  var galIdx = 0; var GAL_COUNT = ${GALLERY.length};
+  function renderGallery() {
+    document.querySelectorAll('.gallery-slide').forEach(function (s) { s.classList.toggle('active', +s.dataset.idx === galIdx); });
+    document.querySelectorAll('.gallery-thumb').forEach(function (t) { t.classList.toggle('active', +t.dataset.idx === galIdx); });
+    document.getElementById('galCounter').textContent = (galIdx + 1) + ' / ' + GAL_COUNT;
+    document.getElementById('galCaption').textContent = GAL_CAPTIONS[galIdx];
+    var thumb = document.querySelector('.gallery-thumb[data-idx="' + galIdx + '"]');
+    if (thumb) thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+  function galNav(dir) { galIdx = (galIdx + dir + GAL_COUNT) % GAL_COUNT; renderGallery(); }
+  function goGallery(i) { galIdx = i; renderGallery(); }
+
   var lbIdx = 0; var LB_COUNT = ${GALLERY.length};
   function openLightbox(i) { lbIdx = i; renderLb(); document.getElementById('lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
@@ -586,10 +643,14 @@ function buildLeadership(lang) {
   }
   function lbNav(dir) { lbIdx = (lbIdx + dir + LB_COUNT) % LB_COUNT; renderLb(); }
   document.addEventListener('keydown', function (e) {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') lbNav(1);
-    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      return;
+    }
+    if (e.key === 'ArrowRight') galNav(1);
+    if (e.key === 'ArrowLeft') galNav(-1);
   });`;
   return pageShell({ lang, activeKey: 'leadership', title, description: title, bodyHtml: body, extraJs: js });
 }
@@ -597,7 +658,7 @@ function buildLeadership(lang) {
 function buildResearch(lang) {
   const title = `Eggan Nachson — ${t(UI.navResearch, lang)}`;
   const items = RESEARCH.map(r => `
-    <div class="research-item" onclick="openReader('${r.slug}')">
+    <div class="research-item reveal" onclick="openReader('${r.slug}')">
       <div>
         <span class="research-badge">${t(r.badge, lang)}</span>
         <p class="research-title">${r.title}</p>
