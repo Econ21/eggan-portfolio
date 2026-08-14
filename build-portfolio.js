@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
+const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
@@ -235,15 +235,35 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 @media (max-width: 820px) { .lead-grid { grid-template-columns: 1fr; } }
 .lead-card { background: var(--black-surface); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; }
 .lead-card.has-img { padding: 0; }
-.lead-img { aspect-ratio: 16/10; overflow: hidden; position: relative; }
-.lead-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-.lead-card:hover .lead-img:not(.lead-carousel) img { transform: scale(1.03); }
+.lead-img { aspect-ratio: 4/3; overflow: hidden; position: relative; background: var(--black-surface); transition: aspect-ratio .25s ease; }
+.lead-img img { width: 100%; height: 100%; object-fit: contain; transition: transform .3s ease; }
+.lead-card:hover .lead-img:not(.lead-carousel) img { transform: scale(1.02); }
+.lead-ig-link { position: absolute; bottom: 10px; right: 10px; z-index: 2; display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; color: #fff; background: rgba(0,0,0,0.55); padding: 6px 11px; border-radius: 999px; text-decoration: none; transition: background .15s ease; }
+.lead-ig-link:hover { background: rgba(0,0,0,0.8); }
+.lead-card:not(.has-img) .lead-ig-link { position: static; align-self: flex-start; margin-top: 4px; background: rgba(255,255,255,0.08); }
+.lead-card:not(.has-img) .lead-ig-link:hover { background: rgba(255,255,255,0.16); }
 .lead-carousel .lead-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
 .lead-carousel .lead-slide.active { opacity: 1; }
 .lead-car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 15px; z-index: 2; }
 .lead-car-prev { left: 10px; } .lead-car-next { right: 10px; }
 .lead-car-counter { position: absolute; top: 10px; right: 10px; font-size: 10.5px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.55); padding: 3px 9px; border-radius: 999px; z-index: 2; }
 .lead-card-body { padding: 22px 24px 26px; }
+
+/* Ministries (home) */
+.ministries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+@media (max-width: 860px) { .ministries-grid { grid-template-columns: 1fr; } }
+.ministry-card { border: 1px solid var(--border); border-radius: 3px; overflow: hidden; background: var(--white); }
+.ministry-photo { aspect-ratio: 4/3; overflow: hidden; background: var(--gray-light); }
+.ministry-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.ministry-body { padding: 24px 26px 28px; }
+.ministry-logos { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.ministry-logo-img { height: 34px; width: auto; max-width: 120px; object-fit: contain; }
+.ministry-logo-text { font-family: var(--serif); font-weight: 700; font-size: 13.5px; color: var(--ink-soft); border: 1px solid var(--border); border-radius: 3px; padding: 6px 10px; }
+.ministry-name { font-size: 17px; font-weight: 800; margin: 0 0 10px; text-wrap: balance; }
+.ministry-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; margin: 0 0 20px; }
+.ministry-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.ministry-link.btn-outline { color: var(--ink); border-color: var(--border); }
+.ministry-link.btn-outline:hover { border-color: var(--ink); }
 .lead-year { font-size: 11px; color: #8A8A86; font-weight: 700; letter-spacing: 0.06em; }
 .lead-org { font-size: 17px; font-weight: 800; margin: 6px 0 2px; }
 .lead-role { font-size: 12.5px; color: #A8A8A4; margin-bottom: 10px; }
@@ -254,10 +274,10 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 /* Gallery — big single-photo slideshow (matches the project-modal carousel
    language) with a thumbnail strip underneath so every photo is visible at
    a glance, not just reachable by clicking into a lightbox. */
-.gallery-main { position: relative; aspect-ratio: 16/9.5; background: #000; border-radius: 2px; overflow: hidden; }
+.gallery-main { position: relative; aspect-ratio: 16/9.5; background: #000; border-radius: 2px; overflow: hidden; transition: aspect-ratio .25s ease; }
 .gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; }
 .gallery-slide.active { opacity: 1; }
-.gallery-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: zoom-in; }
+.gallery-slide img { width: 100%; height: 100%; object-fit: contain; object-position: center; cursor: zoom-in; }
 .gallery-main .car-btn { width: 44px; height: 44px; font-size: 18px; }
 .gallery-caption-bar { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 20px 16px; background: linear-gradient(to top, rgba(0,0,0,.75), transparent); color: #fff; font-size: 13px; font-weight: 600; }
 .gallery-thumbs { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 8px; margin-top: 16px; }
@@ -432,6 +452,25 @@ function buildHome(lang) {
 
   const topProjects = PROJECTS.slice(0, 2).map(p => projectCardHtml(p, lang)).join('');
   const topLeadership = LEADERSHIP.slice(0, 4).map((l, i) => leadershipCardHtml(l, lang, 'home-' + i)).join('');
+  const ministriesHtml = MINISTRIES.map(m => {
+    const logos = m.logos.map(l => l.img
+      ? `<img src="${assetUrl('logos/' + l.img)}" alt="${l.name}" title="${l.name}" class="ministry-logo-img" />`
+      : `<span class="ministry-logo-text" title="${l.name}">${l.text}</span>`).join('');
+    const links = [
+      m.org ? `<a class="btn btn-outline ministry-link" href="${m.org.url}" target="_blank" rel="noopener noreferrer">${t(UI.viewOrg, lang)} ↗</a>` : '',
+      `<a class="btn btn-primary ministry-link" href="${m.product.url}" target="_blank" rel="noopener noreferrer">${t(UI.visitSite, lang)} — ${m.product.name} ↗</a>`,
+    ].join('');
+    return `
+    <div class="ministry-card reveal">
+      <div class="ministry-photo"><img src="${assetUrl('ministries/' + m.photo)}" alt="${t(m.ministryName, lang)}" loading="lazy" /></div>
+      <div class="ministry-body">
+        <div class="ministry-logos">${logos}</div>
+        <p class="ministry-name">${t(m.ministryName, lang)}</p>
+        <p class="ministry-desc">${t(m.desc, lang)}</p>
+        <div class="ministry-links">${links}</div>
+      </div>
+    </div>`;
+  }).join('');
 
   const body = `
   <section class="hero">
@@ -451,6 +490,15 @@ function buildHome(lang) {
   </section>
 
   <section class="section section-white">
+    <div class="wrap">
+      <p class="label label-blue"><span class="rule-blue"></span>${t(UI.ministriesEyebrow, lang)}</p>
+      <h2 class="font-display section-title" style="margin-top:10px">${t(UI.ministriesTitle, lang)}</h2>
+      <p class="section-note">${t(UI.ministriesNote, lang)}</p>
+      <div class="ministries-grid" style="margin-top:30px">${ministriesHtml}</div>
+    </div>
+  </section>
+
+  <section class="section section-off">
     <div class="wrap">
       <div class="section-head">
         <div><p class="label label-blue"><span class="rule-blue"></span>${t(UI.homeSectionWork, lang)}</p><h2 class="font-display section-title">${t(UI.workPageEyebrow, lang)}</h2></div>
@@ -683,29 +731,32 @@ function buildWork(lang) {
 
 function leadershipCardHtml(l, lang, idx) {
   const yearText = l.year + (l.yearSuffix ? ' ' + t(l.yearSuffix, lang) : '');
+  const igLink = l.link ? `<a class="lead-ig-link" href="${l.link}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${t(UI.viewInstagram, lang)} ↗</a>` : '';
   const inner = `
     <p class="lead-year">${yearText}</p>
     <p class="lead-org">${l.org}</p>
     <p class="lead-role">${t(l.role, lang)}</p>
     ${l.stat ? `<p class="lead-stat">${l.stat}</p><p class="lead-stat-label">${t(l.statLabel, lang)}</p>` : ''}
-    <p class="lead-desc">${t(l.desc, lang)}</p>`;
+    <p class="lead-desc">${t(l.desc, lang)}</p>
+    ${!l.images && !l.img ? igLink : ''}`;
   const images = l.images || (l.img ? [l.img] : []);
   if (images.length > 1) {
     const id = 'lead-' + idx;
-    const slides = images.map((img, i) => `<div class="lead-slide${i === 0 ? ' active' : ''}"><img src="${assetUrl('leadership/' + img)}" alt="${l.org}" loading="lazy" /></div>`).join('');
+    const slides = images.map((img, i) => `<div class="lead-slide${i === 0 ? ' active' : ''}"><img src="${assetUrl('leadership/' + img)}" alt="${l.org}" loading="lazy" onload="leadSyncRatio(this)" /></div>`).join('');
     return `<div class="lead-card has-img reveal">
       <div class="lead-img lead-carousel" id="${id}">
         ${slides}
         <button type="button" class="lead-car-btn lead-car-prev" onclick="event.preventDefault();leadPrev('${id}',${images.length})">‹</button>
         <button type="button" class="lead-car-btn lead-car-next" onclick="event.preventDefault();leadNext('${id}',${images.length})">›</button>
         <span class="lead-car-counter" id="${id}-counter">1 / ${images.length}</span>
+        ${igLink}
       </div>
       <div class="lead-card-body">${inner}</div>
     </div>`;
   }
   if (images.length === 1) {
     return `<div class="lead-card has-img reveal">
-      <div class="lead-img"><img src="${assetUrl('leadership/' + images[0])}" alt="${l.org}" loading="lazy" /></div>
+      <div class="lead-img"><img src="${assetUrl('leadership/' + images[0])}" alt="${l.org}" loading="lazy" onload="leadSyncRatio(this)" />${igLink}</div>
       <div class="lead-card-body">${inner}</div>
     </div>`;
   }
@@ -713,6 +764,12 @@ function leadershipCardHtml(l, lang, idx) {
 }
 
 const LEAD_CAROUSEL_JS = `
+function leadSyncRatio(img) {
+  var box = img.closest('.lead-img');
+  if (!box || !img.naturalWidth) return;
+  if (box.classList.contains('lead-carousel') && !img.closest('.lead-slide').classList.contains('active')) return;
+  box.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+}
 function leadShow(id, idx) {
   var car = document.getElementById(id);
   if (!car) return;
@@ -721,16 +778,19 @@ function leadShow(id, idx) {
   car.dataset.idx = idx;
   var counter = document.getElementById(id + '-counter');
   if (counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
+  var activeImg = slides[idx].querySelector('img');
+  if (activeImg.complete) leadSyncRatio(activeImg);
 }
 function leadNext(id, count) { var car = document.getElementById(id); var idx = ((car.dataset.idx | 0) + 1) % count; leadShow(id, idx); }
 function leadPrev(id, count) { var car = document.getElementById(id); var idx = ((car.dataset.idx | 0) - 1 + count) % count; leadShow(id, idx); }
+document.querySelectorAll('.lead-img img').forEach(function (img) { if (img.complete) leadSyncRatio(img); });
 `;
 
 function buildLeadership(lang) {
   const title = `Eggan Nachson Silueta — ${t(UI.navLeadership, lang)}`;
   const gallerySlides = GALLERY.map((g, i) => `
     <div class="gallery-slide${i === 0 ? ' active' : ''}" data-idx="${i}">
-      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" onclick="openLightbox(galIdx)" />
+      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" onclick="openLightbox(galIdx)" onload="if(+this.closest('.gallery-slide').dataset.idx===galIdx)galSyncRatio(this)" />
     </div>`).join('');
   const galleryThumbs = GALLERY.map((g, i) => `
     <button type="button" class="gallery-thumb${i === 0 ? ' active' : ''}" data-idx="${i}" onclick="goGallery(${i})">
@@ -771,6 +831,11 @@ function buildLeadership(lang) {
   const js = LEAD_CAROUSEL_JS + `
   var GAL_CAPTIONS = ${JSON.stringify(GALLERY.map(g => t(g.caption, lang)))};
   var galIdx = 0; var GAL_COUNT = ${GALLERY.length};
+  function galSyncRatio(img) {
+    var box = document.getElementById('galleryMain');
+    if (!box || !img.naturalWidth) return;
+    box.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+  }
   function renderGallery() {
     document.querySelectorAll('.gallery-slide').forEach(function (s) { s.classList.toggle('active', +s.dataset.idx === galIdx); });
     document.querySelectorAll('.gallery-thumb').forEach(function (t) { t.classList.toggle('active', +t.dataset.idx === galIdx); });
@@ -778,7 +843,10 @@ function buildLeadership(lang) {
     document.getElementById('galCaption').textContent = GAL_CAPTIONS[galIdx];
     var thumb = document.querySelector('.gallery-thumb[data-idx="' + galIdx + '"]');
     if (thumb) thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    var activeImg = document.querySelector('.gallery-slide[data-idx="' + galIdx + '"] img');
+    if (activeImg && activeImg.complete) galSyncRatio(activeImg);
   }
+  document.querySelectorAll('.gallery-slide.active img').forEach(function (img) { if (img.complete) galSyncRatio(img); });
   function galNav(dir) { galIdx = (galIdx + dir + GAL_COUNT) % GAL_COUNT; renderGallery(); }
   function goGallery(i) { galIdx = i; renderGallery(); }
 

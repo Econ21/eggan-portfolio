@@ -12,12 +12,12 @@ const UI = {
   navLeadership:{ nl: 'Leiderschap',    en: 'Leadership',      id: 'Kepemimpinan' },
   navContact:   { nl: 'Contact',        en: 'Contact',         id: 'Kontak' },
 
-  heroEyebrow:  { nl: 'TECHNOLOGIE × STRATEGIE × LEIDERSCHAP', en: 'TECHNOLOGY × STRATEGY × LEADERSHIP', id: 'TEKNOLOGI × STRATEGI × KEPEMIMPINAN' },
-  heroHeadline: { nl: 'IK BOUW SYSTEMEN DIE ECHT WERKEN.', en: 'I BUILD SYSTEMS THAT ACTUALLY WORK.', id: 'SAYA MEMBANGUN SISTEM YANG BENAR-BENAR JALAN.' },
+  heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · AI & STRATEGIE', en: 'INDONESIA → NETHERLANDS · AI & STRATEGY', id: 'INDONESIA → BELANDA · AI & STRATEGI' },
+  heroHeadline: { nl: 'HALLO, IK BEN EGGAN NACHSON SILUETA.', en: "HELLO, I'M EGGAN NACHSON SILUETA.", id: 'HALO, SAYA EGGAN NACHSON SILUETA.' },
   heroSub: {
-    nl: 'Ik bouw digitale producten en AI-gedreven systemen, leid gemeenschappen, en zet ideeën om in dingen die echte impact maken.',
-    en: 'I build digital products and AI-powered systems, lead communities, and turn ideas into things that create real impact.',
-    id: 'Saya membangun produk digital dan sistem berbasis AI, memimpin komunitas, dan mengubah ide menjadi sesuatu yang berdampak nyata.',
+    nl: 'Ik kom uit Indonesië en volg momenteel mijn derde masteropleiding in Nederland. Ik behaalde een master Strategic Intelligence aan de Universiteit van Indonesië, een master Artificial Intelligence aan de Universität zu Lübeck, en rond nu een master Data-Driven Business af aan The Hague University of Applied Sciences. Ik heb AI-producten en -programma\'s mee opgebouwd voor Indonesië\'s Ministerie van Creatieve Economie en Ministerie van Onderzoek & Hoger Onderwijs / LPDP, en leid vandaag AI-productstrategie bij MatchupSkills.',
+    en: "I'm from Indonesia and currently pursuing my third master's degree in the Netherlands. I hold a master's in Strategic Intelligence from Universitas Indonesia, a master's in Artificial Intelligence from the University of Lübeck, and I'm now completing a master's in Data-Driven Business at The Hague University of Applied Sciences. I've helped build AI products and programs for Indonesia's Ministry of Creative Economy and Ministry of Research & Higher Education / LPDP, and I currently lead AI product strategy at MatchupSkills.",
+    id: 'Saya berasal dari Indonesia dan sedang menempuh gelar master ketiga saya di Belanda. Saya meraih gelar master Strategic Intelligence dari Universitas Indonesia, master Artificial Intelligence dari Universität zu Lübeck, dan saat ini menyelesaikan master Data-Driven Business di The Hague University of Applied Sciences. Saya turut membangun produk dan program AI untuk Kementerian Ekonomi Kreatif Indonesia dan Kementerian Riset & Pendidikan Tinggi / LPDP, dan kini memimpin strategi produk AI di MatchupSkills.',
   },
   heroCtaWork:    { nl: 'BEKIJK MIJN WERK', en: 'EXPLORE MY WORK', id: 'LIHAT KARYA SAYA' },
   heroCtaContact: { nl: 'NEEM CONTACT OP', en: "LET'S CONNECT", id: 'HUBUNGI SAYA' },
@@ -26,18 +26,23 @@ const UI = {
   metaBuilt:    { nl: 'GEBOUWD', en: 'BUILT', id: 'DIBANGUN' },
   metaCommunity:{ nl: 'GEMEENSCHAP', en: 'COMMUNITY', id: 'KOMUNITAS' },
   metaBasedInVal:   { nl: 'Den Haag, Nederland', en: 'The Hague, Netherlands', id: 'Den Haag, Belanda' },
-  metaEducationVal: { nl: '2× Masterdiploma\'s', en: '2× Master\'s Degrees', id: '2× Gelar Master' },
+  metaEducationVal: { nl: '3× Masterdiploma\'s', en: '3× Master\'s Degrees', id: '3× Gelar Master' },
   metaBuiltVal:     { nl: '4 productiesystemen', en: '4 Production Systems', id: '4 Sistem Produksi' },
   metaCommunityVal: { nl: '20K+ netwerk in Indonesië', en: '20K+ Network Across Indonesia', id: '20K+ Jaringan di Indonesia' },
 
   homeSectionWork:       { nl: 'GESELECTEERD WERK', en: 'SELECTED WORK', id: 'KARYA PILIHAN' },
   homeSectionLeadership: { nl: 'VOORBIJ DE CODE', en: 'BEYOND THE CODE', id: 'LEBIH DARI SEKADAR KODE' },
+  ministriesEyebrow: { nl: 'NATIONALE IMPACT', en: 'NATIONAL IMPACT', id: 'DAMPAK NASIONAL' },
+  ministriesTitle: { nl: 'Ik heb Indonesische ministeries geholpen AI-producten te bouwen', en: "I've helped Indonesian ministries build AI products", id: 'Saya membantu kementerian Indonesia membangun produk AI' },
+  ministriesNote: { nl: 'Via de gemeenschappen die ik leid, heb ik meegewerkt aan AI-producten en -programma\'s voor twee Indonesische ministeries.', en: "Through the communities I lead, I've contributed AI products and programs for two Indonesian ministries.", id: 'Lewat komunitas yang saya pimpin, saya turut membangun produk dan program AI untuk dua kementerian Indonesia.' },
+  viewOrg:  { nl: 'Bekijk organisatie', en: 'View organization', id: 'Lihat organisasi' },
   homeSectionResearch:   { nl: 'ONDERZOEK', en: 'RESEARCH', id: 'RISET' },
   viewAll:      { nl: 'Bekijk alles', en: 'View all', id: 'Lihat semua' },
   readMore:     { nl: 'Meer lezen', en: 'Read more', id: 'Baca selengkapnya' },
   viewCaseStudy:{ nl: 'Bekijk case study', en: 'View case study', id: 'Lihat studi kasus' },
   visitSite:    { nl: 'Bezoek live site', en: 'Visit live site', id: 'Kunjungi situs live' },
   viewScreens:  { nl: 'Bekijk screenshots', en: 'View screenshots', id: 'Lihat screenshot' },
+  viewInstagram:{ nl: 'Instagram', en: 'Instagram', id: 'Instagram' },
   projectLabel: { nl: 'PROJECT', en: 'PROJECT', id: 'PROYEK' },
   close:        { nl: 'SLUITEN', en: 'CLOSE', id: 'TUTUP' },
 
@@ -264,6 +269,40 @@ const PROJECTS = [
   },
 ];
 
+// ── National impact: ministries & institutions ──────────────────────────────
+// NEW 2026-08-15 — home-page proof that the community-leadership work (ICCN,
+// MatchupSkills) isn't just volunteering, it's building real AI products and
+// programs alongside Indonesian government ministries and institutions.
+const MINISTRIES = [
+  {
+    logos: [{ img: 'ekraf.png', name: 'Kementerian Ekonomi Kreatif RI' }],
+    photo: 'iccn-1-headline.jpg',
+    ministryName: { nl: 'Ministerie van Creatieve Economie (Kemenparekraf/EKRAF)', en: 'Ministry of Creative Economy (Kemenparekraf/EKRAF)', id: 'Kementerian Ekonomi Kreatif RI (Kemenparekraf/EKRAF)' },
+    desc: {
+      nl: 'Als Community Director bij de Indonesian Creative Cities Network (ICCN) help ik het Ministerie van Creatieve Economie met talentontwikkeling en AI-certificering voor jonge creatieven in 38 provincies. Ik bouwde mee aan het platform daarvoor via Creative AI Partner.',
+      en: 'As Community Director at the Indonesian Creative Cities Network (ICCN), I support the Ministry of Creative Economy on talent development and AI certification for young creatives across 38 provinces. I helped build the platform for it through Creative AI Partner.',
+      id: 'Sebagai Community Director di Indonesian Creative Cities Network (ICCN), saya membantu Kementerian Ekonomi Kreatif dalam pengembangan talenta dan sertifikasi AI untuk kreator muda di 38 provinsi. Saya turut membangun wadahnya lewat Creative AI Partner.',
+    },
+    org: { name: 'Indonesian Creative Cities Network (ICCN)', url: 'https://www.instagram.com/iccnmedia/?hl=en' },
+    product: { name: 'Creative AI Partner', url: 'https://www.creativeaipartner.id' },
+  },
+  {
+    logos: [
+      { text: 'Kemendiktisaintek', name: 'Kementerian Pendidikan Tinggi, Sains & Teknologi RI' },
+      { img: 'lpdp.png', name: 'LPDP — Lembaga Pengelola Dana Pendidikan' },
+    ],
+    photo: 'ms-home.jpg',
+    ministryName: { nl: 'Ministerie van Hoger Onderwijs, Wetenschap & Technologie + LPDP', en: 'Ministry of Higher Education, Science & Technology + LPDP', id: 'Kementerian Pendidikan Tinggi, Sains & Teknologi + LPDP' },
+    desc: {
+      nl: 'Bij MatchupSkills bouw ik als AI Product Lead een leerplatform dat mensen helpt zich voor te bereiden op IELTS, scholarship-aanvragen, en thesis/dissertatie-schrijven — direct relevant voor het werk van het Ministerie van Hoger Onderwijs en LPDP-beursstudenten.',
+      en: 'At MatchupSkills, as AI Product Lead, I build a learning platform that helps people prepare for IELTS, scholarship applications, and thesis/dissertation writing — directly relevant to the Ministry of Higher Education\'s mission and LPDP scholarship awardees.',
+      id: 'Di MatchupSkills, sebagai AI Product Lead, saya membangun platform belajar yang membantu orang mempersiapkan IELTS, aplikasi beasiswa, dan penulisan tesis/disertasi — relevan langsung dengan misi Kementerian Pendidikan Tinggi dan para awardee beasiswa LPDP.',
+    },
+    org: null,
+    product: { name: 'MatchupSkills', url: 'https://www.matchupskills.id' },
+  },
+];
+
 // ── Leadership & Community ──────────────────────────────────────────────────
 // Synthesized from Portofolio_Eggan Nachson.pdf (11 slides) + the ICCN and
 // Indonesia Mengglobal appointment cards. Entries without a clean personal
@@ -271,19 +310,23 @@ const PROJECTS = [
 // instead of forcing a mismatched image.
 const LEADERSHIP = [
   {
-    year: '2025 — ', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: 'iccn-director.jpg',
+    year: '2025 — ', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
+    images: ['iccn-1-headline.jpg', 'iccn-2-programs.jpg', 'iccn-3-fgd-events.jpg', 'iccn-4-river.jpg'],
+    link: 'https://www.instagram.com/iccnmedia/?hl=en',
     org: 'Indonesian Creative Cities Network',
     role: { nl: 'Directeur Talentontwikkeling & Certificering', en: 'Director of Talent Development & Certification', id: 'Direktur Pengembangan Talenta & Sertifikasi' },
     stat: '25K+',
     statLabel: { nl: 'Leden in het ecosysteem', en: 'Ecosystem Members', id: 'Anggota Ekosistem' },
     desc: {
-      nl: 'Leidt nationale AI- en digitale-economiecertificeringsinitiatieven met het Ministerie van Creatieve Economie in 38 provincies. Beheert 120+ regionale leiders binnen een landelijke talentontwikkelingsstructuur; schaalde ecosysteembetrokkenheid naar 25.000+ leden.',
-      en: 'Leading national AI and digital-economy certification initiatives with the Ministry of Creative Economy across 38 provinces. Managing 120+ regional leaders under a nationwide talent development structure; scaled ecosystem engagement to 25,000+ members.',
-      id: 'Memimpin inisiatif sertifikasi AI dan ekonomi digital nasional bersama Kementerian Ekonomi Kreatif di 38 provinsi. Mengelola 120+ pemimpin regional dalam struktur pengembangan talenta nasional; menskalakan keterlibatan ekosistem hingga 25.000+ anggota.',
+      nl: 'ICCN is waar ik het Indonesische Ministerie van Creatieve Economie (Kemenparekraf) ondersteun als Community Director voor jong creatief talent — ik bouwde het platform daarvoor mee via Creative AI Partner. Leidt nationale AI- en digitale-economiecertificeringsinitiatieven in 38 provincies, beheert 120+ regionale leiders en schaalde ecosysteembetrokkenheid naar 25.000+ leden.',
+      en: 'ICCN is where I support Indonesia\'s Ministry of Creative Economy (Kemenparekraf) as Community Director for young creative talent — I helped build the platform for it through Creative AI Partner. Leading national AI and digital-economy certification initiatives across 38 provinces, managing 120+ regional leaders and scaling ecosystem engagement to 25,000+ members.',
+      id: 'ICCN adalah tempat saya membantu Kementerian Ekonomi Kreatif Indonesia (Kemenparekraf) sebagai Community Director untuk talenta kreatif muda — saya turut membangun wadahnya lewat Creative AI Partner. Memimpin inisiatif sertifikasi AI dan ekonomi digital nasional di 38 provinsi, mengelola 120+ pemimpin regional, dan menskalakan keterlibatan ekosistem hingga 25.000+ anggota.',
     },
   },
   {
-    year: '2026', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: 'indonesia-mengglobal.jpg',
+    year: '2026', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
+    images: ['mengglobal-1-headline.jpg', 'mengglobal-2-programs.jpg', 'mengglobal-3-programs.jpg'],
+    link: 'https://www.instagram.com/indonesiamengglobal/?hl=en',
     org: 'Indonesia Mengglobal',
     role: { nl: 'VP Strategische Partnerschappen & Communicatie', en: 'VP Strategic Partnerships & Communications', id: 'VP Kemitraan Strategis & Komunikasi' },
     stat: '10K+',
@@ -322,6 +365,7 @@ const LEADERSHIP = [
     // Branding & Creative" (that title came from an older self-made slide
     // deck and undersold his actual scope — CV is the authoritative source).
     year: '2024', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: null,
+    link: 'https://www.instagram.com/titikterangmedia/?hl=en',
     org: 'Titik Terang Community',
     role: { nl: 'Chief Operating Officer', en: 'Chief Operating Officer', id: 'Chief Operating Officer' },
     stat: '1.000+',
@@ -346,6 +390,7 @@ const LEADERSHIP = [
   },
   {
     year: '2024', yearSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' }, img: null,
+    link: 'https://www.instagram.com/youthranger.id/?hl=en',
     org: 'YouthRanger.id',
     role: { nl: 'Creatief Consultant', en: 'Creative Consultant', id: 'Konsultan Kreatif' },
     stat: '218K+',
@@ -392,26 +437,13 @@ const LEADERSHIP = [
       id: 'Menjadi mentor Business Development dalam program belajar kolaboratif yang mencakup kelas BD, web development, data science, dan Figma.',
     },
   },
-  {
-    year: '2021', img: 'kutu-it.jpg',
-    org: 'Project KUTU IT',
-    role: { nl: 'Technopreneurship-mentor', en: 'Technopreneurship Mentor', id: 'Mentor Technopreneurship' },
-    stat: '45',
-    statLabel: { nl: 'Deelnemers — Digital Skills Bootcamp', en: 'Attendance — Digital Skills Bootcamp', id: 'Peserta — Digital Skills Bootcamp' },
-    desc: {
-      nl: 'Zijn vroegste mentorproject: een digitale-vaardighedenbootcamp voor universiteitsstudenten, in samenwerking met HIMTI ITB Swadharma.',
-      en: 'His earliest mentorship project — a digital skills bootcamp for university students, run with HIMTI at ITB Swadharma.',
-      id: 'Proyek mentorship paling awal — bootcamp keterampilan digital untuk mahasiswa, diselenggarakan bersama HIMTI ITB Swadharma.',
-    },
-  },
 ];
 
 // ── Gallery (Field Notes) ───────────────────────────────────────────────────
 const GALLERY = [
   { img: 'critical-grounds-stage.jpg', caption: { nl: 'Critical Grounds — gesprek op het podium', en: 'Critical Grounds — on-stage conversation', id: 'Critical Grounds — sesi panggung' } },
-  { img: 'iccn-fgd-palembang.jpg', caption: { nl: 'Focus-groepdiscussie, Palembang', en: 'Focus group discussion, Palembang', id: 'Focus group discussion, Palembang' } },
-  { img: 'river-cleanup-1.jpg', caption: { nl: 'Musi-rivier schoonmaakactie', en: 'Musi River cleanup movement', id: 'Gerakan bersih Sungai Musi' } },
-  { img: 'river-cleanup-2.jpg', caption: { nl: 'Nationale Rivierdag 2026', en: 'National River Day 2026', id: 'Hari Sungai Nasional 2026' } },
+  { img: 'iccn-fgd-palembang.jpg', caption: { nl: 'ICCN Sumsel — focus-groepdiscussie, Palembang', en: 'ICCN Sumsel — focus group discussion, Palembang', id: 'ICCN Sumsel — focus group discussion, Palembang' } },
+  { img: 'river-cleanup.jpg', caption: { nl: '"Guardians of the River" — Musi-rivier schoonmaakactie', en: '"Guardians of the River" — Musi River cleanup movement', id: '"Guardians of the River" — gerakan bersih Sungai Musi' } },
   { img: 'timur-growth-panel.jpg', caption: { nl: 'Timur Growth 2 — panel', en: 'Timur Growth 2 — panel', id: 'Timur Growth 2 — panel' } },
   { img: 'unesco-forum.jpg', caption: { nl: 'UNESCO & UNDP forum', en: 'UNESCO & UNDP forum', id: 'Forum UNESCO & UNDP' } },
   { img: 'pindad-visit.jpg', caption: { nl: 'PT Pindad studiebezoek', en: 'PT Pindad study visit', id: 'Kunjungan studi PT Pindad' } },
@@ -480,4 +512,4 @@ const CONTACT = {
   waNetherlands: { phone: '+31 6 85527266', link: 'https://wa.me/31685527266', label: { nl: 'WhatsApp (Nederland)', en: 'WhatsApp (Netherlands)', id: 'WhatsApp (Belanda)' } },
 };
 
-module.exports = { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT };
+module.exports = { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, LEADERSHIP, GALLERY, RESEARCH, CONTACT };
