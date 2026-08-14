@@ -62,16 +62,39 @@ hitam/putih/biru per `DESIGN_BRIEF.md`.
   diimplementasi — lihat "Yang belum dikerjakan" di bawah.
 
 ## Cara update konten
+**GitHub↔Vercel auto-deploy AKTIF sejak 2026-08-14 malam** (user connect via dashboard Vercel sendiri
+— lihat insiden di bawah). Artinya sekarang **`git push` ke `main` = auto-deploy**, tidak perlu lagi
+manual `vercel --prod` dari `dist/` seperti sebelumnya (langkah lama itu masih valid dipakai untuk
+preview cepat sebelum push kalau mau, tapi bukan keharusan lagi).
 1. Edit teks/data di `data.js` (semua field 3-bahasa: `{nl, en, id}` — JANGAN lupa update ketiganya
    kalau ubah sesuatu, atau kontennya jadi tidak konsisten antar bahasa).
 2. Kalau nambah/ubah foto: taruh file di `assets/<kategori>/`, referensikan di `data.js`
    (field `img` pada entry Leadership/Gallery, atau `thumb`/`dir` pada Project).
-3. `node build-portfolio.js` dari folder ini.
-4. `cd dist && vercel link --yes --project eggan --scope nachson21-6093s-projects && vercel --prod
-   --yes --scope nachson21-6093s-projects`.
-5. Commit + push perubahan SOURCE (bukan `dist/`, itu gitignored) ke `Econ21/eggan-portfolio` —
-   pastikan `git config user.email` masih `nachson21@gmail.com` lokal di repo ini dulu (lihat
-   "Live" di atas) sebelum commit.
+3. (Opsional, buat preview lokal cepat) `node build-portfolio.js` dari folder ini, cek hasil di
+   `dist/`.
+4. Commit + push perubahan SOURCE (bukan `dist/`, itu gitignored — Vercel yang re-generate dari
+   `vercel.json` di root, lihat di bawah) ke `Econ21/eggan-portfolio` — pastikan `git config
+   user.email` masih `nachson21@gmail.com` lokal di repo ini dulu (lihat "Live" di atas) sebelum
+   commit.
+5. **Selalu verifikasi setelah push** — jangan asumsikan auto-deploy sukses cuma karena push
+   berhasil: `curl -sL -o /dev/null -w "%{http_code}" https://eggan.vercel.app/` harus balikin
+   `200` (tunggu ~20-30 detik dulu setelah push, build butuh waktu). Kalau 404/500, cek
+   `vercel ls` untuk deployment terbaru lalu `vercel inspect <url> --logs`.
+
+### Root `vercel.json` — WAJIB ada, jangan hapus
+```json
+{
+  "buildCommand": "node build-portfolio.js",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+```
+Ini yang bikin git-triggered auto-deploy tahu caranya generate situs (repo git TIDAK menyimpan
+`dist/` — itu gitignored, murni build output). Tanpa file ini, auto-deploy akan coba serve isi repo
+root apa adanya (yang isinya cuma source `data.js`/`build-portfolio.js`, bukan HTML) → 404. Repo
+tidak punya `package.json` — sengaja, tidak perlu (`build-portfolio.js` cuma pakai built-in `fs`/
+`path`, Vercel tetap bisa jalankan `buildCommand` tanpa itu).
 
 ## Struktur halaman (multi-page, bukan single-page — permintaan eksplisit user 2026-08-14)
 6 halaman × 3 bahasa = 18 file HTML. URL bersih via `vercel.json` (`cleanUrls: true`, auto-generate
