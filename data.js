@@ -348,6 +348,30 @@ const RESEARCH = [
       id: 'Kajian ex-ante tentang bagaimana kebijakan digital dapat memperkuat ketahanan rumah tangga desa dan sistem pangan regional, menggunakan metodologi fsQCA.',
     },
   },
+  {
+    slug: 'proposal-p3', pages: 29,
+    title: 'Smart Monitoring Food System Resilience — AI-Based Urban Farming Community in North Jakarta',
+    meta: { nl: 'P3 Innovatie Financieringsprogramma, Universitas Indonesia · Rp200.000.000 toegekend', en: 'P3 Innovation Funding Program, Universitas Indonesia · Rp200,000,000 awarded', id: 'Program Pendanaan Inovasi P3, Universitas Indonesia · Rp200.000.000 disetujui' },
+    authors: 'Dr. Palupi Lindiasari Samputra (Ketua), Dr. Stanislaus Riyanta, Eggan Nachson, et al. — Universitas Indonesia, dengan Sudin KPKP Jakarta Utara',
+    badge: { nl: 'ONDERZOEKSVOORSTEL', en: 'RESEARCH PROPOSAL', id: 'PROPOSAL RISET' },
+    abstract: {
+      nl: 'De onderzoeksbasis achter LUMBUNG — het AI-dashboard voor voedselsysteemveerkracht dat hij bouwde voor de gemeente Jakarta Utara. Als research assistant ontwierp hij het AI/OSINT-gedreven monitoringsysteem, de food security-index en de maandelijkse beleidsrapportage samen met Sudin KPKP.',
+      en: 'The research proposal behind LUMBUNG — the AI-powered food-system resilience dashboard he built for the North Jakarta city government. As research assistant, he designed the AI/OSINT-driven monitoring system, the food security index formula, and monthly policy reporting with partner agency Sudin KPKP.',
+      id: 'Proposal riset yang menjadi dasar LUMBUNG — dashboard ketahanan pangan berbasis AI yang ia bangun untuk Pemerintah Kota Jakarta Utara. Sebagai asisten peneliti, ia merancang sistem monitoring berbasis AI/OSINT, formula indeks ketahanan pangan, dan laporan kebijakan bulanan bersama mitra Sudin KPKP.',
+    },
+  },
+  {
+    slug: 'reef-welfare', pages: 39,
+    title: 'Reef to Welfare: Integrating Marine Conservation and Coastal Food-Water Security for Sustainable Livelihoods in Indonesia\'s Coral Triangle (Wakatobi)',
+    meta: { nl: 'RIIM-onderzoekscompetitie (BRIN × LPDP) · Voorgesteld budget Rp500.000.000 · Internationale partner: Tokyo University of Science', en: 'RIIM Research Competition (BRIN × LPDP) · Rp500,000,000 proposed budget · International partner: Tokyo University of Science', id: 'Kompetisi Riset RIIM (BRIN × LPDP) · Anggaran diajukan Rp500.000.000 · Mitra internasional: Tokyo University of Science' },
+    authors: 'Dr. Palupi Lindiasari Samputra (Ketua), Dr. Yuna Seo (Tokyo University of Science), Deden Habibi Ali Alfathimy (BRIN), Eggan Nachson — Universitas Indonesia',
+    badge: { nl: 'INGEDIEND VOORSTEL', en: 'SUBMITTED PROPOSAL', id: 'PROPOSAL DIAJUKAN' },
+    abstract: {
+      nl: 'Nationale onderzoekscompetitie over de spanning tussen mariene bescherming en kustwelvaart in Wakatobi (Koraaldriehoek) — armoede van 14,81% naast een mariene economisch potentieel van USD 1,3 miljard/jaar. Combineert conservatiebeleid, FIES-voedselzekerheidsmeting en duurzame visserij-investering in één Resilience Water-Food-Climate-raamwerk, in samenwerking met Tokyo University of Science.',
+      en: 'A national research-funding competition entry on the tension between marine conservation and coastal welfare in Wakatobi (Coral Triangle) — 14.81% poverty alongside a USD 1.3B/year marine economic potential. Combines conservation governance, FIES-based food security measurement, and sustainable fisheries investment into one Resilience Water-Food-Climate framework, in partnership with Tokyo University of Science.',
+      id: 'Proposal kompetisi pendanaan riset nasional tentang ketegangan antara konservasi laut dan kesejahteraan pesisir di Wakatobi (Segitiga Karang) — kemiskinan 14,81% berdampingan dengan potensi ekonomi laut USD 1,3 miliar/tahun. Menggabungkan tata kelola konservasi, pengukuran ketahanan pangan berbasis FIES, dan investasi perikanan berkelanjutan dalam satu kerangka Resilience Water-Food-Climate, bekerja sama dengan Tokyo University of Science.',
+    },
+  },
 ];
 
 const CONTACT = {

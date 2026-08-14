@@ -609,11 +609,7 @@ function buildResearch(lang) {
 
   const readers = RESEARCH.map(r => {
     const dir = r.slug;
-    const pad = r.slug === 'jurnal';
-    const imgs = Array.from({ length: r.pages }, (_, i) => {
-      const n = i + 1;
-      return `${dir}-${pad ? String(n).padStart(2, '0') : n}.jpg`;
-    });
+    const imgs = Array.from({ length: r.pages }, (_, i) => `${dir}-${String(i + 1).padStart(2, '0')}.jpg`);
     return `<div class="reader-overlay" id="reader-${r.slug}" data-count="${r.pages}">
       <div class="reader-top">
         <span>${r.title}</span>
