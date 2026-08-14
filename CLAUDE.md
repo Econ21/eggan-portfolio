@@ -41,5 +41,28 @@ Portofolio pribadi Eggan untuk jasa freelance/IT consulting — **terpisah total
 - `index.html` HARUS tetap punya `<meta charset="utf-8">` di baris pertama — pernah ada bug nyata: tanpa ini, em-dash/panah render jadi mojibake (`â€"`) kalau di-serve tanpa header UTF-8 eksplisit.
 - Ukuran gambar: screenshot di `shots/` sengaja di-resize ke ~760px lebar + JPEG quality ~50, dan tag `<img>` di carousel pakai `loading="lazy" decoding="async"`. Versi awal (1100px + quality 70 + tanpa lazy load) bikin halaman ~2.5MB dan lag parah saat di-scroll — jangan balik ke ukuran besar tanpa alasan kuat.
 
+## Redesign 2026-08-14 — status: BELUM MULAI, spec tersimpan
+
+Repo ini sedang di-scope ulang jadi jauh lebih besar dari "4 case-study card" di atas — user mau
+job-application-grade portfolio: foto profil asli (background merah sudah dihapus, ada di
+`photos-inbox/profile-nobg.png`), section **Leadership & Community** (8-9 peran kepemimpinan nyata —
+Direktur ICCN, VP Indonesia Mengglobal, speaker UNESCO/UNDP, dll — sumber lengkap sudah ada di PDF
+`Portofolio_Eggan Nachson.pdf` yang user kirim), galeri foto personal dengan navigasi klik manual
+(next/back, bukan slideshow), section Skills/Keahlian baru, dan language switcher 3-bahasa
+(Belanda/Inggris/Indonesia).
+
+Full design brief (39-section spec dari ChatGPT + deskripsi mockup reference) ada di
+**`DESIGN_BRIEF.md`** di root repo ini — baca file itu sebelum mulai kerjakan redesign. Status di
+file itu eksplisit: **JANGAN MULAI BUILD** — user masih mau jelaskan brief itu poin-per-poin dan
+masih akan kirim lebih banyak folder asset dulu. Ada juga 4 konflik/pertanyaan terbuka yang dicatat
+di bagian akhir file itu (default bahasa EN vs NL, static-file vs framework, gelar master ketiga yang
+belum dikonfirmasi, dan instruksi eksplisit untuk tunggu izin sebelum build) — jangan mulai
+implementasi sebelum semua itu clear dari user.
+
+Asset masuk lewat `~/Downloads/NEW PORTOFOLIO ASSET /` (dibuat manual oleh user via Finder, ada
+folder per konteks di dalamnya — ICCN, Indonesia Mengglobal, Leadership & Community PDF, dst),
+dikopi ke `photos-inbox/` di repo ini sebagai staging area. Ini proses multi-sesi/multi-turn — jangan
+asumsikan sudah selesai hanya karena satu batch sudah masuk.
+
 ## Bukan bagian dari project ini
 Repo CAP (`~/Desktop/website CAP`), MatchupSkills (`~/Desktop/matchupskills`), ms-admin (`~/Desktop/ms-admin`), Lumbung Jakut (`~/Desktop/lumbung-jakut`) adalah bisnis nyata terpisah dengan `CLAUDE.md` masing-masing. Portofolio ini cuma MENAMPILKAN screenshot publik dari produk-produk itu sebagai bukti kerja — tidak pernah mengubah kode di repo-repo tersebut.

@@ -1,547 +1,718 @@
 const fs = require('fs');
 const path = require('path');
+const { LANGS, UI, EDUCATION, SKILLS, PROJECTS, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
 
-const SHOTS = path.join(__dirname, 'shots');
-const OUT = path.join(__dirname, 'index.html');
+const ROOT = __dirname;
+const OUT = path.join(ROOT, 'dist');
 
-function b64(p) { return fs.readFileSync(p).toString('base64'); }
-function img(dir, file) { return b64(path.join(SHOTS, dir, file)); }
+// ── i18n helper ──────────────────────────────────────────────────────────────
+// t(field, lang) resolves a {nl,en,id} object to a string for that language,
+// or passes a plain string through unchanged (some content — names, stacks —
+// is language-neutral).
+function t(field, lang) {
+  if (field == null) return '';
+  if (typeof field === 'string') return field;
+  return field[lang] ?? field.nl ?? '';
+}
 
-const PROJECTS = {
-  cap: {
-    slides: [
-      { file: 'home.jpg', caption: 'Beranda' },
-      { file: 'harga.jpg', caption: 'Halaman Harga & Paket' },
-      { file: 'ai-video.jpg', caption: 'Landing — AI Video Generator' },
-      { file: 'ai-image.jpg', caption: 'Landing — AI Image Generator' },
-      { file: 'untuk-creator.jpg', caption: 'Halaman Khusus Content Creator' },
-      { file: 'untuk-umkm.jpg', caption: 'Halaman Khusus UMKM' },
-      { file: 'consult-training.jpg', caption: 'Consult & Training' },
-      { file: 'blog.jpg', caption: 'Blog' },
-      { file: 'blog-post.jpg', caption: 'Artikel Blog' },
-      { file: 'kontak.jpg', caption: 'Kontak' },
-      { file: 'signup.jpg', caption: 'Sign Up' },
-      { file: 'signin.jpg', caption: 'Sign In' },
-    ],
-  },
-  ms: {
-    slides: [
-      { file: 'home.jpg', caption: 'Beranda' },
-      { file: 'pricing.jpg', caption: 'Halaman Harga' },
-      { file: 'community-join.jpg', caption: 'Titik Terang — Community' },
-      { file: 'journey-wall.jpg', caption: 'Journey Wall' },
-      { file: 'partnership.jpg', caption: 'Halaman Partnership' },
-      { file: 'help.jpg', caption: 'Help Center' },
-      { file: 'terms.jpg', caption: 'Terms of Service' },
-      { file: 'privacy.jpg', caption: 'Privacy Policy' },
-    ],
-  },
-  lumbung: {
-    slides: [
-      { file: 'home.jpg', caption: 'Beranda — Dashboard Publik' },
-      { file: 'pasar.jpg', caption: 'Pasar Tani' },
-      { file: 'signup.jpg', caption: 'Sign Up' },
-      { file: 'signin.jpg', caption: 'Sign In' },
-    ],
-  },
+const PATHS = {
+  home: { file: 'index.html', slug: '' },
+  education: { file: 'education.html', slug: 'education' },
+  work: { file: 'work.html', slug: 'work' },
+  research: { file: 'research.html', slug: 'research' },
+  leadership: { file: 'leadership.html', slug: 'leadership' },
+  contact: { file: 'contact.html', slug: 'contact' },
 };
 
-const ADMIN_LOGIN_B64 = b64(path.join(SHOTS, 'msadmin-login.jpg'));
-
-function slideDataUri(dir, file) { return `data:image/jpeg;base64,${img(dir, file)}`; }
-
-function buildThumb(dir, firstFile) {
-  return slideDataUri(dir, firstFile);
+// Language-prefixed URL for a given page key + lang. nl lives at the site
+// root (default); en/id live under /en/ and /id/.
+function urlFor(pageKey, lang) {
+  const slug = PATHS[pageKey].slug;
+  const prefix = lang === 'nl' ? '' : `/${lang}`;
+  return (prefix + '/' + slug).replace(/\/+/g, '/').replace(/\/$/, '') || '/';
 }
 
-function buildCarouselSlides(id, dir, slides) {
-  return slides.map((s, i) => `
-        <div class="slide${i === 0 ? ' active' : ''}" data-idx="${i}">
-          <img src="${slideDataUri(dir, s.file)}" alt="${s.caption}" loading="lazy" decoding="async" />
-        </div>`).join('');
+function assetUrl(relPath) {
+  // Pages live at root or one level down (/en/, /id/) — assets are always
+  // referenced from site root so both depths resolve the same path.
+  return '/assets/' + relPath;
 }
 
-function buildDots(id, count) {
-  return Array.from({ length: count }, (_, i) =>
-    `<button class="dot-nav${i === 0 ? ' active' : ''}" onclick="goSlide('${id}',${i})" aria-label="Slide ${i + 1}"></button>`
-  ).join('');
+// ── Shared design system (CSS) ──────────────────────────────────────────────
+const CSS = `
+:root {
+  --black: #050505; --off-white: #F7F7F4; --white: #FFFFFF;
+  --gray-light: #E9E9E6; --gray-dark: #181818; --blue: #2457FF; --blue-dark: #1638B8;
+  --text-muted: #6B6B66; --border: #DEDEDA; --border-dark: #2A2A2A;
+  --serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--off-white); color: var(--black);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.font-display { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+.wrap { max-width: 1260px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 720px) { .wrap { padding: 0 22px; } }
+.label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.label-blue { color: var(--blue); }
+.rule-blue { display: inline-block; width: 22px; height: 2px; background: var(--blue); margin-right: 10px; vertical-align: middle; }
+
+/* Navbar */
+.navbar { position: sticky; top: 0; z-index: 100; background: var(--black); border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.navbar.scrolled { border-bottom-color: var(--border-dark); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 14px; color: #fff; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #A8A8A4; transition: color .15s ease; }
+.nav-link:hover, .nav-link.active { color: #fff; }
+.nav-link.active { color: var(--blue); }
+.lang-switch { position: relative; }
+.lang-btn { font-size: 12px; font-weight: 700; color: #fff; background: none; border: 1px solid var(--border-dark); padding: 7px 12px; border-radius: 3px; cursor: pointer; letter-spacing: 0.05em; }
+.lang-menu { display: none; position: absolute; right: 0; top: calc(100% + 6px); background: var(--gray-dark); border: 1px solid var(--border-dark); min-width: 160px; border-radius: 3px; overflow: hidden; }
+.lang-switch.open .lang-menu { display: block; }
+.lang-menu a { display: block; padding: 10px 14px; font-size: 12.5px; color: #C8C8C4; }
+.lang-menu a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.lang-menu a.active { color: var(--blue); font-weight: 700; }
+.nav-burger { display: none; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+@media (max-width: 860px) {
+  .nav-links { position: fixed; inset: 68px 0 0 0; background: var(--black); flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 22px; display: none; }
+  .nav-links.open { display: flex; }
+  .nav-burger { display: block; }
 }
 
-const capThumb = buildThumb('cap', PROJECTS.cap.slides[0].file);
-const msThumb = buildThumb('ms', PROJECTS.ms.slides[0].file);
-const lumbungThumb = buildThumb('lumbung', PROJECTS.lumbung.slides[0].file);
-const adminThumb = `data:image/jpeg;base64,${ADMIN_LOGIN_B64}`;
+/* Hero */
+.hero { background: var(--black); color: #fff; padding: 64px 0 0; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; min-height: 76vh; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; min-height: auto; } }
+.hero-eyebrow { color: var(--blue); margin-bottom: 22px; }
+.hero-headline { font-size: clamp(32px, 4.6vw, 58px); line-height: 1.05; margin: 0 0 22px; text-wrap: balance; }
+.hero-sub { font-size: 16px; color: #B8B8B4; max-width: 46ch; margin: 0 0 32px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 26px; border-radius: 3px; border: none; cursor: pointer; transition: all .18s ease; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-outline { border: 1px solid #3A3A38; color: #fff; }
+.btn-outline:hover { border-color: #fff; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+.hero-photo { aspect-ratio: 1/1.08; background: #C81E1E; border-radius: 2px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.hero-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; border-top: 1px solid var(--border-dark); padding: 26px 0 40px; }
+@media (max-width: 720px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
+.hero-meta-label { color: #7A7A76; margin-bottom: 6px; }
+.hero-meta-val { font-size: 13.5px; font-weight: 700; color: #fff; line-height: 1.35; }
 
-const html = `<meta charset="utf-8">
-<title>Eggan — IT Consultant &amp; Full-Stack Engineer</title>
-<style>
-  :root {
-    --bg: #f6f3ee;
-    --surface: #ffffff;
-    --ink: #1b1f24;
-    --muted: #5b6570;
-    --faint: #99a3ad;
-    --line: #e6e1d8;
-    --accent: #b5732e;
-    --accent-ink: #ffffff;
-    --accent-soft: #f4e7d7;
-    --status-live: #2f8f5b;
-    --shadow: 0 18px 44px rgba(27, 22, 12, .08);
-    --scrim: rgba(20, 16, 10, .6);
-  }
-  :root[data-theme="dark"] {
-    --bg: #11151a;
-    --surface: #171c22;
-    --ink: #eceef0;
-    --muted: #9aa4ad;
-    --faint: #5e6771;
-    --line: #262c34;
-    --accent: #d99a55;
-    --accent-ink: #191008;
-    --accent-soft: #2a2015;
-    --status-live: #4fbf85;
-    --shadow: 0 18px 44px rgba(0, 0, 0, .4);
-    --scrim: rgba(0, 0, 0, .75);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #11151a; --surface: #171c22; --ink: #eceef0; --muted: #9aa4ad; --faint: #5e6771;
-      --line: #262c34; --accent: #d99a55; --accent-ink: #191008; --accent-soft: #2a2015;
-      --status-live: #4fbf85; --shadow: 0 18px 44px rgba(0, 0, 0, .4); --scrim: rgba(0, 0, 0, .75);
-    }
-  }
+/* Section header */
+.section { padding: 90px 0; }
+.section-dark { background: var(--black); color: #fff; }
+.section-off { background: var(--off-white); }
+.section-white { background: var(--white); }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+.section-title { font-size: clamp(24px, 3vw, 36px); margin: 10px 0 0; text-wrap: balance; }
+.section-link { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; }
+.section-note { color: var(--text-muted); font-size: 14.5px; max-width: 60ch; margin: 14px 0 0; }
+.section-dark .section-note { color: #A8A8A4; }
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--accent-soft); color: var(--ink); }
-  .font-display { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif; }
-  .font-mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace; }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+/* Cards: work */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+@media (max-width: 820px) { .projects-grid { grid-template-columns: 1fr; } }
+.project-card { background: var(--white); padding: 0; display: flex; flex-direction: column; cursor: pointer; border: none; text-align: left; font-family: inherit; color: inherit; width: 100%; }
+.project-thumb { aspect-ratio: 16/10; overflow: hidden; background: var(--gray-light); }
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .3s ease; }
+.project-card:hover .project-thumb img { transform: scale(1.02); }
+.project-body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.project-num { color: var(--blue); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; }
+.project-name { font-size: 19px; font-weight: 800; margin: 0; }
+.project-tag { font-size: 12.5px; color: var(--text-muted); margin: -4px 0 0; }
+.project-desc { font-size: 14px; color: #4A4A46; margin: 4px 0 0; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B66; border: 1px solid var(--border); padding: 4px 9px; border-radius: 2px; }
+.project-cta { font-size: 12px; font-weight: 700; color: var(--blue); margin-top: 6px; }
 
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 26px 0 0; }
-  .brand { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--muted); }
-  .brand b { color: var(--ink); font-weight: 700; }
-  .topbar-cta { font-size: 12.5px; font-weight: 700; color: var(--accent); text-decoration: none; border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
-  .topbar-cta:hover { border-color: var(--accent); }
+/* Modal */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 200; padding: 24px; overflow-y: auto; }
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+.modal { background: var(--black); color: #fff; max-width: 880px; width: 100%; margin: auto; border-radius: 4px; overflow: hidden; }
+.modal-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 26px; border-bottom: 1px solid var(--border-dark); }
+.modal-eyebrow { font-size: 11px; color: #8A8A86; letter-spacing: 0.08em; }
+.modal-name { font-size: 17px; font-weight: 800; margin-top: 2px; }
+.modal-close { background: none; border: 1px solid var(--border-dark); color: #C8C8C4; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 8px 14px; border-radius: 3px; cursor: pointer; }
+.carousel { position: relative; aspect-ratio: 16/10; background: #000; }
+.carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
+.carousel .slide.active { opacity: 1; }
+.carousel .slide img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 16px; }
+.car-prev { left: 12px; } .car-next { right: 12px; }
+.car-counter { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.55); padding: 4px 10px; border-radius: 999px; }
+.modal-desc { padding: 22px 26px 28px; font-size: 14px; color: #C8C8C4; }
 
-  .hero { padding: 64px 0 40px; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
-  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--status-live); flex-shrink: 0; box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-live) 20%, transparent); }
-  h1.headline { font-size: clamp(32px, 5vw, 50px); line-height: 1.12; font-weight: 400; letter-spacing: -.01em; margin: 0 0 22px; max-width: 15ch; text-wrap: balance; }
-  h1.headline em { font-style: italic; color: var(--accent); }
-  .lede { font-size: 17px; color: var(--muted); max-width: 56ch; margin: 0 0 30px; }
-  .lede b { color: var(--ink); font-weight: 600; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 46px; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 10px; transition: transform .12s ease, box-shadow .12s ease; border: none; cursor: pointer; font-family: inherit; }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px color-mix(in srgb, var(--accent) 35%, transparent); }
-  .btn-ghost { border: 1px solid var(--line); color: var(--ink); background: none; }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-  .stack-row { display: flex; flex-wrap: wrap; gap: 8px 10px; padding-top: 26px; border-top: 1px solid var(--line); }
-  .chip { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); padding: 5px 10px; border-radius: 6px; }
+/* About / education */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+.about-photo { aspect-ratio: 4/3.1; overflow: hidden; border-radius: 2px; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-body p { font-size: 15.5px; color: #4A4A46; margin: 0 0 16px; }
+.pullquote { font-size: 19px; font-weight: 700; color: var(--blue); border-left: 3px solid var(--blue); padding-left: 16px; margin: 26px 0 0; text-wrap: balance; }
+.timeline { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 40px; }
+.timeline-item { display: grid; grid-template-columns: 130px 20px 1fr; gap: 6px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-period { font-size: 12.5px; font-weight: 700; color: var(--text-muted); }
+.timeline-dot-col { display: flex; justify-content: center; }
+.timeline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 4px; }
+.timeline-school { font-size: 16px; font-weight: 800; margin: 0; }
+.timeline-degree { font-size: 14px; color: var(--text-muted); margin: 3px 0 0; }
+.timeline-place { font-size: 12.5px; color: #9A9A96; margin: 3px 0 0; }
+@media (max-width: 600px) { .timeline-item { grid-template-columns: 20px 1fr; } .timeline-period { grid-column: 1/-1; margin-bottom: 4px; } .timeline-dot-col { grid-row: 2; } }
 
-  section { padding: 58px 0; border-top: 1px solid var(--line); }
-  .section-head { margin-bottom: 34px; }
-  .section-kicker { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
-  h2.section-title { font-size: 26px; font-weight: 400; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
-  .section-note { color: var(--muted); font-size: 14.5px; max-width: 56ch; margin: 10px 0 0; }
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+@media (max-width: 800px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+.skill-col-label { color: var(--blue); margin-bottom: 14px; display: block; }
+.skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.skill-list li { font-size: 14px; color: #3A3A36; }
 
-  .profile-panel { display: flex; gap: 28px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 30px; box-shadow: var(--shadow); }
-  @media (max-width: 640px) { .profile-panel { flex-direction: column; align-items: center; text-align: center; } }
-  .avatar { width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 30px; font-weight: 700; border: 1px solid var(--line); overflow: hidden; }
-  .avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .profile-name { font-size: 19px; font-weight: 700; margin: 0 0 4px; }
-  .profile-role { font-size: 13.5px; color: var(--muted); margin: 0 0 16px; }
-  .edu-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
-  .edu-list li { font-size: 13.5px; color: var(--ink); padding-left: 20px; position: relative; }
-  .edu-list li::before { content: "🎓"; position: absolute; left: 0; top: -1px; font-size: 12px; }
-  .edu-list b { font-weight: 700; }
-  .edu-list span.school { color: var(--muted); }
+/* Services */
+.services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 30px; }
+@media (max-width: 800px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+.service-card { background: var(--white); padding: 26px 22px; }
+.service-num { font-size: 12px; color: var(--blue); font-weight: 700; }
+.service-name { font-size: 14.5px; font-weight: 800; margin: 10px 0 6px; }
+.service-desc { font-size: 12.5px; color: var(--text-muted); }
 
-  .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  @media (max-width: 720px) { .cases { grid-template-columns: 1fr; } }
-  .case-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; cursor: pointer; text-align: left; width: 100%; padding: 0; font-family: inherit; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
-  .case-card:hover { transform: translateY(-3px); box-shadow: 0 22px 50px rgba(27,22,12,.14); }
-  .case-thumb { aspect-ratio: 16/9.4; width: 100%; overflow: hidden; background: var(--accent-soft); position: relative; }
-  .case-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-  .case-thumb-tag { position: absolute; top: 10px; left: 10px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: rgba(20,16,10,.55); backdrop-filter: blur(4px); padding: 4px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 5px; }
-  .case-thumb-count { position: absolute; bottom: 10px; right: 10px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10px; font-weight: 700; color: #fff; background: rgba(20,16,10,.55); backdrop-filter: blur(4px); padding: 4px 9px; border-radius: 999px; }
-  .case-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 12px; }
-  .case-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-  .case-name { font-size: 18px; font-weight: 700; }
-  .case-role { font-size: 12.5px; color: var(--faint); margin-top: -8px; }
-  .case-desc { font-size: 14.5px; color: var(--muted); margin: 0; }
-  .case-stack { display: flex; flex-wrap: wrap; gap: 6px; }
-  .case-more { font-size: 12.5px; font-weight: 700; color: var(--accent); margin-top: 2px; }
+/* Leadership timeline */
+.lead-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+@media (max-width: 820px) { .lead-grid { grid-template-columns: 1fr; } }
+.lead-card { background: var(--black); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+.lead-card.has-img { padding: 0; }
+.lead-img { aspect-ratio: 16/10; overflow: hidden; }
+.lead-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.lead-card:hover .lead-img img { transform: scale(1.03); }
+.lead-card-body { padding: 22px 24px 26px; }
+.lead-year { font-size: 11px; color: #8A8A86; font-weight: 700; letter-spacing: 0.06em; }
+.lead-org { font-size: 17px; font-weight: 800; margin: 6px 0 2px; }
+.lead-role { font-size: 12.5px; color: #A8A8A4; margin-bottom: 10px; }
+.lead-stat { font-size: 24px; font-weight: 800; color: var(--blue); }
+.lead-stat-label { font-size: 11px; color: #8A8A86; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.lead-desc { font-size: 13.5px; color: #C8C8C4; line-height: 1.55; }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; background: var(--scrim); z-index: 100; padding: 28px 16px; overflow-y: auto; }
-  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
-  .modal { background: var(--surface); border-radius: 16px; max-width: 680px; width: 100%; margin: auto; box-shadow: 0 30px 80px rgba(0,0,0,.35); overflow: hidden; }
+/* Gallery */
+.gallery-strip { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+.gallery-strip::-webkit-scrollbar { height: 6px; }
+.gallery-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.gallery-item { flex: 0 0 300px; scroll-snap-align: start; cursor: pointer; }
+.gallery-item img { aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; }
+.gallery-caption { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+.gallery-nav { display: flex; gap: 8px; margin-top: 20px; }
+.gnav-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 15px; }
+.lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 80vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; background: none; border: none; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; }
+.lightbox-counter { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 12px; font-weight: 700; }
+.lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; padding: 10px 16px; }
+.lightbox-prev { left: 6px; } .lightbox-next { right: 6px; }
 
-  .carousel { position: relative; width: 100%; aspect-ratio: 16/9.4; background: #000; overflow: hidden; }
-  .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
-  .carousel .slide.active { opacity: 1; }
-  .carousel .slide img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-  .car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(20,16,10,.5); color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
-  .car-btn:hover { background: rgba(20,16,10,.75); }
-  .car-prev { left: 12px; } .car-next { right: 12px; }
-  .car-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 16px 12px; background: linear-gradient(to top, rgba(0,0,0,.75), transparent); color: #fff; font-size: 12.5px; font-weight: 600; }
-  .car-counter { position: absolute; top: 12px; right: 12px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; color: #fff; background: rgba(20,16,10,.5); padding: 3px 9px; border-radius: 999px; backdrop-filter: blur(3px); }
-  .dots-row { display: flex; gap: 6px; justify-content: center; padding: 12px 0 0; flex-wrap: wrap; }
-  .dot-nav { width: 6px; height: 6px; border-radius: 50%; border: none; background: var(--line); cursor: pointer; padding: 0; }
-  .dot-nav.active { background: var(--accent); width: 16px; border-radius: 4px; }
+/* Research reader */
+.research-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 10px; }
+.research-item { background: var(--white); padding: 28px 30px; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; cursor: pointer; }
+@media (max-width: 700px) { .research-item { grid-template-columns: 1fr; } }
+.research-badge { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--blue); border: 1px solid var(--blue); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
+.research-title { font-size: 17px; font-weight: 800; margin: 0 0 6px; text-wrap: balance; }
+.research-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.research-abstract { font-size: 13.5px; color: #4A4A46; max-width: 62ch; }
+.reader-overlay { display: none; position: fixed; inset: 0; background: #000; z-index: 300; flex-direction: column; }
+.reader-overlay.open { display: flex; }
+.reader-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; color: #fff; }
+.reader-body { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.reader-body img { max-width: 92vw; max-height: 82vh; object-fit: contain; }
+.reader-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; }
+.reader-nav { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 18px; color: #fff; font-size: 12.5px; font-weight: 700; }
 
-  .modal-body { padding: 20px 28px 30px; }
-  .modal-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
-  .modal-name { font-size: 21px; font-weight: 700; }
-  .modal-close { border: 1px solid var(--line); background: var(--surface); color: var(--muted); width: 30px; height: 30px; border-radius: 50%; font-size: 15px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .modal-close:hover { color: var(--accent); border-color: var(--accent); }
-  .modal-role { font-size: 13px; color: var(--faint); margin: 0 0 16px; }
-  .modal-desc { font-size: 14.5px; color: var(--muted); margin: 0 0 18px; }
-  .modal-built { margin: 0 0 18px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .modal-built li { font-size: 14px; color: var(--ink); padding-left: 18px; position: relative; }
-  .modal-built li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 1px; background: var(--accent); }
-  .modal-outcome { font-size: 13.5px; font-style: italic; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 14px; margin: 0 0 16px; }
-  .modal-stack { display: flex; flex-wrap: wrap; gap: 6px; }
-  .modal-note { font-size: 12.5px; color: var(--faint); background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin: 0 0 16px; }
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: end; }
+@media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-title { font-size: clamp(28px, 4vw, 42px); margin: 0 0 16px; text-wrap: balance; }
+.contact-body { color: #B8B8B4; font-size: 15px; max-width: 46ch; margin-bottom: 30px; }
+.contact-block { margin-bottom: 20px; }
+.contact-block .label { color: #8A8A86; margin-bottom: 6px; display: block; }
+.contact-val { font-size: 14.5px; font-weight: 700; color: #fff; }
 
-  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  @media (max-width: 720px) { .services { grid-template-columns: 1fr; } }
-  .svc-card { border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 12px; background: var(--surface); }
-  .svc-card.featured { border-color: var(--accent); box-shadow: var(--shadow); }
-  .svc-name { font-size: 16.5px; font-weight: 700; }
-  .svc-desc { font-size: 14px; color: var(--muted); margin: 0; flex-grow: 1; }
-  .svc-meta { display: flex; align-items: baseline; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--line); }
-  .svc-price { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; color: var(--accent); }
-  .svc-time { font-size: 12px; color: var(--faint); }
-
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
-  .step { display: flex; gap: 14px; }
-  .step-num { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; color: var(--accent); border: 1px solid var(--line); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .step-title { font-size: 15px; font-weight: 700; margin: 0 0 4px; }
-  .step-desc { font-size: 13.5px; color: var(--muted); margin: 0; }
-
-  .contact-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 42px 36px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .contact-text h2 { font-size: 22px; font-weight: 400; margin: 0 0 8px; }
-  .contact-text p { font-size: 14px; color: var(--muted); margin: 0; max-width: 42ch; }
-  footer { padding: 34px 0 50px; }
-  .foot-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--faint); }
-  .foot-links { display: flex; gap: 16px; }
-  .foot-links a { color: var(--faint); text-decoration: none; }
-  .foot-links a:hover { color: var(--accent); }
-</style>
-
-<div class="wrap">
-  <div class="topbar">
-    <span class="brand"><b>eggan</b>.dev</span>
-    <a class="topbar-cta" href="https://wa.me/6281401981855" target="_blank" rel="noopener noreferrer">Chat WhatsApp →</a>
-  </div>
-
-  <div class="hero">
-    <p class="eyebrow"><span class="dot"></span>Tersedia untuk proyek baru</p>
-    <h1 class="headline font-display">Saya bangun sistem yang <em>benar-benar jalan</em> — bukan sekadar prototipe.</h1>
-    <p class="lede">IT Consultant &amp; Full-Stack Engineer. Empat produk di bawah ini <b>live di production</b>, bukan demo portofolio — lengkap dengan payment gateway, sistem AI, dan dashboard admin yang saya bangun dan audit keamanannya sendiri.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://wa.me/6281401981855" target="_blank" rel="noopener noreferrer">Konsultasi Gratis via WhatsApp</a>
-      <a class="btn btn-ghost" href="#karya">Lihat Produk yang Sudah Dibangun</a>
-    </div>
-    <div class="stack-row">
-      <span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Midtrans / Xendit</span>
-      <span class="chip">Clerk Auth</span><span class="chip">fal.ai / Claude API</span><span class="chip">Gmail Workspace API</span>
-      <span class="chip">Security Audit</span>
-    </div>
-  </div>
-
-  <section id="profil">
-    <div class="profile-panel">
-      <div class="avatar">E</div>
-      <div>
-        <p class="profile-name">Eggan</p>
-        <p class="profile-role">IT Consultant &amp; Full-Stack Engineer — AI Systems, Payment Integration, Security Audit</p>
-        <ul class="edu-list">
-          <li><b>Bachelor, Informatics Engineering</b> — <span class="school">Institut Teknologi Bandung (ITB) Swadharma, Indonesia</span></li>
-          <li><b>Master, Strategic Intelligence</b> — <span class="school">Universitas Indonesia</span></li>
-          <li><b>Master, Data Driven Business</b> — <span class="school">Den Haag University of Applied Sciences, Netherlands</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="karya">
-    <div class="section-head">
-      <p class="section-kicker">Produk yang Sudah Dibangun</p>
-      <h2 class="section-title font-display">Bukan mockup — semuanya production.</h2>
-      <p class="section-note">Dua di antaranya bisnis SaaS milik sendiri, satu proyek pemerintah, satu sistem operasional internal. Klik kartunya untuk lihat slideshow halaman aslinya.</p>
-    </div>
-
-    <div class="cases">
-      <button class="case-card" onclick="openModal('cap')">
-        <div class="case-thumb"><span class="case-thumb-tag"><span class="dot" style="width:5px;height:5px"></span>Live</span><span class="case-thumb-count">${PROJECTS.cap.slides.length} halaman</span><img src="${capThumb}" alt="Tampilan CAP Creative AI" /></div>
-        <div class="case-body">
-          <div class="case-top"><span class="case-name">CAP — Creative AI Partner</span></div>
-          <p class="case-role">Platform generate gambar &amp; video AI untuk konten kreator dan bisnis</p>
-          <p class="case-desc">Dari nol jadi produk SaaS lengkap: generate AI multi-model, sistem kredit &amp; langganan, checkout otomatis, dashboard monitoring biaya AI.</p>
-          <div class="case-stack"><span class="chip">Next.js 14</span><span class="chip">Clerk</span><span class="chip">Xendit</span></div>
-          <p class="case-more">Lihat ${PROJECTS.cap.slides.length} halaman →</p>
-        </div>
-      </button>
-
-      <button class="case-card" onclick="openModal('ms')">
-        <div class="case-thumb"><span class="case-thumb-tag"><span class="dot" style="width:5px;height:5px"></span>Live</span><span class="case-thumb-count">${PROJECTS.ms.slides.length} halaman</span><img src="${msThumb}" alt="Tampilan MatchupSkills" /></div>
-        <div class="case-body">
-          <div class="case-top"><span class="case-name">MatchupSkills</span></div>
-          <p class="case-role">Platform edukasi berbasis AI — persiapan ujian &amp; simulasi belajar interaktif</p>
-          <p class="case-desc">Termasuk mesin generate laporan PDF matematika custom dan sistem rekrutmen volunteer end-to-end.</p>
-          <div class="case-stack"><span class="chip">Next.js 14</span><span class="chip">Supabase</span><span class="chip">Midtrans</span></div>
-          <p class="case-more">Lihat ${PROJECTS.ms.slides.length} halaman →</p>
-        </div>
-      </button>
-
-      <button class="case-card" onclick="openModal('admin')">
-        <div class="case-thumb"><span class="case-thumb-tag"><span class="dot" style="width:5px;height:5px"></span>Live</span><span class="case-thumb-count">Internal</span><img src="${adminThumb}" alt="Login dashboard admin internal" /></div>
-        <div class="case-body">
-          <div class="case-top"><span class="case-name">Dashboard Operasional &amp; Admin</span></div>
-          <p class="case-role">Sistem internal untuk mengelola dua produk di atas — tim, keuangan, keamanan</p>
-          <p class="case-desc">Kontrol akses berlapis per-divisi, manajemen proyek, pelacakan keuangan, dan audit keamanan terstruktur berkala.</p>
-          <div class="case-stack"><span class="chip">Next.js 14</span><span class="chip">JWT Auth</span><span class="chip">Supabase</span></div>
-          <p class="case-more">Lihat detail →</p>
-        </div>
-      </button>
-
-      <button class="case-card" onclick="openModal('lumbung')">
-        <div class="case-thumb"><span class="case-thumb-tag"><span class="dot" style="width:5px;height:5px"></span>Live</span><span class="case-thumb-count">${PROJECTS.lumbung.slides.length} halaman</span><img src="${lumbungThumb}" alt="Tampilan Lumbung Jakut" /></div>
-        <div class="case-body">
-          <div class="case-top"><span class="case-name">Lumbung Jakut</span></div>
-          <p class="case-role">Aplikasi ketahanan pangan — proyek untuk Pemerintah Kota Jakarta Utara</p>
-          <p class="case-desc">Aplikasi warga (PWA) + dashboard dinas, dengan laporan otomatis dan perhitungan indeks resmi FAO/SDG.</p>
-          <div class="case-stack"><span class="chip">Next.js 14</span><span class="chip">PWA</span><span class="chip">Report Automation</span></div>
-          <p class="case-more">Lihat ${PROJECTS.lumbung.slides.length} halaman →</p>
-        </div>
-      </button>
-    </div>
-  </section>
-
-  <section id="jasa">
-    <div class="section-head">
-      <p class="section-kicker">Jasa &amp; Harga</p>
-      <h2 class="section-title font-display">Harga jelas di depan — tanpa tawar-menawar.</h2>
-      <p class="section-note">Pilih paket, chat WhatsApp, ceritakan kebutuhan Anda — saya kasih quote pasti dalam 24 jam. Harga di bawah adalah titik mulai, bisa disesuaikan untuk kebutuhan lebih besar.</p>
-    </div>
-    <div class="services">
-      <div class="svc-card featured">
-        <span class="svc-name">Website + Payment Gateway</span>
-        <p class="svc-desc">Landing page atau website bisnis lengkap dengan integrasi payment (Midtrans/Xendit) — siap terima transaksi nyata sejak hari pertama.</p>
-        <div class="svc-meta"><span class="svc-price font-mono">Mulai Rp3.500.000</span><span class="svc-time">3–5 hari kerja</span></div>
-      </div>
-      <div class="svc-card">
-        <span class="svc-name">Audit Keamanan Aplikasi</span>
-        <p class="svc-desc">Saya cari celah keamanan nyata di aplikasi web Anda sebelum ditemukan orang lain — laporan lengkap + rekomendasi perbaikan.</p>
-        <div class="svc-meta"><span class="svc-price font-mono">Mulai Rp1.500.000</span><span class="svc-time">1–2 hari kerja</span></div>
-      </div>
-      <div class="svc-card">
-        <span class="svc-name">Dashboard Admin Custom</span>
-        <p class="svc-desc">Sistem internal untuk tim Anda — manajemen data, laporan otomatis, kontrol akses per-role, sesuai alur kerja bisnis Anda.</p>
-        <div class="svc-meta"><span class="svc-price font-mono">Sesuai scope</span><span class="svc-time">Konsultasi dulu</span></div>
-      </div>
-      <div class="svc-card">
-        <span class="svc-name">Integrasi Fitur AI</span>
-        <p class="svc-desc">Tambahkan fitur AI (generate konten, chatbot, otomatisasi laporan) ke produk yang sudah Anda punya sekarang.</p>
-        <div class="svc-meta"><span class="svc-price font-mono">Sesuai scope</span><span class="svc-time">Konsultasi gratis</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="cara">
-    <div class="section-head">
-      <p class="section-kicker">Cara Kerja</p>
-      <h2 class="section-title font-display">Tiga langkah, tidak ada drama.</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><span class="step-num font-mono">1</span><div><p class="step-title">Chat WhatsApp</p><p class="step-desc">Ceritakan kebutuhan Anda — sesingkat apapun, tidak perlu brief formal.</p></div></div>
-      <div class="step"><span class="step-num font-mono">2</span><div><p class="step-title">Quote pasti dalam 24 jam</p><p class="step-desc">Harga &amp; timeline jelas di awal. Tidak ada biaya tersembunyi, tidak ada nego bolak-balik.</p></div></div>
-      <div class="step"><span class="step-num font-mono">3</span><div><p class="step-title">Dikerjakan &amp; dilaporkan</p><p class="step-desc">Update progres berkala sampai selesai dan siap dipakai.</p></div></div>
-    </div>
-  </section>
-
-  <section id="kontak">
-    <div class="contact-panel">
-      <div class="contact-text"><h2 class="font-display">Ada proyek yang mau dikerjakan?</h2><p>Konsultasi awal gratis, tanpa komitmen. Balas dalam 24 jam.</p></div>
-      <a class="btn btn-primary" href="https://wa.me/6281401981855" target="_blank" rel="noopener noreferrer">Chat WhatsApp →</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="foot-row">
-      <span>© 2026 Eggan — IT Consultant &amp; Full-Stack Engineer</span>
-      <div class="foot-links"><a href="mailto:mahesacloude@gmail.com">Email</a><a href="https://wa.me/6281401981855" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-    </div>
-  </footer>
-</div>
-
-<!-- ── CAP modal ───────────────────────────────────────────── -->
-<div class="modal-overlay" id="modal-cap" onclick="if(event.target===this) closeModal('cap')">
-  <div class="modal">
-    <div class="carousel" id="car-cap">
-      ${buildCarouselSlides('cap', 'cap', PROJECTS.cap.slides)}
-      <button class="car-btn car-prev" onclick="prevSlide('cap')" aria-label="Sebelumnya">‹</button>
-      <button class="car-btn car-next" onclick="nextSlide('cap')" aria-label="Selanjutnya">›</button>
-      <span class="car-counter" id="counter-cap">1 / ${PROJECTS.cap.slides.length}</span>
-      <div class="car-caption" id="caption-cap">${PROJECTS.cap.slides[0].caption}</div>
-    </div>
-    <div class="dots-row" id="dots-cap">${buildDots('cap', PROJECTS.cap.slides.length)}</div>
-    <div class="modal-body">
-      <div class="modal-top"><span class="modal-name">CAP — Creative AI Partner</span><button class="modal-close" onclick="closeModal('cap')" aria-label="Tutup">✕</button></div>
-      <p class="modal-role">creativeaipartner.id — Platform generate gambar &amp; video AI</p>
-      <p class="modal-desc">Dibangun dari nol jadi produk SaaS lengkap untuk konten kreator dan bisnis yang butuh materi visual cepat — generate gambar, video, avatar, dan voiceover dari satu dashboard.</p>
-      <ul class="modal-built">
-        <li>Integrasi multi-model AI (fal.ai, Claude Vision) untuk generate gambar &amp; video</li>
-        <li>Sistem kredit &amp; langganan custom (formula dinamis, bukan harga flat asal tebak)</li>
-        <li>Payment gateway (Xendit) + webhook signature verification anti-fraud</li>
-        <li>Dashboard admin: monitoring biaya AI &amp; transaksi real-time</li>
-        <li>SEO landing pages + blog dengan structured data (JSON-LD)</li>
-      </ul>
-      <p class="modal-outcome">"Dari ide jadi produk yang benar-benar menerima pembayaran, bukan cuma demo."</p>
-      <div class="modal-stack"><span class="chip">Next.js 14</span><span class="chip">Clerk</span><span class="chip">Supabase</span><span class="chip">Xendit</span><span class="chip">fal.ai</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── MatchupSkills modal ─────────────────────────────────── -->
-<div class="modal-overlay" id="modal-ms" onclick="if(event.target===this) closeModal('ms')">
-  <div class="modal">
-    <div class="carousel" id="car-ms">
-      ${buildCarouselSlides('ms', 'ms', PROJECTS.ms.slides)}
-      <button class="car-btn car-prev" onclick="prevSlide('ms')" aria-label="Sebelumnya">‹</button>
-      <button class="car-btn car-next" onclick="nextSlide('ms')" aria-label="Selanjutnya">›</button>
-      <span class="car-counter" id="counter-ms">1 / ${PROJECTS.ms.slides.length}</span>
-      <div class="car-caption" id="caption-ms">${PROJECTS.ms.slides[0].caption}</div>
-    </div>
-    <div class="dots-row" id="dots-ms">${buildDots('ms', PROJECTS.ms.slides.length)}</div>
-    <div class="modal-body">
-      <div class="modal-top"><span class="modal-name">MatchupSkills</span><button class="modal-close" onclick="closeModal('ms')" aria-label="Tutup">✕</button></div>
-      <p class="modal-role">matchupskills.id — Platform edukasi berbasis AI</p>
-      <p class="modal-desc">Ubah dokumen/materi apapun jadi pengalaman belajar interaktif (simulasi, latihan soal) untuk persiapan ujian seperti GRE, GMAT, SNBT, IELTS, LPDP.</p>
-      <ul class="modal-built">
-        <li>Mesin render PDF custom (subset LaTeX sendiri) untuk laporan belajar personal per user</li>
-        <li>Sistem email otomatis multi-channel (Gmail Workspace API + fallback Resend)</li>
-        <li>Payment gateway (Midtrans) + sistem voucher &amp; diskon</li>
-        <li>Pipeline rekrutmen volunteer (Titik Terang): form aplikasi → review → onboarding otomatis</li>
-        <li>Journey Wall — galeri kisah komunitas dengan moderasi</li>
-      </ul>
-      <p class="modal-outcome">"Sistem yang biasanya butuh tim terpisah — content, engineering, ops — dikerjakan satu alur penuh."</p>
-      <div class="modal-stack"><span class="chip">Next.js 14</span><span class="chip">Clerk</span><span class="chip">Supabase</span><span class="chip">Midtrans</span><span class="chip">Gmail API</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── Admin modal (single, internal, no carousel needed) ──── -->
-<div class="modal-overlay" id="modal-admin" onclick="if(event.target===this) closeModal('admin')">
-  <div class="modal">
-    <div class="carousel" id="car-admin">
-      <div class="slide active" data-idx="0"><img src="${adminThumb}" alt="Login dashboard admin internal" /></div>
-      <span class="car-counter" id="counter-admin">1 / 1</span>
-      <div class="car-caption" id="caption-admin">Halaman Login (Internal)</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-top"><span class="modal-name">Dashboard Operasional &amp; Admin</span><button class="modal-close" onclick="closeModal('admin')" aria-label="Tutup">✕</button></div>
-      <p class="modal-role">Sistem internal — mengelola tim, keuangan, dan keamanan kedua produk di atas</p>
-      <p class="modal-note">🔒 Hanya halaman login yang bisa ditunjukkan di sini — sisanya berisi data finansial &amp; tim yang bersifat rahasia perusahaan, jadi sengaja tidak diperlihatkan.</p>
-      <ul class="modal-built">
-        <li>Role-based access control — tiap divisi hanya lihat data miliknya sendiri</li>
-        <li>Manajemen proyek tim (Kanban + Kalender + penugasan otomatis per divisi/role)</li>
-        <li>Sistem pelacakan keuangan &amp; laporan biaya operasional otomatis</li>
-        <li>Pipeline HR/rekrutmen dengan email otomatis di tiap tahap</li>
-        <li>Audit keamanan rutin — menemukan &amp; menutup celah nyata (IDOR, injection, auth bypass) sebelum jadi masalah</li>
-      </ul>
-      <p class="modal-outcome">"Sistem yang saya jaga sendiri seperti aset bisnis, bukan proyek sampingan yang ditinggal begitu selesai."</p>
-      <div class="modal-stack"><span class="chip">Next.js 14</span><span class="chip">JWT Auth</span><span class="chip">Supabase</span><span class="chip">Role-Based Access</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── Lumbung modal ───────────────────────────────────────── -->
-<div class="modal-overlay" id="modal-lumbung" onclick="if(event.target===this) closeModal('lumbung')">
-  <div class="modal">
-    <div class="carousel" id="car-lumbung">
-      ${buildCarouselSlides('lumbung', 'lumbung', PROJECTS.lumbung.slides)}
-      <button class="car-btn car-prev" onclick="prevSlide('lumbung')" aria-label="Sebelumnya">‹</button>
-      <button class="car-btn car-next" onclick="nextSlide('lumbung')" aria-label="Selanjutnya">›</button>
-      <span class="car-counter" id="counter-lumbung">1 / ${PROJECTS.lumbung.slides.length}</span>
-      <div class="car-caption" id="caption-lumbung">${PROJECTS.lumbung.slides[0].caption}</div>
-    </div>
-    <div class="dots-row" id="dots-lumbung">${buildDots('lumbung', PROJECTS.lumbung.slides.length)}</div>
-    <div class="modal-body">
-      <div class="modal-top"><span class="modal-name">Lumbung Jakut</span><button class="modal-close" onclick="closeModal('lumbung')" aria-label="Tutup">✕</button></div>
-      <p class="modal-role">Proyek untuk Pemerintah Kota Administrasi Jakarta Utara</p>
-      <p class="modal-desc">Aplikasi ketahanan pangan yang menghubungkan warga, kelurahan, dan dinas — memantau produksi pangan secara real-time dan terukur, bukan sekadar program seremonial.</p>
-      <ul class="modal-built">
-        <li>PWA untuk warga: akses info Pasar Tani &amp; harga pangan real-time</li>
-        <li>Dashboard komando untuk dinas dengan laporan otomatis (Word &amp; PDF)</li>
-        <li>Perhitungan Indeks Ketahanan Pangan sesuai standar resmi FAO/SDG 2.1.2</li>
-        <li>Otomasi input data dari file Excel dinas — tidak perlu entry manual</li>
-      </ul>
-      <p class="modal-outcome">"Standar pelaporan resmi pemerintah, dibangun sesuai aturan yang berlaku — bukan aplikasi CRUD generik."</p>
-      <div class="modal-stack"><span class="chip">Next.js 14</span><span class="chip">PWA</span><span class="chip">Report Automation</span></div>
-    </div>
-  </div>
-</div>
-
-<script>
-  var SLIDE_COUNTS = { cap: ${PROJECTS.cap.slides.length}, ms: ${PROJECTS.ms.slides.length}, lumbung: ${PROJECTS.lumbung.slides.length}, admin: 1 };
-  var CAPTIONS = {
-    cap: ${JSON.stringify(PROJECTS.cap.slides.map(s => s.caption))},
-    ms: ${JSON.stringify(PROJECTS.ms.slides.map(s => s.caption))},
-    lumbung: ${JSON.stringify(PROJECTS.lumbung.slides.map(s => s.caption))},
-    admin: ['Halaman Login (Internal)']
-  };
-  var current = { cap: 0, ms: 0, lumbung: 0, admin: 0 };
-
-  function openModal(id) {
-    document.getElementById('modal-' + id).classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(id) {
-    document.getElementById('modal-' + id).classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function renderSlide(id) {
-    var idx = current[id];
-    var car = document.getElementById('car-' + id);
-    var slides = car.querySelectorAll('.slide');
-    slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
-    var dotsWrap = document.getElementById('dots-' + id);
-    if (dotsWrap) {
-      var dots = dotsWrap.querySelectorAll('.dot-nav');
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-    }
-    var counter = document.getElementById('counter-' + id);
-    if (counter) counter.textContent = (idx + 1) + ' / ' + SLIDE_COUNTS[id];
-    var caption = document.getElementById('caption-' + id);
-    if (caption) caption.textContent = CAPTIONS[id][idx];
-  }
-  function nextSlide(id) { current[id] = (current[id] + 1) % SLIDE_COUNTS[id]; renderSlide(id); }
-  function prevSlide(id) { current[id] = (current[id] - 1 + SLIDE_COUNTS[id]) % SLIDE_COUNTS[id]; renderSlide(id); }
-  function goSlide(id, idx) { current[id] = idx; renderSlide(id); }
-
-  document.addEventListener('keydown', function (e) {
-    var openId = null;
-    ['cap', 'ms', 'admin', 'lumbung'].forEach(function (id) {
-      if (document.getElementById('modal-' + id).classList.contains('open')) openId = id;
-    });
-    if (!openId) return;
-    if (e.key === 'Escape') { closeModal(openId); }
-    if (e.key === 'ArrowRight') { nextSlide(openId); }
-    if (e.key === 'ArrowLeft') { prevSlide(openId); }
-  });
-</script>
+/* Footer */
+.footer { background: var(--black); color: #8A8A86; padding: 26px 0; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+.footer-brand { color: #fff; font-weight: 800; }
 `;
 
-fs.writeFileSync(OUT, html);
-console.log('Written:', OUT, '(' + (fs.statSync(OUT).size / 1024).toFixed(0) + ' KB)');
+// ── Nav / footer / shell ─────────────────────────────────────────────────────
+function navbar(lang, activeKey) {
+  const items = ['home', 'education', 'work', 'research', 'leadership', 'contact'];
+  const labelKeys = { home: 'navHome', education: 'navEducation', work: 'navWork', research: 'navResearch', leadership: 'navLeadership', contact: 'navContact' };
+  const links = items.map(k => `<a class="nav-link${k === activeKey ? ' active' : ''}" href="${urlFor(k, lang)}">${t(UI[labelKeys[k]], lang)}</a>`).join('');
+  const langLabels = { nl: 'NL', en: 'EN', id: 'ID' };
+  const langMenu = LANGS.map(l => `<a class="${l === lang ? 'active' : ''}" href="${urlFor(activeKey, l)}">${l === 'nl' ? 'Nederlands' : l === 'en' ? 'English' : 'Bahasa Indonesia'}</a>`).join('');
+  return `
+  <nav class="navbar" id="navbar">
+    <div class="wrap nav-inner">
+      <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN NACHSON</a>
+      <div style="display:flex;align-items:center;gap:22px">
+        <div class="nav-links" id="navLinks">${links}</div>
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn" id="langBtn">${langLabels[lang]} ▾</button>
+          <div class="lang-menu">${langMenu}</div>
+        </div>
+        <button class="nav-burger" id="navBurger">☰</button>
+      </div>
+    </div>
+  </nav>`;
+}
+
+function footer(lang) {
+  return `
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <span class="footer-brand">EGGAN NACHSON</span>
+      <span>${t(UI.footerTagline, lang)}</span>
+      <span>© 2026 ${t(UI.footerRights, lang)}</span>
+    </div>
+  </footer>`;
+}
+
+const SHARED_JS = `
+document.addEventListener('DOMContentLoaded', function () {
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
+  });
+  var burger = document.getElementById('navBurger');
+  var navLinks = document.getElementById('navLinks');
+  if (burger) burger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+  var langSwitch = document.getElementById('langSwitch');
+  var langBtn = document.getElementById('langBtn');
+  if (langBtn) langBtn.addEventListener('click', function (e) { e.stopPropagation(); langSwitch.classList.toggle('open'); });
+  document.addEventListener('click', function () { if (langSwitch) langSwitch.classList.remove('open'); });
+});
+`;
+
+function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = '' }) {
+  return `<!doctype html>
+<html lang="${lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title>
+<meta name="description" content="${description}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:type" content="website">
+<style>${CSS}</style>
+</head>
+<body>
+${navbar(lang, activeKey)}
+${bodyHtml}
+${footer(lang)}
+<script>${SHARED_JS}${extraJs}</script>
+</body>
+</html>`;
+}
+
+// ── Page builders ────────────────────────────────────────────────────────────
+function buildHome(lang) {
+  const title = 'Eggan Nachson — Technology, Strategy & Leadership';
+  const desc = 'Eggan Nachson is a technology consultant, product builder and community leader working across digital products, AI, data and public impact.';
+  const meta = [
+    [t(UI.metaBasedIn, lang), t(UI.metaBasedInVal, lang)],
+    [t(UI.metaEducation, lang), t(UI.metaEducationVal, lang)],
+    [t(UI.metaBuilt, lang), t(UI.metaBuiltVal, lang)],
+    [t(UI.metaCommunity, lang), t(UI.metaCommunityVal, lang)],
+  ].map(([l, v]) => `<div><p class="label hero-meta-label">${l}</p><p class="hero-meta-val">${v}</p></div>`).join('');
+
+  const topProjects = PROJECTS.slice(0, 2).map(p => projectCardHtml(p, lang)).join('');
+  const topLeadership = LEADERSHIP.slice(0, 4).map(l => leadershipCardHtml(l, lang)).join('');
+
+  const body = `
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label hero-eyebrow">${t(UI.heroEyebrow, lang)}</p>
+        <h1 class="font-display hero-headline">${t(UI.heroHeadline, lang)}</h1>
+        <p class="hero-sub">${t(UI.heroSub, lang)}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="${urlFor('work', lang)}">${t(UI.heroCtaWork, lang)} ↓</a>
+          <a class="btn btn-outline" href="${urlFor('contact', lang)}">${t(UI.heroCtaContact, lang)} ↗</a>
+        </div>
+      </div>
+      <div class="hero-photo"><img src="${assetUrl('profile-nobg.png')}" alt="Eggan Nachson" /></div>
+    </div>
+    <div class="wrap hero-meta">${meta}</div>
+  </section>
+
+  <section class="section section-white">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="label label-blue"><span class="rule-blue"></span>${t(UI.homeSectionWork, lang)}</p><h2 class="font-display section-title">${t(UI.workPageEyebrow, lang)}</h2></div>
+        <a class="section-link" href="${urlFor('work', lang)}">${t(UI.viewAll, lang)} →</a>
+      </div>
+      <div class="projects-grid">${topProjects}</div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="label label-blue"><span class="rule-blue"></span>${t(UI.homeSectionLeadership, lang)}</p><h2 class="font-display section-title">${t(UI.leadershipPageTitle, lang)}</h2></div>
+        <a class="section-link" style="color:#fff" href="${urlFor('leadership', lang)}">${t(UI.viewAll, lang)} →</a>
+      </div>
+      <div class="lead-grid">${topLeadership}</div>
+    </div>
+  </section>
+  ${projectModals(lang)}`;
+
+  return pageShell({ lang, activeKey: 'home', title, description: desc, bodyHtml: body, extraJs: PROJECT_MODAL_JS });
+}
+
+function timelineHtml(lang) {
+  return EDUCATION.map(e => `
+    <div class="timeline-item">
+      <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
+      <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
+      <div>
+        <p class="timeline-school">${e.school}</p>
+        <p class="timeline-degree">${t(e.degree, lang)}</p>
+        <p class="timeline-place">${t(e.place, lang)}</p>
+      </div>
+    </div>`).join('');
+}
+
+function skillsHtml(lang) {
+  const cols = [
+    [UI.skillBuild, SKILLS.build],
+    [UI.skillAi, SKILLS.ai],
+    [UI.skillData, SKILLS.data],
+    [UI.skillStrategy, SKILLS.strategy],
+  ];
+  return cols.map(([label, items]) => `
+    <div>
+      <span class="label skill-col-label">${t(label, lang)}</span>
+      <ul class="skill-list">${items.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>`).join('');
+}
+
+function buildEducation(lang) {
+  const title = `Eggan Nachson — ${t(UI.navEducation, lang)}`;
+  const body = `
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.eduPageEyebrow, lang)}</p>
+      <div class="about-grid" style="margin-top:20px">
+        <div class="about-photo"><img src="${assetUrl('about-speaking.jpg')}" alt="Eggan Nachson speaking" /></div>
+        <div class="about-body">
+          <h1 class="font-display" style="font-size:clamp(24px,3.2vw,36px);margin:0 0 18px;text-wrap:balance">${t(UI.eduPageTitle, lang)}</h1>
+          <p>${t(UI.eduPageBody, lang)}</p>
+          <p class="pullquote">${t(UI.eduPagePullquote, lang)}</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <p class="label label-blue" style="margin-bottom:20px">${t(UI.eduTimelineTitle, lang)}</p>
+        ${timelineHtml(lang)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-white">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.skillsTitle, lang)}</p>
+      <div class="skills-grid" style="margin-top:26px">${skillsHtml(lang)}</div>
+    </div>
+  </section>`;
+  return pageShell({ lang, activeKey: 'education', title, description: title, bodyHtml: body });
+}
+
+function projectCardHtml(p, lang) {
+  const dir = p.dir ? `${p.dir}/` : '';
+  return `
+  <button class="project-card" onclick="openModal('${p.slug}')">
+    <div class="project-thumb"><img src="${assetUrl('work/' + dir + p.thumb)}" alt="${t(p.name, lang)}" loading="lazy" /></div>
+    <div class="project-body">
+      <span class="project-num">${p.num}</span>
+      <p class="project-name">${t(p.name, lang)}</p>
+      <p class="project-tag">${t(p.tag, lang)}</p>
+      <p class="project-desc">${t(p.desc, lang)}</p>
+      <div class="tag-row">${p.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+      <p class="project-cta">${t(UI.viewCaseStudy, lang)} →</p>
+    </div>
+  </button>`;
+}
+
+function projectModals(lang) {
+  return PROJECTS.map(p => {
+    const dir = p.dir;
+    const imgs = dir ? fs.readdirSync(path.join(ROOT, 'shots', dir)).filter(f => /\.(jpg|jpeg|png)$/i.test(f)).sort() : [p.thumb];
+    const slides = imgs.map((f, i) => `<div class="slide${i === 0 ? ' active' : ''}"><img src="${assetUrl('work/' + (dir ? dir + '/' : '') + f)}" alt="${t(p.name, lang)}" /></div>`).join('');
+    return `
+    <div class="modal-overlay" id="modal-${p.slug}" onclick="if(event.target===this) closeModal('${p.slug}')">
+      <div class="modal">
+        <div class="modal-top">
+          <div><p class="modal-eyebrow">PROJECT ${p.num}</p><p class="modal-name">${t(p.name, lang)}</p></div>
+          <button class="modal-close" onclick="closeModal('${p.slug}')">${t(UI.close, lang)} ✕</button>
+        </div>
+        <div class="carousel" id="car-${p.slug}">
+          ${slides}
+          ${imgs.length > 1 ? `<button class="car-btn car-prev" onclick="prevSlide('${p.slug}')">‹</button><button class="car-btn car-next" onclick="nextSlide('${p.slug}')">›</button><span class="car-counter" id="counter-${p.slug}">1 / ${imgs.length}</span>` : ''}
+        </div>
+        <p class="modal-desc">${t(p.desc, lang)}</p>
+      </div>
+    </div>`;
+  }).join('') + `<script>var SLIDE_COUNTS = {${PROJECTS.map(p => {
+    const imgs = p.dir ? fs.readdirSync(path.join(ROOT, 'shots', p.dir)).filter(f => /\.(jpg|jpeg|png)$/i.test(f)) : [1];
+    return `'${p.slug}': ${imgs.length}`;
+  }).join(',')}}; var current = {${PROJECTS.map(p => `'${p.slug}': 0`).join(',')}};</script>`;
+}
+
+const PROJECT_MODAL_JS = `
+function openModal(id) { document.getElementById('modal-' + id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById('modal-' + id).classList.remove('open'); document.body.style.overflow = ''; }
+function renderSlide(id) {
+  var idx = current[id]; var car = document.getElementById('car-' + id);
+  car.querySelectorAll('.slide').forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+  var counter = document.getElementById('counter-' + id);
+  if (counter) counter.textContent = (idx + 1) + ' / ' + SLIDE_COUNTS[id];
+}
+function nextSlide(id) { current[id] = (current[id] + 1) % SLIDE_COUNTS[id]; renderSlide(id); }
+function prevSlide(id) { current[id] = (current[id] - 1 + SLIDE_COUNTS[id]) % SLIDE_COUNTS[id]; renderSlide(id); }
+document.addEventListener('keydown', function (e) {
+  var openId = null;
+  Object.keys(SLIDE_COUNTS).forEach(function (id) { var m = document.getElementById('modal-' + id); if (m && m.classList.contains('open')) openId = id; });
+  if (!openId) return;
+  if (e.key === 'Escape') closeModal(openId);
+  if (e.key === 'ArrowRight') nextSlide(openId);
+  if (e.key === 'ArrowLeft') prevSlide(openId);
+});
+`;
+
+function buildWork(lang) {
+  const title = `Eggan Nachson — ${t(UI.navWork, lang)}`;
+  const services = [
+    { name: { nl: 'Digitale Productontwikkeling', en: 'Digital Product Development', id: 'Pengembangan Produk Digital' }, desc: { nl: 'Van idee tot productieklare webapplicatie.', en: 'From idea to production-ready web application.', id: 'Dari ide hingga aplikasi web siap produksi.' } },
+    { name: { nl: 'AI-integratie', en: 'AI Integration', id: 'Integrasi AI' }, desc: { nl: 'AI-gedreven automatisering en intelligente ervaringen.', en: 'AI-driven automation and intelligent experiences.', id: 'Otomasi berbasis AI dan pengalaman cerdas.' } },
+    { name: { nl: 'Business & data-systemen', en: 'Business & Data Systems', id: 'Sistem Bisnis & Data' }, desc: { nl: 'Dashboards en systemen voor betere besluitvorming.', en: 'Dashboards and systems for better decision-making.', id: 'Dashboard dan sistem untuk pengambilan keputusan lebih baik.' } },
+    { name: { nl: 'Beveiliging & technische audit', en: 'Security & Technical Audit', id: 'Audit Keamanan & Teknis' }, desc: { nl: 'Zorg dat je systemen veilig en betrouwbaar zijn.', en: 'Ensure your systems are secure, reliable and scalable.', id: 'Pastikan sistem Anda aman, andal, dan skalabel.' } },
+  ];
+  const body = `
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.workPageEyebrow, lang)}</p>
+      <p class="section-note">${t(UI.workPageNote, lang)}</p>
+      <div class="projects-grid" style="margin-top:34px">${PROJECTS.map(p => projectCardHtml(p, lang)).join('')}</div>
+    </div>
+  </section>
+  <section class="section section-white">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.skillsTitle, lang)}</p>
+      <div class="skills-grid" style="margin-top:26px">${skillsHtml(lang)}</div>
+      <p class="label label-blue" style="margin-top:60px">${t(UI.servicesTitle, lang)}</p>
+      <div class="services-grid">${services.map((s, i) => `
+        <div class="service-card"><p class="service-num">0${i + 1}</p><p class="service-name">${t(s.name, lang)}</p><p class="service-desc">${t(s.desc, lang)}</p></div>
+      `).join('')}</div>
+    </div>
+  </section>
+  ${projectModals(lang)}`;
+  return pageShell({ lang, activeKey: 'work', title, description: title, bodyHtml: body, extraJs: PROJECT_MODAL_JS });
+}
+
+function leadershipCardHtml(l, lang) {
+  const inner = `
+    <p class="lead-year">${l.year}</p>
+    <p class="lead-org">${l.org}</p>
+    <p class="lead-role">${t(l.role, lang)}</p>
+    ${l.stat ? `<p class="lead-stat">${l.stat}</p><p class="lead-stat-label">${t(l.statLabel, lang)}</p>` : ''}
+    <p class="lead-desc">${t(l.desc, lang)}</p>`;
+  if (l.img) {
+    return `<div class="lead-card has-img">
+      <div class="lead-img"><img src="${assetUrl('leadership/' + l.img)}" alt="${l.org}" loading="lazy" /></div>
+      <div class="lead-card-body">${inner}</div>
+    </div>`;
+  }
+  return `<div class="lead-card">${inner}</div>`;
+}
+
+function buildLeadership(lang) {
+  const title = `Eggan Nachson — ${t(UI.navLeadership, lang)}`;
+  const galleryItems = GALLERY.map((g, i) => `
+    <div class="gallery-item" onclick="openLightbox(${i})">
+      <img src="${assetUrl('gallery/' + g.img)}" alt="${t(g.caption, lang)}" loading="lazy" />
+      <p class="gallery-caption">${t(g.caption, lang)}</p>
+    </div>`).join('');
+  const lightboxSlides = GALLERY.map((g, i) => `<img class="lb-slide" data-idx="${i}" src="${assetUrl('gallery/' + g.img)}" style="display:${i === 0 ? 'block' : 'none'}" alt="${t(g.caption, lang)}" />`).join('');
+
+  const body = `
+  <section class="section section-dark">
+    <div class="wrap">
+      <p class="label label-blue" style="color:var(--blue)">${t(UI.leadershipPageEyebrow, lang)}</p>
+      <h1 class="font-display section-title">${t(UI.leadershipPageTitle, lang)}</h1>
+      <div class="lead-grid" style="margin-top:40px">${LEADERSHIP.map(l => leadershipCardHtml(l, lang)).join('')}</div>
+    </div>
+  </section>
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.galleryTitle, lang)}</p>
+      <p class="section-note">${t(UI.galleryNote, lang)}</p>
+      <div class="gallery-strip" id="galleryStrip" style="margin-top:24px">${galleryItems}</div>
+      <div class="gallery-nav">
+        <button class="gnav-btn" onclick="scrollGallery(-1)">←</button>
+        <button class="gnav-btn" onclick="scrollGallery(1)">→</button>
+      </div>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">${t(UI.close, lang)} ✕</button>
+    <button class="lightbox-btn lightbox-prev" onclick="lbNav(-1)">‹</button>
+    ${lightboxSlides}
+    <button class="lightbox-btn lightbox-next" onclick="lbNav(1)">›</button>
+    <span class="lightbox-counter" id="lbCounter">1 / ${GALLERY.length}</span>
+  </div>`;
+
+  const js = `
+  function scrollGallery(dir) { document.getElementById('galleryStrip').scrollBy({ left: dir * 320, behavior: 'smooth' }); }
+  var lbIdx = 0; var LB_COUNT = ${GALLERY.length};
+  function openLightbox(i) { lbIdx = i; renderLb(); document.getElementById('lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+  function renderLb() {
+    document.querySelectorAll('.lb-slide').forEach(function (s) { s.style.display = (+s.dataset.idx === lbIdx) ? 'block' : 'none'; });
+    document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + LB_COUNT;
+  }
+  function lbNav(dir) { lbIdx = (lbIdx + dir + LB_COUNT) % LB_COUNT; renderLb(); }
+  document.addEventListener('keydown', function (e) {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+  });`;
+  return pageShell({ lang, activeKey: 'leadership', title, description: title, bodyHtml: body, extraJs: js });
+}
+
+function buildResearch(lang) {
+  const title = `Eggan Nachson — ${t(UI.navResearch, lang)}`;
+  const items = RESEARCH.map(r => `
+    <div class="research-item" onclick="openReader('${r.slug}')">
+      <div>
+        <span class="research-badge">${t(r.badge, lang)}</span>
+        <p class="research-title">${r.title}</p>
+        <p class="research-meta">${t(r.meta, lang)} — ${r.authors}</p>
+        <p class="research-abstract">${t(r.abstract, lang)}</p>
+      </div>
+      <span class="project-cta">${t(UI.openReader, lang)} →</span>
+    </div>`).join('');
+
+  const readers = RESEARCH.map(r => {
+    const dir = r.slug;
+    const pad = r.slug === 'jurnal';
+    const imgs = Array.from({ length: r.pages }, (_, i) => {
+      const n = i + 1;
+      return `${dir}-${pad ? String(n).padStart(2, '0') : n}.jpg`;
+    });
+    return `<div class="reader-overlay" id="reader-${r.slug}" data-count="${r.pages}">
+      <div class="reader-top">
+        <span>${r.title}</span>
+        <button class="reader-btn" style="width:auto;border-radius:3px;padding:8px 16px;font-size:11px;font-weight:700" onclick="closeReader('${r.slug}')">${t(UI.close, lang)} ✕</button>
+      </div>
+      <div class="reader-body">
+        ${imgs.map((f, i) => `<img class="reader-page" data-idx="${i}" src="${assetUrl('research/' + dir + '/' + f)}" style="display:${i === 0 ? 'block' : 'none'}" />`).join('')}
+      </div>
+      <div class="reader-nav">
+        <button class="reader-btn" onclick="readerNav('${r.slug}',-1)">‹</button>
+        <span id="readerCounter-${r.slug}">1 / ${r.pages}</span>
+        <button class="reader-btn" onclick="readerNav('${r.slug}',1)">›</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  const body = `
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.researchPageEyebrow, lang)}</p>
+      <p class="section-note">${t(UI.researchPageNote, lang)}</p>
+      <div class="research-list">${items}</div>
+    </div>
+  </section>
+  ${readers}`;
+
+  const js = `
+  var readerIdx = {${RESEARCH.map(r => `'${r.slug}': 0`).join(',')}};
+  function openReader(slug) {
+    document.getElementById('reader-' + slug).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeReader(slug) { document.getElementById('reader-' + slug).classList.remove('open'); document.body.style.overflow = ''; }
+  function readerNav(slug, dir) {
+    var overlay = document.getElementById('reader-' + slug);
+    var count = +overlay.dataset.count;
+    readerIdx[slug] = (readerIdx[slug] + dir + count) % count;
+    overlay.querySelectorAll('.reader-page').forEach(function (p) { p.style.display = (+p.dataset.idx === readerIdx[slug]) ? 'block' : 'none'; });
+    document.getElementById('readerCounter-' + slug).textContent = (readerIdx[slug] + 1) + ' / ' + count;
+  }
+  document.addEventListener('keydown', function (e) {
+    var open = document.querySelector('.reader-overlay.open');
+    if (!open) return;
+    var slug = open.id.replace('reader-', '');
+    if (e.key === 'Escape') closeReader(slug);
+    if (e.key === 'ArrowRight') readerNav(slug, 1);
+    if (e.key === 'ArrowLeft') readerNav(slug, -1);
+  });`;
+  return pageShell({ lang, activeKey: 'research', title, description: title, bodyHtml: body, extraJs: js });
+}
+
+function buildContact(lang) {
+  const title = `Eggan Nachson — ${t(UI.navContact, lang)}`;
+  const body = `
+  <section class="section section-dark" style="min-height:60vh;display:flex;align-items:center">
+    <div class="wrap contact-grid">
+      <div>
+        <h1 class="font-display contact-title">${t(UI.contactTitle, lang)}</h1>
+        <p class="contact-body">${t(UI.contactBody, lang)}</p>
+        <a class="btn btn-primary" href="${CONTACT.waLink}" target="_blank" rel="noopener noreferrer">${t(UI.contactCta, lang)} ↗</a>
+      </div>
+      <div>
+        <div class="contact-block"><span class="label">${t(UI.contactLocation, lang)}</span><p class="contact-val">${t(CONTACT.location, lang)}</p></div>
+        <div class="contact-block"><span class="label">${t(UI.contactEmail, lang)}</span><p class="contact-val"><a href="mailto:${CONTACT.email}">${CONTACT.email}</a></p></div>
+        <div class="contact-block"><span class="label">${t(UI.contactPhone, lang)}</span><p class="contact-val"><a href="${CONTACT.waLink}" target="_blank" rel="noopener noreferrer">${CONTACT.phone}</a></p></div>
+      </div>
+    </div>
+  </section>`;
+  return pageShell({ lang, activeKey: 'contact', title, description: title, bodyHtml: body });
+}
+
+// ── Write everything ─────────────────────────────────────────────────────────
+function writeFile(lang, key, html) {
+  const dir = lang === 'nl' ? OUT : path.join(OUT, lang);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, PATHS[key].file), html);
+}
+
+function copyDir(src, dest) {
+  fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    const s = path.join(src, entry.name), d = path.join(dest, entry.name);
+    if (entry.isDirectory()) copyDir(s, d); else fs.copyFileSync(s, d);
+  }
+}
+
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(OUT, { recursive: true });
+copyDir(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
+
+fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({ cleanUrls: true, trailingSlash: false }, null, 2));
+
+for (const lang of LANGS) {
+  writeFile(lang, 'home', buildHome(lang));
+  writeFile(lang, 'education', buildEducation(lang));
+  writeFile(lang, 'work', buildWork(lang));
+  writeFile(lang, 'leadership', buildLeadership(lang));
+  writeFile(lang, 'research', buildResearch(lang));
+  writeFile(lang, 'contact', buildContact(lang));
+}
+
+console.log('Built', LANGS.length * Object.keys(PATHS).length, 'pages into', OUT);
