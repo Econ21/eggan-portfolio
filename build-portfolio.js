@@ -179,16 +179,26 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .about-body p { font-size: 15.5px; color: var(--ink-soft); margin: 0 0 16px; }
 .pullquote { font-size: 19px; font-weight: 700; color: var(--blue); border-left: 3px solid var(--blue); padding-left: 16px; margin: 26px 0 0; text-wrap: balance; }
 .timeline { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 40px; }
-.timeline-item { display: grid; grid-template-columns: 130px 20px 1fr; gap: 6px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.timeline-item { display: grid; grid-template-columns: 130px 20px 1fr; gap: 6px; padding: 22px 0; border-bottom: 1px solid var(--border); align-items: start; }
+.timeline-item.has-logo { grid-template-columns: 130px 20px 44px 1fr; }
 .timeline-item:last-child { border-bottom: none; }
 .timeline-period { font-size: 12.5px; font-weight: 700; color: var(--text-muted); }
 .timeline-dot-col { display: flex; justify-content: center; }
 .timeline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 4px; }
+.timeline-logo { display: flex; align-items: center; justify-content: center; }
+.timeline-logo img { max-width: 40px; max-height: 40px; object-fit: contain; }
 .timeline-school { font-size: 16px; font-weight: 800; margin: 0; }
 .timeline-degree { font-size: 14px; color: var(--text-muted); margin: 3px 0 0; }
 .timeline-place { font-size: 12.5px; color: #9A9A96; margin: 3px 0 0; }
 .exp-desc { font-size: 13.5px; color: var(--ink-soft); margin: 8px 0 0; max-width: 62ch; line-height: 1.6; }
-@media (max-width: 600px) { .timeline-item { grid-template-columns: 20px 1fr; } .timeline-period { grid-column: 1/-1; margin-bottom: 4px; } .timeline-dot-col { grid-row: 2; } }
+@media (max-width: 600px) {
+  .timeline-item { grid-template-columns: 20px 1fr; }
+  .timeline-item.has-logo { grid-template-columns: 20px 36px 1fr; }
+  .timeline-period { grid-column: 1/-1; margin-bottom: 4px; }
+  .timeline-dot-col { grid-row: 2; }
+  .timeline-logo { grid-row: 2; }
+  .timeline-logo img { max-width: 30px; max-height: 30px; }
+}
 
 /* Courses & achievements */
 .courses-achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
@@ -466,9 +476,10 @@ function buildHome(lang) {
 
 function timelineHtml(lang) {
   return EDUCATION.map(e => `
-    <div class="timeline-item reveal">
+    <div class="timeline-item reveal${e.logo ? ' has-logo' : ''}">
       <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
       <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
+      ${e.logo ? `<div class="timeline-logo"><img src="${assetUrl('logos/' + e.logo)}" alt="${e.school}" loading="lazy" /></div>` : ''}
       <div>
         <p class="timeline-school">${e.school}</p>
         <p class="timeline-degree">${t(e.degree, lang)}</p>
@@ -535,19 +546,23 @@ function buildEducation(lang) {
           <p class="pullquote">${t(UI.eduPagePullquote, lang)}</p>
         </div>
       </div>
-      <div class="timeline">
+    </div>
+  </section>
+  <section class="section section-white">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.experienceTitle, lang)}</p>
+      <div class="timeline" style="margin-top:20px">${experienceHtml(lang)}</div>
+    </div>
+  </section>
+  <section class="section section-off">
+    <div class="wrap">
+      <div class="timeline" style="margin-top:0;border-top:none;padding-top:0">
         <p class="label label-blue" style="margin-bottom:20px">${t(UI.eduTimelineTitle, lang)}</p>
         ${timelineHtml(lang)}
       </div>
     </div>
   </section>
   <section class="section section-white">
-    <div class="wrap">
-      <p class="label label-blue">${t(UI.experienceTitle, lang)}</p>
-      <div class="timeline" style="margin-top:20px;border-top:none;padding-top:0">${experienceHtml(lang)}</div>
-    </div>
-  </section>
-  <section class="section section-off">
     <div class="wrap courses-achievements-grid">
       <div>
         <p class="label label-blue">${t(UI.coursesTitle, lang)}</p>
@@ -559,7 +574,7 @@ function buildEducation(lang) {
       </div>
     </div>
   </section>
-  <section class="section section-white">
+  <section class="section section-off">
     <div class="wrap">
       <p class="label label-blue">${t(UI.skillsTitle, lang)}</p>
       <div class="skills-grid" style="margin-top:26px">${skillsHtml(lang)}</div>

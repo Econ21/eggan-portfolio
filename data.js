@@ -6,7 +6,7 @@ const LANGS = ['nl', 'en', 'id'];
 
 const UI = {
   navHome:      { nl: 'Home',           en: 'Home',           id: 'Beranda' },
-  navEducation: { nl: 'Opleiding',      en: 'Education',      id: 'Pendidikan' },
+  navEducation: { nl: 'Ervaring & Opleiding', en: 'Experience & Education', id: 'Pengalaman & Pendidikan' },
   navWork:      { nl: 'Werk',           en: 'Work',            id: 'Karya' },
   navResearch:  { nl: 'Onderzoek',      en: 'Research',        id: 'Riset' },
   navLeadership:{ nl: 'Leiderschap',    en: 'Leadership',      id: 'Kepemimpinan' },
@@ -114,25 +114,25 @@ const UI = {
 const EDUCATION = [
   {
     period: '2026 — 2027', periodSuffix: { nl: 'VERWACHT', en: 'EXPECTED', id: 'PERKIRAAN' },
-    school: 'The Hague University of Applied Sciences',
+    school: 'The Hague University of Applied Sciences', logo: 'the-hague.svg',
     degree: { nl: 'MSc Data-Driven Business', en: 'MSc Data-Driven Business', id: 'MSc Data-Driven Business' },
     place: { nl: 'Den Haag, Nederland', en: 'The Hague, Netherlands', id: 'Den Haag, Belanda' },
   },
   {
     period: '2023 — 2025',
-    school: 'Universitas Indonesia',
+    school: 'Universitas Indonesia', logo: 'universitas-indonesia.svg',
     degree: { nl: 'MSc Strategic Intelligence · GPA 3.80/4.00', en: 'MSc Strategic Intelligence · GPA 3.80/4.00', id: 'MSc Strategic Intelligence · IPK 3.80/4.00' },
     place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
   },
   {
     period: '2018 — 2022',
-    school: 'ITB Swadharma',
+    school: 'ITB Swadharma', logo: 'itb-swadharma.png',
     degree: { nl: 'BSc Informatics Engineering · GPA 3.18/4.00', en: 'BSc Informatics Engineering · GPA 3.18/4.00', id: 'BSc Informatics Engineering · IPK 3.18/4.00' },
     place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
   },
   {
     period: '2017 — 2020',
-    school: 'Universitas Indonesia',
+    school: 'Universitas Indonesia', logo: 'universitas-indonesia.svg',
     degree: { nl: 'Diploma Bestuurskunde · GPA 3.42/4.00', en: 'Diploma in Administration · GPA 3.42/4.00', id: 'Diploma Administrasi · IPK 3.42/4.00' },
     place: { nl: 'Jakarta, Indonesië', en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
   },
