@@ -410,7 +410,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 /* Documents (CV + academic credentials) */
 .document-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
 .document-item { background: var(--white); padding: 20px 24px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
-@media (max-width: 640px) { .document-item { grid-template-columns: auto 1fr; } .document-actions { grid-column: 1 / -1; justify-content: space-between; } }
+@media (max-width: 640px) { .document-item { grid-template-columns: auto 1fr; } .document-actions { grid-column: 1 / -1; justify-content: flex-start; flex-wrap: wrap; margin-top: 4px; } }
 .document-icon { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 5px 8px; }
 .document-name { font-size: 15px; font-weight: 800; margin: 0; }
 .document-note { font-size: 12.5px; color: var(--text-muted); margin: 3px 0 0; }
@@ -440,6 +440,13 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .reader-body img { max-width: 92vw; max-height: 82vh; object-fit: contain; }
 .reader-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; }
 .reader-nav { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 18px; color: #fff; font-size: 12.5px; font-weight: 700; }
+.pdf-preview-overlay { display: none; position: fixed; inset: 0; background: rgba(20,18,14,0.92); z-index: 300; flex-direction: column; }
+.pdf-preview-overlay.open { display: flex; }
+.pdf-preview-top { display: flex; align-items: center; gap: 14px; padding: 16px 22px; color: #fff; font-size: 13px; font-weight: 700; }
+.pdf-preview-top span { flex: 1; }
+.pdf-preview-top .btn-outline { color: #fff; border-color: rgba(255,255,255,0.3); }
+.pdf-preview-top .btn-outline:hover { border-color: #fff; }
+.pdf-preview-frame { flex: 1; width: 100%; border: none; background: #fff; }
 
 /* Contact */
 .contact-section { display: flex; align-items: center; }
@@ -1057,8 +1064,9 @@ function formatBytes(n) {
 
 function buildDocuments(lang) {
   const title = `Eggan Nachson Silueta — ${t(UI.documentsPageTitle, lang)}`;
-  const items = DOCUMENTS.map(d => {
+  const items = DOCUMENTS.map((d, i) => {
     const size = formatBytes(fs.statSync(path.join(ROOT, 'assets', 'credentials', d.file)).size);
+    const url = assetUrl('credentials/' + d.file);
     return `
     <div class="document-item reveal">
       <div class="document-icon">PDF</div>
@@ -1068,7 +1076,8 @@ function buildDocuments(lang) {
       </div>
       <div class="document-actions">
         <span class="document-size">${size}</span>
-        <a class="btn btn-outline document-dl" href="${assetUrl('credentials/' + d.file)}" download>${t(UI.documentsDownloadOne, lang)} ↓</a>
+        <button type="button" class="btn btn-outline document-dl" onclick="openPdfPreview('${url}','${t(d.label, lang).replace(/'/g, "\\'")}')">${t(UI.documentsPreviewOne, lang)}</button>
+        <a class="btn btn-outline document-dl" href="${url}" download>${t(UI.documentsDownloadOne, lang)} ↓</a>
       </div>
     </div>`;
   }).join('');
@@ -1082,8 +1091,32 @@ function buildDocuments(lang) {
       <a class="btn btn-primary" style="margin-top:24px" href="${assetUrl('credentials/eggan-nachson-credentials.zip')}" download>${t(UI.documentsDownloadAll, lang)} ↓</a>
       <div class="document-list" style="margin-top:32px">${items}</div>
     </div>
-  </section>`;
-  return pageShell({ lang, activeKey: 'home', title, description: title, bodyHtml: body });
+  </section>
+  <div class="pdf-preview-overlay" id="pdfPreviewOverlay">
+    <div class="pdf-preview-top">
+      <span id="pdfPreviewTitle"></span>
+      <a class="btn btn-outline" id="pdfPreviewDl" download style="width:auto;padding:8px 16px;font-size:11px">${t(UI.documentsDownloadOne, lang)} ↓</a>
+      <button type="button" class="reader-btn" style="width:auto;border-radius:3px;padding:8px 16px;font-size:11px;font-weight:700" onclick="closePdfPreview()">${t(UI.close, lang)} ✕</button>
+    </div>
+    <iframe id="pdfPreviewFrame" class="pdf-preview-frame" title="PDF preview"></iframe>
+  </div>`;
+  const js = `
+  function openPdfPreview(url, name) {
+    document.getElementById('pdfPreviewFrame').src = url;
+    document.getElementById('pdfPreviewTitle').textContent = name;
+    document.getElementById('pdfPreviewDl').href = url;
+    document.getElementById('pdfPreviewOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePdfPreview() {
+    document.getElementById('pdfPreviewOverlay').classList.remove('open');
+    document.getElementById('pdfPreviewFrame').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.getElementById('pdfPreviewOverlay').classList.contains('open')) closePdfPreview();
+  });`;
+  return pageShell({ lang, activeKey: 'home', title, description: title, bodyHtml: body, extraJs: js });
 }
 
 function buildLeadership(lang) {

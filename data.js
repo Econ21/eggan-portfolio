@@ -27,6 +27,7 @@ const UI = {
   documentsPageNote: { nl: 'Mijn cv plus de diploma\'s, cijferlijsten en certificaten die eraan ten grondslag liggen — download ze los, of alles in één keer.', en: 'My CV plus the certificates, transcripts, and awards behind it — download them individually, or all at once.', id: 'CV saya beserta ijazah, transkrip, dan sertifikat pendukungnya — unduh satu per satu, atau semuanya sekaligus.' },
   documentsDownloadAll: { nl: 'ALLES DOWNLOADEN (ZIP)', en: 'DOWNLOAD ALL (ZIP)', id: 'UNDUH SEMUA (ZIP)' },
   documentsDownloadOne: { nl: 'DOWNLOAD', en: 'DOWNLOAD', id: 'UNDUH' },
+  documentsPreviewOne: { nl: 'BEKIJKEN', en: 'PREVIEW', id: 'PRATINJAU' },
   metaBasedIn:  { nl: 'GEVESTIGD IN', en: 'BASED IN', id: 'BERBASIS DI' },
   metaEducation:{ nl: 'OPLEIDING', en: 'EDUCATION', id: 'PENDIDIKAN' },
   metaBuilt:    { nl: 'GEBOUWD', en: 'BUILT', id: 'DIBANGUN' },
