@@ -375,6 +375,7 @@ const MINISTRIES = [
   {
     logos: [{ img: 'ekraf.png', name: 'Kementerian Ekonomi Kreatif RI' }],
     photo: 'iccn-1-headline.jpg',
+    photoRatio: '1502:1870',
     ministryName: { nl: 'Ministerie van Creatieve Economie (Kemenparekraf/EKRAF)', en: 'Ministry of Creative Economy (Kemenparekraf/EKRAF)', id: 'Kementerian Ekonomi Kreatif RI (Kemenparekraf/EKRAF)' },
     desc: {
       nl: 'Als Community Director bij de Indonesian Creative Cities Network (ICCN) help ik het Ministerie van Creatieve Economie met talentontwikkeling en AI-certificering voor jonge creatieven in 38 provincies. Ik bouwde mee aan het platform daarvoor via Creative AI Partner.',
@@ -390,6 +391,7 @@ const MINISTRIES = [
       { img: 'lpdp.png', name: 'LPDP — Lembaga Pengelola Dana Pendidikan' },
     ],
     photo: 'ms-home.jpg',
+    photoRatio: '760:475',
     ministryName: { nl: 'Ministerie van Hoger Onderwijs, Wetenschap & Technologie + LPDP', en: 'Ministry of Higher Education, Science & Technology + LPDP', id: 'Kementerian Pendidikan Tinggi, Sains & Teknologi + LPDP' },
     desc: {
       nl: 'Bij MatchupSkills bouw ik als AI Product Lead een leerplatform dat mensen helpt zich voor te bereiden op IELTS, scholarship-aanvragen, en thesis/dissertatie-schrijven — direct relevant voor het werk van het Ministerie van Hoger Onderwijs en LPDP-beursstudenten.',
