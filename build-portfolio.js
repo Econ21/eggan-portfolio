@@ -875,9 +875,10 @@ function experienceHtml(lang) {
   return EXPERIENCE.map(e => {
     const bullets = t(e.bullets, lang).map(b => `<li>${b.replace('{{RESEARCH_LINK}}', researchAnchor)}</li>`).join('');
     return `
-    <div class="timeline-item reveal">
+    <div class="timeline-item reveal${e.logo ? ' has-logo' : ''}">
       <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
       <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
+      ${e.logo ? `<div class="timeline-logo"><img src="${assetUrl('logos/' + e.logo)}" alt="${e.org}" loading="lazy" /></div>` : ''}
       <div>
         <div class="exp-head">
           <div><p class="timeline-school">${e.org}</p><p class="timeline-degree">${t(e.role, lang)}</p></div>

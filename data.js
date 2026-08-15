@@ -187,7 +187,7 @@ const EDUCATION = [
 const EXPERIENCE = [
   {
     period: '2023 — ', periodSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
-    org: 'MatchupSkills.id', role: { nl: 'AI Product Lead', en: 'AI Product Lead', id: 'AI Product Lead' },
+    org: 'MatchupSkills.id', logo: 'matchupskills.png', role: { nl: 'AI Product Lead', en: 'AI Product Lead', id: 'AI Product Lead' },
     stat: '90%', statLabel: { nl: 'MINDER PIPELINE-FOUTEN', en: 'FEWER PIPELINE FAILURES', id: 'PIPELINE FAILURE LEBIH SEDIKIT' },
     bullets: {
       nl: [
@@ -210,7 +210,7 @@ const EXPERIENCE = [
   },
   {
     period: '2025 — 2026',
-    org: 'Universitas Indonesia — RISE Research Team', role: { nl: 'AI & Data Research Assistant (Parttime)', en: 'AI & Data Research Assistant (Part-Time)', id: 'AI & Data Research Assistant (Paruh Waktu)' },
+    org: 'Universitas Indonesia — RISE Research Team', logo: 'universitas-indonesia.svg', role: { nl: 'AI & Data Research Assistant (Parttime)', en: 'AI & Data Research Assistant (Part-Time)', id: 'AI & Data Research Assistant (Paruh Waktu)' },
     stat: '6', statLabel: { nl: 'KECAMATANS GEMONITORD', en: 'DISTRICTS MONITORED', id: 'KECAMATAN DIPANTAU' },
     bullets: {
       nl: [
@@ -233,7 +233,7 @@ const EXPERIENCE = [
   },
   {
     period: '2021 — 2025',
-    org: 'Bank BRI', role: { nl: 'Relationship Manager, Banking Office', en: 'Relationship Manager, Banking Office', id: 'Relationship Manager, Banking Office' },
+    org: 'Bank BRI', logo: 'bank-bri.svg', role: { nl: 'Relationship Manager, Banking Office', en: 'Relationship Manager, Banking Office', id: 'Relationship Manager, Banking Office' },
     stat: '500+', statLabel: { nl: 'MKB-KLANTEN BEHEERD', en: 'MSME CLIENTS MANAGED', id: 'KLIEN UMKM DIKELOLA' },
     bullets: {
       nl: [
