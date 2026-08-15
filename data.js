@@ -188,28 +188,66 @@ const EXPERIENCE = [
   {
     period: '2023 — ', periodSuffix: { nl: 'HEDEN', en: 'PRESENT', id: 'SEKARANG' },
     org: 'MatchupSkills.id', role: { nl: 'AI Product Lead', en: 'AI Product Lead', id: 'AI Product Lead' },
-    desc: {
-      nl: 'AI-gedreven EdTech-platform gericht op gepersonaliseerde matching tussen vaardigheden en carrière. Herontwierp de AI content-generatiepipeline (parallel-chunk verwerking met automatische retry/fallback), wat generatiefouten met meer dan 90% verminderde over alle test-prep modules.',
-      en: 'AI-driven EdTech platform focused on personalized skill-to-career matching. Redesigned the platform\'s AI content-generation pipeline (parallel-chunk processing with automatic retry/fallback), cutting generation failures by over 90% across all test-prep modules. Directs cross-functional operations for a four-division community and recruitment program.',
-      id: 'Platform EdTech berbasis AI yang fokus pada pencocokan skill-ke-karier yang dipersonalisasi. Merancang ulang pipeline AI content-generation platform (pemrosesan parallel-chunk dengan retry/fallback otomatis), menurunkan kegagalan generate lebih dari 90% di semua modul test-prep. Memimpin operasi lintas-divisi untuk program komunitas & rekrutmen 4 divisi.',
+    stat: '90%', statLabel: { nl: 'MINDER PIPELINE-FOUTEN', en: 'FEWER PIPELINE FAILURES', id: 'PIPELINE FAILURE LEBIH SEDIKIT' },
+    bullets: {
+      nl: [
+        'Herontwierp de AI content generatiepipeline (parallel chunk verwerking met automatische retry en fallback), wat generatiefouten met meer dan 90% verminderde over elke test prep module.',
+        'Leidt de productstrategie van een EdTech platform gebouwd rond gepersonaliseerde matching tussen vaardigheden en carrière.',
+        'Stuurt operaties aan over vier divisies binnen een community en wervingsprogramma.',
+      ],
+      en: [
+        'Rebuilt the AI content generation pipeline, parallel chunk processing with automatic retry and fallback, cutting failures by over 90% across every test prep module.',
+        'Lead product strategy for an EdTech platform built around personalized skill to career matching.',
+        'Direct operations across four divisions of a community and recruitment program.',
+      ],
+      id: [
+        'Merancang ulang pipeline AI content generation, pemrosesan parallel chunk dengan retry dan fallback otomatis, menurunkan kegagalan generate lebih dari 90% di setiap modul test prep.',
+        'Memimpin strategi produk untuk platform EdTech yang dibangun di sekitar pencocokan skill ke karier yang dipersonalisasi.',
+        'Mengarahkan operasi lintas empat divisi dalam program komunitas dan rekrutmen.',
+      ],
     },
+    stack: ['Next.js', 'Claude API', 'Supabase', 'Clerk', 'KaTeX'],
   },
   {
     period: '2025 — 2026',
     org: 'Universitas Indonesia — RISE Research Team', role: { nl: 'AI & Data Research Assistant (Parttime)', en: 'AI & Data Research Assistant (Part-Time)', id: 'AI & Data Research Assistant (Paruh Waktu)' },
-    desc: {
-      nl: 'Ontwierp en bouwde een AI- en OSINT-gebaseerd voedselzekerheid-monitoringdashboard voor zes districten in Noord-Jakarta. Droeg bij aan AI-systeemontwerp binnen twee gefinancierde onderzoeksinitiatieven — een universiteitsinnovatiebeurs en een nationale onderzoekscompetitie (zie /onderzoek). Schreef maandelijkse beleidsnota\'s en veerkracht-indexrapporten.',
-      en: 'Designed and built an AI- and OSINT-based food-security monitoring dashboard for six districts in North Jakarta, integrating real-time spatial, pricing, and household-harvest data for a government food-security agency partner. Contributed AI-system design across two funded research initiatives — a university innovation grant and a national research competition (see /research) — aligned with FAO\'s Food Insecurity Experience Scale (FIES). Authored monthly policy briefs and resilience-index reports for public-sector partners.',
-      id: 'Merancang dan membangun dashboard monitoring ketahanan pangan berbasis AI dan OSINT untuk enam kecamatan di Jakarta Utara, mengintegrasikan data spasial, harga, dan hasil panen rumah tangga real-time untuk mitra instansi ketahanan pangan pemerintah. Berkontribusi pada desain sistem AI di dua inisiatif riset yang didanai — hibah inovasi universitas dan kompetisi riset nasional (lihat /riset) — selaras dengan Food Insecurity Experience Scale (FIES) FAO. Menulis policy brief bulanan dan laporan indeks ketahanan.',
+    stat: '6', statLabel: { nl: 'KECAMATANS GEMONITORD', en: 'DISTRICTS MONITORED', id: 'KECAMATAN DIPANTAU' },
+    bullets: {
+      nl: [
+        'Ontwierp en bouwde een AI en OSINT gebaseerd voedselzekerheid monitoringdashboard voor zes districten in Noord-Jakarta, gebouwd voor een overheidsinstantie voor voedselzekerheid.',
+        'Droeg bij aan AI systeemontwerp binnen twee gefinancierde onderzoeksinitiatieven, een universiteitsinnovatiebeurs en een {{RESEARCH_LINK}}, afgestemd op de Food Insecurity Experience Scale (FIES) van de FAO.',
+        'Schreef maandelijkse beleidsnota\'s en veerkracht-indexrapporten voor publieke partners.',
+      ],
+      en: [
+        'Designed and built an AI and OSINT based food security monitoring dashboard for six districts in North Jakarta, built for a government food security agency.',
+        'Contributed AI system design across two funded research initiatives, a university innovation grant and a {{RESEARCH_LINK}}, aligned with the FAO\'s Food Insecurity Experience Scale (FIES).',
+        'Authored monthly policy briefs and resilience index reports for public sector partners.',
+      ],
+      id: [
+        'Merancang dan membangun dashboard monitoring ketahanan pangan berbasis AI dan OSINT untuk enam kecamatan di Jakarta Utara, dibangun untuk mitra instansi ketahanan pangan pemerintah.',
+        'Berkontribusi pada desain sistem AI di dua inisiatif riset yang didanai, hibah inovasi universitas dan {{RESEARCH_LINK}}, selaras dengan Food Insecurity Experience Scale (FIES) FAO.',
+        'Menulis policy brief bulanan dan laporan indeks ketahanan untuk mitra sektor publik.',
+      ],
     },
+    stack: ['Next.js', 'Claude API', 'Supabase', 'Leaflet (GIS)'],
   },
   {
     period: '2021 — 2025',
     org: 'Bank BRI', role: { nl: 'Relationship Manager, Banking Office', en: 'Relationship Manager, Banking Office', id: 'Relationship Manager, Banking Office' },
-    desc: {
-      nl: 'Beheerde een MKB-portefeuille van 500+ klanten in het retailsegment. Behaalde 98% claimgoedkeuring en 97% tijdige uitbetaling; verminderde verwerkingsfouten met 90% en verbeterde efficiëntie met 95%.',
-      en: 'Managed an MSME portfolio of 500+ clients across the retail segment. Achieved 98% claim approval and 97% on-time disbursement; reduced processing errors by 90% and improved efficiency by 95%.',
-      id: 'Mengelola portofolio UMKM 500+ klien di segmen retail. Meraih 98% persetujuan klaim dan 97% pencairan tepat waktu; menurunkan kesalahan proses 90% dan meningkatkan efisiensi 95%.',
+    stat: '500+', statLabel: { nl: 'MKB-KLANTEN BEHEERD', en: 'MSME CLIENTS MANAGED', id: 'KLIEN UMKM DIKELOLA' },
+    bullets: {
+      nl: [
+        'Beheerde een MKB-leningportefeuille van 500+ klanten in het retailsegment, gedurende vier jaar.',
+        'Behaalde 98% claimgoedkeuring en 97% tijdige uitbetaling over de hele portefeuille.',
+      ],
+      en: [
+        'Managed an MSME lending portfolio of 500+ retail clients over four years.',
+        'Sustained 98% claim approval and 97% on-time disbursement across the portfolio.',
+      ],
+      id: [
+        'Mengelola portofolio kredit UMKM 500+ klien di segmen retail selama empat tahun.',
+        'Menjaga 98% persetujuan klaim dan 97% pencairan tepat waktu di seluruh portofolio.',
+      ],
     },
   },
 ];

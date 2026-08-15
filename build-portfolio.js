@@ -335,7 +335,14 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .timeline-school { font-size: 16px; font-weight: 800; margin: 0; }
 .timeline-degree { font-size: 14px; color: var(--text-muted); margin: 3px 0 0; }
 .timeline-place { font-size: 12.5px; color: var(--text-muted); margin: 3px 0 0; }
-.exp-desc { font-size: 13.5px; color: var(--ink-soft); margin: 8px 0 0; max-width: 62ch; line-height: 1.6; text-align: justify; }
+.exp-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.exp-stat-col { text-align: right; flex-shrink: 0; }
+.exp-stat-col .lead-stat-label { margin-bottom: 0; text-align: right; }
+.exp-bullets { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 7px; max-width: 62ch; }
+.exp-bullets li { position: relative; padding-left: 16px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+.exp-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.exp-bullets a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.exp-bullets a:hover { color: var(--accent); }
 @media (max-width: 600px) {
   .timeline-item { grid-template-columns: 20px 1fr; }
   .timeline-item.has-logo { grid-template-columns: 20px 36px 1fr; }
@@ -863,16 +870,24 @@ function timelineHtml(lang) {
 }
 
 function experienceHtml(lang) {
-  return EXPERIENCE.map(e => `
+  const RESEARCH_LINK_TEXT = { nl: 'nationale onderzoekscompetitie', en: 'national research competition', id: 'kompetisi riset nasional' };
+  const researchAnchor = `<a href="${urlFor('research', lang)}">${t(RESEARCH_LINK_TEXT, lang)}</a>`;
+  return EXPERIENCE.map(e => {
+    const bullets = t(e.bullets, lang).map(b => `<li>${b.replace('{{RESEARCH_LINK}}', researchAnchor)}</li>`).join('');
+    return `
     <div class="timeline-item reveal">
       <p class="timeline-period">${e.period}${e.periodSuffix ? ' ' + t(e.periodSuffix, lang) : ''}</p>
       <div class="timeline-dot-col"><span class="timeline-dot"></span></div>
       <div>
-        <p class="timeline-school">${e.org}</p>
-        <p class="timeline-degree">${t(e.role, lang)}</p>
-        <p class="exp-desc">${t(e.desc, lang)}</p>
+        <div class="exp-head">
+          <div><p class="timeline-school">${e.org}</p><p class="timeline-degree">${t(e.role, lang)}</p></div>
+          ${e.stat ? `<div class="exp-stat-col"><p class="lead-stat">${e.stat}</p><p class="lead-stat-label">${t(e.statLabel, lang)}</p></div>` : ''}
+        </div>
+        <ul class="exp-bullets">${bullets}</ul>
+        ${e.stack ? `<div class="tag-row" style="margin-top:12px">${e.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>` : ''}
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function coursesHtml(lang) {
