@@ -111,6 +111,10 @@ img { max-width: 100%; display: block; }
 .font-display { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
 .wrap { max-width: 1260px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 720px) { .wrap { padding: 0 22px; } }
+/* Indonesian and Dutch produce noticeably longer compound words than English;
+   on a 320px screen one of them is enough to force a grid track wider than the
+   viewport. Let long words break rather than push the layout. */
+body { overflow-wrap: break-word; }
 .label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .label-blue { color: var(--accent); }
 .rule-blue { display: inline-block; width: 22px; height: 2px; background: var(--accent); margin-right: 10px; vertical-align: middle; }
@@ -119,13 +123,8 @@ img { max-width: 100%; display: block; }
 .navbar { position: sticky; top: 0; z-index: 100; background: var(--surface-strong); border-bottom: 1px solid transparent; transition: border-color .2s ease, background-image .4s ease, background-color .4s ease; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .navbar.scrolled { border-bottom-color: var(--surface-border); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.nav-controls { display: flex; align-items: center; gap: 22px; }
-@media (max-width: 500px) {
-  .nav-controls { gap: 10px; }
-  .nav-brand { font-size: 12px; }
-  .lang-btn { padding: 6px 9px; }
-}
-.nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 14px; color: var(--surface-text); transition: color .3s ease; }
+.nav-controls { display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+.nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 14px; color: var(--surface-text); transition: color .3s ease; white-space: nowrap; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--surface-text-muted); transition: color .15s ease; }
 .nav-link:hover, .nav-link.active { color: var(--surface-text); }
@@ -146,19 +145,60 @@ img { max-width: 100%; display: block; }
 html[data-theme="dark"] .theme-icon-sun { opacity: 0; transform: scale(0.6); }
 html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .nav-burger { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: none; border: none; color: var(--surface-text); font-size: 22px; cursor: pointer; }
-@media (max-width: 860px) {
-  .nav-links { position: fixed; inset: 68px 0 0 0; background: var(--surface-strong); flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 22px; display: none; }
+/* The full horizontal nav (brand + 6 links + language + theme) measures 1011px
+   of content, so it only fits from ~1110px up. Below that it must collapse to
+   the burger — at 860px it was overflowing the navbar on every iPad-landscape
+   and small-laptop width. */
+@media (max-width: 1110px) {
+  /* .navbar has backdrop-filter, which makes IT the containing block for
+     position:fixed descendants — so "bottom: 0" would resolve against the
+     68px navbar, not the viewport, collapsing this panel. Size it explicitly
+     against the viewport instead, and paint an opaque colour under the
+     gradient so page content never shows through. */
+  .nav-links {
+    position: fixed; top: 68px; left: 0; right: 0;
+    height: calc(100vh - 68px); height: calc(100dvh - 68px);
+    overflow-y: auto;
+    background: var(--surface-strong);
+    background-color: var(--off-white);
+    flex-direction: column; align-items: flex-start;
+    padding: 28px 22px; gap: 4px; display: none;
+  }
   .nav-links.open { display: flex; }
+  .nav-links .nav-link { display: block; width: 100%; padding: 14px 0; font-size: 14px; }
+  .nav-link.active::after { display: none; }
   .nav-burger { display: flex; }
+}
+/* Narrow phones: the brand wordmark and the three controls must share one
+   row without touching. Placed AFTER the base rules so it actually wins. */
+@media (max-width: 500px) {
+  .nav-controls { gap: 8px; }
+  .nav-brand { font-size: 11px; letter-spacing: 0.01em; }
+  .lang-btn { font-size: 11px; padding: 6px 8px; }
+}
+@media (max-width: 380px) {
+  .nav-brand { font-size: 10px; }
+  .theme-btn, .nav-burger { width: 40px; height: 40px; }
 }
 
 /* Hero */
 .hero { background: var(--surface-strong); color: var(--surface-text); padding: 64px 0 0; transition: background-image .4s ease; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; min-height: 76vh; }
+/* Text column gets the larger share so the unbreakable name fits inside it
+   instead of spilling across into the portrait. */
+.hero-grid { display: grid; grid-template-columns: minmax(0,1.18fr) minmax(0,0.82fr); gap: 40px; align-items: center; min-height: 76vh; }
 .hero-grid > div { min-width: 0; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; min-height: auto; } }
 .hero-eyebrow { color: var(--accent); margin-bottom: 22px; }
-.hero-headline { font-size: clamp(32px, 4.6vw, 58px); line-height: 1.05; margin: 0 0 22px; text-wrap: balance; color: var(--surface-text); }
+/* Sized to fit the text column, not the full page: at 2 columns the name would
+   otherwise run straight over the portrait (it cleared it by ~3px at 1440px and
+   collided outright at 1024px — luck, not layout). */
+.hero-headline { font-size: min(3.3vw, 44px); line-height: 1.05; margin: 0 0 22px; text-wrap: balance; color: var(--surface-text); }
+/* "EGGAN NACHSON SILUETA." is one unbreakable token (~13.3em wide) because the
+   name must never split across lines. Below the 2-column breakpoint it is the
+   widest thing on the page, so the type has to be sized against IT, not against
+   a comfortable heading size — otherwise it pushes the whole document wider
+   than the screen. 5.7vw keeps ~12% slack for iOS's wider SF Pro metrics. */
+@media (max-width: 900px) { .hero-headline { font-size: clamp(17px, 5.7vw, 52px); } }
 .hero-sub { font-size: 16px; color: var(--surface-text-soft); max-width: 46ch; margin: 0 0 32px; text-align: justify; }
 .text-accent { background: linear-gradient(110deg, var(--accent-dark), var(--accent-light), var(--accent-dark)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 26px; border-radius: 3px; border: none; cursor: pointer; transition: all .18s ease; }
@@ -169,8 +209,11 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
 .hero-photo { aspect-ratio: 1/1.08; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; position: relative; }
 .hero-photo img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35)); }
-.hero-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; border-top: 1px solid var(--surface-border); padding: 26px 0 40px; }
-@media (max-width: 860px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
+/* padding-top/bottom as longhands ON PURPOSE: the shorthand would reset the
+   horizontal padding this element inherits from .wrap and slam the stats
+   flush against the screen edge. */
+.hero-meta { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px 28px; border-top: 1px solid var(--surface-border); padding-top: 26px; padding-bottom: 40px; }
+@media (max-width: 860px) { .hero-meta { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 .hero-meta-label { color: var(--surface-text-muted); margin-bottom: 6px; }
 .hero-meta-val { font-size: 13.5px; font-weight: 700; color: var(--surface-text); line-height: 1.35; }
 
@@ -218,7 +261,7 @@ html:not([data-theme="dark"]) .section-white {
 .section-dark .section-note { color: var(--surface-text-muted); }
 
 /* Cards: work */
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.projects-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
 @media (max-width: 820px) { .projects-grid { grid-template-columns: 1fr; } }
 .project-card { background: var(--white); padding: 0; display: flex; flex-direction: column; cursor: pointer; border: none; text-align: left; font-family: inherit; color: inherit; width: 100%; position: relative; transition: box-shadow .3s ease; }
 .project-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.10), 0 0 0 1px var(--border); z-index: 1; }
@@ -260,7 +303,7 @@ html:not([data-theme="dark"]) .section-white {
 .modal-highlights li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
 /* About / education */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: center; }
 @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
 .about-photo { aspect-ratio: 4/3.1; overflow: hidden; border-radius: 2px; box-shadow: 0 0 0 1px var(--border), 0 20px 50px rgba(0,0,0,0.18); transition: box-shadow .3s ease; }
 .about-photo:hover { box-shadow: 0 0 0 1px var(--accent), 0 25px 60px rgba(212,175,55,0.10); }
@@ -303,7 +346,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 }
 
 /* Courses & achievements */
-.courses-achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.courses-achievements-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: start; }
 @media (max-width: 800px) { .courses-achievements-grid { grid-template-columns: 1fr; gap: 40px; } }
 .course-item { display: grid; grid-template-columns: 50px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
 .course-item:first-child { border-top: 1px solid var(--border); }
@@ -318,22 +361,22 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .achievement-desc { font-size: 12.5px; color: var(--ink-soft); margin: 5px 0 0; line-height: 1.55; text-align: justify; }
 
 /* Skills */
-.skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
-@media (max-width: 800px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+.skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 32px; }
+@media (max-width: 800px) { .skills-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
 .skill-col-label { color: var(--accent); margin-bottom: 14px; display: block; }
 .skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .skill-list li { font-size: 14px; color: var(--ink-soft); }
 
 /* Services */
-.services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 30px; }
-@media (max-width: 800px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+.services-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 30px; }
+@media (max-width: 800px) { .services-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
 .service-card { background: var(--white); padding: 26px 22px; }
 .service-num { font-size: 12px; color: var(--accent); font-weight: 700; }
 .service-name { font-size: 14.5px; font-weight: 800; margin: 10px 0 6px; }
 .service-desc { font-size: 12.5px; color: var(--text-muted); text-align: justify; }
 
 /* Leadership timeline */
-.lead-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+.lead-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
 @media (max-width: 820px) { .lead-grid { grid-template-columns: 1fr; } }
 .lead-card { background: var(--surface-strong); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; position: relative; transition: box-shadow .3s ease; }
 .lead-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.35); z-index: 1; }
@@ -353,7 +396,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .lead-card-body { padding: 22px 24px 26px; }
 
 /* Ministries (home) */
-.ministries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.ministries-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 26px; }
 @media (max-width: 860px) { .ministries-grid { grid-template-columns: 1fr; } }
 .ministry-card { border: 1px solid var(--border); border-radius: 3px; overflow: hidden; background: var(--white); transition: box-shadow .3s ease, border-color .3s ease; }
 .ministry-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.10); border-color: var(--accent-soft); }
@@ -394,7 +437,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 
 /* Showcase (creative work grid) */
 .showcase-teaser { padding-top: 64px; padding-bottom: 64px; }
-.showcase-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.showcase-teaser-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items: center; }
 @media (max-width: 820px) { .showcase-teaser-grid { grid-template-columns: 1fr; gap: 32px; } }
 .showcase-teaser-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .showcase-teaser-thumb { aspect-ratio: 1/1; overflow: hidden; border-radius: 3px; border: 1px solid var(--surface-border); }
@@ -457,7 +500,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 
 /* Contact */
 .contact-section { display: flex; align-items: center; }
-.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: end; }
+.contact-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 50px; align-items: end; }
 @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
 .contact-title { font-size: clamp(28px, 4vw, 42px); margin: 0 0 16px; text-wrap: balance; color: var(--surface-text); }
 .contact-body { color: var(--surface-text-soft); font-size: 15px; max-width: 46ch; margin-bottom: 30px; text-align: justify; }
@@ -523,7 +566,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   var burger = document.getElementById('navBurger');
   var navLinks = document.getElementById('navLinks');
-  if (burger) burger.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+  if (burger) burger.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    burger.textContent = open ? '✕' : '☰';
+    // The panel now covers the whole screen; letting the page scroll behind it
+    // makes closing the menu land you somewhere unexpected.
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
   var langSwitch = document.getElementById('langSwitch');
   var langBtn = document.getElementById('langBtn');
   if (langBtn) langBtn.addEventListener('click', function (e) { e.stopPropagation(); langSwitch.classList.toggle('open'); });
