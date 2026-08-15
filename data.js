@@ -125,6 +125,17 @@ const EDUCATION = [
     place: { nl: 'Den Haag, Nederland', en: 'The Hague, Netherlands', id: 'Den Haag, Belanda' },
   },
   {
+    // Confirmed by user 2026-08-15 (period April 2026 – March 2029), corroborated
+    // earlier by the official Indonesia Mengglobal appointment card ("master's in
+    // Artificial Intelligence from Lübeck University") — not on the CV itself, but
+    // an online program the CV likely predates or omits. Explicitly noted as online
+    // per user's own words, since it's a distance program, not on-campus in Germany.
+    period: '2026 — 2029', periodSuffix: { nl: 'LOPEND', en: 'IN PROGRESS', id: 'SEDANG DITEMPUH' },
+    school: 'Universität zu Lübeck', logo: 'uni-luebeck.svg',
+    degree: { nl: 'MSc Artificial Intelligence (Online)', en: 'MSc Artificial Intelligence (Online)', id: 'MSc Artificial Intelligence (Online)' },
+    place: { nl: 'Lübeck, Duitsland — online', en: 'Lübeck, Germany — online', id: 'Lübeck, Jerman — online' },
+  },
+  {
     period: '2023 — 2025',
     school: 'Universitas Indonesia', logo: 'universitas-indonesia.svg',
     degree: { nl: 'MSc Strategic Intelligence · GPA 3.80/4.00', en: 'MSc Strategic Intelligence · GPA 3.80/4.00', id: 'MSc Strategic Intelligence · IPK 3.80/4.00' },
