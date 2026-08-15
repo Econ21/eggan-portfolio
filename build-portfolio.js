@@ -493,13 +493,6 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .reader-body img { max-width: 92vw; max-height: 82vh; object-fit: contain; }
 .reader-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; }
 .reader-nav { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 18px; color: #fff; font-size: 12.5px; font-weight: 700; }
-.pdf-preview-overlay { display: none; position: fixed; inset: 0; background: rgba(20,18,14,0.92); z-index: 300; flex-direction: column; }
-.pdf-preview-overlay.open { display: flex; }
-.pdf-preview-top { display: flex; align-items: center; gap: 14px; padding: 16px 22px; color: #fff; font-size: 13px; font-weight: 700; }
-.pdf-preview-top span { flex: 1; }
-.pdf-preview-top .btn-outline { color: #fff; border-color: rgba(255,255,255,0.3); }
-.pdf-preview-top .btn-outline:hover { border-color: #fff; }
-.pdf-preview-frame { flex: 1; width: 100%; border: none; background: #fff; }
 
 /* Contact */
 .contact-section { display: flex; align-items: center; }
@@ -1207,40 +1200,25 @@ function buildDocuments(lang) {
       <a class="btn btn-primary" style="margin-top:24px" href="${assetUrl('credentials/eggan-nachson-credentials.zip')}" download>${t(UI.documentsDownloadAll, lang)} ↓</a>
       <div class="document-list" style="margin-top:32px">${items}</div>
     </div>
-  </section>
-  <div class="pdf-preview-overlay" id="pdfPreviewOverlay">
-    <div class="pdf-preview-top">
-      <span id="pdfPreviewTitle"></span>
-      <a class="btn btn-outline" id="pdfPreviewDl" download style="width:auto;padding:8px 16px;font-size:11px">${t(UI.documentsDownloadOne, lang)} ↓</a>
-      <button type="button" class="reader-btn" style="width:auto;border-radius:3px;padding:8px 16px;font-size:11px;font-weight:700" onclick="closePdfPreview()">${t(UI.close, lang)} ✕</button>
-    </div>
-    <iframe id="pdfPreviewFrame" class="pdf-preview-frame" title="PDF preview"></iframe>
-  </div>`;
+  </section>`;
   const js = `
   function openPdfPreview(url, name) {
-    // iOS/Android render a PDF inside an <iframe> at the document's own page
-    // size with no fit-to-width, so an A4 certificate arrives massively zoomed
-    // in and has to be pinched back out. Handing the file to the browser's own
-    // viewer instead gives a proper fit-to-screen, paging and pinch-zoom.
-    if (window.matchMedia('(max-width: 900px)').matches ||
-        !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      window.open(url, '_blank', 'noopener');
-      return;
-    }
-    document.getElementById('pdfPreviewFrame').src = url;
-    document.getElementById('pdfPreviewTitle').textContent = name;
-    document.getElementById('pdfPreviewDl').href = url;
-    document.getElementById('pdfPreviewOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closePdfPreview() {
-    document.getElementById('pdfPreviewOverlay').classList.remove('open');
-    document.getElementById('pdfPreviewFrame').src = '';
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && document.getElementById('pdfPreviewOverlay').classList.contains('open')) closePdfPreview();
-  });`;
+    // Hand the file to the browser's own PDF viewer in a new tab rather than
+    // embedding it.
+    //
+    // The embedded version was unreliable in two different ways: on iOS/Android
+    // an inline frame renders a PDF at the document's own page size with no
+    // fit-to-width, so an A4 certificate arrived massively zoomed in; and on
+    // desktop Chrome the in-frame viewer is a plugin that kept failing to
+    // instantiate (grey broken-document icon) even once the frame and object
+    // CSP directives allowed it. The file itself was always fine — served 200,
+    // correct application/pdf type, byte-identical to source.
+    //
+    // A plain navigation has none of those failure modes: every browser renders
+    // it natively, fit to the window, with paging, zoom, search and its own
+    // download button.
+    window.open(url, '_blank', 'noopener');
+  }`;
   return pageShell({ lang, activeKey: 'home', title, description: title, bodyHtml: body, extraJs: js });
 }
 
