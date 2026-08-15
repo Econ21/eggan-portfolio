@@ -13,7 +13,7 @@ const UI = {
   navContact:   { nl: 'Contact',        en: 'Contact',         id: 'Kontak' },
 
   heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · AI & STRATEGIE', en: 'INDONESIA → NETHERLANDS · AI & STRATEGY', id: 'INDONESIA → BELANDA · AI & STRATEGI' },
-  heroHeadline: { nl: 'HALLO, IK BEN EGGAN NACHSON SILUETA.', en: "HELLO, I'M EGGAN NACHSON SILUETA.", id: 'HALO, SAYA EGGAN NACHSON SILUETA.' },
+  heroHeadline: { nl: 'HALLO, IK BEN EGGAN&nbsp;NACHSON&nbsp;SILUETA.', en: "HELLO, I'M EGGAN&nbsp;NACHSON&nbsp;SILUETA.", id: 'HALO, SAYA EGGAN&nbsp;NACHSON&nbsp;SILUETA.' },
   heroSub: {
     nl: 'Ik kom uit Indonesië en volg momenteel mijn derde masteropleiding in Nederland. Ik behaalde een master Strategic Intelligence aan de Universiteit van Indonesië, een master Artificial Intelligence aan de Universität zu Lübeck, en rond nu een master Data-Driven Business af aan The Hague University of Applied Sciences. Ik heb AI-producten en -programma\'s mee opgebouwd voor Indonesië\'s Ministerie van Creatieve Economie en Ministerie van Onderzoek & Hoger Onderwijs / LPDP, en leid vandaag AI-productstrategie bij MatchupSkills.',
     en: "I'm from Indonesia and currently pursuing my third master's degree in the Netherlands. I hold a master's in Strategic Intelligence from Universitas Indonesia, a master's in Artificial Intelligence from the University of Lübeck, and I'm now completing a master's in Data-Driven Business at The Hague University of Applied Sciences. I've helped build AI products and programs for Indonesia's Ministry of Creative Economy and Ministry of Research & Higher Education / LPDP, and I currently lead AI product strategy at MatchupSkills.",
@@ -21,7 +21,12 @@ const UI = {
   },
   heroCtaWork:    { nl: 'BEKIJK MIJN WERK', en: 'EXPLORE MY WORK', id: 'LIHAT KARYA SAYA' },
   heroCtaContact: { nl: 'NEEM CONTACT OP', en: "LET'S CONNECT", id: 'HUBUNGI SAYA' },
-  heroCtaCv:      { nl: 'DOWNLOAD CV', en: 'DOWNLOAD CV', id: 'UNDUH CV' },
+  heroCtaCv:      { nl: 'CV & DOCUMENTEN', en: 'CV & DOCUMENTS', id: 'CV & DOKUMEN' },
+  documentsPageEyebrow: { nl: 'DOWNLOADS', en: 'DOWNLOADS', id: 'UNDUH' },
+  documentsPageTitle: { nl: 'CV & academische documenten', en: 'CV & Academic Documents', id: 'CV & Dokumen Akademik' },
+  documentsPageNote: { nl: 'Mijn cv plus de diploma\'s, cijferlijsten en certificaten die eraan ten grondslag liggen — download ze los, of alles in één keer.', en: 'My CV plus the certificates, transcripts, and awards behind it — download them individually, or all at once.', id: 'CV saya beserta ijazah, transkrip, dan sertifikat pendukungnya — unduh satu per satu, atau semuanya sekaligus.' },
+  documentsDownloadAll: { nl: 'ALLES DOWNLOADEN (ZIP)', en: 'DOWNLOAD ALL (ZIP)', id: 'UNDUH SEMUA (ZIP)' },
+  documentsDownloadOne: { nl: 'DOWNLOAD', en: 'DOWNLOAD', id: 'UNDUH' },
   metaBasedIn:  { nl: 'GEVESTIGD IN', en: 'BASED IN', id: 'BERBASIS DI' },
   metaEducation:{ nl: 'OPLEIDING', en: 'EDUCATION', id: 'PENDIDIKAN' },
   metaBuilt:    { nl: 'GEBOUWD', en: 'BUILT', id: 'DIBANGUN' },
@@ -403,6 +408,34 @@ const MINISTRIES = [
   },
 ];
 
+// ── Downloadable academic documents ──────────────────────────────────────────
+// Shown on the /documents hub (linked from the hero's CV button) — CV plus the
+// underlying certificates/transcripts that back it up, each downloadable on
+// its own or bundled as one ZIP (built at build time, see buildCredentialsZip
+// in build-portfolio.js).
+const DOCUMENTS = [
+  {
+    file: 'eggan-nachson-silueta-cv.pdf',
+    label: { nl: 'Curriculum Vitae', en: 'Curriculum Vitae', id: 'Curriculum Vitae' },
+    note: { nl: 'Volledig cv, 1 pagina.', en: 'Full CV, 1 page.', id: 'CV lengkap, 1 halaman.' },
+  },
+  {
+    file: 'bachelor-certificate-transcript.pdf',
+    label: { nl: 'Bachelordiploma & cijferlijst', en: "Bachelor's Certificate & Transcript", id: 'Ijazah & Transkrip S1' },
+    note: { nl: 'Universitas Indonesia.', en: 'Universitas Indonesia.', id: 'Universitas Indonesia.' },
+  },
+  {
+    file: 'masters-certificate-transcript.pdf',
+    label: { nl: 'Masterdiploma\'s & cijferlijsten', en: "Master's Certificates & Transcripts", id: 'Ijazah & Transkrip S2' },
+    note: { nl: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', en: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', id: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.' },
+  },
+  {
+    file: 'certificates-and-awards.pdf',
+    label: { nl: 'Certificaten & prijzen', en: 'Certificates & Awards', id: 'Sertifikat & Penghargaan' },
+    note: { nl: '11 pagina\'s — trainingen, awards en erkenningen.', en: '11 pages — trainings, awards, and recognitions.', id: '11 halaman — pelatihan, penghargaan, dan pengakuan.' },
+  },
+];
+
 // ── AI creative work samples (Creative AI Partner) ──────────────────────────
 // Real CAP-made images/videos, referenced directly from CAP's public Supabase
 // Storage bucket (permanent public URLs, not fal.ai's ~48h-expiring CDN) —
@@ -751,4 +784,4 @@ const CONTACT = {
   waNetherlands: { phone: '+31 6 85527266', link: 'https://wa.me/31685527266', label: { nl: 'WhatsApp (Nederland)', en: 'WhatsApp (Netherlands)', id: 'WhatsApp (Belanda)' } },
 };
 
-module.exports = { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, SHOWCASE, LEADERSHIP, GALLERY, RESEARCH, CONTACT };
+module.exports = { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, DOCUMENTS, SHOWCASE, LEADERSHIP, GALLERY, RESEARCH, CONTACT };

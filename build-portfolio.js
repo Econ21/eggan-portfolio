@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, SHOWCASE, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
+const { execFileSync } = require('child_process');
+const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, DOCUMENTS, SHOWCASE, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
@@ -20,6 +21,7 @@ const PATHS = {
   education: { file: 'education.html', slug: 'education' },
   work: { file: 'work.html', slug: 'work' },
   showcase: { file: 'creative-work.html', slug: 'creative-work' },
+  documents: { file: 'documents.html', slug: 'documents' },
   research: { file: 'research.html', slug: 'research' },
   leadership: { file: 'leadership.html', slug: 'leadership' },
   contact: { file: 'contact.html', slug: 'contact' },
@@ -404,6 +406,17 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .showcase-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%); opacity: .7; transition: opacity .25s ease; pointer-events: none; }
 .showcase-card:hover::after { opacity: .9; }
 .showcase-badge { position: absolute; left: 10px; bottom: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); padding: 4px 9px; border-radius: 999px; z-index: 1; }
+
+/* Documents (CV + academic credentials) */
+.document-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.document-item { background: var(--white); padding: 20px 24px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+@media (max-width: 640px) { .document-item { grid-template-columns: auto 1fr; } .document-actions { grid-column: 1 / -1; justify-content: space-between; } }
+.document-icon { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 5px 8px; }
+.document-name { font-size: 15px; font-weight: 800; margin: 0; }
+.document-note { font-size: 12.5px; color: var(--text-muted); margin: 3px 0 0; }
+.document-actions { display: flex; align-items: center; gap: 14px; }
+.document-size { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.document-dl { padding: 8px 16px; font-size: 11.5px; }
 .lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 90vw; max-height: 80vh; object-fit: contain; }
@@ -461,7 +474,7 @@ function navbar(lang, activeKey) {
   return `
   <nav class="navbar" id="navbar">
     <div class="wrap nav-inner">
-      <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN NACHSON SILUETA</a>
+      <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN&nbsp;NACHSON&nbsp;SILUETA</a>
       <div style="display:flex;align-items:center;gap:22px">
         <div class="nav-links" id="navLinks">${links}</div>
         <div class="lang-switch" id="langSwitch">
@@ -481,7 +494,7 @@ function footer(lang) {
   return `
   <footer class="footer">
     <div class="wrap footer-row">
-      <span class="footer-brand">EGGAN NACHSON SILUETA</span>
+      <span class="footer-brand">EGGAN&nbsp;NACHSON&nbsp;SILUETA</span>
       <span>${t(UI.footerTagline, lang)}</span>
       <span>© 2026 ${t(UI.footerRights, lang)}</span>
     </div>
@@ -663,7 +676,7 @@ function buildHome(lang) {
         <div class="hero-actions">
           <a class="btn btn-primary" href="${urlFor('work', lang)}">${t(UI.heroCtaWork, lang)} ↓</a>
           <a class="btn btn-outline" href="${urlFor('contact', lang)}">${t(UI.heroCtaContact, lang)} ↗</a>
-          <a class="btn btn-outline" href="${assetUrl('Eggan-Nachson-Silueta-CV.pdf')}" target="_blank" rel="noopener noreferrer">${t(UI.heroCtaCv, lang)} ↓</a>
+          <a class="btn btn-outline" href="${urlFor('documents', lang)}">${t(UI.heroCtaCv, lang)} ↓</a>
         </div>
       </div>
       <div class="hero-photo"><img src="${assetUrl('profile-nobg.png')}" alt="Eggan Nachson Silueta" /></div>
@@ -1038,6 +1051,41 @@ function leadPrev(id, count) { var car = document.getElementById(id); var idx = 
 document.querySelectorAll('.lead-img img').forEach(function (img) { if (img.complete) leadSyncRatio(img); });
 `;
 
+function formatBytes(n) {
+  return (n / (1024 * 1024)).toFixed(1).replace(/\.0$/, '') + ' MB';
+}
+
+function buildDocuments(lang) {
+  const title = `Eggan Nachson Silueta — ${t(UI.documentsPageTitle, lang)}`;
+  const items = DOCUMENTS.map(d => {
+    const size = formatBytes(fs.statSync(path.join(ROOT, 'assets', 'credentials', d.file)).size);
+    return `
+    <div class="document-item reveal">
+      <div class="document-icon">PDF</div>
+      <div class="document-info">
+        <p class="document-name">${t(d.label, lang)}</p>
+        <p class="document-note">${t(d.note, lang)}</p>
+      </div>
+      <div class="document-actions">
+        <span class="document-size">${size}</span>
+        <a class="btn btn-outline document-dl" href="${assetUrl('credentials/' + d.file)}" download>${t(UI.documentsDownloadOne, lang)} ↓</a>
+      </div>
+    </div>`;
+  }).join('');
+
+  const body = `
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.documentsPageEyebrow, lang)}</p>
+      <h1 class="font-display section-title">${t(UI.documentsPageTitle, lang)}</h1>
+      <p class="section-note">${t(UI.documentsPageNote, lang)}</p>
+      <a class="btn btn-primary" style="margin-top:24px" href="${assetUrl('credentials/eggan-nachson-credentials.zip')}" download>${t(UI.documentsDownloadAll, lang)} ↓</a>
+      <div class="document-list" style="margin-top:32px">${items}</div>
+    </div>
+  </section>`;
+  return pageShell({ lang, activeKey: 'home', title, description: title, bodyHtml: body });
+}
+
 function buildLeadership(lang) {
   const title = `Eggan Nachson Silueta — ${t(UI.navLeadership, lang)}`;
   const gallerySlides = GALLERY.map((g, i) => `
@@ -1235,11 +1283,19 @@ copyDir(path.join(ROOT, 'assets'), path.join(OUT, 'assets'));
 
 fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({ cleanUrls: true, trailingSlash: false }, null, 2));
 
+// Build the "download all" ZIP fresh each run from assets/credentials/*.pdf,
+// straight into dist — not committed to the repo so we don't double-store
+// ~12MB of PDFs as both loose files and a redundant zip.
+const credentialsDir = path.join(OUT, 'assets', 'credentials');
+const zipName = 'eggan-nachson-credentials.zip';
+execFileSync('zip', ['-q', '-j', zipName, ...DOCUMENTS.map(d => d.file)], { cwd: credentialsDir });
+
 for (const lang of LANGS) {
   writeFile(lang, 'home', buildHome(lang));
   writeFile(lang, 'education', buildEducation(lang));
   writeFile(lang, 'work', buildWork(lang));
   writeFile(lang, 'showcase', buildShowcase(lang));
+  writeFile(lang, 'documents', buildDocuments(lang));
   writeFile(lang, 'leadership', buildLeadership(lang));
   writeFile(lang, 'research', buildResearch(lang));
   writeFile(lang, 'contact', buildContact(lang));
