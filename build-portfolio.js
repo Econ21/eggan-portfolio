@@ -289,7 +289,7 @@ html:not([data-theme="dark"]) .section-white {
 .modal-name { font-size: 17px; font-weight: 800; margin-top: 2px; }
 .modal-close { background: none; border: 1px solid var(--surface-border); color: var(--surface-text-soft); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 8px 14px; border-radius: 3px; cursor: pointer; transition: border-color .2s ease; }
 .modal-close:hover { border-color: var(--accent); }
-.carousel { position: relative; aspect-ratio: 16/10; background: #000; }
+.carousel { position: relative; aspect-ratio: 16/10; background: #000; touch-action: pan-y; }
 .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
 .carousel .slide.active { opacity: 1; }
 .carousel .slide img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
@@ -388,6 +388,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .lead-ig-link:hover { background: rgba(0,0,0,0.8); }
 .lead-card:not(.has-img) .lead-ig-link { position: static; align-self: flex-start; margin-top: 4px; color: var(--surface-text); background: var(--surface-border); }
 .lead-card:not(.has-img) .lead-ig-link:hover { background: var(--accent); color: var(--accent-contrast); }
+.lead-carousel { touch-action: pan-y; }
 .lead-carousel .lead-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
 .lead-carousel .lead-slide.active { opacity: 1; }
 .lead-car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 15px; z-index: 2; }
@@ -467,7 +468,9 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .document-actions { display: flex; align-items: center; gap: 14px; }
 .document-size { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .document-dl { padding: 8px 16px; font-size: 11.5px; }
-.lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; }
+.lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; touch-action: pan-y; }
+/* the video's own scrubber needs horizontal drags back */
+#glVideo { touch-action: auto; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 90vw; max-height: 80vh; object-fit: contain; }
 .lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; background: none; border: none; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; }
@@ -483,7 +486,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .research-title { font-size: 17px; font-weight: 800; margin: 0 0 6px; text-wrap: balance; }
 .research-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
 .research-abstract { font-size: 13.5px; color: var(--ink-soft); max-width: 62ch; text-align: justify; }
-.reader-overlay { display: none; position: fixed; inset: 0; background: #000; z-index: 300; flex-direction: column; }
+.reader-overlay { display: none; position: fixed; inset: 0; background: #000; z-index: 300; flex-direction: column; touch-action: pan-y; }
 .reader-overlay.open { display: flex; }
 .reader-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; color: #fff; }
 .reader-body { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -643,6 +646,63 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') glNext();
   if (e.key === 'ArrowLeft') glPrev();
 });
+
+/* Swipe navigation — the touch equivalent of the ‹ › buttons, so on a phone or
+   tablet you can flick through images instead of aiming at a small arrow.
+   Listeners stay passive and we never preventDefault on move, so vertical
+   scrolling is untouched; horizontal intent is decided on touchend. */
+function attachSwipe(el, onNext, onPrev) {
+  if (!el || el.dataset.swipeBound) return;
+  el.dataset.swipeBound = '1';
+  var x0 = 0, y0 = 0, tracking = false;
+  el.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; tracking = true;
+  }, { passive: true });
+  el.addEventListener('touchend', function (e) {
+    if (!tracking) return;
+    tracking = false;
+    var t = e.changedTouches[0];
+    var dx = t.clientX - x0, dy = t.clientY - y0;
+    // Distance and direction are the whole test. Deliberately no time limit:
+    // a slow, careful drag across an image is still a swipe, and capping it
+    // only produced gestures that silently did nothing.
+    if (Math.abs(dx) < 45) return;                    // too small to be deliberate
+    if (Math.abs(dx) < Math.abs(dy) * 1.4) return;    // that was a scroll, not a swipe
+    // A swipe on a tappable card would otherwise also fire its click (e.g. open
+    // the lightbox); swallow that one synthetic click.
+    var kill = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
+    el.addEventListener('click', kill, { capture: true, once: true });
+    setTimeout(function () { el.removeEventListener('click', kill, true); }, 400);
+    (dx < 0 ? onNext : onPrev)();
+  }, { passive: true });
+}
+
+(function wireSwipes() {
+  // Resolved at swipe time via window.* because these handlers are defined in
+  // the per-page script that is concatenated after this one.
+  attachSwipe(document.getElementById('globalLightbox'), glNext, glPrev);
+
+  document.querySelectorAll('.carousel').forEach(function (c) {
+    if (c.querySelectorAll('.slide').length < 2) return;
+    var slug = c.id.replace('car-', '');
+    attachSwipe(c, function () { if (window.nextSlide) window.nextSlide(slug); },
+                   function () { if (window.prevSlide) window.prevSlide(slug); });
+  });
+
+  document.querySelectorAll('.lead-carousel').forEach(function (c) {
+    var count = c.querySelectorAll('.lead-slide').length;
+    if (count < 2) return;
+    attachSwipe(c, function () { if (window.leadNext) window.leadNext(c.id, count); },
+                   function () { if (window.leadPrev) window.leadPrev(c.id, count); });
+  });
+
+  document.querySelectorAll('.reader-overlay').forEach(function (o) {
+    var slug = o.id.replace('reader-', '');
+    attachSwipe(o, function () { if (window.readerNav) window.readerNav(slug, 1); },
+                   function () { if (window.readerNav) window.readerNav(slug, -1); });
+  });
+})();
 `;
 
 // Blocking, pre-paint theme read — avoids a flash of the wrong theme on load.
@@ -1158,6 +1218,15 @@ function buildDocuments(lang) {
   </div>`;
   const js = `
   function openPdfPreview(url, name) {
+    // iOS/Android render a PDF inside an <iframe> at the document's own page
+    // size with no fit-to-width, so an A4 certificate arrives massively zoomed
+    // in and has to be pinched back out. Handing the file to the browser's own
+    // viewer instead gives a proper fit-to-screen, paging and pinch-zoom.
+    if (window.matchMedia('(max-width: 900px)').matches ||
+        !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      window.open(url, '_blank', 'noopener');
+      return;
+    }
     document.getElementById('pdfPreviewFrame').src = url;
     document.getElementById('pdfPreviewTitle').textContent = name;
     document.getElementById('pdfPreviewDl').href = url;
