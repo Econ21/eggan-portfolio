@@ -61,6 +61,7 @@ body {
   line-height: 1.55; -webkit-font-smoothing: antialiased;
   display: flex; flex-direction: column; min-height: 100vh;
   transition: background-color .2s ease, color .2s ease;
+  position: relative;
 }
 .page-main { flex: 1 0 auto; display: flex; flex-direction: column; }
 .page-main > section:last-of-type { flex: 1 0 auto; }
@@ -125,10 +126,19 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .hero-meta-val { font-size: 13.5px; font-weight: 700; color: #fff; line-height: 1.35; }
 
 /* Section header */
-.section { padding: 90px 0; }
+.section { padding: 90px 0; position: relative; }
 .section-dark { background: var(--black-surface); color: #fff; }
 .section-off { background: var(--off-white); }
 .section-white { background: var(--white); }
+/* Dark mode: subtle ambient glow + grain on light-surface sections, so toggled dark mode
+   reads as designed depth rather than flat near-black panels. */
+html[data-theme="dark"] .section-off,
+html[data-theme="dark"] .section-white {
+  background-image:
+    radial-gradient(70% 130% at 8% 0%, rgba(92,100,196,0.14) 0%, transparent 62%),
+    radial-gradient(60% 110% at 100% 100%, rgba(36,87,255,0.10) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
 .section-title { font-size: clamp(24px, 3vw, 36px); margin: 10px 0 0; text-wrap: balance; }
 .section-link { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; }
@@ -169,7 +179,11 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; font-size: 16px; }
 .car-prev { left: 12px; } .car-next { right: 12px; }
 .car-counter { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.55); padding: 4px 10px; border-radius: 999px; }
-.modal-desc { padding: 22px 26px 28px; font-size: 14px; color: #C8C8C4; }
+.modal-body { padding: 22px 26px 28px; }
+.modal-desc { font-size: 14px; color: #C8C8C4; margin: 0; }
+.modal-highlights { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.modal-highlights li { font-size: 13px; color: #B8B8B4; line-height: 1.55; padding-left: 18px; position: relative; }
+.modal-highlights li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 
 /* About / education */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -235,7 +249,7 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 @media (max-width: 820px) { .lead-grid { grid-template-columns: 1fr; } }
 .lead-card { background: var(--black-surface); padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 10px; }
 .lead-card.has-img { padding: 0; }
-.lead-img { aspect-ratio: 4/3; overflow: hidden; position: relative; background: var(--black-surface); transition: aspect-ratio .25s ease; }
+.lead-img { aspect-ratio: 4/3; overflow: hidden; position: relative; background: var(--black-surface); transition: aspect-ratio .25s ease; cursor: zoom-in; }
 .lead-img img { width: 100%; height: 100%; object-fit: contain; transition: transform .3s ease; }
 .lead-card:hover .lead-img:not(.lead-carousel) img { transform: scale(1.02); }
 .lead-ig-link { position: absolute; bottom: 10px; right: 10px; z-index: 2; display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; color: #fff; background: rgba(0,0,0,0.55); padding: 6px 11px; border-radius: 999px; text-decoration: none; transition: background .15s ease; }
@@ -253,7 +267,7 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .ministries-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
 @media (max-width: 860px) { .ministries-grid { grid-template-columns: 1fr; } }
 .ministry-card { border: 1px solid var(--border); border-radius: 3px; overflow: hidden; background: var(--white); }
-.ministry-photo { aspect-ratio: 4/3; overflow: hidden; background: var(--gray-light); }
+.ministry-photo { aspect-ratio: 4/3; overflow: hidden; background: var(--gray-light); cursor: zoom-in; }
 .ministry-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .ministry-body { padding: 24px 26px 28px; }
 .ministry-logos { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -409,12 +423,42 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 });
+
+var GL_IMGS = []; var GL_IDX = 0;
+function openGlobalLightbox(imgs, startIdx) {
+  GL_IMGS = imgs; GL_IDX = startIdx || 0;
+  glRender();
+  document.getElementById('globalLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGlobalLightbox() { document.getElementById('globalLightbox').classList.remove('open'); document.body.style.overflow = ''; }
+function glRender() {
+  document.getElementById('glImg').src = GL_IMGS[GL_IDX];
+  document.getElementById('glCounter').textContent = (GL_IDX + 1) + ' / ' + GL_IMGS.length;
+  document.getElementById('glCounter').style.display = GL_IMGS.length > 1 ? 'block' : 'none';
+  var prevBtn = document.getElementById('glPrevBtn'), nextBtn = document.getElementById('glNextBtn');
+  var show = GL_IMGS.length > 1 ? 'flex' : 'none';
+  if (prevBtn) prevBtn.style.display = show;
+  if (nextBtn) nextBtn.style.display = show;
+}
+function glNext() { GL_IDX = (GL_IDX + 1) % GL_IMGS.length; glRender(); }
+function glPrev() { GL_IDX = (GL_IDX - 1 + GL_IMGS.length) % GL_IMGS.length; glRender(); }
+document.addEventListener('keydown', function (e) {
+  var gl = document.getElementById('globalLightbox');
+  if (!gl || !gl.classList.contains('open')) return;
+  if (e.key === 'Escape') closeGlobalLightbox();
+  if (e.key === 'ArrowRight') glNext();
+  if (e.key === 'ArrowLeft') glPrev();
+});
 `;
 
 // Blocking, pre-paint theme read — avoids a flash of the wrong theme on load.
 const THEME_INIT_JS = `(function(){try{var t=localStorage.getItem('cap_portfolio_theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
+const SITE_URL = 'https://eggan.vercel.app';
+
 function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = '' }) {
+  const path = urlFor(activeKey, lang);
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -423,9 +467,21 @@ function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = ''
 <script>${THEME_INIT_JS}</script>
 <title>${title}</title>
 <meta name="description" content="${description}">
+<link rel="canonical" href="${SITE_URL}${path}">
+<link rel="icon" type="image/png" href="${assetUrl('favicon-32.png')}" sizes="32x32">
+<link rel="icon" type="image/png" href="${assetUrl('favicon-16.png')}" sizes="16x16">
+<link rel="apple-touch-icon" href="${assetUrl('apple-touch-icon.png')}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="${SITE_URL}${path}">
+<meta property="og:image" content="${SITE_URL}${assetUrl('og-image.jpg')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${description}">
+<meta name="twitter:image" content="${SITE_URL}${assetUrl('og-image.jpg')}">
 <style>${CSS}</style>
 </head>
 <body>
@@ -434,6 +490,13 @@ ${navbar(lang, activeKey)}
 ${bodyHtml}
 </main>
 ${footer(lang)}
+<div class="lightbox" id="globalLightbox">
+  <button class="lightbox-close" onclick="closeGlobalLightbox()">${t(UI.close, lang)} ✕</button>
+  <button class="lightbox-btn lightbox-prev" id="glPrevBtn" onclick="glPrev()">‹</button>
+  <img id="glImg" alt="" />
+  <button class="lightbox-btn lightbox-next" id="glNextBtn" onclick="glNext()">›</button>
+  <span class="lightbox-counter" id="glCounter">1 / 1</span>
+</div>
 <script>${SHARED_JS}${extraJs}</script>
 </body>
 </html>`;
@@ -462,7 +525,7 @@ function buildHome(lang) {
     ].join('');
     return `
     <div class="ministry-card reveal">
-      <div class="ministry-photo"><img src="${assetUrl('ministries/' + m.photo)}" alt="${t(m.ministryName, lang)}" loading="lazy" /></div>
+      <div class="ministry-photo" onclick="openGlobalLightbox([${JSON.stringify(assetUrl('ministries/' + m.photo))}], 0)"><img src="${assetUrl('ministries/' + m.photo)}" alt="${t(m.ministryName, lang)}" loading="lazy" /></div>
       <div class="ministry-body">
         <div class="ministry-logos">${logos}</div>
         <p class="ministry-name">${t(m.ministryName, lang)}</p>
@@ -482,6 +545,7 @@ function buildHome(lang) {
         <div class="hero-actions">
           <a class="btn btn-primary" href="${urlFor('work', lang)}">${t(UI.heroCtaWork, lang)} ↓</a>
           <a class="btn btn-outline" href="${urlFor('contact', lang)}">${t(UI.heroCtaContact, lang)} ↗</a>
+          <a class="btn btn-outline" href="${assetUrl('Eggan-Nachson-Silueta-CV.pdf')}" target="_blank" rel="noopener noreferrer">${t(UI.heroCtaCv, lang)} ↓</a>
         </div>
       </div>
       <div class="hero-photo"><img src="${assetUrl('profile-nobg.png')}" alt="Eggan Nachson Silueta" /></div>
@@ -669,7 +733,12 @@ function projectModals(lang) {
           ${slides}
           ${imgs.length > 1 ? `<button class="car-btn car-prev" onclick="prevSlide('${p.slug}')">‹</button><button class="car-btn car-next" onclick="nextSlide('${p.slug}')">›</button><span class="car-counter" id="counter-${p.slug}">1 / ${imgs.length}</span>` : ''}
         </div>
-        <p class="modal-desc">${t(p.desc, lang)}</p>
+        <div class="modal-body">
+          <p class="modal-desc">${t(p.desc, lang)}</p>
+          ${p.highlights ? `<ul class="modal-highlights">${(p.highlights[lang] || p.highlights.nl).map(h => `<li>${h}</li>`).join('')}</ul>` : ''}
+          <div class="tag-row" style="margin-top:16px">${p.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+          <a class="btn btn-primary" style="margin-top:20px" href="${p.url}" target="_blank" rel="noopener noreferrer">${t(UI.visitSite, lang)} ↗</a>
+        </div>
       </div>
     </div>`;
   }).join('') + `<script>var SLIDE_COUNTS = {${PROJECTS.map(p => {
@@ -742,12 +811,13 @@ function leadershipCardHtml(l, lang, idx) {
   const images = l.images || (l.img ? [l.img] : []);
   if (images.length > 1) {
     const id = 'lead-' + idx;
+    const urls = JSON.stringify(images.map(img => assetUrl('leadership/' + img))).replace(/"/g, '&quot;');
     const slides = images.map((img, i) => `<div class="lead-slide${i === 0 ? ' active' : ''}"><img src="${assetUrl('leadership/' + img)}" alt="${l.org}" loading="lazy" onload="leadSyncRatio(this)" /></div>`).join('');
     return `<div class="lead-card has-img reveal">
-      <div class="lead-img lead-carousel" id="${id}">
+      <div class="lead-img lead-carousel" id="${id}" onclick="openGlobalLightbox(JSON.parse(this.dataset.imgs), this.dataset.idx|0)" data-imgs="${urls}">
         ${slides}
-        <button type="button" class="lead-car-btn lead-car-prev" onclick="event.preventDefault();leadPrev('${id}',${images.length})">‹</button>
-        <button type="button" class="lead-car-btn lead-car-next" onclick="event.preventDefault();leadNext('${id}',${images.length})">›</button>
+        <button type="button" class="lead-car-btn lead-car-prev" onclick="event.preventDefault();event.stopPropagation();leadPrev('${id}',${images.length})">‹</button>
+        <button type="button" class="lead-car-btn lead-car-next" onclick="event.preventDefault();event.stopPropagation();leadNext('${id}',${images.length})">›</button>
         <span class="lead-car-counter" id="${id}-counter">1 / ${images.length}</span>
         ${igLink}
       </div>
@@ -755,8 +825,9 @@ function leadershipCardHtml(l, lang, idx) {
     </div>`;
   }
   if (images.length === 1) {
+    const urls = JSON.stringify([assetUrl('leadership/' + images[0])]).replace(/"/g, '&quot;');
     return `<div class="lead-card has-img reveal">
-      <div class="lead-img"><img src="${assetUrl('leadership/' + images[0])}" alt="${l.org}" loading="lazy" onload="leadSyncRatio(this)" />${igLink}</div>
+      <div class="lead-img" onclick="openGlobalLightbox(${urls}, 0)"><img src="${assetUrl('leadership/' + images[0])}" alt="${l.org}" loading="lazy" onload="leadSyncRatio(this)" />${igLink}</div>
       <div class="lead-card-body">${inner}</div>
     </div>`;
   }
