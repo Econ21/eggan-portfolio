@@ -270,6 +270,15 @@ html:not([data-theme="dark"]) .section-white {
 html:not([data-theme="dark"]) .timeline-dot { box-shadow: 0 0 8px rgba(168,132,67,0.25); }
 .timeline-logo { display: flex; align-items: center; justify-content: center; }
 .timeline-logo img { max-width: 40px; max-height: 40px; object-fit: contain; }
+/* Some institution logos (e.g. Lübeck's seal) are solid black on a transparent
+   background — invisible against the dark theme's near-black surface. A soft
+   light backing plate keeps every logo legible regardless of its own colors. */
+html[data-theme="dark"] .timeline-logo img,
+html[data-theme="light"] .timeline-logo img { transition: background-color .3s ease; }
+html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius: 50%; padding: 5px; box-sizing: border-box; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .timeline-logo img { background: #F0EAD9; border-radius: 50%; padding: 5px; box-sizing: border-box; }
+}
 .timeline-school { font-size: 16px; font-weight: 800; margin: 0; }
 .timeline-degree { font-size: 14px; color: var(--text-muted); margin: 3px 0 0; }
 .timeline-place { font-size: 12.5px; color: var(--text-muted); margin: 3px 0 0; }
