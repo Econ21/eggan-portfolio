@@ -77,9 +77,9 @@ const UI = {
 
   workPageEyebrow: { nl: 'SYSTEMEN DIE IK HEB GEBOUWD', en: 'SYSTEMS I\'VE BUILT', id: 'SISTEM YANG SUDAH SAYA BANGUN' },
   workPageNote: {
-    nl: 'Geen mockups — alles hieronder draait in productie. Klik op een kaart voor de volledige case study.',
-    en: 'No mockups — everything below runs in production. Click a card for the full case study.',
-    id: 'Bukan mockup — semua yang di bawah ini berjalan di produksi. Klik kartu untuk studi kasus lengkap.',
+    nl: 'Levende producten, geen demo\'s — echte gebruikers, echte infrastructuur, vandaag nog actief. Klik op een kaart om te zien hoe elk systeem werkt.',
+    en: 'Live products, not demos — real users, real infrastructure, running today. Click a card to see how each one works under the hood.',
+    id: 'Produk yang benar-benar hidup, bukan demo — pengguna nyata, infrastruktur nyata, berjalan hari ini juga. Klik kartu mana pun untuk lihat cara kerjanya.',
   },
   servicesTitle: { nl: 'DIENSTEN', en: 'SERVICES', id: 'LAYANAN' },
 
