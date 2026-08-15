@@ -48,7 +48,7 @@ const UI = {
   close:        { nl: 'SLUITEN', en: 'CLOSE', id: 'TUTUP' },
 
   eduPageEyebrow: { nl: 'OVER MIJ', en: 'ABOUT ME', id: 'TENTANG SAYA' },
-  eduPageTitle:   { nl: 'IK WERK TUSSEN TECHNOLOGIE EN MENSEN.', en: 'I WORK BETWEEN TECHNOLOGY AND PEOPLE.', id: 'SAYA BEKERJA DI ANTARA TEKNOLOGI DAN MANUSIA.' },
+  eduPageTitle:   { nl: 'IK WERK TUSSEN <span class="text-accent">TECHNOLOGIE</span> EN MENSEN.', en: 'I WORK BETWEEN <span class="text-accent">TECHNOLOGY</span> AND PEOPLE.', id: 'SAYA BEKERJA DI ANTARA <span class="text-accent">TEKNOLOGI</span> DAN MANUSIA.' },
   eduPageBody: {
     nl: 'Mijn werk bevindt zich op het snijvlak van technologie, strategie en gemeenschap. Ik bouw digitale producten en AI-gedreven systemen, en werk tegelijk aan onderwijs, publieke initiatieven en nationale gemeenschappen.',
     en: 'My work sits at the intersection of technology, strategy and community. I build digital products and AI-powered systems, while also working across education, public initiatives and national communities.',
