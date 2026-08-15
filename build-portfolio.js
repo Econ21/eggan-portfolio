@@ -119,6 +119,12 @@ img { max-width: 100%; display: block; }
 .navbar { position: sticky; top: 0; z-index: 100; background: var(--surface-strong); border-bottom: 1px solid transparent; transition: border-color .2s ease, background-image .4s ease, background-color .4s ease; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .navbar.scrolled { border-bottom-color: var(--surface-border); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-controls { display: flex; align-items: center; gap: 22px; }
+@media (max-width: 500px) {
+  .nav-controls { gap: 10px; }
+  .nav-brand { font-size: 12px; }
+  .lang-btn { padding: 6px 9px; }
+}
 .nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 14px; color: var(--surface-text); transition: color .3s ease; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--surface-text-muted); transition: color .15s ease; }
@@ -133,22 +139,23 @@ img { max-width: 100%; display: block; }
 .lang-menu a { display: block; padding: 10px 14px; font-size: 12.5px; color: var(--surface-text-soft); }
 .lang-menu a:hover { background: var(--surface-border); color: var(--surface-text); }
 .lang-menu a.active { color: var(--accent); font-weight: 700; }
-.theme-btn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--surface-border); background: none; color: var(--surface-text); cursor: pointer; font-size: 13px; position: relative; transition: border-color .2s ease; }
+.theme-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--surface-border); background: none; color: var(--surface-text); cursor: pointer; font-size: 13px; position: relative; transition: border-color .2s ease; }
 .theme-btn:hover { border-color: var(--accent); }
 .theme-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transition: opacity .15s ease, transform .15s ease; }
 .theme-icon-moon { opacity: 0; transform: scale(0.6); }
 html[data-theme="dark"] .theme-icon-sun { opacity: 0; transform: scale(0.6); }
 html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
-.nav-burger { display: none; background: none; border: none; color: var(--surface-text); font-size: 22px; cursor: pointer; }
+.nav-burger { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: none; border: none; color: var(--surface-text); font-size: 22px; cursor: pointer; }
 @media (max-width: 860px) {
   .nav-links { position: fixed; inset: 68px 0 0 0; background: var(--surface-strong); flex-direction: column; align-items: flex-start; padding: 28px 22px; gap: 22px; display: none; }
   .nav-links.open { display: flex; }
-  .nav-burger { display: block; }
+  .nav-burger { display: flex; }
 }
 
 /* Hero */
 .hero { background: var(--surface-strong); color: var(--surface-text); padding: 64px 0 0; transition: background-image .4s ease; }
 .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; min-height: 76vh; }
+.hero-grid > div { min-width: 0; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; min-height: auto; } }
 .hero-eyebrow { color: var(--accent); margin-bottom: 22px; }
 .hero-headline { font-size: clamp(32px, 4.6vw, 58px); line-height: 1.05; margin: 0 0 22px; text-wrap: balance; color: var(--surface-text); }
@@ -163,7 +170,7 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 .hero-photo { aspect-ratio: 1/1.08; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; position: relative; }
 .hero-photo img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35)); }
 .hero-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; border-top: 1px solid var(--surface-border); padding: 26px 0 40px; }
-@media (max-width: 720px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 860px) { .hero-meta { grid-template-columns: repeat(2,1fr); } }
 .hero-meta-label { color: var(--surface-text-muted); margin-bottom: 6px; }
 .hero-meta-val { font-size: 13.5px; font-weight: 700; color: var(--surface-text); line-height: 1.35; }
 
@@ -482,7 +489,7 @@ function navbar(lang, activeKey) {
   <nav class="navbar" id="navbar">
     <div class="wrap nav-inner">
       <a class="nav-brand" href="${urlFor('home', lang)}">EGGAN&nbsp;NACHSON&nbsp;SILUETA</a>
-      <div style="display:flex;align-items:center;gap:22px">
+      <div class="nav-controls">
         <div class="nav-links" id="navLinks">${links}</div>
         <div class="lang-switch" id="langSwitch">
           <button class="lang-btn" id="langBtn">${langLabels[lang]} ▾</button>
