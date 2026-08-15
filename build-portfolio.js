@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
+const { LANGS, UI, EDUCATION, EXPERIENCE, COURSES, ACHIEVEMENTS, SKILLS, PROJECTS, MINISTRIES, SHOWCASE, LEADERSHIP, GALLERY, RESEARCH, CONTACT } = require('./data.js');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
@@ -19,6 +19,7 @@ const PATHS = {
   home: { file: 'index.html', slug: '' },
   education: { file: 'education.html', slug: 'education' },
   work: { file: 'work.html', slug: 'work' },
+  showcase: { file: 'creative-work.html', slug: 'creative-work' },
   research: { file: 'research.html', slug: 'research' },
   leadership: { file: 'leadership.html', slug: 'leadership' },
   contact: { file: 'contact.html', slug: 'contact' },
@@ -381,6 +382,28 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gallery-thumb.active { opacity: 1; border-color: var(--accent); }
 @media (max-width: 640px) { .gallery-thumb { flex-basis: 68px; } }
+
+/* Showcase (creative work grid) */
+.showcase-teaser { padding-top: 64px; padding-bottom: 64px; }
+.showcase-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 820px) { .showcase-teaser-grid { grid-template-columns: 1fr; gap: 32px; } }
+.showcase-teaser-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.showcase-teaser-thumb { aspect-ratio: 1/1; overflow: hidden; border-radius: 3px; border: 1px solid var(--surface-border); }
+.showcase-teaser-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.showcase-teaser-thumb:hover img { transform: scale(1.06); }
+.showcase-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.showcase-filter-btn { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); background: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-family: inherit; transition: all .2s ease; }
+.showcase-filter-btn:hover { color: var(--ink); border-color: var(--accent); }
+.showcase-filter-btn.active { color: var(--accent-contrast); background: var(--accent); border-color: var(--accent); }
+.showcase-grid { columns: 2; column-gap: 14px; }
+@media (min-width: 640px) { .showcase-grid { columns: 3; } }
+@media (min-width: 1024px) { .showcase-grid { columns: 4; } }
+.showcase-card { position: relative; display: block; width: 100%; margin: 0 0 14px; break-inside: avoid; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); cursor: zoom-in; background: var(--gray-light); }
+.showcase-card img, .showcase-card video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.showcase-card:hover img, .showcase-card:hover video { transform: scale(1.035); }
+.showcase-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%); opacity: .7; transition: opacity .25s ease; pointer-events: none; }
+.showcase-card:hover::after { opacity: .9; }
+.showcase-badge { position: absolute; left: 10px; bottom: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); padding: 4px 9px; border-radius: 999px; z-index: 1; }
 .lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 90vw; max-height: 80vh; object-fit: contain; }
@@ -512,9 +535,22 @@ function openGlobalLightbox(imgs, startIdx) {
   document.getElementById('globalLightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeGlobalLightbox() { document.getElementById('globalLightbox').classList.remove('open'); document.body.style.overflow = ''; }
+function closeGlobalLightbox() {
+  document.getElementById('globalLightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  var v = document.getElementById('glVideo'); if (v) v.pause();
+}
 function glRender() {
-  document.getElementById('glImg').src = GL_IMGS[GL_IDX];
+  var url = GL_IMGS[GL_IDX];
+  var isVideo = /\\.(mp4|webm|mov)(\\?|$)/i.test(url);
+  var img = document.getElementById('glImg'), vid = document.getElementById('glVideo');
+  if (isVideo) {
+    img.style.display = 'none'; vid.style.display = 'block';
+    vid.src = url; vid.currentTime = 0; vid.play().catch(function () {});
+  } else {
+    vid.pause(); vid.style.display = 'none'; img.style.display = 'block';
+    img.src = url;
+  }
   document.getElementById('glCounter').textContent = (GL_IDX + 1) + ' / ' + GL_IMGS.length;
   document.getElementById('glCounter').style.display = GL_IMGS.length > 1 ? 'block' : 'none';
   var prevBtn = document.getElementById('glPrevBtn'), nextBtn = document.getElementById('glNextBtn');
@@ -575,6 +611,7 @@ ${footer(lang)}
   <button class="lightbox-close" onclick="closeGlobalLightbox()">${t(UI.close, lang)} ✕</button>
   <button class="lightbox-btn lightbox-prev" id="glPrevBtn" onclick="glPrev()">‹</button>
   <img id="glImg" alt="" />
+  <video id="glVideo" controls playsinline style="display:none;max-width:90vw;max-height:80vh"></video>
   <button class="lightbox-btn lightbox-next" id="glNextBtn" onclick="glNext()">›</button>
   <span class="lightbox-counter" id="glCounter">1 / 1</span>
 </div>
@@ -866,6 +903,19 @@ function buildWork(lang) {
       <div class="projects-grid" style="margin-top:34px">${PROJECTS.map(p => projectCardHtml(p, lang)).join('')}</div>
     </div>
   </section>
+  <section class="section section-dark showcase-teaser">
+    <div class="wrap showcase-teaser-grid">
+      <div>
+        <p class="label" style="color:var(--accent)">${t(UI.showcaseTeaserLabel, lang)}</p>
+        <h2 class="font-display section-title" style="margin-top:10px">${t(UI.showcaseTeaserTitle, lang)}</h2>
+        <p class="section-note" style="color:var(--surface-text-soft)">${t(UI.showcaseTeaserNote, lang)}</p>
+        <a class="btn btn-primary" style="margin-top:24px" href="${urlFor('showcase', lang)}">${t(UI.showcaseTeaserCta, lang)} →</a>
+      </div>
+      <div class="showcase-teaser-strip">${SHOWCASE.filter(s => s.type === 'image').slice(0, 6).map(s => `
+        <div class="showcase-teaser-thumb"><img src="${s.poster}" alt="" loading="lazy" /></div>
+      `).join('')}</div>
+    </div>
+  </section>
   <section class="section section-white">
     <div class="wrap">
       <p class="label label-blue">${t(UI.skillsTitle, lang)}</p>
@@ -878,6 +928,55 @@ function buildWork(lang) {
   </section>
   ${projectModals(lang)}`;
   return pageShell({ lang, activeKey: 'work', title, description: title, bodyHtml: body, extraJs: PROJECT_MODAL_JS });
+}
+
+function ratioToCss(r) { return (r || '1:1').replace(':', '/'); }
+
+function showcaseCardHtml(item, idx) {
+  const isVideo = item.type === 'video';
+  const badgeKey = isVideo ? 'showcaseBadgeVideo' : 'showcaseBadgeImage';
+  return `
+  <div class="showcase-card" data-type="${item.type}" style="aspect-ratio:${ratioToCss(item.ratio)}"
+    onmouseenter="${isVideo ? `this.querySelector('video').play().catch(()=>{})` : ''}"
+    onmouseleave="${isVideo ? `var v=this.querySelector('video');v.pause();v.currentTime=0` : ''}"
+    onclick="openGlobalLightbox(SC_URLS, ${idx})">
+    ${isVideo
+      ? `<video src="${item.file}" poster="${item.poster}" muted loop playsinline preload="metadata"></video>`
+      : `<img src="${item.poster}" alt="CAP creation" loading="lazy" />`}
+    <span class="showcase-badge">SC_BADGE_${badgeKey}</span>
+  </div>`;
+}
+
+function buildShowcase(lang) {
+  const title = `Eggan Nachson Silueta — ${t(UI.showcasePageTitle, lang)}`;
+  const cards = SHOWCASE.map((item, i) => showcaseCardHtml(item, i))
+    .join('')
+    .replace(/SC_BADGE_showcaseBadgeVideo/g, t(UI.showcaseBadgeVideo, lang))
+    .replace(/SC_BADGE_showcaseBadgeImage/g, t(UI.showcaseBadgeImage, lang));
+  const body = `
+  <section class="section section-off">
+    <div class="wrap">
+      <p class="label label-blue">${t(UI.showcasePageEyebrow, lang)}</p>
+      <h1 class="font-display section-title">${t(UI.showcasePageTitle, lang)}</h1>
+      <p class="section-note">${t(UI.showcasePageNote, lang)}</p>
+      <div class="showcase-filters">
+        <button type="button" class="showcase-filter-btn active" data-filter="all" onclick="scFilter('all',this)">${t(UI.showcaseFilterAll, lang)}</button>
+        <button type="button" class="showcase-filter-btn" data-filter="video" onclick="scFilter('video',this)">${t(UI.showcaseFilterVideo, lang)}</button>
+        <button type="button" class="showcase-filter-btn" data-filter="image" onclick="scFilter('image',this)">${t(UI.showcaseFilterImage, lang)}</button>
+      </div>
+      <div class="showcase-grid" id="showcaseGrid" style="margin-top:26px">${cards}</div>
+    </div>
+  </section>`;
+  const js = `
+  var SC_URLS = ${JSON.stringify(SHOWCASE.map(s => s.type === 'video' ? s.file : (s.poster || s.file)))};
+  function scFilter(type, btn) {
+    document.querySelectorAll('.showcase-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.showcase-card').forEach(function (c) {
+      c.style.display = (type === 'all' || c.dataset.type === type) ? '' : 'none';
+    });
+  }`;
+  return pageShell({ lang, activeKey: 'work', title, description: title, bodyHtml: body, extraJs: js });
 }
 
 function leadershipCardHtml(l, lang, idx) {
@@ -1140,6 +1239,7 @@ for (const lang of LANGS) {
   writeFile(lang, 'home', buildHome(lang));
   writeFile(lang, 'education', buildEducation(lang));
   writeFile(lang, 'work', buildWork(lang));
+  writeFile(lang, 'showcase', buildShowcase(lang));
   writeFile(lang, 'leadership', buildLeadership(lang));
   writeFile(lang, 'research', buildResearch(lang));
   writeFile(lang, 'contact', buildContact(lang));
