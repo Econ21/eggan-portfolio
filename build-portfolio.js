@@ -422,7 +422,7 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 /* Gallery — big single-photo slideshow (matches the project-modal carousel
    language) with a thumbnail strip underneath so every photo is visible at
    a glance, not just reachable by clicking into a lightbox. */
-.gallery-main { position: relative; aspect-ratio: 16/9.5; background: #000; border-radius: 2px; overflow: hidden; transition: aspect-ratio .25s ease; }
+.gallery-main { position: relative; aspect-ratio: 16/9.5; background: #000; border-radius: 2px; overflow: hidden; transition: aspect-ratio .25s ease; touch-action: pan-y; }
 .gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .3s ease; }
 .gallery-slide.active { opacity: 1; }
 .gallery-slide img { width: 100%; height: 100%; object-fit: contain; object-position: center; cursor: zoom-in; }
@@ -468,6 +468,8 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .document-actions { display: flex; align-items: center; gap: 14px; }
 .document-size { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .document-dl { padding: 8px 16px; font-size: 11.5px; }
+@keyframes capFade { from { opacity: 0 } to { opacity: 1 } }
+.lb-slide, .reader-page, #glImg, #glVideo { animation: capFade .22s ease; }
 .lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; touch-action: pan-y; }
 /* the video's own scrubber needs horizontal drags back */
 #glVideo { touch-action: auto; }
@@ -509,7 +511,9 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 /* Motion — restrained scroll-reveal, respects prefers-reduced-motion */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; }
+  .lb-slide, .reader-page, #glImg, #glVideo { animation: none; }
+  .carousel .slide, .gallery-slide, .lead-carousel .lead-slide { transition: none; } }
 
 /* Footer */
 .footer { background: var(--surface-strong); color: var(--surface-text-muted); padding: 26px 0; border-top: 1px solid var(--surface-border); }
@@ -623,6 +627,8 @@ function glRender() {
     vid.pause(); vid.style.display = 'none'; img.style.display = 'block';
     img.src = url;
   }
+  var shown = isVideo ? vid : img;
+  shown.style.animation = 'none'; void shown.offsetHeight; shown.style.animation = '';
   document.getElementById('glCounter').textContent = (GL_IDX + 1) + ' / ' + GL_IMGS.length;
   document.getElementById('glCounter').style.display = GL_IMGS.length > 1 ? 'block' : 'none';
   var prevBtn = document.getElementById('glPrevBtn'), nextBtn = document.getElementById('glNextBtn');
@@ -695,6 +701,15 @@ function attachSwipe(el, onNext, onPrev) {
     attachSwipe(o, function () { if (window.readerNav) window.readerNav(slug, 1); },
                    function () { if (window.readerNav) window.readerNav(slug, -1); });
   });
+
+  // Leadership page: the "moments from the field" gallery and its own lightbox
+  // (separate from the global one) both have arrows, so both need the gesture.
+  var galMain = document.getElementById('galleryMain');
+  if (galMain) attachSwipe(galMain, function () { if (window.galNav) window.galNav(1); },
+                                    function () { if (window.galNav) window.galNav(-1); });
+  var lb = document.getElementById('lightbox');
+  if (lb) attachSwipe(lb, function () { if (window.lbNav) window.lbNav(1); },
+                          function () { if (window.lbNav) window.lbNav(-1); });
 })();
 `;
 
