@@ -723,6 +723,33 @@ function attachSwipe(el, onNext, onPrev) {
 // Blocking, pre-paint theme read — avoids a flash of the wrong theme on load.
 const THEME_INIT_JS = `(function(){try{var t=localStorage.getItem('cap_portfolio_theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
+// Remembers the visitor's language across visits. Runs blocking, before paint,
+// same as THEME_INIT_JS above — a client-side redirect after paint would flash
+// the wrong language first.
+//
+// Guarded by sessionStorage (not just comparing to the stored pref) so it can
+// only ever fire once per tab: without that guard, switching language via the
+// nav's own links would immediately be un-done by this same script re-reading
+// the OLD stored value on the very next page load, before the click that
+// changes it has had a chance to persist. Also skips '/en/' <-> '/id/' text-only
+// path segments like "english-page" by requiring the lang code to be a whole
+// path segment, not just a prefix match.
+function langInitJs(lang) {
+  return `(function(){try{
+  var CUR='${lang}';
+  if(!sessionStorage.getItem('cap_lang_checked')){
+    sessionStorage.setItem('cap_lang_checked','1');
+    var pref=localStorage.getItem('cap_portfolio_lang');
+    if(pref&&pref!==CUR&&(pref==='nl'||pref==='en'||pref==='id')){
+      var p=location.pathname.replace(/^\\/(en|id)(?=\\/|$)/,'')||'/';
+      var dest=(pref==='nl'?p:'/'+pref+p).replace(/\\/{2,}/g,'/').replace(/(.)\\/$/,'$1')||'/';
+      if(dest!==location.pathname){ location.replace(dest+location.search+location.hash); return; }
+    }
+  }
+  localStorage.setItem('cap_portfolio_lang',CUR);
+  }catch(e){}})();`;
+}
+
 const SITE_URL = 'https://eggan.vercel.app';
 
 function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = '' }) {
@@ -732,7 +759,7 @@ function pageShell({ lang, activeKey, title, description, bodyHtml, extraJs = ''
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>${THEME_INIT_JS}</script>
+<script>${THEME_INIT_JS}${langInitJs(lang)}</script>
 <title>${title}</title>
 <meta name="description" content="${description}">
 <link rel="canonical" href="${SITE_URL}${path}">
