@@ -12,12 +12,12 @@ const UI = {
   navLeadership:{ nl: 'Leiderschap',    en: 'Leadership',      id: 'Kepemimpinan' },
   navContact:   { nl: 'Contact',        en: 'Contact',         id: 'Kontak' },
 
-  heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · AI & STRATEGIE', en: 'INDONESIA → NETHERLANDS · AI & STRATEGY', id: 'INDONESIA → BELANDA · AI & STRATEGI' },
+  heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · PRODUCT · CREATIEF · FINANCE', en: 'INDONESIA → NETHERLANDS · PRODUCT · CREATIVE · FINANCE', id: 'INDONESIA → BELANDA · PRODUK · KREATIF · FINANCE' },
   heroHeadline: { nl: 'HALLO, IK BEN EGGAN&nbsp;NACHSON&nbsp;SILUETA.', en: "HELLO, I'M EGGAN&nbsp;NACHSON&nbsp;SILUETA.", id: 'HALO, SAYA EGGAN&nbsp;NACHSON&nbsp;SILUETA.' },
   heroSub: {
-    nl: 'Ik kom uit Indonesië en volg momenteel mijn derde masteropleiding in Nederland. Ik behaalde een master Strategic Intelligence aan de Universiteit van Indonesië, een master Artificial Intelligence aan de Universität zu Lübeck, en rond nu een master Data-Driven Business af aan The Hague University of Applied Sciences. Ik heb AI-producten en -programma\'s mee opgebouwd voor Indonesië\'s Ministerie van Creatieve Economie en Ministerie van Onderzoek & Hoger Onderwijs / LPDP, en leid vandaag AI-productstrategie bij MatchupSkills.',
-    en: "I'm from Indonesia and currently pursuing my third master's degree in the Netherlands. I hold a master's in Strategic Intelligence from Universitas Indonesia, a master's in Artificial Intelligence from the University of Lübeck, and I'm now completing a master's in Data-Driven Business at The Hague University of Applied Sciences. I've helped build AI products and programs for Indonesia's Ministry of Creative Economy and Ministry of Research & Higher Education / LPDP, and I currently lead AI product strategy at MatchupSkills.",
-    id: 'Saya berasal dari Indonesia dan sedang menempuh gelar master ketiga saya di Belanda. Saya meraih gelar master Strategic Intelligence dari Universitas Indonesia, master Artificial Intelligence dari Universität zu Lübeck, dan saat ini menyelesaikan master Data-Driven Business di The Hague University of Applied Sciences. Saya turut membangun produk dan program AI untuk Kementerian Ekonomi Kreatif Indonesia dan Kementerian Riset & Pendidikan Tinggi / LPDP, dan kini memimpin strategi produk AI di MatchupSkills.',
+    nl: 'Ik kom uit Indonesië en volg momenteel mijn derde masteropleiding in Nederland — ik werk op het snijvlak van product, creatieve productie en finance, niet op één enkel spoor. Ik begon in de bankwereld als Relationship Manager bij Bank BRI, werkte me via business development en EdTech omhoog, en leid nu AI-productstrategie bij MatchupSkills, terwijl ik operations en creative aanstuur bij Creative AI Partner, een AI-contentproductiestudio, en meebouw aan AI-programma\'s voor Indonesië\'s Ministerie van Creatieve Economie en Ministerie van Onderzoek & Hoger Onderwijs. Ik heb masterdiploma\'s in Strategic Intelligence (Universitas Indonesia) en Artificial Intelligence (Universität zu Lübeck), en rond momenteel een master Data-Driven Business af aan The Hague University of Applied Sciences.',
+    en: "I'm from Indonesia and currently pursuing my third master's degree in the Netherlands — working across product, creative production, and finance rather than a single track. I started in banking as a Relationship Manager at Bank BRI, moved through business development and EdTech, and now lead AI product strategy at MatchupSkills while heading operations and creative at Creative AI Partner, an AI content-production studio, and building AI programs with Indonesia's Ministry of Creative Economy and Ministry of Research & Higher Education. I hold master's degrees in Strategic Intelligence (Universitas Indonesia) and Artificial Intelligence (University of Lübeck), and I'm completing one in Data-Driven Business at The Hague University of Applied Sciences.",
+    id: 'Saya berasal dari Indonesia dan sedang menempuh gelar master ketiga saya di Belanda — bekerja lintas product, creative production, dan finance, bukan di satu jalur saja. Saya memulai karier di perbankan sebagai Relationship Manager di Bank BRI, lalu melalui business development dan EdTech, dan kini memimpin strategi produk AI di MatchupSkills sambil memimpin operasional dan kreatif di Creative AI Partner, studio produksi konten AI, serta turut membangun program AI bersama Kementerian Ekonomi Kreatif dan Kementerian Riset & Pendidikan Tinggi Indonesia. Saya meraih gelar master Strategic Intelligence dari Universitas Indonesia dan Artificial Intelligence dari Universität zu Lübeck, dan saat ini menyelesaikan master Data-Driven Business di The Hague University of Applied Sciences.',
   },
   heroCtaWork:    { nl: 'BEKIJK MIJN WERK', en: 'EXPLORE MY WORK', id: 'LIHAT KARYA SAYA' },
   heroCtaContact: { nl: 'NEEM CONTACT OP', en: "LET'S CONNECT", id: 'HUBUNGI SAYA' },
@@ -38,7 +38,7 @@ const UI = {
   metaCommunityVal: { nl: '20K+ netwerk in Indonesië', en: '20K+ Network Across Indonesia', id: '20K+ Jaringan di Indonesia' },
 
   homeSectionWork:       { nl: 'GESELECTEERD WERK', en: 'SELECTED WORK', id: 'KARYA PILIHAN' },
-  homeSectionLeadership: { nl: 'VOORBIJ DE CODE', en: 'BEYOND THE CODE', id: 'LEBIH DARI SEKADAR KODE' },
+  homeSectionLeadership: { nl: 'WAAR IK LEID', en: 'WHERE I LEAD', id: 'TEMPAT SAYA MEMIMPIN' },
   ministriesEyebrow: { nl: 'NATIONALE IMPACT', en: 'NATIONAL IMPACT', id: 'DAMPAK NASIONAL' },
   ministriesTitle: { nl: 'Ik heb Indonesische ministeries geholpen AI-producten te bouwen', en: "I've helped Indonesian ministries build AI products", id: 'Saya membantu kementerian Indonesia membangun produk AI' },
   ministriesNote: { nl: 'Via de gemeenschappen die ik leid, heb ik meegewerkt aan AI-producten en -programma\'s voor twee Indonesische ministeries.', en: "Through the communities I lead, I've contributed AI products and programs for two Indonesian ministries.", id: 'Lewat komunitas yang saya pimpin, saya turut membangun produk dan program AI untuk dua kementerian Indonesia.' },
@@ -54,7 +54,7 @@ const UI = {
   close:        { nl: 'SLUITEN', en: 'CLOSE', id: 'TUTUP' },
 
   eduPageEyebrow: { nl: 'OVER MIJ', en: 'ABOUT ME', id: 'TENTANG SAYA' },
-  eduPageTitle:   { nl: 'IK WERK TUSSEN <span class="text-accent">TECHNOLOGIE</span> EN MENSEN.', en: 'I WORK BETWEEN <span class="text-accent">TECHNOLOGY</span> AND PEOPLE.', id: 'SAYA BEKERJA DI ANTARA <span class="text-accent">TEKNOLOGI</span> DAN MANUSIA.' },
+  eduPageTitle:   { nl: 'IK WERK IN <span class="text-accent">PRODUCT</span>, <span class="text-accent">CREATIEF</span> & <span class="text-accent">FINANCE</span>.', en: 'I WORK ACROSS <span class="text-accent">PRODUCT</span>, <span class="text-accent">CREATIVE</span> & <span class="text-accent">FINANCE</span>.', id: 'SAYA BEKERJA DI <span class="text-accent">PRODUCT</span>, <span class="text-accent">KREATIF</span> & <span class="text-accent">FINANCE</span>.' },
   eduPageBody: {
     nl: 'Mijn werk bevindt zich op het snijvlak van technologie, strategie en gemeenschap. Ik bouw digitale producten en AI-gedreven systemen, en werk tegelijk aan onderwijs, publieke initiatieven en nationale gemeenschappen.',
     en: 'My work sits at the intersection of technology, strategy and community. I build digital products and AI-powered systems, while also working across education, public initiatives and national communities.',
@@ -72,8 +72,9 @@ const UI = {
   skillsTitle:  { nl: 'VAARDIGHEDEN & EXPERTISE', en: 'SKILLS & EXPERTISE', id: 'KEAHLIAN & KEPAKARAN' },
   skillBuild:   { nl: 'BOUWEN', en: 'BUILD', id: 'BUILD' },
   skillAi:      { nl: 'AI', en: 'AI', id: 'AI' },
+  skillCreative:{ nl: 'CREATIEF', en: 'CREATIVE', id: 'KREATIF' },
   skillData:    { nl: 'DATA', en: 'DATA', id: 'DATA' },
-  skillStrategy:{ nl: 'STRATEGIE', en: 'STRATEGY', id: 'STRATEGI' },
+  skillBusiness:{ nl: 'BUSINESS', en: 'BUSINESS', id: 'BISNIS' },
 
   workPageEyebrow: { nl: 'SYSTEMEN DIE IK HEB GEBOUWD', en: 'SYSTEMS I\'VE BUILT', id: 'SISTEM YANG SUDAH SAYA BANGUN' },
   workPageNote: {
@@ -109,7 +110,7 @@ const UI = {
   openReader:  { nl: 'Paper openen', en: 'Open paper', id: 'Buka paper' },
   pageOf:      { nl: 'pagina', en: 'page', id: 'halaman' },
 
-  leadershipPageEyebrow: { nl: 'VOORBIJ DE CODE', en: 'BEYOND THE CODE', id: 'LEBIH DARI SEKADAR KODE' },
+  leadershipPageEyebrow: { nl: 'WAAR IK LEID', en: 'WHERE I LEAD', id: 'TEMPAT SAYA MEMIMPIN' },
   leadershipPageTitle:   { nl: 'LEIDERSCHAP & GEMEENSCHAP', en: 'LEADERSHIP & COMMUNITY', id: 'KEPEMIMPINAN & KOMUNITAS' },
   galleryTitle: { nl: 'MOMENTEN UIT HET VELD', en: 'MOMENTS FROM THE FIELD', id: 'MOMEN DARI LAPANGAN' },
   galleryNote: {
@@ -129,7 +130,7 @@ const UI = {
   contactPhone:    { nl: 'TELEFOON / WHATSAPP', en: 'PHONE / WHATSAPP', id: 'TELEPON / WHATSAPP' },
   contactCta:      { nl: 'NEEM CONTACT OP', en: 'GET IN TOUCH', id: 'HUBUNGI SAYA' },
 
-  footerTagline: { nl: 'Technologie · Strategie · Leiderschap', en: 'Technology · Strategy · Leadership', id: 'Teknologi · Strategi · Kepemimpinan' },
+  footerTagline: { nl: 'Product · Creatief · Finance', en: 'Product · Creative · Finance', id: 'Produk · Kreatif · Finance' },
   footerRights:  { nl: 'Alle rechten voorbehouden.', en: 'All rights reserved.', id: 'Hak cipta dilindungi.' },
 };
 
@@ -298,8 +299,9 @@ const ACHIEVEMENTS = [
 const SKILLS = {
   build:    ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'APIs', 'System Design'],
   ai:       ['LLM Integration', 'AI Agents', 'Automation', 'Prompt Engineering', 'AI Product Architecture'],
+  creative: ['Brand & Campaign Direction', 'AI Video/Image Production', 'Visual Storytelling', 'Content Systems'],
   data:     ['Data Analytics', 'Business Intelligence', 'Data Visualization', 'Data-driven Decision Making'],
-  strategy: ['Product Strategy', 'Project Management', 'Partnerships', 'Community Development', 'Public Speaking'],
+  business: ['Financial Services & MSME Lending', 'Product Strategy', 'Project Management', 'Partnerships', 'Community Development', 'Public Speaking'],
 };
 
 // ── Selected work (case studies) ────────────────────────────────────────────

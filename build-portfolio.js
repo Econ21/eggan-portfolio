@@ -368,8 +368,9 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .achievement-desc { font-size: 12.5px; color: var(--ink-soft); margin: 5px 0 0; line-height: 1.55; text-align: justify; }
 
 /* Skills */
-.skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 32px; }
-@media (max-width: 800px) { .skills-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+.skills-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 32px; }
+@media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 560px) { .skills-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
 .skill-col-label { color: var(--accent); margin-bottom: 14px; display: block; }
 .skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .skill-list li { font-size: 14px; color: var(--ink-soft); }
@@ -800,8 +801,8 @@ ${footer(lang)}
 
 // ── Page builders ────────────────────────────────────────────────────────────
 function buildHome(lang) {
-  const title = 'Eggan Nachson Silueta — Technology, Strategy & Leadership';
-  const desc = 'Eggan Nachson Silueta is a technology consultant, product builder and community leader working across digital products, AI, data and public impact.';
+  const title = 'Eggan Nachson Silueta — Product, Creative & Finance';
+  const desc = 'Eggan Nachson Silueta is a product manager, creative producer and former banker working across AI/data products, brand and video production, financial services and community leadership.';
   const meta = [
     [t(UI.metaBasedIn, lang), t(UI.metaBasedInVal, lang)],
     [t(UI.metaEducation, lang), t(UI.metaEducationVal, lang)],
@@ -939,8 +940,9 @@ function skillsHtml(lang) {
   const cols = [
     [UI.skillBuild, SKILLS.build],
     [UI.skillAi, SKILLS.ai],
+    [UI.skillCreative, SKILLS.creative],
     [UI.skillData, SKILLS.data],
-    [UI.skillStrategy, SKILLS.strategy],
+    [UI.skillBusiness, SKILLS.business],
   ];
   return cols.map(([label, items]) => `
     <div>
@@ -1080,7 +1082,7 @@ function buildWork(lang) {
     { name: { nl: 'Digitale Productontwikkeling', en: 'Digital Product Development', id: 'Pengembangan Produk Digital' }, desc: { nl: 'Van idee tot productieklare webapplicatie.', en: 'From idea to production-ready web application.', id: 'Dari ide hingga aplikasi web siap produksi.' } },
     { name: { nl: 'AI-integratie', en: 'AI Integration', id: 'Integrasi AI' }, desc: { nl: 'AI-gedreven automatisering en intelligente ervaringen.', en: 'AI-driven automation and intelligent experiences.', id: 'Otomasi berbasis AI dan pengalaman cerdas.' } },
     { name: { nl: 'Business & data-systemen', en: 'Business & Data Systems', id: 'Sistem Bisnis & Data' }, desc: { nl: 'Dashboards en systemen voor betere besluitvorming.', en: 'Dashboards and systems for better decision-making.', id: 'Dashboard dan sistem untuk pengambilan keputusan lebih baik.' } },
-    { name: { nl: 'Beveiliging & technische audit', en: 'Security & Technical Audit', id: 'Audit Keamanan & Teknis' }, desc: { nl: 'Zorg dat je systemen veilig en betrouwbaar zijn.', en: 'Ensure your systems are secure, reliable and scalable.', id: 'Pastikan sistem Anda aman, andal, dan skalabel.' } },
+    { name: { nl: 'Creatieve & merkproductie', en: 'Creative & Brand Production', id: 'Produksi Kreatif & Brand' }, desc: { nl: 'Posters, campagnevisuals en video — van concept tot eindresultaat.', en: 'Posters, campaign visuals, and video — concept to final output.', id: 'Poster, visual kampanye, dan video — dari konsep sampai hasil akhir.' } },
   ];
   const body = `
   <section class="section section-off">
