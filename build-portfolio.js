@@ -201,7 +201,7 @@ html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
 @media (max-width: 900px) { .hero-headline { font-size: clamp(17px, 5.7vw, 52px); } }
 .hero-sub { font-size: 16px; color: var(--surface-text-soft); max-width: 46ch; margin: 0 0 32px; text-align: justify; }
 .text-accent { background: linear-gradient(110deg, var(--accent-dark), var(--accent-light), var(--accent-dark)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 26px; border-radius: 3px; border: none; cursor: pointer; transition: all .18s ease; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 26px; border-radius: 3px; border: none; background: none; cursor: pointer; transition: all .18s ease; }
 .btn-primary { background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 45%, var(--accent-light) 70%, var(--accent-dark) 100%); color: var(--accent-contrast); }
 .btn-primary:hover { filter: brightness(1.08); box-shadow: 0 8px 24px rgba(212,175,55,0.18); }
 .btn-outline { border: 1px solid var(--surface-border); color: var(--surface-text); }
