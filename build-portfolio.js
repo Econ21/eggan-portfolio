@@ -801,8 +801,8 @@ ${footer(lang)}
 
 // ── Page builders ────────────────────────────────────────────────────────────
 function buildHome(lang) {
-  const title = 'Eggan Nachson Silueta — Product, Creative & Finance';
-  const desc = 'Eggan Nachson Silueta is a product manager, creative producer and former banker working across AI/data products, brand and video production, financial services and community leadership.';
+  const title = 'Eggan Nachson Silueta — AI Product, Creative & Relationship Management';
+  const desc = 'Eggan Nachson Silueta is an AI product lead, creative producer and relationship manager working across AI/data products, brand and video production, and client relationship management.';
   const meta = [
     [t(UI.metaBasedIn, lang), t(UI.metaBasedInVal, lang)],
     [t(UI.metaEducation, lang), t(UI.metaEducationVal, lang)],

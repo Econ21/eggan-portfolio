@@ -12,12 +12,12 @@ const UI = {
   navLeadership:{ nl: 'Leiderschap',    en: 'Leadership',      id: 'Kepemimpinan' },
   navContact:   { nl: 'Contact',        en: 'Contact',         id: 'Kontak' },
 
-  heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · PRODUCT · CREATIEF · FINANCE', en: 'INDONESIA → NETHERLANDS · PRODUCT · CREATIVE · FINANCE', id: 'INDONESIA → BELANDA · PRODUK · KREATIF · FINANCE' },
+  heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · AI PRODUCT · CREATIEF · RELATIEBEHEER', en: 'INDONESIA → NETHERLANDS · AI PRODUCT · CREATIVE · RELATIONSHIP MANAGEMENT', id: 'INDONESIA → BELANDA · AI PRODUCT · KREATIF · MANAJEMEN RELASI' },
   heroHeadline: { nl: 'HALLO, IK BEN EGGAN&nbsp;NACHSON&nbsp;SILUETA.', en: "HELLO, I'M EGGAN&nbsp;NACHSON&nbsp;SILUETA.", id: 'HALO, SAYA EGGAN&nbsp;NACHSON&nbsp;SILUETA.' },
   heroSub: {
-    nl: 'Ik kom uit Indonesië en volg momenteel mijn derde masteropleiding in Nederland — ik werk op het snijvlak van product, creatieve productie en finance, niet op één enkel spoor. Ik begon in de bankwereld als Relationship Manager bij Bank BRI, werkte me via business development en EdTech omhoog, en leid nu AI-productstrategie bij MatchupSkills, terwijl ik operations en creative aanstuur bij Creative AI Partner, een AI-contentproductiestudio, en meebouw aan AI-programma\'s voor Indonesië\'s Ministerie van Creatieve Economie en Ministerie van Onderzoek & Hoger Onderwijs. Ik heb masterdiploma\'s in Strategic Intelligence (Universitas Indonesia) en Artificial Intelligence (Universität zu Lübeck), en rond momenteel een master Data-Driven Business af aan The Hague University of Applied Sciences.',
-    en: "I'm from Indonesia and currently pursuing my third master's degree in the Netherlands — working across product, creative production, and finance rather than a single track. I started in banking as a Relationship Manager at Bank BRI, moved through business development and EdTech, and now lead AI product strategy at MatchupSkills while heading operations and creative at Creative AI Partner, an AI content-production studio, and building AI programs with Indonesia's Ministry of Creative Economy and Ministry of Research & Higher Education. I hold master's degrees in Strategic Intelligence (Universitas Indonesia) and Artificial Intelligence (University of Lübeck), and I'm completing one in Data-Driven Business at The Hague University of Applied Sciences.",
-    id: 'Saya berasal dari Indonesia dan sedang menempuh gelar master ketiga saya di Belanda — bekerja lintas product, creative production, dan finance, bukan di satu jalur saja. Saya memulai karier di perbankan sebagai Relationship Manager di Bank BRI, lalu melalui business development dan EdTech, dan kini memimpin strategi produk AI di MatchupSkills sambil memimpin operasional dan kreatif di Creative AI Partner, studio produksi konten AI, serta turut membangun program AI bersama Kementerian Ekonomi Kreatif dan Kementerian Riset & Pendidikan Tinggi Indonesia. Saya meraih gelar master Strategic Intelligence dari Universitas Indonesia dan Artificial Intelligence dari Universität zu Lübeck, dan saat ini menyelesaikan master Data-Driven Business di The Hague University of Applied Sciences.',
+    nl: 'Ik leid AI-productstrategie bij MatchupSkills, stuur creatieve productie aan bij Creative AI Partner, en beheerde vier jaar lang een relatieportefeuille van 500+ klanten bij Bank BRI. Ik kom oorspronkelijk uit Indonesië en woon nu in Den Haag, waar ik mijn derde masteropleiding volg — Data-Driven Business aan De Haagse Hogeschool — naast eerdere diploma\'s van de Universiteit van Indonesië en de Universität zu Lübeck.',
+    en: "I lead AI product strategy at MatchupSkills, run creative production at Creative AI Partner, and spent four years managing a 500+ client relationship portfolio at Bank BRI. I'm from Indonesia and now based in The Hague, Netherlands, where I'm pursuing my third master's degree — Data-Driven Business at The Hague University of Applied Sciences — alongside earlier degrees from Universitas Indonesia and the University of Lübeck.",
+    id: 'Saya memimpin strategi produk AI di MatchupSkills, mengarahkan produksi kreatif di Creative AI Partner, dan selama empat tahun mengelola portofolio relasi 500+ klien di Bank BRI. Saya berasal dari Indonesia dan kini menetap di Den Haag, Belanda, tempat saya sedang menempuh gelar master ketiga saya — Data-Driven Business di The Hague University of Applied Sciences — selain gelar-gelar sebelumnya dari Universitas Indonesia dan Universität zu Lübeck.',
   },
   heroCtaWork:    { nl: 'BEKIJK MIJN WERK', en: 'EXPLORE MY WORK', id: 'LIHAT KARYA SAYA' },
   heroCtaContact: { nl: 'NEEM CONTACT OP', en: "LET'S CONNECT", id: 'HUBUNGI SAYA' },
@@ -54,7 +54,7 @@ const UI = {
   close:        { nl: 'SLUITEN', en: 'CLOSE', id: 'TUTUP' },
 
   eduPageEyebrow: { nl: 'OVER MIJ', en: 'ABOUT ME', id: 'TENTANG SAYA' },
-  eduPageTitle:   { nl: 'IK WERK IN <span class="text-accent">PRODUCT</span>, <span class="text-accent">CREATIEF</span> & <span class="text-accent">FINANCE</span>.', en: 'I WORK ACROSS <span class="text-accent">PRODUCT</span>, <span class="text-accent">CREATIVE</span> & <span class="text-accent">FINANCE</span>.', id: 'SAYA BEKERJA DI <span class="text-accent">PRODUCT</span>, <span class="text-accent">KREATIF</span> & <span class="text-accent">FINANCE</span>.' },
+  eduPageTitle:   { nl: 'IK WERK IN <span class="text-accent">AI PRODUCT</span>, <span class="text-accent">CREATIEF</span> & <span class="text-accent">RELATIEBEHEER</span>.', en: 'I WORK ACROSS <span class="text-accent">AI PRODUCT</span>, <span class="text-accent">CREATIVE</span> & <span class="text-accent">RELATIONSHIP MANAGEMENT</span>.', id: 'SAYA BEKERJA DI <span class="text-accent">AI PRODUCT</span>, <span class="text-accent">KREATIF</span> & <span class="text-accent">MANAJEMEN RELASI</span>.' },
   eduPageBody: {
     nl: 'Mijn werk bevindt zich op het snijvlak van technologie, strategie en gemeenschap. Ik bouw digitale producten en AI-gedreven systemen, en werk tegelijk aan onderwijs, publieke initiatieven en nationale gemeenschappen.',
     en: 'My work sits at the intersection of technology, strategy and community. I build digital products and AI-powered systems, while also working across education, public initiatives and national communities.',
@@ -130,7 +130,7 @@ const UI = {
   contactPhone:    { nl: 'TELEFOON / WHATSAPP', en: 'PHONE / WHATSAPP', id: 'TELEPON / WHATSAPP' },
   contactCta:      { nl: 'NEEM CONTACT OP', en: 'GET IN TOUCH', id: 'HUBUNGI SAYA' },
 
-  footerTagline: { nl: 'Product · Creatief · Finance', en: 'Product · Creative · Finance', id: 'Produk · Kreatif · Finance' },
+  footerTagline: { nl: 'AI Product · Creatief · Relatiebeheer', en: 'AI Product · Creative · Relationship Management', id: 'AI Product · Kreatif · Manajemen Relasi' },
   footerRights:  { nl: 'Alle rechten voorbehouden.', en: 'All rights reserved.', id: 'Hak cipta dilindungi.' },
 };
 
