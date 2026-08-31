@@ -14,10 +14,15 @@ const UI = {
 
   heroEyebrow:  { nl: 'INDONESIË → NEDERLAND · AI PRODUCT · CREATIEF · RELATIEBEHEER', en: 'INDONESIA → NETHERLANDS · AI PRODUCT · CREATIVE · RELATIONSHIP MANAGEMENT', id: 'INDONESIA → BELANDA · AI PRODUCT · KREATIF · MANAJEMEN RELASI' },
   heroHeadline: { nl: 'HALLO, IK BEN EGGAN&nbsp;NACHSON&nbsp;SILUETA.', en: "HELLO, I'M EGGAN&nbsp;NACHSON&nbsp;SILUETA.", id: 'HALO, SAYA EGGAN&nbsp;NACHSON&nbsp;SILUETA.' },
+  // Institution count/name deliberately vague as of 2026-08-31 (user request):
+  // no exact master's-degree count stated, and Lübeck not named — see the
+  // "Lübeck — hidden while on leave" note above EDUCATION below. Only UI and
+  // THUAS are named here. Restore the fuller phrasing (see git history around
+  // 2026-08-15) once the user says the Lübeck leave has ended.
   heroSub: {
-    nl: 'Ik leid AI-productstrategie bij MatchupSkills, stuur creatieve productie aan bij Creative AI Partner, en beheerde vier jaar lang een relatieportefeuille van 500+ klanten bij Bank BRI. Ik kom oorspronkelijk uit Indonesië en woon nu in Den Haag, waar ik mijn derde masteropleiding volg — Data-Driven Business aan De Haagse Hogeschool — naast eerdere diploma\'s van de Universiteit van Indonesië en de Universität zu Lübeck.',
-    en: "I lead AI product strategy at MatchupSkills, run creative production at Creative AI Partner, and spent four years managing a 500+ client relationship portfolio at Bank BRI. I'm from Indonesia and now based in The Hague, Netherlands, where I'm pursuing my third master's degree — Data-Driven Business at The Hague University of Applied Sciences — alongside earlier degrees from Universitas Indonesia and the University of Lübeck.",
-    id: 'Saya memimpin strategi produk AI di MatchupSkills, mengarahkan produksi kreatif di Creative AI Partner, dan selama empat tahun mengelola portofolio relasi 500+ klien di Bank BRI. Saya berasal dari Indonesia dan kini menetap di Den Haag, Belanda, tempat saya sedang menempuh gelar master ketiga saya — Data-Driven Business di The Hague University of Applied Sciences — selain gelar-gelar sebelumnya dari Universitas Indonesia dan Universität zu Lübeck.',
+    nl: 'Ik leid AI-productstrategie bij MatchupSkills, stuur creatieve productie aan bij Creative AI Partner, en beheerde vier jaar lang een relatieportefeuille van 500+ klanten bij Bank BRI. Ik kom oorspronkelijk uit Indonesië en woon nu in Den Haag, waar ik een masteropleiding volg in Data-Driven Business aan De Haagse Hogeschool — een van meerdere masteropleidingen die ik volg, naast eerdere studies aan de Universiteit van Indonesië.',
+    en: "I lead AI product strategy at MatchupSkills, run creative production at Creative AI Partner, and spent four years managing a 500+ client relationship portfolio at Bank BRI. I'm from Indonesia and now based in The Hague, Netherlands, where I'm pursuing a master's degree in Data-Driven Business at The Hague University of Applied Sciences, one of several master's degrees I hold alongside earlier study at Universitas Indonesia.",
+    id: 'Saya memimpin strategi produk AI di MatchupSkills, mengarahkan produksi kreatif di Creative AI Partner, dan selama empat tahun mengelola portofolio relasi 500+ klien di Bank BRI. Saya berasal dari Indonesia dan kini menetap di Den Haag, Belanda, tempat saya sedang menempuh gelar master di Data-Driven Business di The Hague University of Applied Sciences — salah satu dari beberapa gelar master yang saya tempuh, selain studi sebelumnya di Universitas Indonesia.',
   },
   heroCtaWork:    { nl: 'BEKIJK MIJN WERK', en: 'EXPLORE MY WORK', id: 'LIHAT KARYA SAYA' },
   heroCtaContact: { nl: 'NEEM CONTACT OP', en: "LET'S CONNECT", id: 'HUBUNGI SAYA' },
@@ -148,17 +153,22 @@ const EDUCATION = [
     degree: { nl: 'MSc Data-Driven Business', en: 'MSc Data-Driven Business', id: 'MSc Data-Driven Business' },
     place: { nl: 'Den Haag, Nederland', en: 'The Hague, Netherlands', id: 'Den Haag, Belanda' },
   },
-  {
-    // Confirmed by user 2026-08-15 (period April 2026 – March 2029), corroborated
-    // earlier by the official Indonesia Mengglobal appointment card ("master's in
-    // Artificial Intelligence from Lübeck University") — not on the CV itself, but
-    // an online program the CV likely predates or omits. Explicitly noted as online
-    // per user's own words, since it's a distance program, not on-campus in Germany.
-    period: '2026 — 2029', periodSuffix: { nl: 'LOPEND', en: 'IN PROGRESS', id: 'SEDANG DITEMPUH' },
-    school: 'Universität zu Lübeck', logo: 'uni-luebeck.svg',
-    degree: { nl: 'MSc Artificial Intelligence (Online)', en: 'MSc Artificial Intelligence (Online)', id: 'MSc Artificial Intelligence (Online)' },
-    place: { nl: 'Lübeck, Duitsland — online', en: 'Lübeck, Germany — online', id: 'Lübeck, Jerman — online' },
-  },
+  // Lübeck AI master's entry — HIDDEN 2026-08-31 per user request. It is real
+  // (confirmed 2026-08-15, period April 2026 – March 2029, corroborated by the
+  // official Indonesia Mengglobal appointment card), but the user is currently
+  // on leave ("cuti") from it and asked to (a) not surface Lübeck by name
+  // anywhere on the site for now, and (b) not state an exact master's-degree
+  // count anywhere (hence heroSub above no longer says "third master's").
+  // Restore this object into the EDUCATION array above (right after the Hague
+  // entry, in period order) once the user confirms the leave has ended — do
+  // not delete it.
+  // {
+  //   period: '2026 — 2029', periodSuffix: { nl: 'LOPEND', en: 'IN PROGRESS', id: 'SEDANG DITEMPUH' },
+  //   school: 'Universität zu Lübeck', logo: 'uni-luebeck.svg',
+  //   degree: { nl: 'MSc Artificial Intelligence (Online)', en: 'MSc Artificial Intelligence (Online)', id: 'MSc Artificial Intelligence (Online)' },
+  //   place: { nl: 'Lübeck, Duitsland — online', en: 'Lübeck, Germany — online', id: 'Lübeck, Jerman — online' },
+  // },
+
   {
     period: '2023 — 2025',
     school: 'Universitas Indonesia', logo: 'universitas-indonesia.svg',
@@ -468,7 +478,9 @@ const DOCUMENTS = [
   {
     file: 'masters-certificate-transcript.pdf',
     label: { nl: 'Masterdiploma\'s & cijferlijsten', en: "Master's Certificates & Transcripts", id: 'Ijazah & Transkrip S2' },
-    note: { nl: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', en: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', id: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.' },
+    // Lübeck deliberately not named here — see "HIDDEN 2026-08-31" note above
+    // the commented-out EDUCATION entry further down this file.
+    note: { nl: 'Universitas Indonesia · The Hague University of Applied Sciences.', en: 'Universitas Indonesia · The Hague University of Applied Sciences.', id: 'Universitas Indonesia · The Hague University of Applied Sciences.' },
   },
   {
     // Two language variants of the same document rather than a single `file`
