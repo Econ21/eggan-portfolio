@@ -476,6 +476,10 @@ html[data-theme="dark"] .timeline-logo img { background: #F0EAD9; border-radius:
 .document-actions { display: flex; align-items: center; gap: 14px; }
 .document-size { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .document-dl { padding: 8px 16px; font-size: 11.5px; }
+.doc-variant-toggle { display: flex; gap: 6px; margin-top: 8px; }
+.doc-variant-btn { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-muted); cursor: pointer; transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.doc-variant-btn:hover { border-color: var(--accent); color: var(--ink); }
+.doc-variant-btn.active { border-color: var(--accent); background: var(--accent); color: var(--accent-contrast); }
 @keyframes capFade { from { opacity: 0 } to { opacity: 1 } }
 .lb-slide, .reader-page, #glImg, #glVideo { animation: capFade .22s ease; }
 .lightbox { display: none; position: fixed; inset: 0; background: #000; z-index: 300; align-items: center; justify-content: center; touch-action: pan-y; }
@@ -1234,6 +1238,41 @@ function formatBytes(n) {
 function buildDocuments(lang) {
   const title = `Eggan Nachson Silueta — ${t(UI.documentsPageTitle, lang)}`;
   const items = DOCUMENTS.map((d, i) => {
+    const label = t(d.label, lang).replace(/'/g, "\\'");
+    const labelAttr = t(d.label, lang).replace(/"/g, '&quot;');
+
+    if (d.files) {
+      // Multi-language-variant document (e.g. the thesis, EN + ID PDFs) — the
+      // reader picks which file with a small toggle, independent of the
+      // site's own nl/en/id UI language. Default: match the site language
+      // when a variant exists for it (id → id), otherwise fall back to en.
+      const variantKeys = Object.keys(d.files);
+      const defaultVariant = d.files[lang] ? lang : (d.files.en ? 'en' : variantKeys[0]);
+      const sizes = {}, urls = {};
+      variantKeys.forEach((vk) => {
+        sizes[vk] = formatBytes(fs.statSync(path.join(ROOT, 'assets', 'credentials', d.files[vk])).size);
+        urls[vk] = assetUrl('credentials/' + d.files[vk]);
+      });
+      const itemId = `doc-variant-${i}`;
+      const toggles = variantKeys.map((vk) => `<button type="button" class="doc-variant-btn${vk === defaultVariant ? ' active' : ''}" data-variant="${vk}" onclick="switchDocVariant('${itemId}','${vk}')">${vk.toUpperCase()}</button>`).join('');
+      const urlsAttr = JSON.stringify(urls).replace(/"/g, '&quot;');
+      const sizesAttr = JSON.stringify(sizes).replace(/"/g, '&quot;');
+      return `
+      <div class="document-item reveal" id="${itemId}" data-urls="${urlsAttr}" data-sizes="${sizesAttr}" data-label="${labelAttr}">
+        <div class="document-icon">PDF</div>
+        <div class="document-info">
+          <p class="document-name">${t(d.label, lang)}</p>
+          <p class="document-note">${t(d.note, lang)}</p>
+          <div class="doc-variant-toggle">${toggles}</div>
+        </div>
+        <div class="document-actions">
+          <span class="document-size" data-role="size">${sizes[defaultVariant]}</span>
+          <button type="button" class="btn btn-outline document-dl" data-role="preview" onclick="openPdfPreview('${urls[defaultVariant]}','${label}')">${t(UI.documentsPreviewOne, lang)}</button>
+          <a class="btn btn-outline document-dl" data-role="download" href="${urls[defaultVariant]}" download>${t(UI.documentsDownloadOne, lang)} ↓</a>
+        </div>
+      </div>`;
+    }
+
     const size = formatBytes(fs.statSync(path.join(ROOT, 'assets', 'credentials', d.file)).size);
     const url = assetUrl('credentials/' + d.file);
     return `
@@ -1245,7 +1284,7 @@ function buildDocuments(lang) {
       </div>
       <div class="document-actions">
         <span class="document-size">${size}</span>
-        <button type="button" class="btn btn-outline document-dl" onclick="openPdfPreview('${url}','${t(d.label, lang).replace(/'/g, "\\'")}')">${t(UI.documentsPreviewOne, lang)}</button>
+        <button type="button" class="btn btn-outline document-dl" onclick="openPdfPreview('${url}','${label}')">${t(UI.documentsPreviewOne, lang)}</button>
         <a class="btn btn-outline document-dl" href="${url}" download>${t(UI.documentsDownloadOne, lang)} ↓</a>
       </div>
     </div>`;
@@ -1278,6 +1317,18 @@ function buildDocuments(lang) {
     // it natively, fit to the window, with paging, zoom, search and its own
     // download button.
     window.open(url, '_blank', 'noopener');
+  }
+  function switchDocVariant(itemId, variant) {
+    var el = document.getElementById(itemId);
+    var urls = JSON.parse(el.dataset.urls);
+    var sizes = JSON.parse(el.dataset.sizes);
+    var label = el.dataset.label;
+    el.querySelectorAll('.doc-variant-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.variant === variant);
+    });
+    el.querySelector('[data-role=size]').textContent = sizes[variant];
+    el.querySelector('[data-role=download]').href = urls[variant];
+    el.querySelector('[data-role=preview]').onclick = function () { openPdfPreview(urls[variant], label); };
   }`;
   return pageShell({ lang, activeKey: 'home', title, description: title, bodyHtml: body, extraJs: js });
 }
@@ -1484,7 +1535,13 @@ fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({ cleanUrls: true
 // ~12MB of PDFs as both loose files and a redundant zip.
 const credentialsDir = path.join(OUT, 'assets', 'credentials');
 const zipName = 'eggan-nachson-credentials.zip';
-execFileSync('zip', ['-q', '-j', zipName, ...DOCUMENTS.map(d => d.file)], { cwd: credentialsDir });
+const credentialFiles = DOCUMENTS.flatMap(d => d.files ? Object.values(d.files) : [d.file]);
+// stdio: 'ignore' on stdin — without this, `zip` hangs forever asking to
+// overwrite if a zip of this name already exists at the destination (e.g. a
+// stale one from an interrupted previous build), since execFileSync gives it
+// a pipe with nothing writing to it rather than a real TTY to prompt on.
+if (fs.existsSync(path.join(credentialsDir, zipName))) fs.rmSync(path.join(credentialsDir, zipName));
+execFileSync('zip', ['-q', '-j', zipName, ...credentialFiles], { cwd: credentialsDir, stdio: ['ignore', 'inherit', 'inherit'] });
 
 for (const lang of LANGS) {
   writeFile(lang, 'home', buildHome(lang));

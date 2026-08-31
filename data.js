@@ -471,6 +471,25 @@ const DOCUMENTS = [
     note: { nl: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', en: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.', id: 'Universitas Indonesia · Universität zu Lübeck · The Hague University of Applied Sciences.' },
   },
   {
+    // Two language variants of the same document rather than a single `file`
+    // — the reader picks EN or ID with the toggle rendered in buildDocuments()
+    // (build-portfolio.js), independent of the site's own nl/en/id UI language.
+    files: {
+      en: 'master-thesis-english.pdf',
+      id: 'master-thesis-indonesian.pdf',
+    },
+    label: {
+      nl: 'Masterscriptie — Intelligence Analysis of Cyberattacks on the Security of Banking Institutions in Indonesia',
+      en: 'Master Thesis — Intelligence Analysis of Cyberattacks on the Security of Banking Institutions in Indonesia',
+      id: 'Tesis Magister — Analisis Intelijen Terhadap Serangan Siber Pada Keamanan Institusi Perbankan Indonesia',
+    },
+    note: {
+      nl: 'Universitas Indonesia — School of Strategic and Global Studies. Beschikbaar in het Engels of Indonesisch.',
+      en: 'Universitas Indonesia — School of Strategic and Global Studies. Available in English or Indonesian.',
+      id: 'Universitas Indonesia — School of Strategic and Global Studies. Tersedia dalam Bahasa Inggris atau Indonesia.',
+    },
+  },
+  {
     file: 'certificates-and-awards.pdf',
     label: { nl: 'Certificaten & prijzen', en: 'Certificates & Awards', id: 'Sertifikat & Penghargaan' },
     note: { nl: '11 pagina\'s — trainingen, awards en erkenningen.', en: '11 pages — trainings, awards, and recognitions.', id: '11 halaman — pelatihan, penghargaan, dan pengakuan.' },
