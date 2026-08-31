@@ -264,6 +264,136 @@ dikerjakan:
 Semua ini bisa ditambahkan belakangan kalau user minta — prioritas sejauh ini adalah struktur, konten
 akurat, deploy yang benar-benar jalan, dan interaksi fungsional, bukan polish motion-design penuh.
 
+## PhD Motivation Letter — Reference Playbook (NEW 2026-08-31)
+
+Kalau user minta "buatkan motivation letter untuk PhD [posisi/universitas]" lagi — pakai section ini
+sebagai starting point, JANGAN re-derive semua riset/fakta/format dari nol seperti sesi pertama. Dibangun
+pertama kali untuk lamaran **PhD Fellow, Governance of Cybercrime** (vacancy 16776), ISGA/Leiden
+University, deadline 31 Agustus 2026 — proses lengkapnya (termasuk 2 ronde review self-kritik) ada di
+riwayat sesi itu kalau perlu detail lebih, tapi kesimpulannya sudah dirangkum di bawah ini.
+
+### Fakta biografis yang sudah terverifikasi (baca dari `data.js`, jangan karang detail baru)
+Sumber kebenaran tetap `EDUCATION`/`EXPERIENCE`/`RESEARCH` di `data.js` — ringkasan yang paling relevan
+untuk surat PhD:
+- **Master's thesis** (Universitas Indonesia, School of Strategic and Global Studies, program National
+  Resilience Studies, konsentrasi Intelligence Strategic Studies, **cum laude, GPA 3.80/4.00**): analisis
+  serangan siber perbankan Indonesia termasuk breach LockBit 3.0 di Bank Syariah Indonesia (2023),
+  metodologi Cyber Kill Chain + triangulasi 4 sumber wawancara (petugas intelijen nasional, white-hat
+  hacker, kepala divisi cybersecurity vendor perbankan, ketua lembaga riset cybersecurity nasional), 4
+  lensa governance (cyber threat intelligence, adaptive security, strategic intelligence, cyber
+  resilience), rekomendasi ke regulator keuangan/bank sentral/badan siber nasional Indonesia.
+- **Publikasi**: "Strategic Intelligence Foresight on Ransomware Threats in State-Owned Bankings in
+  Indonesia", Jurnal Indonesia Sosial Teknologi (JIST) Vol. 6 No. 6, Juni 2025, DOI
+  10.36418/jist.v6i6.008 (lihat `RESEARCH` slug `jurnal` di `data.js`).
+- **Pekerjaan**: AI Product Lead di MatchupSkills.id (2023–sekarang, redesign AI pipeline → kurangi
+  generation failure >90%); part-time research assistant RISE Team Universitas Indonesia (dashboard
+  monitoring ketahanan pangan AI+OSINT untuk 6 kecamatan Jakarta Utara, selaras FIES FAO, policy brief
+  bulanan); Relationship Manager Bank BRI 2021–2025 (portofolio 500+ klien UMKM).
+- **Pendidikan lain**: BSc Informatics Engineering ITB Swadharma (GPA 3.18/4.00), Diploma Administrasi
+  Universitas Indonesia (GPA 3.42/4.00), MSc Data-Driven Business The Hague University of Applied
+  Sciences (2026–2027, sedang berjalan).
+- **Domisili**: The Hague, Belanda, sudah terdaftar sebagai resident (boleh disebut sebagai alasan
+  sekunder/logistik, JANGAN jadi alasan utama "kenapa universitas ini").
+- **Kontak resmi untuk surat**: email `nachson21@gmail.com`, WA `+31 6 8552 7266` (link
+  `wa.me/31685527266`), portfolio `eggan.vercel.app` — samakan dengan yang dipakai di Credentials Dossier
+  CAP, jangan pakai email/nomor lain.
+- **Tanda tangan asli** (scan, sudah dipakai di motivation letter Leiden & Credentials Dossier CAP):
+  `/Users/eggan/Desktop/website CAP/assets/private/signatures/eggan_nachson_cropped.png` — file itu ada
+  di repo CAP, BUKAN repo ini, dan **privat** (jangan pernah commit ke git manapun, termasuk repo ini).
+  Copy ke scratchpad sesi saat build surat, tempel via `reportlab.platypus.Image` di atas nama ketik,
+  target height ~40pt (jaga aspect ratio asli via `ImageReader(...).getSize()`).
+
+### ⚠️ Sensitif — cek status dulu sebelum disebut di dokumen apa pun
+- **Universität zu Lübeck (MSc Artificial Intelligence, online, periode 2026–2029)** — NYATA (dikonfirmasi
+  user 2026-08-15), tapi **sedang cuti** sejak percakapan 2026-08-31 (info dari user langsung, belum
+  tentu publik). User eksplisit minta: (a) jangan sebut nama Lübeck di dokumen/situs mana pun selagi
+  cuti; (b) jangan pernah sebutkan angka pasti "gelar master ke-berapa" di mana pun — cukup indikasikan
+  plural ("several master's degrees") dan highlight cuma **UI + THUAS** kalau perlu nama institusi
+  spesifik. Entry-nya di `data.js` `EDUCATION` (dan bio `heroSub`, dan note dokumen transkrip) sudah
+  di-comment-out/disunting dengan catatan cara restore — **cek dulu ke user apakah cuti sudah selesai**
+  sebelum menyebut Lübeck di surat/dokumen baru manapun, jangan asumsikan sudah aktif lagi hanya karena
+  waktu sudah berlalu.
+- Kalau ada detail biografis yang kelihatan belum terverifikasi (beda dari yang tertulis di `data.js` atau
+  dari konteks sesi sebelumnya yang sudah usang) — JANGAN dipakai di surat resmi tanpa konfirmasi user
+  dulu via pertanyaan langsung. Ini nyaris jadi kesalahan faktual nyata di surat yang benar-benar dikirim
+  ke universitas (klaim Lübeck di draft awal sesi 2026-08-31, ketahuan sendiri sebelum kirim final karena
+  cek ulang ke `CLAUDE.md` ini, bukan karena ditanya user) — treat sebagai near-miss serius, bukan cuma
+  detail kecil.
+
+### Standar format surat (sumber kredibel — JANGAN improvisasi tata letak sendiri)
+Diriset dari [TU Delft Career & Counselling Services — Motivation Letter Checklist](https://filelist.tudelft.nl/Studentenportal/Centraal/Mijn%20studie%20_%20ik/Persoonlijke%20ontwikkeling/Managing%20your%20career/Career%20Toolkit/Quickguide_motivation%20letter_25.01.18.pdf)
+(PDF resmi, top-3 universitas Belanda, lengkap contoh surat "before/after" beranotasi oleh konselor karier
+mereka sendiri):
+- **Letterhead di atas** (nama + kontak, rata kiri, dipisah garis tipis dari isi) — WAJIB, bukan opsional.
+  Kutipan panduan: *"Motivation letters should be written on a formal letter template so contact details
+  will be visible at the top of the letter."*
+- **Urutan yang benar** (dicontek persis dari revisi surat yang di-approve panduan TU Delft): letterhead →
+  tanggal → alamat penerima (nama + jabatan + institusi lengkap, JANGAN "Dear Hiring Manager" generik) →
+  salam pembuka → baris **"Re: [posisi] (nomor vacancy)"** SETELAH salam (bukan sebelum — ini yang salah
+  di draft pertama sesi ini) → isi surat → penutup + call-to-action eksplisit ("I would welcome the
+  opportunity to discuss...") → "Yours sincerely," → tanda tangan asli (scan, ditempel di atas nama
+  ketik). **Jangan tambah baris "Enclosures:" terpisah** kalau daftar dokumen sudah disebut di kalimat
+  penutup — itu redundan, dan kata "enclosed" sendiri istilah surat-pos-fisik yang tidak cocok untuk
+  aplikasi digital lewat portal upload (ganti ke "included with this application" kalau memang perlu).
+- **Rata kiri-kanan (justified)** untuk paragraf isi, bukan cuma rata kiri — pakai
+  `reportlab.platypus.Paragraph` dengan `alignment=TA_JUSTIFY`, BUKAN `canvas.Canvas` manual
+  `drawString` (rawan bug pagination, lihat catatan teknis di bawah).
+- **Maksimal 1 halaman A4** untuk motivation letter kerja/magang biasa (checklist TU Delft), tapi **PhD
+  boleh sampai 2 halaman** (riwayat riset jauh lebih kompleks) — JANGAN sampai 3 halaman, itu tandanya
+  kepanjangan; padatkan kalimat, jangan kurangi margin/leading untuk memaksa muat.
+- **Font Times-Roman/Times-Bold** (built-in reportlab, tidak perlu embed font apa pun) — ini dokumen
+  akademik formal, bukan materi marketing/brand CAP, jadi TIDAK pakai palet gold/off-white CAP.
+
+### Playbook menulis isi — ini yang bedain surat "generik" vs "green flag" ke reviewer PhD Eropa
+1. **Riset SPESIFIK supervisor/grup riset target SEBELUM menulis satu kalimat pun** — `WebSearch` nama
+   supervisor + universitas + kata "research", cari halaman staf resminya (bukan asumsi dari nama
+   posisi doang). Begitu ketemu tema riset asli mereka, JAHIT ke reframing pertanyaan riset user sendiri
+   — bukan cuma name-drop kosong. Contoh nyata sesi ini: Dr. van den Berg (ISGA/Leiden) punya tema
+   "techno-regulation and nudging" yang sama sekali tidak disebut draft awal → begitu ditambahkan, surat
+   berubah dari "bisa dikirim ke universitas manapun" jadi "kelihatan sudah baca risetnya beneran". Ini
+   beda paling besar antara surat yang menonjol vs surat yang generik.
+2. **Selaraskan bahasa dengan disiplin ilmu POSISI yang dilamar, bukan disiplin ilmu thesis lama user.**
+   Thesis Eggan pakai bahasa intelligence/security studies ("detection capacity", "cyber threat
+   intelligence"). Kalau posisi PhD-nya di ranah criminology/governance/victimology, reframe pakai
+   istilah baku bidang itu (contoh dipakai: "routine activity theory", "guardianship gap" — bukan cuma
+   terjemahan istilah security studies) — riset istilahnya dulu, jangan asal translate.
+3. **Sertakan draft pendekatan/metodologi riset PhD itu sendiri**, bukan cuma pertanyaan besar — panel
+   PhD kompetitif mau lihat bayangan konkret cara mengerjakannya (contoh: "extend the mixed-methods
+   approach from my thesis... from institutional cases to individual ones"), bukan cuma niat abstrak.
+4. **Jawab "kenapa universitas/grup ini spesifik" dengan alasan AKADEMIK** (kecocokan struktural
+   program/pendekatan riset), bukan cuma alasan logistik (domisili) — logistik boleh disebut tapi
+   diposisikan sebagai bonus sekunder, ditulis eksplisit begitu ("though that convenience is secondary
+   to the fit").
+5. **Hindari em dash ("—") dan pola retorika "not X, rather Y" berulang** — dua-duanya gampang terbaca
+   sebagai gaya tulisan AI. Setelah draft jadi, hitung manual berapa kali "rather"/kata kontrastif serupa
+   muncul — kalau lebih dari 2 di seluruh surat, variasikan strukturnya (pecah jadi 2 kalimat, ganti
+   "instead of"/"not X" tanpa "rather").
+6. **Sebut nomor vacancy + judul posisi PERSIS sama seperti postingan resmi**, konsisten di semua tempat
+   yang menyebutnya (Re: line, paragraf pembuka) — jangan parafrase ("PhD Fellowship" vs "PhD Fellow" itu
+   beda, dan reviewer yang teliti notice mismatch semacam ini).
+7. **Setelah draft jadi, self-review pakai lensa reviewer PhD sungguhan** sebelum ditawarkan ke user —
+   checklist yang sudah terbukti kepake sesi ini: kecocokan disiplin ilmu ✓, ada rujukan spesifik ke
+   supervisor/grup (bukan generik) ✓, ada draft metodologi ✓, judul posisi konsisten ✓, tidak ada
+   repetisi gaya tulisan ✓, setiap klaim fakta sudah diverifikasi vs `data.js`/CV asli (bukan asumsi dari
+   konteks sesi lama yang mungkin sudah usang) ✓.
+
+### Catatan teknis build (reusable)
+- Pakai reportlab **Platypus** (`SimpleDocTemplate` + `Paragraph` + `HRFlowable` + `Image`), BUKAN raw
+  `canvas.Canvas` dengan `drawString` manual. Canvas manual pernah menyebabkan bug serius di draft
+  pertama sesi ini: helper `line()` tanpa bound-check menggambar teks di bawah margin halaman secara
+  **diam-diam hilang tanpa error** (paragraf penutup + tanda tangan lenyap total, `pdfinfo` tetap lapor
+  "Pages: 1" padahal isinya kepotong pertengahan kalimat). Platypus menghindari kelas bug ini total
+  karena auto-paginate sendiri berdasarkan tinggi konten sebenarnya.
+- Verifikasi WAJIB sebelum kirim ke user (jangan skip meski terburu-buru mendekati deadline): render
+  `pdftoppm -jpeg -r 130 <file>.pdf <prefix>` tiap halaman → Read tool untuk cek visual (bukan cuma
+  percaya angka `pdfinfo` "Pages: N") → kalau curiga ada teks terpotong, `pdftotext -layout <file>.pdf -
+  | tail -20` untuk pastikan kalimat penutup & tanda tangan benar-benar ada.
+- Script per-sesi terakhir yang dipakai: `build_motivation_letter.py` (disimpan di scratchpad sesi,
+  BUKAN di repo manapun — sengaja, karena isinya spesifik ke satu lamaran). Untuk lamaran PhD baru,
+  boleh mulai dari STRUKTUR yang sama (letterhead → alamat → Re: → isi → penutup+ttd, styles Platypus
+  yang sama), tapi tulis ulang SELURUH konten paragraf isi sesuai posisi/universitas/supervisor yang
+  baru — jangan reuse teks atau klaim spesifik dari surat Leiden ini ke lamaran lain.
+
 ## Bukan bagian dari project ini
 Repo CAP (`~/Desktop/website CAP`), MatchupSkills (`~/Desktop/matchupskills`), ms-admin
 (`~/Desktop/ms-admin`), Lumbung Jakut (`~/Desktop/lumbung-jakut`) adalah bisnis nyata terpisah

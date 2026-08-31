@@ -140,12 +140,18 @@ const UI = {
 };
 
 // ── Education timeline ──────────────────────────────────────────────────────
-// Source of truth: CV - EGGAN NACHSON.pdf (supplied by user 2026-08-14). This
-// replaces the earlier 3-entry version — the CV confirms only 2 master's-level
-// items exist (no Lübeck AI degree, that VP-card bio detail is not on the CV
-// and stays excluded), but adds a 4th entry (Diploma in Administration) that
-// wasn't on the site at all before. Hague program hasn't started yet — CV
-// marks it "Perkiraan" (estimated/expected), Sep 2026 – Aug 2027.
+// Source of truth: CV - EGGAN NACHSON.pdf (supplied by user 2026-08-14), plus
+// user-confirmed updates since. NOTE (2026-08-31, superseding the original
+// 2026-08-14 note below): the Lübeck AI master's WAS later confirmed real by
+// the user (2026-08-15) and briefly lived in this array — it is now HIDDEN
+// again (see the commented-out block right after the Hague entry below) while
+// the user is on leave from it. Don't take "no Lübeck degree" as still true —
+// check the hidden-entry note for current status before assuming either way.
+// Original 2026-08-14 note, kept for history: this array replaced an earlier
+// 3-entry version — the CV confirmed only 2 master's-level items existed at
+// the time, and added a 4th entry (Diploma in Administration) that wasn't on
+// the site before. Hague program hadn't started yet then — CV marked it
+// "Perkiraan" (estimated/expected), Sep 2026 – Aug 2027.
 const EDUCATION = [
   {
     period: '2026 — 2027', periodSuffix: { nl: 'VERWACHT', en: 'EXPECTED', id: 'PERKIRAAN' },
