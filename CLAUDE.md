@@ -71,6 +71,8 @@ diambil dari tag git `pre-revisi-2.0`.
   `--headless=new` bisa crash di halaman berpeta (Lumbung `/pasar`) → pakai `--headless=old`.
   Nama berkas bebas: galeri proyek membaca isi folder `assets/work/<dir>/` saat build, dan `home.jpg`
   dipakai sebagai `thumb` (cover homepage). Nama berkas muncul sebagai label slide, jadi beri nama bermakna.
+  CAP Studio (`00-cap-studio.jpg`, 2026-09-24) dipotret sesudah CAP punya bahasa situs Inggris — halaman CAP yang
+  login dipotret dengan salinan cookie profil Chrome "Profile 38" (CAP MAIN ACCOUNT) di `--user-data-dir` sementara.
 - **Tautan ke situs asli**: tombol `Open the live site` ada di halaman proyek (`.live-site-button`), kartu
   produk homepage (`.monument-live`), dan daftar Work (`.strip-live`). Kartu homepage kini `<article>`
   dengan overlay `<a class="monument-link">` ke studi kasus + tautan live di caption — jangan kembalikan
