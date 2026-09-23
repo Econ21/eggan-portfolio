@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /brief/
+Disallow: /design/
+Disallow: /tools/
+
+Sitemap: https://eggan.vercel.app/sitemap.xml

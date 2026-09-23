@@ -6,8 +6,22 @@
   "trailingSlash": false,
   "headers": [
     {
+      "source": "/(brief|design|tools)/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     },
     {
       "source": "/(.*)",
@@ -16,17 +30,107 @@
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; frame-src 'self'; connect-src 'self'; object-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
         },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
         {
           "key": "Permissions-Policy",
           "value": "accelerometer=(), autoplay=(self), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), xr-spatial-tracking=()"
         },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
-        { "key": "X-DNS-Prefetch-Control", "value": "off" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "off"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/brief",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/design",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/tools",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/brief/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/design/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/tools/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/BUKA-PORTFOLIO.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/COMPARE-REFERENCE.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/START-HERE.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/CLAUDE-START-HERE.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/CLAUDE.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/content.json",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/package.json",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/package-lock.json",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }

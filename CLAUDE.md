@@ -49,10 +49,15 @@ diambil dari tag git `pre-revisi-2.0`.
   bio + tiga tombol (Explore my work / Let's connect / CV & Documents); journey 5 kartu artwork utuh + label
   "Open" + tautan detail; cover CAP/MatchupSkills/Lumbung dari screenshot asli (bukan crop kecil yang blur);
   Creative carousel 10 karya asli + "See more".
-- **Folder non-situs yang ikut ter-commit**: `brief/` (dokumentasi paket), `design/` (referensi 1–7 + video),
-  `BUKA-PORTFOLIO.html`, `COMPARE-REFERENCE.html`. Karena `outputDirectory` = root, folder ini **ikut ter-serve
-  publik**. Kalau tidak diinginkan, hapus dari repo (bukan cuma dari `.vercelignore` — file itu hanya berlaku
-  untuk deploy lewat CLI, bukan deploy dari Git).
+- **Folder non-situs SENGAJA tetap di repo** (`brief/` dokumentasi paket, `design/` referensi 1–7 + video,
+  `tools/` generator, `content.json`, `BUKA-PORTFOLIO.html`, `COMPARE-REFERENCE.html`): itu spesifikasi visual
+  yang dibutuhkan revisi berikutnya. Karena `outputDirectory` = root, semuanya tadinya ter-serve publik —
+  `.vercelignore` TIDAK menolong (hanya berlaku untuk deploy lewat CLI, bukan deploy dari Git). Solusinya di
+  `vercel.json`: **14 `redirects`** (`/design/:path*`, `/brief/:path*`, `/tools/:path*`, file dev, `content.json`,
+  `package*.json`) → `/`, karena di Vercel redirects diproses SEBELUM filesystem; plus header `X-Robots-Tag:
+  noindex` dan `robots.txt`. Diverifikasi live: `/design/references/1.png` → 307 ke `/`, situs tetap normal.
+  ⚠️ `robots.txt` ditulis manual (bukan dari zip) — kalau memasang zip baru dengan `rsync --delete`, kecualikan
+  `robots.txt`, `vercel.json`, `.gitignore`, `CLAUDE.md`, `.claude/`, seperti waktu memasang v2.1.
 - Verifikasi live 2026-09-23 setelah deploy: `/`, `/en`, `/id`, `/en/work`, `/en/creative-work`,
   `/en/research`, `/en/documents`, `/en/leadership`, `/en/contact`, `/id/*`, `/work/*` semua 200; 22 URL yang
   dipakai situs lama semuanya masih ada; tema gelap, mobile, dan galeri karya diperiksa di browser.
