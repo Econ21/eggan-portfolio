@@ -75,6 +75,22 @@ diambil dari tag git `pre-revisi-2.0`.
   produk homepage (`.monument-live`), dan daftar Work (`.strip-live`). Kartu homepage kini `<article>`
   dengan overlay `<a class="monument-link">` ke studi kasus + tautan live di caption — jangan kembalikan
   jadi satu `<a>` besar, karena tautan tidak boleh bersarang.
+- **Pratinjau video di galeri (2026-09-23)** — meniru galeri "Our Work" CAP (`website CAP/src/app/projects/page.js`
+  untuk hover, `redesign/components/Showcase.jsx` untuk autoplay berbatas): kartu video berisi poster `<img>`
+  (penentu ukuran) + `<video muted loop playsinline preload="none">` yang ditumpuk persis di atasnya
+  (`.media-shot`). Perilaku ada di `assets/polish.js`: putar otomatis saat kartu ≥50% terlihat dengan
+  **maksimal 2 video serentak** (sisanya antre; arsip punya 50 video, tanpa batas ini kuota data jebol),
+  kursor yang mengarah langsung memutar video itu, keluar kursor → jeda + balik ke detik 0. Mati kalau
+  pengurangan gerak aktif; lanjut lagi saat halaman kembali terlihat.
+  ⚠️ `IntersectionObserver` WAJIB dijaga `typeof ... === 'function'` — tanpa itu 4 tes jsdom gagal
+  ("IntersectionObserver is not defined") dan seluruh skrip halaman ikut mati di peramban lama.
+  ⚠️ **Autoplay tidak bisa diverifikasi dari browser-pane Claude**: pane selalu melapor
+  `document.visibilityState === 'hidden'`, dan Chrome menjeda video di halaman tersembunyi. Di Chrome user
+  status `paused=false` terbukti, tapi frame hanya berjalan kalau jendelanya benar-benar di depan.
+- **Rasio gambar/video = rasio ASLI berkas.** Jangan kembalikan `aspect-ratio:var(--aspect)` pada kartu galeri:
+  angka `ratio` di `content.json` tidak selalu sama dengan berkasnya, sehingga gambar terpotong. Sekarang
+  `<img>` memakai `height:auto` (rasio alami) dan video mengikuti kotak poster. Diverifikasi di browser:
+  rasio kotak == rasio natural sampai 3 desimal untuk seluruh contoh yang diperiksa.
 - **Galeri Creative = masonry (`columns`), bukan grid.** Grid 5 kolom membuat kartu potret meninggalkan
   lubang besar. `polish.css` mengembalikannya ke `columns:5/4/3/2` + `break-inside:avoid`, mengikuti gaya
   galeri "Our Work" CAP. Filter All/Image/Video dan Load more tetap bekerja (diuji: 20 → 40).
