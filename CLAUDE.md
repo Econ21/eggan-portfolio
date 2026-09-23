@@ -58,6 +58,31 @@ diambil dari tag git `pre-revisi-2.0`.
   noindex` dan `robots.txt`. Diverifikasi live: `/design/references/1.png` → 307 ke `/`, situs tetap normal.
   ⚠️ `robots.txt` ditulis manual (bukan dari zip) — kalau memasang zip baru dengan `rsync --delete`, kecualikan
   `robots.txt`, `vercel.json`, `.gitignore`, `CLAUDE.md`, `.claude/`, seperti waktu memasang v2.1.
+- **Screenshot proyek (2026-09-23)**: aset lama hanya 760×475 dan halaman proyek malah memakai crop
+  `assets/reference-art/*-product.svg` (viewport 556×219 dari PNG referensi) — itu sumber keluhan "blur".
+  Sekarang semua memakai tangkapan langsung dari situs live, 2400×1500. **Cara memotret ulang** (Chrome
+  headless, tidak butuh alat lain):
+  ```bash
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu \
+    --hide-scrollbars --window-size=1600,1000 --force-device-scale-factor=2 \
+    --virtual-time-budget=12000 --screenshot=out.png "https://www.creativeaipartner.id/"
+  sips -s format jpeg -s formatOptions 86 -Z 2400 out.png --out assets/work/cap/home.jpg
+  ```
+  `--headless=new` bisa crash di halaman berpeta (Lumbung `/pasar`) → pakai `--headless=old`.
+  Nama berkas bebas: galeri proyek membaca isi folder `assets/work/<dir>/` saat build, dan `home.jpg`
+  dipakai sebagai `thumb` (cover homepage). Nama berkas muncul sebagai label slide, jadi beri nama bermakna.
+- **Tautan ke situs asli**: tombol `Open the live site` ada di halaman proyek (`.live-site-button`), kartu
+  produk homepage (`.monument-live`), dan daftar Work (`.strip-live`). Kartu homepage kini `<article>`
+  dengan overlay `<a class="monument-link">` ke studi kasus + tautan live di caption — jangan kembalikan
+  jadi satu `<a>` besar, karena tautan tidak boleh bersarang.
+- **Galeri Creative = masonry (`columns`), bukan grid.** Grid 5 kolom membuat kartu potret meninggalkan
+  lubang besar. `polish.css` mengembalikannya ke `columns:5/4/3/2` + `break-inside:avoid`, mengikuti gaya
+  galeri "Our Work" CAP. Filter All/Image/Video dan Load more tetap bekerja (diuji: 20 → 40).
+- ⚠️ **CSS/JS WAJIB bercap versi.** `vercel.json` meng-cache `/assets/*` selama 24 jam, jadi tanpa cap versi
+  pengunjung lama tetap memakai stylesheet basi dan perubahan tata letak "tidak muncul" walau deploy sukses
+  (terjadi 2026-09-23 dan sempat terlihat seperti kegagalan deploy). `tools/build.mjs` menghitung hash isi
+  `site/revision/polish` (`ASSET_VER`) dan menempelkannya ke URL CSS/JS; gambar sengaja tanpa versi supaya
+  tetap ter-cache lama. Saat mengecek hasil di browser sendiri, pakai `fetch(url,{cache:'reload'})` dulu.
 - Verifikasi live 2026-09-23 setelah deploy: `/`, `/en`, `/id`, `/en/work`, `/en/creative-work`,
   `/en/research`, `/en/documents`, `/en/leadership`, `/en/contact`, `/id/*`, `/work/*` semua 200; 22 URL yang
   dipakai situs lama semuanya masih ada; tema gelap, mobile, dan galeri karya diperiksa di browser.
