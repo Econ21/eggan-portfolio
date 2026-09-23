@@ -1,8 +1,12 @@
-import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+import fs from 'node:fs';import crypto from 'node:crypto';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');const D=JSON.parse(fs.readFileSync(path.join(ROOT,'content.json')));const DP=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/credentials/document-pages.json')));
 const E=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');const pad=n=>String(n).padStart(2,'0');
 const SL=['iccn','indonesia-mengglobal','unesco-undp','timur-growth','titik-terang','iluni-ui','youthranger','biru-muda','pt-pindad','study-hub'];
-let lang='en',route='',base='';const T=v=>typeof v==='object'&&v!==null?(v[lang]??v.en??''):v??'';const L=(en,id,nl)=>T({en,id,nl});const U=k=>T(D.UI[k]);const A=s=>base+s.replace(/^\//,'');const target=(r,l=lang)=>[l==='nl'?'':l,r,'index.html'].filter(Boolean).join('/');const H=(r,l=lang)=>path.posix.relative(path.posix.dirname(target(route)),target(r,l))||'index.html';
+let lang='en',route='',base='';const T=v=>typeof v==='object'&&v!==null?(v[lang]??v.en??''):v??'';const L=(en,id,nl)=>T({en,id,nl});const U=k=>T(D.UI[k]);const ASSET_VER=(()=>{const h=crypto.createHash('sha1');for(const f of ['assets/site.css','assets/revision.css','assets/polish.css','assets/site.js','assets/revision.js','assets/polish.js']){try{h.update(fs.readFileSync(path.join(ROOT,f)));}catch{}}return h.digest('hex').slice(0,8);})();
+// CSS/JS diberi cap versi dari isinya: header Vercel meng-cache /assets/* selama 24 jam,
+// jadi tanpa ini pengunjung lama masih memakai stylesheet basi setelah deploy. Gambar
+// sengaja TIDAK diberi versi supaya tetap memanfaatkan cache panjang.
+const A=s=>{const u=base+s.replace(/^\//,'');return /\.(css|js)$/.test(s)?u+'?v='+ASSET_VER:u;};const target=(r,l=lang)=>[l==='nl'?'':l,r,'index.html'].filter(Boolean).join('/');const H=(r,l=lang)=>path.posix.relative(path.posix.dirname(target(route)),target(r,l))||'index.html';
 const link=(r,label,cls='text-link')=>`<a class="${cls}" href="${H(r)}">${label}<span aria-hidden="true">↗</span></a>`;
 const img=(p,alt='',cls='',eager=false)=>`<img src="${A(p)}" alt="${E(alt)}" class="${cls}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const tag=s=>`<span class="eyebrow">${E(s)}</span>`;const chips=arr=>`<div class="chips">${arr.map(s=>`<span>${E(s)}</span>`).join('')}</div>`;
