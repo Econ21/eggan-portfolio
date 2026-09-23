@@ -214,3 +214,17 @@ body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744
    sejauh potongan itu supaya isi screenshot (judul) tidak ikut terpangkas (2026-09-23) */
 .work-strip-image img{width:88%;margin-left:12%;object-position:left top}
 @media(max-width:1000px){.work-strip-image img{width:100%;margin-left:0;object-position:center top}}
+
+/* Creative index: grid 5 kolom dengan tinggi kartu berbeda meninggalkan lubang besar
+   (kartu potret memaksa barisnya jadi tinggi). Dikembalikan ke masonry seperti
+   galeri "Our Work" CAP: kartu mengikuti rasio aslinya dan menumpuk rapat. (2026-09-23) */
+.media-grid{display:block;columns:5;column-gap:14px;grid-template-columns:none;align-items:initial}
+.media-card{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 14px;width:100%}
+.media-card>img{width:100%;display:block}
+.media-card[data-type=video]:after{content:'▶';position:absolute;top:10px;right:10px;
+  width:28px;height:28px;border-radius:50%;background:#000000a6;color:#fff;
+  display:grid;place-items:center;font-size:10px;padding-left:2px;pointer-events:none}
+@media(max-width:1200px){.media-grid{columns:4}}
+@media(max-width:900px){.media-grid{columns:3}}
+@media(max-width:620px){.media-grid{columns:2;column-gap:10px}.media-card{margin-bottom:10px}
+  .media-card[data-type=video]:after{width:22px;height:22px;font-size:8px;top:7px;right:7px}}
