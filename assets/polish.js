@@ -67,3 +67,62 @@
     update();
   });
 })();
+
+/* Pratinjau video di galeri (2026-09-23) — pola yang sama dipakai galeri "Our Work" CAP:
+   putar otomatis saat kartu terlihat, tapi maksimal 2 video serentak supaya kuota data dan
+   CPU tidak jebol (arsip punya 50 video); kursor yang mengarah ke kartu langsung memutar
+   video itu. Semua bisu + berulang. Dimatikan kalau pengurangan gerak aktif. */
+(() => {
+  const videos = [...document.querySelectorAll('.media-video')];
+  if (!videos.length) return;
+  const reduced = () => document.documentElement.dataset.motion === 'off' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MAX = 2;
+  const playing = new Set(), queue = [];
+
+  const start = v => { if (playing.has(v)) return; playing.add(v); v.play().catch(() => {}); };
+  const stop = v => {
+    playing.delete(v);
+    const i = queue.indexOf(v); if (i > -1) queue.splice(i, 1);
+    try { v.pause(); v.currentTime = 0; } catch {}
+    promote();
+  };
+  function promote() {
+    while (playing.size < MAX && queue.length) {
+      const v = queue.shift();
+      if (v.isConnected && v.dataset.visible === 'true') start(v);
+    }
+  }
+  function request(v) {
+    if (playing.has(v) || queue.includes(v)) return;
+    if (playing.size < MAX) start(v); else queue.push(v);
+  }
+
+  // jsdom (dan peramban lama) tidak punya IntersectionObserver: galeri tetap hidup,
+  // hanya kehilangan putar-otomatis — kursor tetap memutar video.
+  const hasObserver = typeof IntersectionObserver === 'function';
+  const observer = hasObserver && new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const v = entry.target;
+      v.dataset.visible = entry.isIntersecting ? 'true' : 'false';
+      if (entry.isIntersecting) { if (!reduced()) request(v); }
+      else if (!v.dataset.hover) stop(v);
+    });
+  }, { threshold: 0.5 });
+
+  // Peramban menjeda video begitu tab/jendela disembunyikan. Saat kembali terlihat,
+  // video yang masih di layar diputar lagi — tanpa ini galeri tampak "mati" setelah
+  // pengguna berpindah tab.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible' || reduced()) return;
+    playing.clear(); queue.length = 0;
+    videos.filter(v => v.dataset.visible === 'true').forEach(request);
+  });
+
+  videos.forEach(v => {
+    if (observer) observer.observe(v);
+    const card = v.closest('.media-card, .featured-work') || v;
+    // Kursor mengarah: video itu didahulukan, tidak ikut antre.
+    card.addEventListener('pointerenter', () => { v.dataset.hover = '1'; playing.add(v); v.play().catch(() => {}); });
+    card.addEventListener('pointerleave', () => { delete v.dataset.hover; if (v.dataset.visible !== 'true' || reduced()) stop(v); });
+  });
+})();

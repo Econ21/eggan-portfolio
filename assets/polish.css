@@ -228,3 +228,16 @@ body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744
 @media(max-width:900px){.media-grid{columns:3}}
 @media(max-width:620px){.media-grid{columns:2;column-gap:10px}.media-card{margin-bottom:10px}
   .media-card[data-type=video]:after{width:22px;height:22px;font-size:8px;top:7px;right:7px}}
+
+/* Pratinjau video di kartu galeri (2026-09-23).
+   Poster <img> yang menentukan tinggi kartu memakai rasio ASLI berkasnya; video ditumpuk
+   tepat di atasnya. Tidak ada aspect-ratio yang dipaksa, jadi tidak ada yang terpotong. */
+.media-shot{position:relative;display:block;line-height:0}
+.media-shot>img{width:100%;height:auto;display:block;aspect-ratio:auto;object-fit:fill}
+.media-video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:var(--paper2)}
+.featured-art .media-shot,.featured-art .media-shot>img{width:100%;height:100%}
+.featured-art .media-shot>img{object-fit:cover}
+
+/* Gambar galeri memakai rasio aslinya, tidak dipaksa ke kotak --aspect (2026-09-23) */
+.media-card>img{aspect-ratio:auto;height:auto;width:100%;object-fit:fill}
+.media-card{aspect-ratio:auto;overflow:visible}
