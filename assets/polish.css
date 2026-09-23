@@ -186,3 +186,31 @@
 html[data-motion=off] .journey-scroll {height:auto}
 html[data-motion=off] .journey-pin {height:auto;position:relative;top:0}
 html[data-motion=off] .journey-film a.journey-card:nth-child(even) {transform:none}
+
+/* Tautan langsung ke situs asli tiap produk + kartu produk jadi <article> (2026-09-23) */
+.product-monument{position:relative}
+.monument-link{position:absolute;inset:0;z-index:1;border:0}
+.monument-caption{position:relative;z-index:2;pointer-events:none}
+.monument-live{pointer-events:auto;display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
+  font-family:var(--sans,Manrope);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:999px;padding:8px 13px;line-height:1;
+  text-decoration:none;color:inherit;background:transparent;transition:background .25s,color .25s}
+.monument-live b{font-size:13px;line-height:1}
+.monument-live:hover,.monument-live:focus-visible{background:#061744;color:var(--paper)}
+.live-site-button{display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+  font-family:var(--sans,Manrope);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  background:#061744;color:var(--paper);border-radius:999px;padding:13px 22px;line-height:1;
+  text-decoration:none;transition:transform .25s var(--ease),opacity .25s}
+.live-site-button b{font-size:15px;line-height:1}
+.live-site-button:hover,.live-site-button:focus-visible{transform:translateY(-2px);opacity:.9}
+.strip-live{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:var(--sans,Manrope);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  border-bottom:1px solid currentColor;padding-bottom:3px;text-decoration:none;color:inherit}
+.strip-live:hover,.strip-live:focus-visible{color:var(--accent)}
+body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744}
+@media(max-width:760px){.live-site-button{font-size:11px;padding:12px 18px;margin-top:16px}
+  .monument-live{font-size:8px;padding:6px 9px;gap:5px}}
+/* Baris Work: kontainer gambar dipotong diagonal 12% di kiri. Gambar digeser masuk
+   sejauh potongan itu supaya isi screenshot (judul) tidak ikut terpangkas (2026-09-23) */
+.work-strip-image img{width:88%;margin-left:12%;object-position:left top}
+@media(max-width:1000px){.work-strip-image img{width:100%;margin-left:0;object-position:center top}}
