@@ -24,7 +24,40 @@ hitam/putih/biru per `DESIGN_BRIEF.md`.
   (itu akan merusak alur CAP/MatchupSkills yang justru butuh `creativeaipartner@gmail.com`). Lihat
   juga catatan cross-repo soal ini di memory auto-Claude (`feedback_shared_cli_auth_switching.md`).
 
-## Struktur file (REWRITE TOTAL 2026-08-14 — arsitektur lama single-file sudah tidak berlaku)
+## ⚠️ ARSITEKTUR SEKARANG — paket "Revisi visual 2.1" (2026-09-23, commit `6832390`)
+
+Situs lama (`data.js` + `build-portfolio.js` → `dist/`, 18 halaman) **sudah diganti total** oleh paket
+editorial baru dari user (`Eggan-Portfolio-Revisi-v2.1.zip`). Semua section di bawah yang membahas
+`data.js`/`build-portfolio.js`/`dist/` adalah **RIWAYAT**, bukan cara kerja sekarang. Versi lama masih bisa
+diambil dari tag git `pre-revisi-2.0`.
+
+- **Generator**: `tools/build.mjs` (Node 18+, tanpa dependency runtime). Sumber konten: `content.json`
+  (+ `assets/credentials/document-pages.json`). Jalankan `npm run build` → menulis **480 HTML** ke root repo.
+  Jangan mengedit HTML keluaran satu per satu; build berikutnya menimpanya.
+- **Output di ROOT repo, bukan `dist/`.** `vercel.json`: `buildCommand: npm run build`,
+  `outputDirectory: "."`, `cleanUrls: false`. Header keamanan lama (CSP dll.) dipertahankan; `img-src`
+  supabase dihapus karena semua aset sekarang lokal.
+- **Tiga bahasa, 160 halaman masing-masing** (struktur ini dipertahankan dari situs lama, jangan diubah
+  tanpa redirect): `/` = **Belanda**, `/en/` = **Inggris**, `/id/` = **Indonesia**. Diverifikasi: `lang`
+  attribute, judul, heading, dan pemindah bahasa menjaga rute yang sedang dibuka.
+- **CSS/JS**: `assets/site.css|js` (dasar) → `assets/revision.css|js` (layout + gerak scroll) →
+  `assets/polish.css|js` (revisi minor v2.1). Urutan muat ini disengaja; jangan dibalik.
+- **Tes**: `npm test` = `tools/verify.cjs` (480 halaman, ±21.000 tautan/aset lokal, 21 kelompok) +
+  `verify-styles.cjs` (grammar CSS) + `verify-polish.cjs` (11 kelompok revisi v2.1). Semua lulus saat commit ini.
+- **Revisi v2.1 yang sudah masuk** (dari 6 poin screenshot user): portrait tidak terpotong; navbar desktop
+  lengkap (Home, Experience & Education, Work, Creative, Research, Leadership, Contact + bahasa + tema + Menu);
+  bio + tiga tombol (Explore my work / Let's connect / CV & Documents); journey 5 kartu artwork utuh + label
+  "Open" + tautan detail; cover CAP/MatchupSkills/Lumbung dari screenshot asli (bukan crop kecil yang blur);
+  Creative carousel 10 karya asli + "See more".
+- **Folder non-situs yang ikut ter-commit**: `brief/` (dokumentasi paket), `design/` (referensi 1–7 + video),
+  `BUKA-PORTFOLIO.html`, `COMPARE-REFERENCE.html`. Karena `outputDirectory` = root, folder ini **ikut ter-serve
+  publik**. Kalau tidak diinginkan, hapus dari repo (bukan cuma dari `.vercelignore` — file itu hanya berlaku
+  untuk deploy lewat CLI, bukan deploy dari Git).
+- Verifikasi live 2026-09-23 setelah deploy: `/`, `/en`, `/id`, `/en/work`, `/en/creative-work`,
+  `/en/research`, `/en/documents`, `/en/leadership`, `/en/contact`, `/id/*`, `/work/*` semua 200; 22 URL yang
+  dipakai situs lama semuanya masih ada; tema gelap, mobile, dan galeri karya diperiksa di browser.
+
+## [RIWAYAT] Struktur file lama (REWRITE TOTAL 2026-08-14 — arsitektur lama single-file sudah tidak berlaku)
 - `data.js` — **satu-satunya sumber konten**: semua UI string + Leadership entries + Project
   entries + Skills + Research metadata, masing-masing field `{nl, en, id}`. Edit di sini untuk ubah
   copy apa pun.
