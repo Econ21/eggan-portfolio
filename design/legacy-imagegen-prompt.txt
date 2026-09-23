@@ -1,0 +1,1 @@
+Built-in image_gen; revision 20 September 2026. Cover compositions use typography and abstract folded-paper planes only. No humans, faces, avatars, silhouettes or generated event photographs. Light ivory/ultramarine and navy dark theme. Open gallery must use source originals, never generated identity. See full prompt in design/imagegen-prompt.json.

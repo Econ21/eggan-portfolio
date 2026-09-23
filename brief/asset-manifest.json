@@ -1,0 +1,4707 @@
+[
+  {
+    "path": "assets/credentials/bachelor-certificate-transcript.pdf",
+    "bytes": 7010397,
+    "sha256": "97b6593a98f3253a185575157b4f97b587549ebc9defed4154a882a6e33be22b"
+  },
+  {
+    "path": "assets/credentials/certificates-and-awards.pdf",
+    "bytes": 968787,
+    "sha256": "e322e71151c404c4f837f7e7920dc2851e9123c7fd15e7580fd875711f3da400"
+  },
+  {
+    "path": "assets/credentials/document-pages.json",
+    "bytes": 495,
+    "sha256": "0f47df60d6dc8a1d64e4c53eea9b4d1ade3e332666e163ad61e856ee1ce29ad7"
+  },
+  {
+    "path": "assets/credentials/eggan-credentials.zip",
+    "bytes": 16992897,
+    "sha256": "98ed3cae30dfaed642ede6f801d50a3726f8ba16f1eb939981331076ba3422ea"
+  },
+  {
+    "path": "assets/credentials/eggan-nachson-silueta-cv.pdf",
+    "bytes": 368553,
+    "sha256": "af9dfe03f28b279c92bd1c6e9ff862633908a5bb45c662f57301684020f36dbf"
+  },
+  {
+    "path": "assets/credentials/master-thesis-english.pdf",
+    "bytes": 3630636,
+    "sha256": "f583c0bb0c010e0406075f2ec6fde143eb63fb24b4be3760c58e3c292d6eb45d"
+  },
+  {
+    "path": "assets/credentials/master-thesis-indonesian.pdf",
+    "bytes": 3890491,
+    "sha256": "425ea66e49c363e11f8a1e9fee527b4cb385ede60ca5d897be7bdd734310810e"
+  },
+  {
+    "path": "assets/credentials/masters-certificate-transcript.pdf",
+    "bytes": 3598043,
+    "sha256": "ad9123a18b6ef8fccf2186eee0db8d03e1010e58f8515f535cc1a9c7f0f8a0f7"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-01.jpg",
+    "bytes": 266758,
+    "sha256": "d1cf1ba0e1ac1bb576194426f4207221049e22389c3aedf5cc457e4e8d608547"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-02.jpg",
+    "bytes": 341885,
+    "sha256": "479e080232fc717ebb601a1a9e1dd0f4b57762bbea6756b83845274fc3465002"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-03.jpg",
+    "bytes": 212200,
+    "sha256": "dc6670d8e12678d0c360715dcc581c7d7221edbd562d87c907fbec81f36a4885"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-04.jpg",
+    "bytes": 189547,
+    "sha256": "4f911ce08ae247daccacfea7b2186e363ec22be1c57b29384fd22eac17d07954"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-05.jpg",
+    "bytes": 127140,
+    "sha256": "208c760ae6fc86a3f165c871bab37d13574f3e3f103fe3378c9180b177659537"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-06.jpg",
+    "bytes": 123123,
+    "sha256": "9e73141f9c854f1adb0d57a647f5b9231fd8737cd377eaa1a15dab4baa9c2eca"
+  },
+  {
+    "path": "assets/credentials/pages/bachelor/bachelor-07.jpg",
+    "bytes": 84756,
+    "sha256": "ec636faa371cc8df7b41886a17ffcd92cd17d4168406d2befae986de4ad1574c"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-01.jpg",
+    "bytes": 149946,
+    "sha256": "a3dfeec753d5e97b1ad89b3b90691cbf6f7299ea5fda719847cbabb500ecdf9a"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-02.jpg",
+    "bytes": 105449,
+    "sha256": "36a77c2ce9b2f4f44db6e3f1f4d04774de7052963d61d1b964b8e1e8018d1b91"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-03.jpg",
+    "bytes": 51145,
+    "sha256": "b2395bfa37f3920bb4f2bd32e6aadc03113a41fc724860cc034880772c461531"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-04.jpg",
+    "bytes": 93122,
+    "sha256": "eeb6fcaa8a9be742d8e5cfd290ab162d7fa88dc459ee35afae0558f644afa2cb"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-05.jpg",
+    "bytes": 148469,
+    "sha256": "bb8d9b897d34bccf2bab1d217a4d81955607c4fedc7bdad98d396d1d23a97985"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-06.jpg",
+    "bytes": 150059,
+    "sha256": "91e778cecc5a032a4ce27cc1a0402a51af6ecd5389884e5aace5dcdec9cd6452"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-07.jpg",
+    "bytes": 156874,
+    "sha256": "2a3c8aa955909bd96bfa6fd2a654e77caeca07225badeb5fc344e64785f1a637"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-08.jpg",
+    "bytes": 136333,
+    "sha256": "4a4e9b6bd5d295de483f478134ae63808c52f036a3afda03113b811e00d35c1d"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-09.jpg",
+    "bytes": 160123,
+    "sha256": "becd0382cd30a64f86ba7fdac6bbc3f512fefa5cbedd6084bc478e03a1af3581"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-10.jpg",
+    "bytes": 171179,
+    "sha256": "3d4658c4cec2ddda9961a628fc69c1645b769011dde3d4ed9e3a26d02383ed4b"
+  },
+  {
+    "path": "assets/credentials/pages/certificates/certificates-11.jpg",
+    "bytes": 172785,
+    "sha256": "bfd8dc406681276651bee4d4174de2bf6daae6e8d4c3c29bf043980ccef4089e"
+  },
+  {
+    "path": "assets/credentials/pages/cv/cv-01.jpg",
+    "bytes": 160590,
+    "sha256": "9f2ef42d8b39bdf68c791ea92023652e1ea9fae7521ffdc9ead95c52427c264f"
+  },
+  {
+    "path": "assets/credentials/pages/cv/cv-02.jpg",
+    "bytes": 174680,
+    "sha256": "08c212de55ef396ee8c702d452e3e26686457cc2d5be073034b0300b5e1c42fa"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-01.jpg",
+    "bytes": 177068,
+    "sha256": "c59c04371404e156eede29611ee88469f3d13f4c9c647c14804095c7c0c1d3b6"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-02.jpg",
+    "bytes": 103099,
+    "sha256": "98a2fc9595fbd867321684295966967422b624ea16cdd1171f2c4fc6bc810f36"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-03.jpg",
+    "bytes": 162134,
+    "sha256": "83f8c4f2881a8b6132231605f9f2021690706d26bc491f8339732015d509550e"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-04.jpg",
+    "bytes": 88240,
+    "sha256": "fe29109e4b905b2a034cd980de0a4d4bf1f7afa7da1514b7a824db35d85cb27b"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-05.jpg",
+    "bytes": 154921,
+    "sha256": "7ba890ac3e759e6295c997ff1e26b462ce519065333cd125f1cf39a65c69e07f"
+  },
+  {
+    "path": "assets/credentials/pages/masters/masters-06.jpg",
+    "bytes": 144142,
+    "sha256": "844c11a6fad5926b8dd56affdff71dbf586f0f75a592da500a508706f7b3a96b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-01.jpg",
+    "bytes": 41258,
+    "sha256": "6367ab493947505a134a9c8e9a5c657889ff72ce6571809f7b65764e85a39b64"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-02.jpg",
+    "bytes": 47415,
+    "sha256": "11b13d254b2182623ec2ef12a5a7fda193ee1fe2d9f386a115332f25f5810bc7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-03.jpg",
+    "bytes": 10669,
+    "sha256": "dd28fb1fedb0e44747b63b46d755e0515b7c2f11a47f7ed1cc3564eda86da42e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-04.jpg",
+    "bytes": 50072,
+    "sha256": "0b5f60830078d292357c3abc2f69c018ee5136a6d1c837ce5ed14d88a3c730df"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-05.jpg",
+    "bytes": 23345,
+    "sha256": "0a3dd2f7b042da3c0e53cc5144ea8014802ba4f4cecbba385250c9bf9107363c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-06.jpg",
+    "bytes": 61194,
+    "sha256": "4b918510726020fcb31994da324394d27f942cef3ba493e25e43a7cb2a8133e6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-07.jpg",
+    "bytes": 91612,
+    "sha256": "f9f5bf7f7463e34ea24628f6291265b656d49cccc6dcb68eef81f9c3bb7b0e2c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-08.jpg",
+    "bytes": 65550,
+    "sha256": "acd84816295c5cd49f340e01fab7e15eac768b9525ae834a8420d33c93c51594"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-09.jpg",
+    "bytes": 94948,
+    "sha256": "c75ff263144d73541f54c401bda97387c2ea5e1b844bc0c92f4ae6ca24645d80"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-10.jpg",
+    "bytes": 95470,
+    "sha256": "c0262e6d8f0eec9cb1d171c9e88fcc46f61c76bea8caae82bd3e2e7ea054ffd8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-100.jpg",
+    "bytes": 151923,
+    "sha256": "e52482b6527bf3d7990b9688d5c12cc8846b0a71437eb6574baf75dcc46caa4f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-101.jpg",
+    "bytes": 61150,
+    "sha256": "053dc831b96be1e6c5b2456d7453a319c8942ed1a1ba34fefa6ee6091ef4239f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-102.jpg",
+    "bytes": 121105,
+    "sha256": "cff0db2bfab3ac6f773b7d875dd5021b9183d6d2a46081236291c2d8488229a1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-103.jpg",
+    "bytes": 90118,
+    "sha256": "f583bcad1c4795d7a418438909cd9a7719d815f2f1cd076f814b5b5245b72562"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-104.jpg",
+    "bytes": 99751,
+    "sha256": "0cf60c0a18dcd6807a08e30a7b6f417efa02fa070936dcdb20ca7b7284c332c4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-105.jpg",
+    "bytes": 105727,
+    "sha256": "1c0921114c00065c5c0b4fcf2625c49bab1b8f9242a4b55ba917c8199788d0d0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-106.jpg",
+    "bytes": 145735,
+    "sha256": "d79028b4ecc3167f9651051d25a6a3342fbfbf2fdc4f5f80635b6868daa4dbb9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-107.jpg",
+    "bytes": 36649,
+    "sha256": "074e30d4f29e725bed9d08951c0afc67a65b2b3104e1fcf6a2dacf6961b64515"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-108.jpg",
+    "bytes": 171368,
+    "sha256": "435b040d77a921d93b1324ba89086854349c4b8ec4ed7f2abd32a4d32be37a5b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-109.jpg",
+    "bytes": 137861,
+    "sha256": "5baad63064c75dfb1b288d98d5fcc356ab393287c7e92b46fc7293fdf762539e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-11.jpg",
+    "bytes": 102672,
+    "sha256": "fb9b9686aa190e52a27480c2c64a2f5a26186ae56ddb54d2ba56ede2dccbb887"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-110.jpg",
+    "bytes": 116896,
+    "sha256": "f704900dfb4bed6c700439c1cfb87072ae0614e54352d53a050c8ca398a4b3fa"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-111.jpg",
+    "bytes": 136909,
+    "sha256": "319677bd13eab3f29091c3b34f0a320a75bbfdd9e4e161228f649fbf3b601864"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-112.jpg",
+    "bytes": 101028,
+    "sha256": "a3bd97fa61cbbd33757624cf38d589c541f4b813c8758144ec321a46179dc0e7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-113.jpg",
+    "bytes": 136730,
+    "sha256": "1c627513957fe8f9387b14f39dcc8924ea19b37af66f5f39b26dbbfcac369b21"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-114.jpg",
+    "bytes": 133288,
+    "sha256": "af77dbe5047777c0e24314402f81922cc54cd739ac6087f65d65be2f26993661"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-115.jpg",
+    "bytes": 141630,
+    "sha256": "586841c5b4c0dbde63ca15aac35aa4bec2501968f370330bc1155b89016f9a4f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-116.jpg",
+    "bytes": 137597,
+    "sha256": "d5c877fcfdb80250ce819fe8d0418d998c3310aae9e3153fbc9454647a6de988"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-117.jpg",
+    "bytes": 147801,
+    "sha256": "ce1376c8668ac22db1c63b3d980228e91c5fb3ad976dc00074d4673e4d7d234b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-118.jpg",
+    "bytes": 138869,
+    "sha256": "17f9e36ad70727f1f81e9c5cdf24d67320a2e7083426de748ca16458562b28b5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-119.jpg",
+    "bytes": 143890,
+    "sha256": "9b1089d56974b91ccd5a1203eee7c3290016cb5d4cfda83199462f7253229b2a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-12.jpg",
+    "bytes": 99658,
+    "sha256": "487536917c5d6c8003224b0cc0eed13d35518475a16e83ac4f1eb5489a312cab"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-120.jpg",
+    "bytes": 133230,
+    "sha256": "ae177c9c97f807945005fa00fddb1a1c815095ed269b89b11e2fbbccf655a8d7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-121.jpg",
+    "bytes": 143392,
+    "sha256": "a8d1d3ca91445f8e0a5c564360b74a65e60466236435cd6db5af207bd113e1b7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-122.jpg",
+    "bytes": 138736,
+    "sha256": "143fa9f3984ddb82bc0a738554a9db1e42c966e6fe78b64862ac39d520f9c547"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-123.jpg",
+    "bytes": 133975,
+    "sha256": "553d1891dac0efccec275271cb16130f15db41c19380a185b5b82eb1b7f6ff0b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-124.jpg",
+    "bytes": 145213,
+    "sha256": "390ba52094445807dd012c75ce0e2707ba13cb92e65c625a86364ded69b9ba51"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-125.jpg",
+    "bytes": 120417,
+    "sha256": "dfe6590a74c86a56810b58fd9796f5e75ec4041e7713e9d983da148e821a0bba"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-126.jpg",
+    "bytes": 131483,
+    "sha256": "263e02b69ced9b0db2140e2ad31ace4832d357911e2c2c0e210036e170a330d2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-127.jpg",
+    "bytes": 124152,
+    "sha256": "5b5723c7981feef84fc13fcf9b7d215a6b86b1cafd0b4187aa2534204d44ef76"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-128.jpg",
+    "bytes": 126362,
+    "sha256": "ec387b6d958723ac2a421a4ebfb0d18873d1230d78333cf1b51b7f5e8e0c3b93"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-129.jpg",
+    "bytes": 135608,
+    "sha256": "e3295cc9e637147dfbda868cdb1e27865c70499ceb5c5d13afd75a7f2c5f327a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-13.jpg",
+    "bytes": 10851,
+    "sha256": "c858afb84e1958758214261f6698afd3ae90d9ca3ca0ddd2858935b71fd32ea3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-130.jpg",
+    "bytes": 115124,
+    "sha256": "166e3c3b5fd3657c93e5cbe2a1d01fc6559b445ec62833b85edfa3d542288227"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-131.jpg",
+    "bytes": 77605,
+    "sha256": "8cd4f9279f4f157c60012af0d63799a7aae19e5feba46341a6992912f3370247"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-132.jpg",
+    "bytes": 84893,
+    "sha256": "2806e976ac11c2d24ae2765e2f7d8f03738d25b8c682d547a1a4aeaa18c50129"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-133.jpg",
+    "bytes": 129905,
+    "sha256": "319fcb9b9b35217b90608589d81bfe7d42867cdf8e391e5631587788f04fd317"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-134.jpg",
+    "bytes": 147042,
+    "sha256": "59f51034b212700db8d1befc5c248ad31536e1f07e0b54d5647713885f8a3cc2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-135.jpg",
+    "bytes": 129675,
+    "sha256": "5a5f7b77bb6ac7cead6fa29f7fdd51d50be005338a904e2d14d6f13a27a1a38c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-136.jpg",
+    "bytes": 126555,
+    "sha256": "1f507c141f16838069a72fb277f853190e978ec0d4ed0dd5ba8bddc32260b7d2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-137.jpg",
+    "bytes": 140185,
+    "sha256": "b1d158b8cc0130121782790eb9570105696e171c0365ae388a8f1034bebd8399"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-138.jpg",
+    "bytes": 122557,
+    "sha256": "6bcfde458fd68d8389b0461c2c1340d3177871d64b7dcd3df286e813da2a3d78"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-139.jpg",
+    "bytes": 113230,
+    "sha256": "acce4f34dd602446c119f88b2d4c193154cc80d99f87b5a795d75c1b1d6eeb39"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-14.jpg",
+    "bytes": 85573,
+    "sha256": "8e8cce14f210dcc9c24d32ac3d9ab472c24a5c7ff8dc1c8bc25dadba5a3d9c18"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-140.jpg",
+    "bytes": 139466,
+    "sha256": "171ea8c896a3fa13204b3a516d9348a69c07cd92f637f5d7799e5bed6bbbd34e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-141.jpg",
+    "bytes": 118618,
+    "sha256": "5360e0067a741be693212dde7f75aed487ddd15253e8019ee371c2be18ead896"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-142.jpg",
+    "bytes": 119909,
+    "sha256": "29f37d82357f65935a8596056497cdccd68d419b06bee84533a3aef7a2647da6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-143.jpg",
+    "bytes": 107511,
+    "sha256": "8e8c8e9fd78022fe30a74883ce0d9d09fb8fd5dee2ffe99133ac0b5b3c2fb58a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-144.jpg",
+    "bytes": 112706,
+    "sha256": "29f4242046e7b07d76396613823532d628983a95304ee388e6f221253fe96c3b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-145.jpg",
+    "bytes": 110622,
+    "sha256": "b19328ba05f2f94a0988db80fe9354c6e4858291ffcd5924453e354ad5e76531"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-146.jpg",
+    "bytes": 129106,
+    "sha256": "d48557071285a188940d5b3a02227f29627ade5644a120aee92e491588b0e6dd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-147.jpg",
+    "bytes": 110841,
+    "sha256": "2cc51546cec5d55d3d517f0d76fe52da768113d1a25f87eed723c62493f76c5f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-148.jpg",
+    "bytes": 139074,
+    "sha256": "a3dd74d90ef8033246e1fcad89f472ab4e29a989f8d36e832899e6e6de6877b9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-149.jpg",
+    "bytes": 131227,
+    "sha256": "b2e7792902491ef8c3b7dc75f89b795e2b6259e5f4f1d7fd355b743699b01e33"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-15.jpg",
+    "bytes": 59914,
+    "sha256": "e1f4a75638b23f4dddda85fd9f50ea46b276f3151d682a19e6077bc1132e3a4e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-150.jpg",
+    "bytes": 136397,
+    "sha256": "f92908dc2cbff74adbfb0e2620fe2e554c479fc1dc95479e5241d16538990b56"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-151.jpg",
+    "bytes": 128620,
+    "sha256": "04ed3c6899df4f0dc96c6d41efb0bef7a6e264b4f9f4c067c234b95af5b492c6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-152.jpg",
+    "bytes": 130830,
+    "sha256": "dd8b6a9c845b4ae4ab5788538d398ec8247d4862ac6e118166ab0e6e082085c2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-153.jpg",
+    "bytes": 120288,
+    "sha256": "7171197b1492b970aa3870f7680163e91b22c6ddf035c52ea2cc1a89fb97f3ed"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-154.jpg",
+    "bytes": 142375,
+    "sha256": "d0c47bfc520f6d93e5fa577aace5e056158674b8a56d93be30122b37f1a79db6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-155.jpg",
+    "bytes": 123497,
+    "sha256": "c965a15aadb6144ca3bab421644d1cfbf2c33a28e0a1fdd9e84f2de914d55f2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-156.jpg",
+    "bytes": 114219,
+    "sha256": "2972b1a02e43d5d72e1225052c993896e776772cebfb820677c0f005efb1fcfe"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-157.jpg",
+    "bytes": 125178,
+    "sha256": "e8a21a1f960909e38e6e4bc443dc2700de99be3a7eb73e547b58d32544348b22"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-158.jpg",
+    "bytes": 113692,
+    "sha256": "4801a6f1bd6e8d62522dc83854a41a1bd5847b17dac3af99c4da9f167058bf2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-159.jpg",
+    "bytes": 102712,
+    "sha256": "419626d8795c866abd838f2f270ad589797e365d95225653e1c529fa4c7fd94c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-16.jpg",
+    "bytes": 96596,
+    "sha256": "72f99f8be177d58aff34494e07c931701478c99572be26dc8484db0284e9d1a5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-160.jpg",
+    "bytes": 144982,
+    "sha256": "3614684210030a9b8ebecbea26c0547c1fff8bd70bda372940ad036d4106d877"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-161.jpg",
+    "bytes": 138920,
+    "sha256": "14727ac0c4882a1fcbcec11d70dab3e99206d59d4117a31b1b9586d51853dae4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-162.jpg",
+    "bytes": 118605,
+    "sha256": "7b93264d37752b09516fe85f1b8a4e6f40a61a852a8466a73be895879d95d2ca"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-163.jpg",
+    "bytes": 130117,
+    "sha256": "f80a547208cf8fb8596d627edd18a3b571538b25217a971088b92c78cfdbf140"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-164.jpg",
+    "bytes": 142850,
+    "sha256": "165e8d862f94c7a2d27037d847bbd51879855ef4ae1412d2eb179fcb95ba3240"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-165.jpg",
+    "bytes": 138391,
+    "sha256": "cc97a8210df209fc2087e7b671e48a53e35fc520c50c0b90c4cbf643a0732c48"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-166.jpg",
+    "bytes": 147230,
+    "sha256": "46e07ceea97ac04feead5fb8106324d95d3aea42097d7e0dcae9efdeb307ef2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-167.jpg",
+    "bytes": 131840,
+    "sha256": "efae9b8b6ff3ba26b9aee30814afa175e19e619c031bf0b4cae8ad06bb2c3997"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-168.jpg",
+    "bytes": 143760,
+    "sha256": "d40d3a6bb7b4c2cd691643d4a432bcc38dbf67e4a9fcb4bf2f5f65bcaf497a1f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-169.jpg",
+    "bytes": 141449,
+    "sha256": "28c63e76bba5f35c759b06873d0fbee834e067ca05317f5891be42986e2798f9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-17.jpg",
+    "bytes": 102302,
+    "sha256": "27e27b198b3cee80a4ff71b03f1524e3ade3e94337c2d7fa21ee456855256dc0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-170.jpg",
+    "bytes": 137517,
+    "sha256": "2c1750361778e350e624a89d45d0c019a6ce01be8deabc5c3f1c9b78adf3f293"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-171.jpg",
+    "bytes": 136989,
+    "sha256": "64e8a0d29aed004025f55088c5e3642789c58bd0535c2781fc46ae1d71358649"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-172.jpg",
+    "bytes": 157354,
+    "sha256": "30447e4270c2eb39ff32b5369d51ff382ae746c221eccaa8a4b76f81444e1c7e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-173.jpg",
+    "bytes": 97670,
+    "sha256": "92c09436f4130ca9dc09cce8c2fcf5dd65a8756b672dbb35b0a36f82693dfa51"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-174.jpg",
+    "bytes": 147026,
+    "sha256": "ebf3a03a9a5b1051b921860b61ae3234849aae62cea18f3d9644102359fc4690"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-175.jpg",
+    "bytes": 133235,
+    "sha256": "e9ba74f358e81836da6170d7337e59ecb67ff759706b8b4bf6716317c96e9ac2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-176.jpg",
+    "bytes": 118844,
+    "sha256": "e2da2668e361560797229966d915d4063c344575ca540bdd75fc5a41037f0bcd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-177.jpg",
+    "bytes": 126307,
+    "sha256": "9ceaec8fe607f3d115e5c30c749574d32ca91d3691ac58105d5a3f8857fc38fa"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-178.jpg",
+    "bytes": 148453,
+    "sha256": "ea82da3eaa603408e2c3ddd7c78e5c7df867da495e7da4f88c81a729b853f297"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-179.jpg",
+    "bytes": 138882,
+    "sha256": "d1fd4414b6c558d43ee3866706f1a1c9171aec9fd2c8f00cd6567059b3325b8c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-18.jpg",
+    "bytes": 108518,
+    "sha256": "a249748a08685c8b9f4d6b4f0a89d73f5274565af3cc5a59dfc6b6b001af17b5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-180.jpg",
+    "bytes": 141187,
+    "sha256": "805f28c2d8e46c690c481bb4fc048de8ef38ab8b8c7048bcab4d271779369487"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-181.jpg",
+    "bytes": 138618,
+    "sha256": "0c58d09be2fbf182bc1a0b78e7496851fc7718505f47b1d4872dd03e6d9593ea"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-182.jpg",
+    "bytes": 136994,
+    "sha256": "46d61fc01adfa1702e7fc866420f0b3383e8749b6c919c94c8208af3bb48ed9f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-183.jpg",
+    "bytes": 143928,
+    "sha256": "8d3a7d16368c3be98ce5bb95b680a3b6b0a88d02be41de938488ca5c869ee5e8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-184.jpg",
+    "bytes": 137152,
+    "sha256": "c737dbf62987d0fa711aeb0dfd9d5b4d8334ba001265866bee775082fdd18cce"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-185.jpg",
+    "bytes": 140229,
+    "sha256": "9e2e5e40ebbbf06e27a0d211cb079bb43cb0a09a3e9bd728e125025dc941af13"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-186.jpg",
+    "bytes": 143343,
+    "sha256": "5decf7f30752bf978c250cd4197e0cb1fb3dfaf36e9e5c71f9acf679c4689fc0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-187.jpg",
+    "bytes": 136339,
+    "sha256": "04d00a9bc811949941fd440f211dd54b1f2f91b16dcc82791791ec4670100d5c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-188.jpg",
+    "bytes": 153111,
+    "sha256": "0a49d3e05c944100e8f72883eda337b60ce498175f6824162e5595ffd6555695"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-189.jpg",
+    "bytes": 140268,
+    "sha256": "8dd58e07ea9aadde2e25f59c49d48a6457920f25dd422e1c024f6caa1e852396"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-19.jpg",
+    "bytes": 101947,
+    "sha256": "82840ba7fa446b3dd320d20c043bec4497fb9738bdb165fae470b6171ab96c61"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-190.jpg",
+    "bytes": 143177,
+    "sha256": "cc32d4ab5e863fad584a4109da65dbf00a16555e7fae334548c4eebf3d778e71"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-191.jpg",
+    "bytes": 134023,
+    "sha256": "2ef06f4e9ded5bc4b40daa672275fc05a0b1ef75b5ffc70803e3c690df41bab7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-192.jpg",
+    "bytes": 126988,
+    "sha256": "c6c077401a82c2abfa0dcca7f1128899c396c14e379b627b3ba2352819a2ba58"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-193.jpg",
+    "bytes": 133626,
+    "sha256": "01ed92af621f6fe4306ef69e9e79a69ac40badfe10c9d605168d4e3221be18be"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-194.jpg",
+    "bytes": 144529,
+    "sha256": "deeb1837931a6e44826544ceb38d76dd49747c8e4464d64793ada6c9bbf059bb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-195.jpg",
+    "bytes": 143616,
+    "sha256": "92eb7fc8aee33616e92bf24b5f78ed0cf55b45aa3ab8ad5316aac8018bd19407"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-196.jpg",
+    "bytes": 147734,
+    "sha256": "1fca7e7ed04277328c9e2c8254eb904a1f82106cc6eba8dca8c317b5b7e70827"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-197.jpg",
+    "bytes": 144906,
+    "sha256": "3a3a967061808fb129f275562705f715f372baa1246a15691eebcc4a4c1c3aba"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-198.jpg",
+    "bytes": 138179,
+    "sha256": "f14de01ce27091ef89daf096879578743389663b0cd3abad4f5ce93ebfd4511c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-199.jpg",
+    "bytes": 140968,
+    "sha256": "401b7796c2b97e3fab74c9aa0f104b03bee83d79baf00a73b362133764c0750f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-20.jpg",
+    "bytes": 101843,
+    "sha256": "8354fbf12e78d45ba4aed9e5e633cb6735e7a3c223857f912ee2dc5d4af86b78"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-200.jpg",
+    "bytes": 136625,
+    "sha256": "9e0b0d1a44bf6b33c592d75b91016e5963316bb825f874e48dba5af21e1b6338"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-201.jpg",
+    "bytes": 143763,
+    "sha256": "dbc500eb08f2f6bd5655b25f628c400e69ab728de9efa322a5336e9a8ca09a65"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-202.jpg",
+    "bytes": 150775,
+    "sha256": "8de1e2ab78ddae54e2814be7f70fc9f0c2f85e20bed7eb5d645308f727a82d2a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-203.jpg",
+    "bytes": 136650,
+    "sha256": "c3ca69c76ddf17bd27dbe6cf0e6b20f41fe1bb651614b89466853db5967a7dd4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-204.jpg",
+    "bytes": 95693,
+    "sha256": "57e00c12dafd32988ce0fdbcf9b263343764cfc55c0d891d5eeeb39f38c2a7fa"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-205.jpg",
+    "bytes": 118121,
+    "sha256": "fbd18e4099977f24a625edb9ef965c5b99600e557f4db6843a468078ebec50af"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-206.jpg",
+    "bytes": 112710,
+    "sha256": "6ee2be0119a41ddd6ec1bfd7570b412949c70d53f08d324413a93c47d4a8bf35"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-207.jpg",
+    "bytes": 147334,
+    "sha256": "5e9394a8aa8d4618100cd09503ae286bc69483e696b3b7afaa860c2d30cda1bd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-208.jpg",
+    "bytes": 150047,
+    "sha256": "48bae2a86d2f6b9384639fcf45ac350ba98210dcee44c613e6129051d5d86ebb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-209.jpg",
+    "bytes": 144521,
+    "sha256": "a44320b524336d178f319e88ea6496baef1e510d2175a946f8b153c5ef573e0a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-21.jpg",
+    "bytes": 111911,
+    "sha256": "b4304db9af470668afe5a7abaa55b7703f6ae95abf472d922559a130fdadeba9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-210.jpg",
+    "bytes": 139145,
+    "sha256": "5cff7f9a50ac345109df34c5d2d4fb028fdc79292fe394f66a067351e70e314a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-211.jpg",
+    "bytes": 148169,
+    "sha256": "2f3778711639dc52afdfb85a33226ea273b3a0e0f5f6042f00de7fe2ca8ba6c0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-212.jpg",
+    "bytes": 136946,
+    "sha256": "8ffd2f236b1f5b4edfb787c1569246c3f23dab1735e8b354621e38344b2ed74f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-213.jpg",
+    "bytes": 131021,
+    "sha256": "ccbf657f17c62eef5156dd14ffe78b3d0b0f47a5294dd14212668ede9cabe403"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-214.jpg",
+    "bytes": 141542,
+    "sha256": "f60c0eb8f3eeb6a985852792b23a45369ca013bbc3756828748cbb5e3ac241b7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-215.jpg",
+    "bytes": 143340,
+    "sha256": "68197ab0af380a237c802eb683bbe1f596ea6d1dddabf4fb06c6c5de9a1f68a1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-216.jpg",
+    "bytes": 138606,
+    "sha256": "88ea39da085bb42ba340dff2f8024347e9aab59793ca75bdeb21d8c11e19d628"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-217.jpg",
+    "bytes": 131043,
+    "sha256": "1fa817beb041d13e829c4523f277d35535427150c167887d31b61ea5e3b6f7f2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-218.jpg",
+    "bytes": 141944,
+    "sha256": "d9ea7c4f2e83abc56a899901efed4776787ff19a35c858858a664de3129378dc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-219.jpg",
+    "bytes": 11891,
+    "sha256": "ef2e493a4aa159622f04292527606ec9ffd53854d4838039f30354c1c1417180"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-22.jpg",
+    "bytes": 106929,
+    "sha256": "94f199449ba99fc902238e5da953257846b73fe5da17278fd5ae9bb773c6109a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-220.jpg",
+    "bytes": 136413,
+    "sha256": "e3c32b2d85b92bd0614388e755582f765465d5eac492322bed34122183506188"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-221.jpg",
+    "bytes": 145187,
+    "sha256": "937eec6130ee19ffe1d75a04f1a67bb70dd631bf5f8cec48102091414463398b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-222.jpg",
+    "bytes": 133398,
+    "sha256": "08f3500031df2216aecb265ce54bdd21a86a7fa0de199f8733f3ec034d97cb10"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-223.jpg",
+    "bytes": 139282,
+    "sha256": "af30d88c129c23f7f9070679ef23b887a2955497be53146e632dfd8860c05d57"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-224.jpg",
+    "bytes": 131749,
+    "sha256": "c2a1f769f7f4a6dd690d79def7f3170defd2717e439912327bd11d429d1ec390"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-225.jpg",
+    "bytes": 129433,
+    "sha256": "5c5c295ac6a8e4e8e78457a3b213da0d05df0073b1e6062bd3b7b8e8283f9e05"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-226.jpg",
+    "bytes": 137920,
+    "sha256": "4162498548ea0c5da0320064283b403b76492517efb3973ea4032a4b55a625ad"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-227.jpg",
+    "bytes": 134893,
+    "sha256": "6f458414961d9ca7ecad02d1ad8a8543f446531649840a545f401f0e47de1ad1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-228.jpg",
+    "bytes": 134178,
+    "sha256": "6b7bc11947ab6bab7c3d69067133829e80fac95cfc2739a16975e302a6b06d8c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-229.jpg",
+    "bytes": 142905,
+    "sha256": "31133f1d9561670c455a44fd029a71dbdf651e75af7f56084bbcaeb85601f0fa"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-23.jpg",
+    "bytes": 104574,
+    "sha256": "d6b2d138f2ebb9a2123b0b1fbe4f58f1a6af8cd87b9b9f757f6372579ac4ee11"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-230.jpg",
+    "bytes": 130310,
+    "sha256": "f075a46ad1c92b71ee546f4f3056ef9f34c67b2137150524b04b4eff82c6e2f3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-231.jpg",
+    "bytes": 143839,
+    "sha256": "3def3aa78fccdaf88ea9ecb0d911982f72978012eeeea1ae9f83696ee130e53d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-232.jpg",
+    "bytes": 82865,
+    "sha256": "5b92c909993707d7145e8947709a9f4c8af956e161b23b1761f4ab1352bdbcc2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-233.jpg",
+    "bytes": 108730,
+    "sha256": "33a59d4f261fb9df94498a0894aee2c1fc130942f11b1d854a49978b8424a8b7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-234.jpg",
+    "bytes": 111714,
+    "sha256": "4ad47068052d767ffbb508340092da1d8f77118c44c39a28844c707c8d98adf5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-235.jpg",
+    "bytes": 111381,
+    "sha256": "336ab87d1dad1949a565039da6b2030f99c1d8e54047a9be63f160ac710b81ff"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-236.jpg",
+    "bytes": 106240,
+    "sha256": "d02b1d4a011e0ac1b732fc2c2d16d09fc2b19c95c18626a8666a42a989a2d631"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-237.jpg",
+    "bytes": 105275,
+    "sha256": "7a52ec50c09dd9a94e92d1246c65c5d0a50c3db3de7b54d5f8d8b1b9391bb9f2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-238.jpg",
+    "bytes": 113909,
+    "sha256": "4c2a97fba05171313821b3bcbe7da1e8e804efb44264312dbaf52da4c777f195"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-239.jpg",
+    "bytes": 117083,
+    "sha256": "fbdfeaba6f037db9daed518df7380d9464000c17bba04438babb8b9da674912d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-24.jpg",
+    "bytes": 65213,
+    "sha256": "4f612ec109e65a478243c24393657901f4937978891a685237620c267f228c33"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-240.jpg",
+    "bytes": 111075,
+    "sha256": "cf4a25c58cdd0b4a1fcf0fc6e1da13c983ca0519df32bbf4595a9ff86d6781a7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-241.jpg",
+    "bytes": 112520,
+    "sha256": "27d4542aaf425dfdfebb4850367d40106b41c931cd65021607c07546880fcfd8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-242.jpg",
+    "bytes": 104493,
+    "sha256": "2dc193146f32ee118494c5b7862aaca61a1b1b2add10147da577825e1d1822e8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-243.jpg",
+    "bytes": 67847,
+    "sha256": "8ab6e3013c75fd1b4e9a19cf218cb3bc7866234342effb9eda06331fca355b46"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-244.jpg",
+    "bytes": 76303,
+    "sha256": "1a8cce59ff9021d679477fd963856b306e195952f90e3b58dd3847dcb8391426"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-245.jpg",
+    "bytes": 12731,
+    "sha256": "44e0d271d2b3ca05c5a56bf1c4a65754230467d6405bd675e963ddd9b196e179"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-246.jpg",
+    "bytes": 95913,
+    "sha256": "46d7f9590dc33bdea208adee87a22e115bbed9186c047d5170009101c32e307d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-247.jpg",
+    "bytes": 102954,
+    "sha256": "f389b9100de67170dd6903d519f78edcae0166610aa8dfd16ce22e0d3b0ff372"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-248.jpg",
+    "bytes": 72642,
+    "sha256": "36e91a6426ac79da92c89f27e50981edb3bae79684deefc6aa81e745356abc7a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-249.jpg",
+    "bytes": 59446,
+    "sha256": "9f917be264b1c18cd53a99931131486af14b1adf622758ec82c6a380d1cc8ce3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-25.jpg",
+    "bytes": 98350,
+    "sha256": "399bdfabdb6ff2e4b2e089ae4e7bb957e5496482ffe5cd350e2d24df87114a6d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-250.jpg",
+    "bytes": 70529,
+    "sha256": "1b8ed2254fce35899c065399aa4ad21da4fb8dd59ee52528d3f64a152e8ae55a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-251.jpg",
+    "bytes": 54325,
+    "sha256": "66b0efdc424b42a9d1e31889853f67a0edfe29fe793d426b7aabe6899341f693"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-252.jpg",
+    "bytes": 131905,
+    "sha256": "13fa1392a24e0c642fd37210ce44f2d03c8e8c07e84afdb3dd275d9cb7211530"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-253.jpg",
+    "bytes": 53801,
+    "sha256": "4ab8b7c095746773e7405176bc8976c17622bab3ed7303d294c0ac8deef7e4f6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-254.jpg",
+    "bytes": 68958,
+    "sha256": "84c3e2f86c0f60d3b4978f086b5f1bfcbcaa335ca1eb6852264f22275751e59d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-255.jpg",
+    "bytes": 58623,
+    "sha256": "1f07712b1f834d23f7b85ab74628cefc4751e280125885afae1ca89a6b470180"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-256.jpg",
+    "bytes": 49001,
+    "sha256": "6c31bfe55a0276941f422519e91a54eace5c7c82fb524145b0988bfda72f82c5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-26.jpg",
+    "bytes": 151844,
+    "sha256": "040e2b8c6cc99bc6f722854a84be733f139f524a5767f2b39aea3ca4f17e1402"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-27.jpg",
+    "bytes": 87775,
+    "sha256": "9120268aa43e7bccc295b67ad917f50a889275e747e239f95412a51f9eb8d2b2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-28.jpg",
+    "bytes": 133347,
+    "sha256": "032521abf0e8a2cf44b0631610b8c9b5d714a386d263a9da8da1f34def8c0503"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-29.jpg",
+    "bytes": 152337,
+    "sha256": "4a18184e6baaa7053a870dcd87069b761564972327653df7a468dd5fe964d0ea"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-30.jpg",
+    "bytes": 113124,
+    "sha256": "0b71a4c314a4393f1b8edc8da5bd927996708e100d58b434767cea619197b701"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-31.jpg",
+    "bytes": 113716,
+    "sha256": "d2700c021fefe8d567adcd7b5f8ab601632d5ed539083ff75259cdbc13798586"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-32.jpg",
+    "bytes": 114469,
+    "sha256": "5ce7b05d8a2e5bb62978c42e59257b63d76f862cb41a16c7bbecd3bedb2c7357"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-33.jpg",
+    "bytes": 128286,
+    "sha256": "d8502685ae176bf99336386202947e3f6a69436034efcdc4304dcb046412e840"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-34.jpg",
+    "bytes": 125734,
+    "sha256": "c8c879bc7c8f7bb3194b95bad0ad8a0103ad66308d61161489ff658f31a1c054"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-35.jpg",
+    "bytes": 36617,
+    "sha256": "c761c1648aff9d643f867970f7716f8deb7a16ec1de030f3b627ff756a346ccf"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-36.jpg",
+    "bytes": 135067,
+    "sha256": "68ddb13d0f250a8a2ba3a2e22629cfde11643e6c081f5c8ad02ddb5418321fc6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-37.jpg",
+    "bytes": 133989,
+    "sha256": "0f778e15ddef3550c54284e4a22b7023d64b2273ab5f1435515bd8d51bba2e7e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-38.jpg",
+    "bytes": 84049,
+    "sha256": "b821af56902c7a989fce3b4ce44bbe27e7231301eca29a6f841e53906f32fb7c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-39.jpg",
+    "bytes": 79257,
+    "sha256": "fd08d2a3f1f40cd40a83813a7d100ecdf85e64cdadb74ecb17a2b3db5b8e630b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-40.jpg",
+    "bytes": 69327,
+    "sha256": "960b89d0e92c8e68280494cd524f02fa80804411db5cdcc32a78268815f5ad4c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-41.jpg",
+    "bytes": 51518,
+    "sha256": "ff7ca7495b2c9fb47d96eb5109bcc8c53c561527d137dbf45536fd0ce82fcf49"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-42.jpg",
+    "bytes": 85609,
+    "sha256": "f137c565d166701fd3415ba6c82ec3b1a350076ae683cad4a33066bfd4a4f11e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-43.jpg",
+    "bytes": 80491,
+    "sha256": "68308cf7cbd2d10ea618d42fc425c21a13ec07dbfd08733d2a1c5ddd67ff9523"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-44.jpg",
+    "bytes": 80644,
+    "sha256": "e0f056e832358bbcf45860d87d35a03dd32db34954e06f7fb3819fd4d2aa23af"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-45.jpg",
+    "bytes": 58670,
+    "sha256": "9e2573fb2e4609958ec294ea27bd26d6e73e0d0e3eed7b7c03f764e772dd5904"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-46.jpg",
+    "bytes": 145945,
+    "sha256": "a107295f9b8a51a7c2b4836300cc8994ad93e44835b6374a578ef1149be7e43e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-47.jpg",
+    "bytes": 143528,
+    "sha256": "e0f58e65d678d9f394e1f4bbf3fc58031dbab5ae76143f9b114c99f044cd9df2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-48.jpg",
+    "bytes": 150473,
+    "sha256": "2681cb647051c810c63fcb5d2b183a20b64bf9f38a8e64b6bd84651318cae2a0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-49.jpg",
+    "bytes": 135506,
+    "sha256": "4b3d61a19b96219708c9a5ab3081df3a2c068845b149a221a4f07190f43035c1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-50.jpg",
+    "bytes": 135641,
+    "sha256": "ac1b1b49e4f609c817a06d37eff959d36529f86c0b4edcac53820095913fd418"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-51.jpg",
+    "bytes": 134421,
+    "sha256": "cd24ba60d2c3a170e8768166fd9a1ee7c5086ac2667ba98e373a6172a1bca1b8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-52.jpg",
+    "bytes": 144060,
+    "sha256": "e13169cb4c8a9a88ceff87716bca1d1d3a35fb60cf7ae045faa04af89f33fa65"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-53.jpg",
+    "bytes": 142484,
+    "sha256": "b0a820b6875d34ce3ee03f48a064efb7e3b85b120fde7f8d993afbf4fd925135"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-54.jpg",
+    "bytes": 140961,
+    "sha256": "3c9d596e95cf3451a456c458849faa94e13eee4237129529ada0f10ba1828c8b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-55.jpg",
+    "bytes": 94288,
+    "sha256": "6e322fcaafcb75e55d2bd0885f5591272feca0b7001d11eaa1fc4071a3071e78"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-56.jpg",
+    "bytes": 85903,
+    "sha256": "9d80c800f08232c185c1f742c2f7282ba4957e64918bdccdcae93e4f11c20fc2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-57.jpg",
+    "bytes": 83778,
+    "sha256": "18ea05714b124397f1a7a93694ca787508d98a089447c35d100ff0f641a6ff19"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-58.jpg",
+    "bytes": 84666,
+    "sha256": "95c420d0fa82eb11235a0be6985d709b964731fc0266e07c7feff40e9d53164e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-59.jpg",
+    "bytes": 80127,
+    "sha256": "5fb6f88a6c6c259b36397dc7cd8e1df1f6d715d20fc19c7af9e7276e506b54a2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-60.jpg",
+    "bytes": 83262,
+    "sha256": "61698c5392e3115601a1debe9257a171b7e396f10b1626d0be94d19f5f188224"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-61.jpg",
+    "bytes": 84420,
+    "sha256": "5b1dc547e68eec38ea909cb27b68671fb0391a558e617303bd4925d7f2724cfd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-62.jpg",
+    "bytes": 88950,
+    "sha256": "de928b99c30c1833de5059e602c65c9b8f8b44a2c85fdaa9817d5460886e067f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-63.jpg",
+    "bytes": 85824,
+    "sha256": "03c28b844238bdcf94ec95d0bb27c74431f925b8f2a7893e290a3175e80ca11e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-64.jpg",
+    "bytes": 87729,
+    "sha256": "346abee809675eec32ef02356d3037ad831c4bee13e0e0357735183451e0f507"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-65.jpg",
+    "bytes": 92176,
+    "sha256": "e477b7918aaebf180e9d3719a209eb868f4f73ddfd1729d119707834a6d54b2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-66.jpg",
+    "bytes": 102621,
+    "sha256": "c3ac74cca86fee637c2fe6395618cc71081135757dad5ec5d642475e89444c35"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-67.jpg",
+    "bytes": 137967,
+    "sha256": "df5b6685b0c4d4e1e4ded20b8f3b1c55e32d160bca68339beccf25fa394d5bb8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-68.jpg",
+    "bytes": 150020,
+    "sha256": "907ec83655718ca75a03ff50ddaf421b8aa71a27b76cadabe698a46dafb7590e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-69.jpg",
+    "bytes": 137521,
+    "sha256": "e2cdda4b1fcc72685c55b58f39a8bbfaedab861bde7357b2d16cc389aeea0865"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-70.jpg",
+    "bytes": 144540,
+    "sha256": "26f189275a217be620f57612840dff58e9d762acf0f36e741503855be6f2127a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-71.jpg",
+    "bytes": 144848,
+    "sha256": "de82bd88427c135f1d51d77f1e406c9241942a1c487ea047b3ad8b92245cfc5a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-72.jpg",
+    "bytes": 150594,
+    "sha256": "3d1ad2e422eda8360f277fcc8d9d51255da0a76f987550081e4fadded82d4ad8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-73.jpg",
+    "bytes": 143828,
+    "sha256": "6a1a38afadeaa21b91fa9fd3ece6d0de99a50741ee10a313dced2b460b50b5a3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-74.jpg",
+    "bytes": 151162,
+    "sha256": "f6d4c31393e886ab564e399ecfbea6aa4e1e9952661ed472ba1f6c4774212819"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-75.jpg",
+    "bytes": 69822,
+    "sha256": "01487b97c3c1abca8dec592315258fc49ad12b094f56470e08b216dac32bc336"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-76.jpg",
+    "bytes": 97441,
+    "sha256": "22373acf9bfbaca76faaef05d4e3814163a9737c913571eeffcda9b78c098fd6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-77.jpg",
+    "bytes": 87920,
+    "sha256": "dc29b55d23f50bb6b5a5ed0c96ce0aaa2f24b55ba6f822bf53387fe34c99eb77"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-78.jpg",
+    "bytes": 90660,
+    "sha256": "d93e13bc482c7f6af3b7118f37d8996cff1cd7be35dddedeaddf442d2882d6d5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-79.jpg",
+    "bytes": 153374,
+    "sha256": "d634413fffdae7dad71ca9434f08bf74f58f5165e08e5e60589faddba0875fa5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-80.jpg",
+    "bytes": 151203,
+    "sha256": "20036d99821751d332efedd318e37e1c8c6639c69fdb2f4c691cbef4bb42ba3c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-81.jpg",
+    "bytes": 141056,
+    "sha256": "b007f3bdbef9bdc3abf26e18560f981d38733ffef9a766000146668775281ea0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-82.jpg",
+    "bytes": 151488,
+    "sha256": "500ae12986ab4634a09e7443966ad0bc00ba39762bdb8418a9227de3693d1054"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-83.jpg",
+    "bytes": 132486,
+    "sha256": "f8aa284b8cb89c46a19f3077f20a66da43815800ea703f328b0663229bf141fc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-84.jpg",
+    "bytes": 141641,
+    "sha256": "ae944e40206a12df8b59498a8f60095aaeb93112605a83aed1a2f557ddefc2f3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-85.jpg",
+    "bytes": 127486,
+    "sha256": "fe4106b2be1bd825317d527bb804ee20c1c47fea98616562198b788dcc3da9ab"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-86.jpg",
+    "bytes": 99242,
+    "sha256": "ae9fad426de4155a3031258e8f32674960d3d7949a42a99d52af1c2d57ca4623"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-87.jpg",
+    "bytes": 141670,
+    "sha256": "92da6cbc88844a58f8dda79fafe211b13979dcc26913843f2856c168d669be8b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-88.jpg",
+    "bytes": 30312,
+    "sha256": "3ee22143792d1a76a914c7d5f1b644de39d84037029d974fd2650f79d7247edf"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-89.jpg",
+    "bytes": 138137,
+    "sha256": "810c63caa60df233fb5eec95720c87bb53164fc32e24e3656882b34564492025"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-90.jpg",
+    "bytes": 142882,
+    "sha256": "8d5710272180b1fbe950b5ffe970bc45e0ecb65a3fb4eeba3777176bc1a5f484"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-91.jpg",
+    "bytes": 141974,
+    "sha256": "f6cdeb65f6f845108365867c9c52777948c406a183fddc8367f43c3c0c9d14a1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-92.jpg",
+    "bytes": 120967,
+    "sha256": "d0e6f11352551d8e2decbcdc680f45fbbe0ae8fdd5c94769b788ab6dab2a132d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-93.jpg",
+    "bytes": 104528,
+    "sha256": "81206d80ef4ab852a9f8c109eaf86cfce0ed3addca2b5728a54b4a694798f2b4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-94.jpg",
+    "bytes": 104154,
+    "sha256": "c7d949b79f766727b1a5705f446d8a9b99561486bfb831c03ac98c96afaa5cee"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-95.jpg",
+    "bytes": 106926,
+    "sha256": "b127bafec43c05af3493befbfce1316537ad2559ea0bd53f4c2675c5911cbff9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-96.jpg",
+    "bytes": 116271,
+    "sha256": "1031909e98c838cd808a9638b4f401b608dd276a744f06f851465b231d69408e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-97.jpg",
+    "bytes": 118876,
+    "sha256": "fa600f7e7dd0158e214e441fdaf78d56461e2f4066ad7c8b9234823627023c53"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-98.jpg",
+    "bytes": 146996,
+    "sha256": "59897d10eebacbf73ed4aa247230fc89dfd1e1b08ae82040a049ba940f859fa9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-en/thesis-en-99.jpg",
+    "bytes": 141506,
+    "sha256": "338e7cf678b4d5f5d81228eae65a919e05a81a79976a5c4607fae0af299750c2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-01.jpg",
+    "bytes": 40119,
+    "sha256": "3109eecf0be2297f55390b67753d153f82c36ec1aedf0e7753dc13e56f2f8b63"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-02.jpg",
+    "bytes": 45797,
+    "sha256": "0e3a2b39140bf9ccfd4b36798254417293cca2127ab571eecc3fc7fc5c18c279"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-03.jpg",
+    "bytes": 10669,
+    "sha256": "dd28fb1fedb0e44747b63b46d755e0515b7c2f11a47f7ed1cc3564eda86da42e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-04.jpg",
+    "bytes": 50072,
+    "sha256": "0b5f60830078d292357c3abc2f69c018ee5136a6d1c837ce5ed14d88a3c730df"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-05.jpg",
+    "bytes": 25211,
+    "sha256": "bb29242ce8e5ef61e587459661046694740df18962b9c1e704af4fb51f24cee7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-06.jpg",
+    "bytes": 62271,
+    "sha256": "8d9f49d33652ab1b290a8aefe81ce3c57cd53d19ca1825228fab699613e418c9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-07.jpg",
+    "bytes": 99761,
+    "sha256": "71d45a308d1751ee164e7c89d52f666d7778bfc52fd5d4f71982310b7b2d8849"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-08.jpg",
+    "bytes": 77222,
+    "sha256": "e6418e84ab1afbd6744bd8bf3d80c4a22cf5e1abc06d7522d038514def7a408f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-09.jpg",
+    "bytes": 98171,
+    "sha256": "6a08798a033ae84d5aab2625ea40747fd8f1fd5f7b6f28a5f482a70d2439e068"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-10.jpg",
+    "bytes": 96547,
+    "sha256": "c24465b0fda6c632cda8e3bdf36915816111b21f86d92deeaa2eb7e5ae9e3825"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-100.jpg",
+    "bytes": 140646,
+    "sha256": "08bddcc1d9e43ded44607e25fbbcce1613198422f8e19a488c92cf7d71b6796c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-101.jpg",
+    "bytes": 135796,
+    "sha256": "88a917df1f5ed9cd36ec470ec1db27cd6a5739a3cc342d7b3933465229804180"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-102.jpg",
+    "bytes": 136454,
+    "sha256": "04be181f69459c98381bd5d72da9e20e856a227534c33033dbbc7322909d1103"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-103.jpg",
+    "bytes": 108681,
+    "sha256": "e7ac5ef34a7549b9aa483c752ac4e5142d878f8c3c42eec4b078a866bcef5ac5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-104.jpg",
+    "bytes": 103792,
+    "sha256": "d13c697316554af44e21288ade473a2a4955b4e216a0e03056d77a400ff7f68e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-105.jpg",
+    "bytes": 102458,
+    "sha256": "4a4b455ac06cb262740512c260ed0120974a1a90bd67976e9b6e06b5fa4aac8f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-106.jpg",
+    "bytes": 107898,
+    "sha256": "c406a645804d1b9900472298e9dcde37cd105d0d8864dac6c5225d03708dde82"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-107.jpg",
+    "bytes": 132301,
+    "sha256": "99fe991a1a0b7d47d01dd445df7ca1fde24d7a8fea02ee3a011e3cc2b4d22db2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-108.jpg",
+    "bytes": 137269,
+    "sha256": "a8f6672247abc727192ebabb532a2ef67e6aac8f66a43e3ee5bdfb84e63bb246"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-109.jpg",
+    "bytes": 149682,
+    "sha256": "5f87fdf94200b7cf4a844d41b621c3e1a66ae7ef00665ed4285e2f4a8201e3ab"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-11.jpg",
+    "bytes": 114102,
+    "sha256": "4e6ba2f254508d48f51e75b0ba8bab4428080405b876e936b9a9a007174e66a4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-110.jpg",
+    "bytes": 135642,
+    "sha256": "cd4126d24295c89ddaec257884f9e540cceee6b258c34b0385e958ef94cbb3d5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-111.jpg",
+    "bytes": 111183,
+    "sha256": "bc3c751f9c219fee51dd7a4ee84b42c3609eeece277ecc0eaced7ad3df4348f6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-112.jpg",
+    "bytes": 11829,
+    "sha256": "cb4e2e88858e7ff6bb4f86984e10def1c4b617cd5862b360e675cd3a9f125332"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-113.jpg",
+    "bytes": 125264,
+    "sha256": "d596e6989651da4a643893915c80eee18ad0266c5430663a8ec13f5e390cc6b2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-114.jpg",
+    "bytes": 94245,
+    "sha256": "b768b8e2bbaa420a2e94d456e0f0ce30269125fc156d94d06df812528e8e1ad3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-115.jpg",
+    "bytes": 83677,
+    "sha256": "abb75332f795bd1016a83a93bbc17723afbac5f4ee01ae5c3ad2d1043fa8e6d3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-116.jpg",
+    "bytes": 143795,
+    "sha256": "cb7bad254ad449fe3de9688ddf999f97a975b58c49b31b7ff14eedbfb85da41e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-117.jpg",
+    "bytes": 151463,
+    "sha256": "3b706ae2933cbb07f3b5edb48f3fe9bab1b25a6a53d4986b3a6e0bd5bfedfb46"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-118.jpg",
+    "bytes": 68903,
+    "sha256": "543d73a950702c6b29ac391cbb5496809ef4e6ec7ba051a12f676b0bc7c68dd4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-119.jpg",
+    "bytes": 151959,
+    "sha256": "30c7c8ba33ff286d43be3f3e5cd445b42ee49490aa984367456bba1b90416647"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-12.jpg",
+    "bytes": 95369,
+    "sha256": "1feb831dc899de2b9dd0b629992510462838db13d391d9092222c9ad7a909d7a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-120.jpg",
+    "bytes": 146511,
+    "sha256": "93216c66e230a3326d04f202916e27818cb73fa7b70dc5480e2f5d57a35a7602"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-121.jpg",
+    "bytes": 97595,
+    "sha256": "645dfedcc3cf6732a28ec14c2defe75981b2d977ce725277e58a667a12956456"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-122.jpg",
+    "bytes": 130833,
+    "sha256": "0b933429795818c606cf08b05720cb5782062aaf5266a2b7ad5b50150cdbc2c5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-123.jpg",
+    "bytes": 100848,
+    "sha256": "c8e378f6c95b5ae4022f802483fccc8fdda26f3b4f969e019a58ac45d4ed826b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-124.jpg",
+    "bytes": 136862,
+    "sha256": "f2f416af3721806a6c33b5ccca945cd3fb70320250fc8085416c10eef309ec33"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-125.jpg",
+    "bytes": 140453,
+    "sha256": "428914809b145cde1ce5673c6e0b94cd3d72346a1ee649001ecd55b7e41ab93c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-126.jpg",
+    "bytes": 124524,
+    "sha256": "2ee4ee04dd15febedeec40dc3a4b2a8f9cbea6f735e2416012438dc300f921fb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-127.jpg",
+    "bytes": 143706,
+    "sha256": "8c9af5e9a209d91e27ef1c4a11aaa74235350c85de3ac073adf31bbd4e01a37f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-128.jpg",
+    "bytes": 137553,
+    "sha256": "102d5a28418aea0f40dd546781fa43e8f71e89ad140646de29305e895018ab31"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-129.jpg",
+    "bytes": 146191,
+    "sha256": "25417535c00d750e0e2549ae9b090138c59efd6ee0b73b8e20802708a2177cd1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-13.jpg",
+    "bytes": 74499,
+    "sha256": "57c503a0d7911cfc8762fe068b34eba0b1db6eae091b82147d61c28b25e8f123"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-130.jpg",
+    "bytes": 141283,
+    "sha256": "95fda983949d3f07be315f3c2eee62d4e5a6f2a8225cb3361b36b2c87f0a0f43"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-131.jpg",
+    "bytes": 143634,
+    "sha256": "6064adea5e1ef0084cdd68872049d0119337b48c97c527b956d58eea3818e897"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-132.jpg",
+    "bytes": 144013,
+    "sha256": "94d14a7d2fb233e9a2c003d7081b262d7afc8fdee8d47db09fc34ba894c312aa"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-133.jpg",
+    "bytes": 133083,
+    "sha256": "e43e2f2200bb4edc57169574862fc0f3a8a669f92115638c469eda7cfe895b2a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-134.jpg",
+    "bytes": 132205,
+    "sha256": "b8f9443ea562197fad6051fa838981e9760d0f08965a7dcd7a6441eecff3cd6e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-135.jpg",
+    "bytes": 136656,
+    "sha256": "69ccda941f5b653d265b801176ad86923a0a41d63801a264b691b6974cec6145"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-136.jpg",
+    "bytes": 146892,
+    "sha256": "da0dbde251eb920e866b606e62188ec172e3a40373849f8ad129a4d48899710d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-137.jpg",
+    "bytes": 128797,
+    "sha256": "78e00578c72ee62e11ffc2d7ce1f4717204fc15a5a5145f74a58fac0984dee75"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-138.jpg",
+    "bytes": 122054,
+    "sha256": "3947e3cde5d77b08fb33ff88fea59b2f02314691df726440bc201140308cf3eb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-139.jpg",
+    "bytes": 116817,
+    "sha256": "da3ec39984f997fae97d21f761ffa491ba88f2a1fc9a290efe1f340c453306e3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-14.jpg",
+    "bytes": 52267,
+    "sha256": "732a512d43bfb2db0e2b84b42ccfeb362e645fda2b55079105029ecac65dfda8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-140.jpg",
+    "bytes": 134075,
+    "sha256": "3f730f373443da75a41237d8d8d63ba76ea8399b3cc0f82a207b51a3cc6ca404"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-141.jpg",
+    "bytes": 131941,
+    "sha256": "f4c2ea01bc10703a5d915c8d41a7e30c23e64e8b8685ffa0269c428183e145dd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-142.jpg",
+    "bytes": 133253,
+    "sha256": "729127b3dc56dee83a777f3be6e02202fbf63fb9c3f7e65342498dcdbf5f7f64"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-143.jpg",
+    "bytes": 127134,
+    "sha256": "2eea799545277c94de6aed93e7f1c4c9b75771b3e1cd573093475ad6e6af351f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-144.jpg",
+    "bytes": 77088,
+    "sha256": "019344aa3b13175d4edfde99de7039722e5dc06a1ca5c790ab82c964b0ae8165"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-145.jpg",
+    "bytes": 69764,
+    "sha256": "52f1f897eaf4b643e4e0cc68da9f5034a7a5d409bdeac2bfd2e9ebf27fc46dbd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-146.jpg",
+    "bytes": 139884,
+    "sha256": "8733db36703fbfa75cff21e18961566239c7e6b367d3d2bc2584125128a9401e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-147.jpg",
+    "bytes": 130944,
+    "sha256": "cbf932b6f373ede9c21ecd2a7ae59c82d351ed188130fcaf8c258d9df0899177"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-148.jpg",
+    "bytes": 136924,
+    "sha256": "8c4b13d341893a542f734a06fe13fd7566cbb7256818704e81c907f9cc6baf07"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-149.jpg",
+    "bytes": 130476,
+    "sha256": "2f93497e336e9f397e15d856af581f79f743faf36f3f35f90f3f761bd906aeec"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-15.jpg",
+    "bytes": 108489,
+    "sha256": "c6642e49020b650f60c1eb2b23831980aeec3172552341dfb5f1cedaaf1b1ebd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-150.jpg",
+    "bytes": 139885,
+    "sha256": "99921e7fc7f9fbf90eee6f7f9826080ba27b2957ad718bb93c3fadac22c44194"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-151.jpg",
+    "bytes": 130434,
+    "sha256": "10f3ccf68a895606f85cade87aa446a21a430ccc8e404b33d36101b3279d2355"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-152.jpg",
+    "bytes": 129084,
+    "sha256": "f86188f20b951e495395346720e0456de748184eb6afaa66b883d517e927b23a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-153.jpg",
+    "bytes": 129236,
+    "sha256": "41c991aa1b4bdfd5be4f6264b7deed4e52e96b54cd35cbdbfb9fa69fe345e9d8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-154.jpg",
+    "bytes": 134957,
+    "sha256": "891213a9dc63802c1bf252df71372d2fe7dd2d17220150cbba38d35e3bac4164"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-155.jpg",
+    "bytes": 121378,
+    "sha256": "121ce1b501b5554ba10c067d34bffc938bcbb7ae4b2be689bb7adf95e68b6385"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-156.jpg",
+    "bytes": 118737,
+    "sha256": "ea3ddeb575d61f3c0e5bd432f889b3acabf663e8ea93a6e8b6e3e68d85736b6a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-157.jpg",
+    "bytes": 110286,
+    "sha256": "cf5e5e2421f6df24dcf338a7b91a1a3f7197ad7fabd08fcdd544127eb7f715db"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-158.jpg",
+    "bytes": 127009,
+    "sha256": "2ed343eccb14fdc55ca4bfddb0f7b1c7b783c2e19f2b516fc519ed5cdcfc04e0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-159.jpg",
+    "bytes": 115300,
+    "sha256": "d0db99cf58b0dc44c638e518135e2c5edc1d2cc970b0ecb473d44360aebaf73c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-16.jpg",
+    "bytes": 108232,
+    "sha256": "f9c49a49683e8b7c2eba66a59238e904d18040c6361ecfb426f28cd807c6b48a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-160.jpg",
+    "bytes": 122741,
+    "sha256": "77dea7477bc73e8146db15fdd031251ca289b9b4bd72b39d7d3fe09662429ab5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-161.jpg",
+    "bytes": 112555,
+    "sha256": "bfd1a5119d7c53e951e782c764ef7a7d206e8730e6d7d7d746d2ca3f55cb1136"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-162.jpg",
+    "bytes": 123694,
+    "sha256": "17b3cec80d6f251e5bd4fb36ab871a8f55662acbbf925ebf1c151c280ef0f981"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-163.jpg",
+    "bytes": 143652,
+    "sha256": "dc6b4540c3754fef2d0bc61a1faef221dc13acc6b241ae6ef090769e41684733"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-164.jpg",
+    "bytes": 126410,
+    "sha256": "25add90ccc418caf2d61f5bc802dcc5c36b2918b16fd432e663a4fb26468b2da"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-165.jpg",
+    "bytes": 136493,
+    "sha256": "c745550cc313770e1371a4edd3b516e1c56314242e9fe30f565eea9c25f480c1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-166.jpg",
+    "bytes": 123666,
+    "sha256": "06c74744ff81614316d619f8405bdb1dab8d2ba61da90010d7c4130f49851d6a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-167.jpg",
+    "bytes": 121319,
+    "sha256": "27bc036cbbd90c9934726de3ddd3f15187a50f5a094bd5c2b2d5557647dfb603"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-168.jpg",
+    "bytes": 136097,
+    "sha256": "f78ff2c76ebfee43501343edc47f7413b7a4b0bdbb14245974bb08ee9a1bee70"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-169.jpg",
+    "bytes": 134473,
+    "sha256": "f676333672f9c6660c4f78fbe52f47e210ed180eb437154a0fd161241306b00d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-17.jpg",
+    "bytes": 107963,
+    "sha256": "06e57f12bab54d8327fcfea7b61f65becb0cc03c40ed0d013cc9293862d33ae8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-170.jpg",
+    "bytes": 118582,
+    "sha256": "df3e002421fe0e5bd5d30aaa535dfcb8e481831845e5d9c3c4c0bff73e0673bc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-171.jpg",
+    "bytes": 131265,
+    "sha256": "87f2f6e33845f2c7a2eb1201b18a6d0e830a8a51b2202de9860b47e8fefb4771"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-172.jpg",
+    "bytes": 119788,
+    "sha256": "736aebb24ead033b068aa96181c1967e9e4ed6e924a2d27986ee40e179ace7ec"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-173.jpg",
+    "bytes": 109953,
+    "sha256": "264aaa95c566535a5e388537b06b53afa75b9249d4ae1a4028983c4a64bd7dd8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-174.jpg",
+    "bytes": 131278,
+    "sha256": "27c5171f52701546116d9c3c46127d3f200c4c694dac4130af002c355d928ff5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-175.jpg",
+    "bytes": 143324,
+    "sha256": "68ddb2aa37055b7181a334809d1f96d012173127203c8c5154f6deaad1482b00"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-176.jpg",
+    "bytes": 136835,
+    "sha256": "8577419fd7634c47dc8c01fe634ecf2fa7904216c8c7834dc0d7761222f129bd"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-177.jpg",
+    "bytes": 116304,
+    "sha256": "6fc9ab86b0b6b0bfe6f33863ceaf52ba29b9772549b16249478af94deb20c160"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-178.jpg",
+    "bytes": 138712,
+    "sha256": "503249417e92abf029136e98f342cf135fdad55c78a9a35200ac331b0526dd10"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-179.jpg",
+    "bytes": 149115,
+    "sha256": "8523ac1a0e29a5b64d768cfcc9de54ee9b2f021de8761efc0c88cce36fb1e70b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-18.jpg",
+    "bytes": 106471,
+    "sha256": "354cad7f6436ef0d11f643496d1a9032bd0097e210e9800eb00720a203bf4164"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-180.jpg",
+    "bytes": 141460,
+    "sha256": "2b7d33b75d62de07452f6848bbd26d8262047e95f6f814c63972f3a866bb5d9b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-181.jpg",
+    "bytes": 142701,
+    "sha256": "dbc72ac95e95ac6e3882efc7051b3db6c2969999d68ca81d9e588dae2b65fa69"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-182.jpg",
+    "bytes": 142239,
+    "sha256": "bb6139e1e337b87578a4c93103b5014accfaf24b275833f9a2562b73acfe6ece"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-183.jpg",
+    "bytes": 144652,
+    "sha256": "9171b891fc2e125e9724e1ffa3f4a3e896e48e6689d3078c1b85655485e84d0f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-184.jpg",
+    "bytes": 147773,
+    "sha256": "6bf4a6ddd3aad121ec8c91b4dec23f95a368fafe561c732dfa664550556bac0d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-185.jpg",
+    "bytes": 137447,
+    "sha256": "aaf916e894f67a219e5d7e5c78a613533014d968be7256877bb709c9ef09140e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-186.jpg",
+    "bytes": 147446,
+    "sha256": "82d9783d0e4b8787ceb6c438c5955625ba6b7cf905fa61dda697c27090bc6ab8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-187.jpg",
+    "bytes": 141767,
+    "sha256": "3f6207118b18d0f6f32fde6d679305ddef2f7e1a08030ebd34c3d786fd7160cf"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-188.jpg",
+    "bytes": 142065,
+    "sha256": "bad7adce9a145432a9249749a5a97c2b039fae7f895440b6a5f10b2b78c6b0e6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-189.jpg",
+    "bytes": 138731,
+    "sha256": "03df80cc6b4ac139c935b2f5912b78a7c8ce1247e76f589d34f2d9326f2d8061"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-19.jpg",
+    "bytes": 107063,
+    "sha256": "626c016a039e70a7fe535e79f0fe7aa2b78a0ca561d19e25b2b1f9b4bf1e6f46"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-190.jpg",
+    "bytes": 154335,
+    "sha256": "b203c023722b1712602198aca55710c52255219969b91e886b3ee5716ec30cc6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-191.jpg",
+    "bytes": 121672,
+    "sha256": "4c21ecec055eff427ea635649f3598049cb60dfa05c7a71f7f7ffd6a00bfc576"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-192.jpg",
+    "bytes": 128380,
+    "sha256": "6040c14b5159eef10e91f83a40cf117ac0ab36b8ee52465244ce8eb478df8b27"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-193.jpg",
+    "bytes": 119608,
+    "sha256": "55f7f6233299a3c807a02d9b9dc75174d5b370dc458088ca2204cb89b329bc58"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-194.jpg",
+    "bytes": 151548,
+    "sha256": "02ec5223a29e8cd085dae84cada563d2b2617da1ed2cbe214b4998d2fae70816"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-195.jpg",
+    "bytes": 137398,
+    "sha256": "64edb85d84b83d8466b946918f60688638e351ce4473ad574e2771d394e264e1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-196.jpg",
+    "bytes": 148080,
+    "sha256": "4eb9bb27308dfa2d09e49f1c7ed76015c2fd0263a47bf5bcfb0a1e058f47fbea"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-197.jpg",
+    "bytes": 131557,
+    "sha256": "08cba643c8e81536c268bdf957833ea06ebcfd04f3c53cd1af30f3485f13c060"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-198.jpg",
+    "bytes": 133922,
+    "sha256": "8feda4ecdd99d41d5fdaa38ef4429228fa1e6292ff14f2d84838547c6d51002b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-199.jpg",
+    "bytes": 135923,
+    "sha256": "47e8df3596fd0ab4bb13fa15c304bc47013540c27dae02374e9e7b2c1a3389a0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-20.jpg",
+    "bytes": 110002,
+    "sha256": "2c70b4d095b5e188a3f98e8c933343bc81164f314bd1aa2bcfd4c72a407c602c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-200.jpg",
+    "bytes": 144276,
+    "sha256": "bb10ab9bafa4a0ebac2d612946796d4071493967bd7f9e720042ff69565785bc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-201.jpg",
+    "bytes": 133904,
+    "sha256": "68695ac72a2bd7b7eed0a51f0cc2366c3ccea608cb790fc31dccd80a794d8706"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-202.jpg",
+    "bytes": 138116,
+    "sha256": "dc65039d5d80df445bbda52ef426281075f720ef3f6e83c284eac46a57cf4c94"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-203.jpg",
+    "bytes": 142885,
+    "sha256": "905c9ab9aabf1cc067ec78f162639134e15db347878af4a4b219ba912657ead4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-204.jpg",
+    "bytes": 143879,
+    "sha256": "4f02f2edd37a9489d8a966fea19fa9088bcf1ba4072691470931c45559fe6a59"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-205.jpg",
+    "bytes": 149394,
+    "sha256": "fff1bcd9f4aaf557e599caf6504d8c08a4c88c5484e3a94ca7eb40bf22081d1c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-206.jpg",
+    "bytes": 142555,
+    "sha256": "1523b72e3e6477c4517243e4eb3b862ce0e33aec94b675d60a5bd7913d2456f7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-207.jpg",
+    "bytes": 145732,
+    "sha256": "e400ff8dd3a70151d9cb78f94f7ee89f85be1158caa694bd1ba0068d07f14322"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-208.jpg",
+    "bytes": 127909,
+    "sha256": "d6f2a80c1f46a31c492449b18e393bed252bfd344ec498e087d1f4f6065c2a42"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-209.jpg",
+    "bytes": 130506,
+    "sha256": "b6b5d9fa5328bcbcbe7fb03907709b7ce4c08c79c79b402b54392d56271b508f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-21.jpg",
+    "bytes": 107632,
+    "sha256": "ed03af482dd46980534b8c45b86b6d8991834965ab11f041117ed265cf8a1569"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-210.jpg",
+    "bytes": 126511,
+    "sha256": "4a3a8b80e7439bbaedfeb2f627c80baad4df0739546da7e6b2b83e087454d319"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-211.jpg",
+    "bytes": 143248,
+    "sha256": "5c99842faa646eaad6720939a00635640e968c17f8e3a49b1425332c80ab37b2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-212.jpg",
+    "bytes": 147882,
+    "sha256": "6fd720701714802ae083cd178e8cbb5838a3c67dd172502c225c672989a2a75a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-213.jpg",
+    "bytes": 141236,
+    "sha256": "400448f2538bbe425dea18a44a082c3543ff41ddf26e0e6f5b4b0c705fd20fe7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-214.jpg",
+    "bytes": 150972,
+    "sha256": "d0cfaa02650f87e5b54eab77eaa69b0dc28608079d4fbae032d10fdf0c468816"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-215.jpg",
+    "bytes": 138477,
+    "sha256": "592583c08fa6b998335b547ced628c67b7a08d847f8ae8956c5b3fcd2c08163c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-216.jpg",
+    "bytes": 145827,
+    "sha256": "afd9dcd044b25ead97e1c49a9e8eb73166b2673105fbd9d8e8e0eb6afc8e29e0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-217.jpg",
+    "bytes": 134640,
+    "sha256": "572a8cf6cfe9db469f60a7b95723beefb5bb7dd55f4499c569a31460c833490e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-218.jpg",
+    "bytes": 150030,
+    "sha256": "8eae20f15d1e97980c6420aed37ffb9404b24333ee395bfa3d5fe76dd1e33f70"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-219.jpg",
+    "bytes": 134906,
+    "sha256": "353f9c8a7b0f05dfb89938bc00a70f48c9d55984867475f3a4a380ac168df148"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-22.jpg",
+    "bytes": 109325,
+    "sha256": "cb5b430b0ef29118497c91fecd9266a79c5bf92893b64c901885bfcbcb458a8e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-220.jpg",
+    "bytes": 152788,
+    "sha256": "42e0243824cefdd78cbdcc045bc1a5dc67fe9bcad532e66edf56e794577e7cb6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-221.jpg",
+    "bytes": 132881,
+    "sha256": "35390299a32d7a9fffab283b16b746d2473984ee293e91402fae6b8be4ab9b71"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-222.jpg",
+    "bytes": 109653,
+    "sha256": "632d1c6e3d05f54444343e7cd6e34189afadf1de60a9a07a5268da6d878d3e5a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-223.jpg",
+    "bytes": 118024,
+    "sha256": "0570741915e8b54f20649dcfe758cc558290bd08e14ead84ace72efacd1aa981"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-224.jpg",
+    "bytes": 120049,
+    "sha256": "552b582e9a04a97696afa5a679b9b7e28ce290892ef7095ad39b0f5d411aac00"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-225.jpg",
+    "bytes": 159469,
+    "sha256": "5ce850259d15d55437c1c941930aa5e7ebdca987185d0553ebf10624f52a18d3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-226.jpg",
+    "bytes": 144285,
+    "sha256": "3878b319ffdabbfc1dd47e9cae9b7a441a2bee5025f9241f4bcd5976b15b07f1"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-227.jpg",
+    "bytes": 139981,
+    "sha256": "a5bc26fff86755bc33dbdbdd5d9b198867901e96064da688167dc45e4aa3d557"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-228.jpg",
+    "bytes": 143376,
+    "sha256": "ff1ac32479e06d0872c62b94ce44d77483fa8bae4c581b4a293d7026f721b9e7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-229.jpg",
+    "bytes": 134051,
+    "sha256": "8f5885e61344d584bd3bd287ae06bf2c89c5f2f2e834d7c651d80075ad2c0524"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-23.jpg",
+    "bytes": 79878,
+    "sha256": "3fe24e252ecacee569120097d06c3610d0c8eb265fa57887a388eeacfd0c9f36"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-230.jpg",
+    "bytes": 137216,
+    "sha256": "02d9d2c31ebbad398556578ec2fb7c77c8c0d33847f33a9e938abe7e16b63dce"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-231.jpg",
+    "bytes": 133570,
+    "sha256": "6f070a2e6b9ee071121d85aa89ae8f8a3f483c01e960e72f3a53e5201edce0d2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-232.jpg",
+    "bytes": 137984,
+    "sha256": "7d8f0959d27b74da671c972cb7797dfb098c8557d46084715ea7bbc855b4c975"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-233.jpg",
+    "bytes": 132229,
+    "sha256": "5ad0bced2d5ac161f033ca059da1aab3324397c09e2fb56d1004314c6bf22308"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-234.jpg",
+    "bytes": 135523,
+    "sha256": "bd329e5f322627fee3f88de59c7a488bec42b816981c7d2be0031771f5b48b22"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-235.jpg",
+    "bytes": 136418,
+    "sha256": "5ff2c992bf7ac74c77534cebbc9c33779fbce856cdd05860b641fdd5f2d21185"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-236.jpg",
+    "bytes": 132266,
+    "sha256": "2c84cde9c85d610ea278151da57a0f2b5639411687231b5b529f2bae7287bfde"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-237.jpg",
+    "bytes": 92543,
+    "sha256": "594d31d6d9b097b58a552e71d9c0243e161b93ff7eebc06d5ce017f95ed4db56"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-238.jpg",
+    "bytes": 133295,
+    "sha256": "5a244b3a21af3eeaea5e8032e0def22eb8738a7c11fe41dd1a6469b771317243"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-239.jpg",
+    "bytes": 147972,
+    "sha256": "566dd94e640e8e7a97a394ca541dc041fe0460046525ce27d2301a86448da6e9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-24.jpg",
+    "bytes": 97984,
+    "sha256": "37f8562bcd635a1e1d9a8cd69eeea1510d882998784de655dfc0ee040a7bae58"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-240.jpg",
+    "bytes": 132283,
+    "sha256": "ff7eb168f07c9e75ae897ebeab782d6fca7dc26645aafc01e27d6057ed03f72f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-241.jpg",
+    "bytes": 145878,
+    "sha256": "8cfb2c7b1efae10f84eff29da5e00938954a0402197215765c953f4009246366"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-242.jpg",
+    "bytes": 139772,
+    "sha256": "43c167f285a78b5ac43d65195996fe1a22d5af89c774ded78324e4aea0ef28d2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-243.jpg",
+    "bytes": 130672,
+    "sha256": "8203399c405e9fbfbbdc336724ee8f738172de608341a7d2bf0cd7bb558a71f4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-244.jpg",
+    "bytes": 144631,
+    "sha256": "f27bd0a839a731e82f2b2f0596f5df0606001a7e46d8c25b0da3e5b8cb7f1abf"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-245.jpg",
+    "bytes": 138461,
+    "sha256": "7548080b4926c892a25d53784b67a05cf390d2899e1e623c054e0575f16058c8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-246.jpg",
+    "bytes": 131866,
+    "sha256": "1806c2eb30cec73a48ca0ea45f8f24834ad6e6131c7488e349efd8900ce6428f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-247.jpg",
+    "bytes": 134538,
+    "sha256": "c8f2bc487b1bba1c8850a5ca9a41955852b93408826c6520234f6bfec874cd3a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-248.jpg",
+    "bytes": 133321,
+    "sha256": "1dd4ca99c37490b56bfd9401c98d09cd0512051ed0edd12c95d3e7061374e1f3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-249.jpg",
+    "bytes": 141349,
+    "sha256": "bce57cb5d15bbf78936c62cc8359b2aef1dd1d8be6c5c8fc4c91580c472c281c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-25.jpg",
+    "bytes": 142462,
+    "sha256": "6de6a6302f8f22c3c4014857c27cd58ae7330aef1854269730e1e16f22090553"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-250.jpg",
+    "bytes": 132483,
+    "sha256": "7c029c6b9be6f9ba6bc2085422f02fc7bfe4c957c41e1c0c9e6d75bd83bd2a3e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-251.jpg",
+    "bytes": 109696,
+    "sha256": "bb37bb33137b733a9f81c8dd0da6154c10741d1e0263b2e846940b6f6d0f5de0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-252.jpg",
+    "bytes": 110479,
+    "sha256": "b9cb957aab9e75faf5163810b03be8aa7111398d1b89a558b91dbb4051adc784"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-253.jpg",
+    "bytes": 105828,
+    "sha256": "d5984ebbc3c0f370914019dd0ffafabbc6b0f61d38bd4f313d21212dc591fe3d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-254.jpg",
+    "bytes": 112739,
+    "sha256": "4da338cce214d9e12eb2f9f55e06e92377a0545456e3121035d83fe0a9110b2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-255.jpg",
+    "bytes": 109780,
+    "sha256": "9ad67124e25a71a06063b12132bbbc96cd9008ca694ca7f750772e7dd8f94b90"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-256.jpg",
+    "bytes": 107990,
+    "sha256": "03a0b59fdcc72f482283d5d48c9af4d50a244b9a805dde04f58ae4633051b186"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-257.jpg",
+    "bytes": 108349,
+    "sha256": "67754d9ec6dc25fa95ebd4480a3eb8900dac604f1385568c8f22675d2c6c6e27"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-258.jpg",
+    "bytes": 110450,
+    "sha256": "d104ac450bfe66e8923a74664183fdae77d384de8dc4bd7d5eb58635fb05dd62"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-259.jpg",
+    "bytes": 119242,
+    "sha256": "316e3a7e8e5c292bd6b4acb20d445f6ffea4c8edf1d086534d82a72bce4fe01f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-26.jpg",
+    "bytes": 129765,
+    "sha256": "17b01e52c71fd521b8ff0ef200c48d48f83e65039231258f0f7b7123bba61e2f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-260.jpg",
+    "bytes": 106513,
+    "sha256": "57bc56a929612cd1bbf8e13df7795b328505ddf766d027a02971af29458ef2fc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-261.jpg",
+    "bytes": 110364,
+    "sha256": "f49e2d0c93cfe78b2c71e6a4b5c84af0cb9d1f587549993dcbed0986796c2ae2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-262.jpg",
+    "bytes": 19342,
+    "sha256": "9d0a98bd1531ea1420fa86e756a4e1ce43a314ae2f6e61b1f70f867454c5669c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-263.jpg",
+    "bytes": 82278,
+    "sha256": "359ad522e9b7e5b43759c751bb0a9bbd0cc1ce094cba5aed2d112b509e24dac8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-264.jpg",
+    "bytes": 13884,
+    "sha256": "40aec25ee49fcc7a9f0f979dae950ef7e07a36863150b26a2731f253dcc689de"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-265.jpg",
+    "bytes": 99735,
+    "sha256": "f4dcf5b3f968e0a98413a5e79d3b0b48b715df2f975115d5873537070e033a63"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-266.jpg",
+    "bytes": 117181,
+    "sha256": "35a6612dccc0a4204f087cd2cc694f0cccb9d7be958eec39476e40e48f20b19f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-267.jpg",
+    "bytes": 58200,
+    "sha256": "d0e2e86f0205de68c0d74e4c0974fcac801f39ae31104057b21a18594a4c15f9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-268.jpg",
+    "bytes": 60744,
+    "sha256": "2167cfa9d59e4e1777d41067dcdf8f906fdf746a2f68e8079efe93bb4a166703"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-269.jpg",
+    "bytes": 71769,
+    "sha256": "1935fa88b5ac54dc8ddff965f6834094fd06efb6fb0bb34a2552623af8451968"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-27.jpg",
+    "bytes": 88689,
+    "sha256": "f9ed393de784bfb580ff8d2b6d6468dc1a43fe608d7dcd3a630b09d5e80cccd9"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-270.jpg",
+    "bytes": 57726,
+    "sha256": "3e09919107e46aeaa294c17d486025bda7fecf6e63669691b95d760f7187a671"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-271.jpg",
+    "bytes": 106082,
+    "sha256": "ee565cc3a0f11564433792a4ba1db59d99d4ef559ed443149d46b775b4a5df40"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-272.jpg",
+    "bytes": 82528,
+    "sha256": "6aa824b9379cf9985ba68e76ee8449c31dd4d886705256955310e0c947566f91"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-273.jpg",
+    "bytes": 41570,
+    "sha256": "b7d90a072b92153c53d3dba126ffbb91ef89e45f1427c10575237964cf00f6d0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-274.jpg",
+    "bytes": 40001,
+    "sha256": "55a8842458241dffeded8f69021a6ca0e596ef8c54e46e3b242d94624104f440"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-275.jpg",
+    "bytes": 26838,
+    "sha256": "a6085aa3eda0b7aa5444f2c976ce0ac6d399c1ac0f7ad872e93daf9810b912a6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-28.jpg",
+    "bytes": 141119,
+    "sha256": "ac5b33e32bc885f02e765bd674ea0fb1dba0e5821d4b1dddd80b98bbbfafd369"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-29.jpg",
+    "bytes": 125990,
+    "sha256": "f77b0f590524f55be8406255ca451d53eb6ffd98642a7e3c05072f464545be86"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-30.jpg",
+    "bytes": 126399,
+    "sha256": "fe53520d238934cb57aaa3cde0ec8e47d850f5bde5fa21b36517e4f648b50c97"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-31.jpg",
+    "bytes": 102289,
+    "sha256": "2ec2a13dc83ace4aee6887bd15e1e3b2d258e70bad031cf5145a0aa275d6d390"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-32.jpg",
+    "bytes": 119757,
+    "sha256": "4b4df6c4b09e252597d661ea388d14e32acc7f936f7cb2d544242731565a94eb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-33.jpg",
+    "bytes": 124956,
+    "sha256": "a1bfcd7d2facdc96cb5fdbec564f47eb4f6af1efe78ec2228304777eaba5e0e4"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-34.jpg",
+    "bytes": 121051,
+    "sha256": "fe4e0cf36b02ef8f9c0a3e2feb0a1a78b5c1bba8b58f800cccb55f8fe2997a83"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-35.jpg",
+    "bytes": 39204,
+    "sha256": "27c90203e86b8254b100d9ea88a06791435b8b4a63de2cdb7b24f37d15acccb6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-36.jpg",
+    "bytes": 141243,
+    "sha256": "0266252eda161fdcb9b56509b02ff113d6f498c07049c5acc0838ee3b4d64ec2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-37.jpg",
+    "bytes": 131264,
+    "sha256": "d05b4152189bad82e5fae7cfacbf3717d667164ea6a5f73bd22867f1a71d9c1c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-38.jpg",
+    "bytes": 89716,
+    "sha256": "5db76af0c2da0c560452e5d461402d571d0a5560b77f73437db69c74574a37d2"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-39.jpg",
+    "bytes": 79226,
+    "sha256": "50ee0ae41afd88c404a8c5fa0c8786647d08f80db0bb31f61632498d684b41e3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-40.jpg",
+    "bytes": 38098,
+    "sha256": "4b52df5b8da9587a06f8bfb0ed1df7a576d4274c6787b9911be033977caeccbb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-41.jpg",
+    "bytes": 83502,
+    "sha256": "1e98de039ebc04f3f9e4468c802d6452cfd86fc016962655e63131bbe63a033d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-42.jpg",
+    "bytes": 81227,
+    "sha256": "8ba0de8e82bc8667f128a7f385053ad3b11f5dcc5edf1d071fe68f2b52dfc9d3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-43.jpg",
+    "bytes": 79023,
+    "sha256": "6a94116c1707b48ee7617a1f772d1722a3d0ab7cb2ae4cce7701fadc912ba26e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-44.jpg",
+    "bytes": 83770,
+    "sha256": "e0e89522f946596e360af88f3641b750ac2e84a6f154beaf3940a697fb2aa5b5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-45.jpg",
+    "bytes": 68410,
+    "sha256": "5b0f04efd39fcc9a13f535bac381e0cf5fec836e4c3e382a12235e9e47500c87"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-46.jpg",
+    "bytes": 123543,
+    "sha256": "d0608e601932f74a0b00c76ea7ad2d36b04fb01d5f11cd2ff38fbcc1b700d944"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-47.jpg",
+    "bytes": 144603,
+    "sha256": "58e9e0f1bcfc7a0c6f17e5c3416fccd1bd8eef9d3f24baa1019911da0657f7f7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-48.jpg",
+    "bytes": 145835,
+    "sha256": "997f2950a3f86873076292ee5aa7ed64f1d7eab815bfea8bf2c8ea2ef55008e8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-49.jpg",
+    "bytes": 143312,
+    "sha256": "690522eba92e592b0515235a7b356226808e192972c2f944bc195bc561755c77"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-50.jpg",
+    "bytes": 147973,
+    "sha256": "45c4112bf73644ec07bb3f2c2487ee2073ef317ddfd6efb81cb143f1eaeaf656"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-51.jpg",
+    "bytes": 91865,
+    "sha256": "15c2fba91a75d8becd5cb2ef6c4e23ac6f4c766180f860f482d535083f1bd85c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-52.jpg",
+    "bytes": 58158,
+    "sha256": "33cf502cac704f16b0eb0fec5f33bb92b7f14ac365a9cf01e46d6affa6ace606"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-53.jpg",
+    "bytes": 51589,
+    "sha256": "b5edac400db2d41d91086fe52181b0d293f68e55fea8d77d9548a8af8c0cc509"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-54.jpg",
+    "bytes": 71978,
+    "sha256": "e703cf38666c8b531ce5a12cd0c231f5baab42e3042c3df9d895407c8e8b9fb5"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-55.jpg",
+    "bytes": 56828,
+    "sha256": "35863912a9b8935b6a5821bdc61d0fc5a73cc4241a02594f7c9b3eb6562a0857"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-56.jpg",
+    "bytes": 50914,
+    "sha256": "7a299ee7b8c2c373850c8fb030b26d3f9989ef11f74f1b7587c9592c7a2078ab"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-57.jpg",
+    "bytes": 50200,
+    "sha256": "75156bb5f182c22ea20530aa13d503cc3660176b7e61fee2e069bbafed961f5c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-58.jpg",
+    "bytes": 73299,
+    "sha256": "241f687fdd0e7181046fc1fe24f1b9722e1b45048fcb0d720da1b86e36678fda"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-59.jpg",
+    "bytes": 151090,
+    "sha256": "b5290688e00e3c4d1abba932fdf8c60ddc2a57a5f30acf064b98bd8680756b1c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-60.jpg",
+    "bytes": 154247,
+    "sha256": "2dda8d7cb346ce44deb2194427e5173ff8d60426c8cb145357841a1a3f001aa3"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-61.jpg",
+    "bytes": 146944,
+    "sha256": "f66bae0fd5920245aff67305e9df552c0fe856be32dd694f9283a08ff262a928"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-62.jpg",
+    "bytes": 136933,
+    "sha256": "3d21e3f6b776b5599ae41f37c94601e58f336d61695b7c861242b0129eb27119"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-63.jpg",
+    "bytes": 90843,
+    "sha256": "944d5278573729105bf4616ec72b3fb3988e674193d2626a9814fd8abd94cc9d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-64.jpg",
+    "bytes": 86346,
+    "sha256": "4478040c3ec373059b8bda0b458f7fe9e2a80a159908a2af246691637a7bca8a"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-65.jpg",
+    "bytes": 81328,
+    "sha256": "1f3f7d6619c7cda726872a6bbf00fbb2d86a6a90596564fbf08f79b12884ae27"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-66.jpg",
+    "bytes": 53421,
+    "sha256": "803fa7bcf94f999fca19504d1fda841a4a5193a027790080e1d9ed90a4bf984e"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-67.jpg",
+    "bytes": 86509,
+    "sha256": "50a3d5c7ecba81a8800cb10df9babbe5685e8981edf1982ad87c5a30e0b52ddf"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-68.jpg",
+    "bytes": 87267,
+    "sha256": "14434e2e6f36001cd89e1e94899431bc57ed499a577d12254e2f8e0da79a6f35"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-69.jpg",
+    "bytes": 83595,
+    "sha256": "cefddc5f6f293a4c1a218169062d321d19c4e1005a3e5d65d5c8103cfebfa4b7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-70.jpg",
+    "bytes": 88314,
+    "sha256": "d8d381a7c1a8d2a9b2047e28b607164cd51fb87eceeea00327f4b42988250e02"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-71.jpg",
+    "bytes": 84649,
+    "sha256": "e2357b64ac6c6c4a96d67d2cb6a0f27c8af84277d22abfd37e491e1dd174cb7b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-72.jpg",
+    "bytes": 81709,
+    "sha256": "10f0204f39baa9ce1d07e632ec5465ee6a549758bb518d7af6ca29525d632b74"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-73.jpg",
+    "bytes": 90536,
+    "sha256": "8e75ea72798f8501fa1d2dc0064af66c3c210a490688729b2e57f1f05ecc0edc"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-74.jpg",
+    "bytes": 77509,
+    "sha256": "aefee9dcb13b3d590ab4c753970fbad30d2b75f042701ab6b74a832bf4b49076"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-75.jpg",
+    "bytes": 144341,
+    "sha256": "425938cda0ea759c3c08a8f78eadd6c98bdcd12c5ab03fd15a41f1a0ea9d05a8"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-76.jpg",
+    "bytes": 134034,
+    "sha256": "c98974c70f772fe725bd3b8b0a4b1da39d42f668e83989dff6491c4195b3625c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-77.jpg",
+    "bytes": 143964,
+    "sha256": "3cf6b58f5895688c3516362a6b9848c6e40aa15744e6f60dbe6b89cd30408456"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-78.jpg",
+    "bytes": 140637,
+    "sha256": "ff3e006814169119cd4f548ca5858ddd52036fa7374e5e81aaca3841425aea85"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-79.jpg",
+    "bytes": 138659,
+    "sha256": "c416d21c7dd9dd23e12cd77d45f104c410a93330656584f40beb4a7fd03c639d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-80.jpg",
+    "bytes": 150130,
+    "sha256": "f160d4f7b3ae2a33759b83313eae6df1c3b5de273031fc4d8bda4c3f115f7aa6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-81.jpg",
+    "bytes": 151429,
+    "sha256": "aff28112b682807e6b74993a023ae3f9105dbad42be85778ff3c4414c849633d"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-82.jpg",
+    "bytes": 145531,
+    "sha256": "bf221c4eb057a2c2559cd7c8c814621d0b56796c5c42cf96b86b601c72b0c385"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-83.jpg",
+    "bytes": 142121,
+    "sha256": "16663bc1bbb1a7eb8787c99c24faa52d185de5844a1aa23f398b5862a940dd51"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-84.jpg",
+    "bytes": 92841,
+    "sha256": "97f4a4e038bd7b705884501c3b7d5bf3b8649154d5dcd36eb5f30e5c9247c9a7"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-85.jpg",
+    "bytes": 92738,
+    "sha256": "3ffe32427984009eef2ec7ab8f0bd8565f1d75802fee4d55dde1f4d82d190a8f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-86.jpg",
+    "bytes": 86097,
+    "sha256": "e435339edbf8a746ffbd7370b7c3b77613a1a70859e8961fef0f7cdc9910524c"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-87.jpg",
+    "bytes": 89413,
+    "sha256": "d741ea477ab524a44d54b7f8d0ce44bf6a78b1b68f83783bb2c2f98f398c2c22"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-88.jpg",
+    "bytes": 124468,
+    "sha256": "96815733323cf96bfc41f07deed99756f4788ea252714131a4f37802066afb7b"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-89.jpg",
+    "bytes": 144904,
+    "sha256": "80530cd756df532ee6cd0c233e6d8136ec27799ec2d47f42229234b5396810bb"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-90.jpg",
+    "bytes": 150229,
+    "sha256": "d56082c009f6325eae502bee9245a83fd64a039200dee9999560b9502749da05"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-91.jpg",
+    "bytes": 146102,
+    "sha256": "500dba832c133f889767baf9207bec8826ad9f27706758e080d2800171d52889"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-92.jpg",
+    "bytes": 159446,
+    "sha256": "7ac5bde4c36d1456730ce1fbd8cdb33a2dd7982c758427e17547595e3e439ec6"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-93.jpg",
+    "bytes": 120681,
+    "sha256": "c1296b2bf4fb58a159e364853364f56aff2f3880dcbd9b379d4e9307132ce974"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-94.jpg",
+    "bytes": 143455,
+    "sha256": "e6cb87261e0ee3adf958e683820b4da511630f7502cc685d90a90a87f34b0be0"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-95.jpg",
+    "bytes": 137123,
+    "sha256": "f3c6699b68a8723c101b6d4697415ac46271a64e4805e4a7b860a4b555152f40"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-96.jpg",
+    "bytes": 100639,
+    "sha256": "179b0fbcb5266af17cb1bf81dcd8d8d11c665fc75b4f42c559a8968204a323ef"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-97.jpg",
+    "bytes": 135498,
+    "sha256": "c3784ba130fd5cc53057a9b560c9dad9cf83f67382f3fc6138585e7a92384802"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-98.jpg",
+    "bytes": 44919,
+    "sha256": "2c7166c715cfd25840e4367ae5656b83bcca4f35928b055e6746be627036f04f"
+  },
+  {
+    "path": "assets/credentials/pages/thesis-id/thesis-id-99.jpg",
+    "bytes": 141001,
+    "sha256": "5ca638df06ffffb48f4f45bf0e2f9dbfd661a609e88cd518e0f95bc80ed84587"
+  },
+  {
+    "path": "assets/credentials/previews/bachelor.jpg",
+    "bytes": 108314,
+    "sha256": "da50498bc6378f19b0b0680d6177f56ca07478b5d15c8c120939e682310c3ee4"
+  },
+  {
+    "path": "assets/credentials/previews/certificates.jpg",
+    "bytes": 79237,
+    "sha256": "891b80f2582c40105ae84ec9782126b92835959ab3477818ad862235f048ffbf"
+  },
+  {
+    "path": "assets/credentials/previews/cv.jpg",
+    "bytes": 102289,
+    "sha256": "1f98aa529bcf4eb662361ece29efac08a4a84546edd72388eddc765e057549be"
+  },
+  {
+    "path": "assets/credentials/previews/masters.jpg",
+    "bytes": 86431,
+    "sha256": "83217d8176673265f731dccb484082da6caea9c625d42c7b79ae200fa430b00c"
+  },
+  {
+    "path": "assets/credentials/previews/thesis-id.jpg",
+    "bytes": 30630,
+    "sha256": "4ec381702d7b89134a61bf9026aeacd0fc3aa657707cf2a4df6bb5025913c15c"
+  },
+  {
+    "path": "assets/credentials/previews/thesis.jpg",
+    "bytes": 31311,
+    "sha256": "9bf05ecd30cc0530baca1eb393aecafc78cc09bbd17ab754e25f98f80bc8bd0e"
+  },
+  {
+    "path": "assets/favicon-32.png",
+    "bytes": 1912,
+    "sha256": "333bccbf76b6b21706723821251c389775eb966a12b49d15cd2756a87c53594e"
+  },
+  {
+    "path": "assets/favicon.png",
+    "bytes": 300489,
+    "sha256": "2f3f82aa889684074d9f404801ac11836431642aee2d938ee55511f4bee7e751"
+  },
+  {
+    "path": "assets/fonts/InstrumentSerif-Italic.ttf",
+    "bytes": 71592,
+    "sha256": "08939b8bdf534afec24ae0ef5e03f948940cd9a8fe08e7fecbad040e62327385"
+  },
+  {
+    "path": "assets/fonts/InstrumentSerif-OFL.txt",
+    "bytes": 4405,
+    "sha256": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521"
+  },
+  {
+    "path": "assets/fonts/InstrumentSerif-Regular.ttf",
+    "bytes": 70012,
+    "sha256": "498efd461f6ddfcb7a111bf9a565709d2085d48201d501ead960d93e84ffbb88"
+  },
+  {
+    "path": "assets/fonts/Manrope-OFL.txt",
+    "bytes": 4387,
+    "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  {
+    "path": "assets/fonts/Manrope-Variable.ttf",
+    "bytes": 164700,
+    "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+  },
+  {
+    "path": "assets/gallery/iccn-fgd-palembang.jpg",
+    "bytes": 320960,
+    "sha256": "fcf021bb7170126556ddb68fbbe2915ed33d697a0eb6c03142e82394803fded1"
+  },
+  {
+    "path": "assets/gallery/pindad-visit.jpg",
+    "bytes": 113466,
+    "sha256": "09ed9fa69702a2e6fc4b394e0208078024f9d1c03e37ab1a217f5f687900a277"
+  },
+  {
+    "path": "assets/gallery/river-cleanup.jpg",
+    "bytes": 242454,
+    "sha256": "11def26834ae196fb0d0f82dd20c64d69ca165cf3459c400ba2513d6e81eb89a"
+  },
+  {
+    "path": "assets/gallery/studyhub-class.jpg",
+    "bytes": 130461,
+    "sha256": "6c4e8644e337ff27c9d244f771f8cacba908b796c8def9f550a83e287ce022c5"
+  },
+  {
+    "path": "assets/gallery/timur-growth-panel.jpg",
+    "bytes": 67133,
+    "sha256": "e8d3daf472ad2a3242d546659aeacd0872ad553b1325a867dfc12bf4b0a96628"
+  },
+  {
+    "path": "assets/gallery/unesco-forum.jpg",
+    "bytes": 179971,
+    "sha256": "ea35a5d5eafc892756c63366eb0ebd0994c08c518d09de9adb58b446ead07468"
+  },
+  {
+    "path": "assets/leadership/iccn-1-headline.jpg",
+    "bytes": 367528,
+    "sha256": "72a7630bf6a3356353f662dd5b202b7918b42a0f796e26d3b8659e3f96d767ee"
+  },
+  {
+    "path": "assets/leadership/iccn-2-programs.jpg",
+    "bytes": 601376,
+    "sha256": "6687189c506f4da6c11701f6cc40bee3186beb5fdaa746f99f1e04b8b5df16f7"
+  },
+  {
+    "path": "assets/leadership/iccn-3-fgd-events.jpg",
+    "bytes": 320960,
+    "sha256": "fcf021bb7170126556ddb68fbbe2915ed33d697a0eb6c03142e82394803fded1"
+  },
+  {
+    "path": "assets/leadership/iccn-4-river.jpg",
+    "bytes": 242454,
+    "sha256": "11def26834ae196fb0d0f82dd20c64d69ca165cf3459c400ba2513d6e81eb89a"
+  },
+  {
+    "path": "assets/leadership/mengglobal-1-headline.jpg",
+    "bytes": 258470,
+    "sha256": "6a393422f8871dd299ddea50c66589af0ac03a15de1ca5b56504862da4bc7bdf"
+  },
+  {
+    "path": "assets/leadership/mengglobal-2-programs.jpg",
+    "bytes": 394521,
+    "sha256": "c18b3f1b10d5b3d1658736fc7fcd74c0ab60a5c128a46e038fb8715e750170f1"
+  },
+  {
+    "path": "assets/leadership/mengglobal-3-programs.jpg",
+    "bytes": 492412,
+    "sha256": "8959871fb6b221a19a3734890de28b789928f8114788db4be422ffeae5aa1af7"
+  },
+  {
+    "path": "assets/leadership/pt-pindad-1.jpg",
+    "bytes": 176065,
+    "sha256": "7d2f9b4fdab29ff831b19791dcec235cbd403c9ccfb5f468496b6144ec4e32d9"
+  },
+  {
+    "path": "assets/leadership/pt-pindad-2.jpg",
+    "bytes": 113466,
+    "sha256": "09ed9fa69702a2e6fc4b394e0208078024f9d1c03e37ab1a217f5f687900a277"
+  },
+  {
+    "path": "assets/leadership/pt-pindad-3.jpg",
+    "bytes": 106675,
+    "sha256": "c53f933abbbd854e8473eeb34432de8be4c64995f2dccd6048a719e52a95760b"
+  },
+  {
+    "path": "assets/leadership/pt-pindad-4.jpg",
+    "bytes": 121676,
+    "sha256": "c47fec08f749fa22dae91832773a86e473d253f496f3ed3f5fa7fe9b9363e337"
+  },
+  {
+    "path": "assets/leadership/study-hub-1.jpg",
+    "bytes": 130461,
+    "sha256": "6c4e8644e337ff27c9d244f771f8cacba908b796c8def9f550a83e287ce022c5"
+  },
+  {
+    "path": "assets/leadership/study-hub-2.jpg",
+    "bytes": 90162,
+    "sha256": "5f13c4f0668b6e0de2f148e9076a696e9fb6d4bede4e2a4fee6b285496aa8377"
+  },
+  {
+    "path": "assets/leadership/timur-growth-1.jpg",
+    "bytes": 189117,
+    "sha256": "48c12fd09fc6415a0f7931bb80b8533f8a0be30aaa96fc4148a1476bbacf5e63"
+  },
+  {
+    "path": "assets/leadership/timur-growth-2.jpg",
+    "bytes": 203464,
+    "sha256": "d0e00155be14ce79a4a7b556ef78e6c9cf097153d6b456150126c971c9b3f387"
+  },
+  {
+    "path": "assets/leadership/timur-growth-3.jpg",
+    "bytes": 80651,
+    "sha256": "69f56a881f68dfe7fcae96fcc17b899c8e3d7143f9675d2c5417d6aefdd522c6"
+  },
+  {
+    "path": "assets/leadership/timur-growth-4.jpg",
+    "bytes": 67133,
+    "sha256": "e8d3daf472ad2a3242d546659aeacd0872ad553b1325a867dfc12bf4b0a96628"
+  },
+  {
+    "path": "assets/leadership/unesco-undp-1.jpg",
+    "bytes": 220867,
+    "sha256": "255e4c4e013f416d147a91dad6e645f83f2829aa028aeca02b2a1ee0a669f8d6"
+  },
+  {
+    "path": "assets/leadership/unesco-undp-2.jpg",
+    "bytes": 179971,
+    "sha256": "ea35a5d5eafc892756c63366eb0ebd0994c08c518d09de9adb58b446ead07468"
+  },
+  {
+    "path": "assets/logos/bank-bri.svg",
+    "bytes": 4720,
+    "sha256": "65eaae82bda464411d4aa9282034d77fca3a84685d0f5e03c344f16e126cfa41"
+  },
+  {
+    "path": "assets/logos/ekraf.png",
+    "bytes": 682113,
+    "sha256": "a52d47a1c295b0fa2ea47dd852ac433cd1b7f25bae8310d6b6b11fa0bf90270f"
+  },
+  {
+    "path": "assets/logos/itb-swadharma.png",
+    "bytes": 81732,
+    "sha256": "54ca768652ed9aaf99619297eb1c7d859496174b1992dffaaea0c8288a57e6ba"
+  },
+  {
+    "path": "assets/logos/lpdp.png",
+    "bytes": 152952,
+    "sha256": "819cb9f44b91b5e4f1034f3bbc635397dacd3c1b302b1ac8f0eeec2245373944"
+  },
+  {
+    "path": "assets/logos/matchupskills.png",
+    "bytes": 18545,
+    "sha256": "127d5c303d978761aa95ba0d571c9e9f6a8824444787660abfc1e27f33c825c3"
+  },
+  {
+    "path": "assets/logos/the-hague.svg",
+    "bytes": 4411,
+    "sha256": "234f6264168ae12754d800e135555cff22967a3a51da7da4cfaeec08c0cfc7cd"
+  },
+  {
+    "path": "assets/logos/uni-luebeck.svg",
+    "bytes": 90782,
+    "sha256": "dc345b3007a1657b6eedf20fa094fc0ac990f3c9ae078cb55a3c4bd1f58c229a"
+  },
+  {
+    "path": "assets/logos/universitas-indonesia.svg",
+    "bytes": 11739,
+    "sha256": "a65b99ada35d425d52e4de530248b082901b482c7b159cd8aa3fa777e2de78be"
+  },
+  {
+    "path": "assets/ministries/iccn-1-headline.jpg",
+    "bytes": 367528,
+    "sha256": "72a7630bf6a3356353f662dd5b202b7918b42a0f796e26d3b8659e3f96d767ee"
+  },
+  {
+    "path": "assets/ministries/ms-home.jpg",
+    "bytes": 30962,
+    "sha256": "89aba06098a9660d90976cf744f89afc8bbe3324f9ac6d778a610eb8a95d513b"
+  },
+  {
+    "path": "assets/polish.css",
+    "bytes": 14709,
+    "sha256": "d075deab23f5117f42fcd3da78f2322840fd99d3cccce7e0441540b5c80b660d"
+  },
+  {
+    "path": "assets/polish.js",
+    "bytes": 3997,
+    "sha256": "a9433953badeee8441fd3af4d6075afc12960e71be3d447093d379a210dbbe10"
+  },
+  {
+    "path": "assets/profile-nobg.png",
+    "bytes": 1119488,
+    "sha256": "b6d49db5ecf281430cf26880728026a07abefa1b139aa9f74a699f90fdd84c5d"
+  },
+  {
+    "path": "assets/reference-art/campus-hague.svg",
+    "bytes": 2996919,
+    "sha256": "0724117883a7d43e74951d8fee31f17c9fb590bfe4db117e87386e2970a00e5f"
+  },
+  {
+    "path": "assets/reference-art/campus-swadharma.svg",
+    "bytes": 2996920,
+    "sha256": "f658f9f01697c3b51a46c674de6e3971c3536f74ab8cc1fe5f1b36d802063fbe"
+  },
+  {
+    "path": "assets/reference-art/campus-ui-diploma.svg",
+    "bytes": 2996920,
+    "sha256": "273a89d215f7fcf0bc22967d1636385be1f397a76aedfe4aa0f4c9abcfe65fd1"
+  },
+  {
+    "path": "assets/reference-art/campus-ui.svg",
+    "bytes": 2996920,
+    "sha256": "3bd33860bed56a18bc7754e0dd2aeaa5263855713c4b8aa7054fffdeedf6f3a6"
+  },
+  {
+    "path": "assets/reference-art/cap-monument.svg",
+    "bytes": 3047217,
+    "sha256": "cd4aeda3532cb82451ab548af68426147561c5bd6a7c99a553d7d74a931ee6d1"
+  },
+  {
+    "path": "assets/reference-art/cap-product.svg",
+    "bytes": 2560118,
+    "sha256": "88253bf2d5469cda0535cf62e73455170001877afe90bb91a4dd26ea85acb2e0"
+  },
+  {
+    "path": "assets/reference-art/ideas-poster.svg",
+    "bytes": 2930448,
+    "sha256": "f832ca948a472b4fede254fd472aa00683574f95cb354b3223166db4bd279c72"
+  },
+  {
+    "path": "assets/reference-art/lumbung-monument.svg",
+    "bytes": 3047216,
+    "sha256": "f5f706fff36e2f4632a14da7c88af7f38b30b846a821f5b193a7aad1b864e12c"
+  },
+  {
+    "path": "assets/reference-art/lumbung-product.svg",
+    "bytes": 2560118,
+    "sha256": "68a6ec46156ee2092c153a24004543482bb878e2d562b511a7ede7082c05f4eb"
+  },
+  {
+    "path": "assets/reference-art/matchup-monument.svg",
+    "bytes": 3047216,
+    "sha256": "7fb36f76035a8b70202c6272bab1c901764cdbb808a66eafcdf4e61dca952374"
+  },
+  {
+    "path": "assets/reference-art/matchup-product.svg",
+    "bytes": 2560117,
+    "sha256": "b2c8903735734c0e5820bee5a5e28b8918bc560d8675e1c023a4b886957b6648"
+  },
+  {
+    "path": "assets/reference-art/research-city.svg",
+    "bytes": 3047215,
+    "sha256": "3e73656995cb3ead23748d191ec7ee7c9e17a042dbb06844157fcdf212547bd4"
+  },
+  {
+    "path": "assets/reference-art/research-fields.svg",
+    "bytes": 3047215,
+    "sha256": "4eb3336d733717aadef81215a7bffef9f85bec14f55e5ca081ed8db92bfef24e"
+  },
+  {
+    "path": "assets/reference-art/research-network.svg",
+    "bytes": 3047214,
+    "sha256": "a62e5c919852e5da606b1a58f3b20fe2f5aff707ef0f49e8c0fbb9be8b323e64"
+  },
+  {
+    "path": "assets/reference-art/research-reef.svg",
+    "bytes": 3047215,
+    "sha256": "8b5f8d1f6ca5c017bdbbd49abaadae9db3a3fbe75b874b6270b617a3ec671af8"
+  },
+  {
+    "path": "assets/reference-art/skyline.svg",
+    "bytes": 2930447,
+    "sha256": "8309286e362178023a1e2a2448bdfe5582be7d52fe05e133b6fc3974fa597233"
+  },
+  {
+    "path": "assets/reference-art/systems-poster.svg",
+    "bytes": 2930450,
+    "sha256": "391eba7eb71feffd2280e8cee85ee1ab44dd0f84b8e106c9c89485b51c810fb9"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-01.jpg",
+    "bytes": 360868,
+    "sha256": "8a9bd46396ae7c96f3da30da58df4107a5ae3c0c0d8f3633c905264d361c7444"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-02.jpg",
+    "bytes": 386481,
+    "sha256": "2bf56b9b1e128527a2dd2591784a019d5308b7f1c591b100d10e263d7491fea2"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-03.jpg",
+    "bytes": 350343,
+    "sha256": "4addb5506150ad5c2bd24670040cc63358ce5761f20e7ca6f64dc8ab0d2b3125"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-04.jpg",
+    "bytes": 347390,
+    "sha256": "93921eea4467c76dc9fa09512d0b322e222b0df61b64620807150cf986af9662"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-05.jpg",
+    "bytes": 340489,
+    "sha256": "a5c7e3d1799f81b7b14dba0f6932865abefb765cb640407ebc86152b53dd0983"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-06.jpg",
+    "bytes": 377772,
+    "sha256": "0917200ae9feafb7bf1ea6754e7c81d34837d70db9b646351f78ef6917a70cc1"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-07.jpg",
+    "bytes": 352503,
+    "sha256": "4fd179ffa1a731b9c69fedaba7c74898e82f117546cd0ef4fd6bba40cb18a7ae"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-08.jpg",
+    "bytes": 285360,
+    "sha256": "a1d566909955af11dce81474de8d79314de33431b2965c25df4abc60e1bdad1c"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-09.jpg",
+    "bytes": 384061,
+    "sha256": "16e5e5751b86a3552ecb1c12853e285509dcc229d42062ba858b06bb54c54f35"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-10.jpg",
+    "bytes": 386223,
+    "sha256": "52129d016f053b21eab716e3249c9d39ae54843e7a8827e7c07102d12b7a54f5"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-11.jpg",
+    "bytes": 361830,
+    "sha256": "0bba2363b0785a08d8161fc0e67a38faf4e95513f0fcbe5020a67c3672d2fb7f"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-12.jpg",
+    "bytes": 285571,
+    "sha256": "b894ccdc4e73acd7f199d18922bf3c2ef5a9df61711aac8776d62bc4106d7643"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-13.jpg",
+    "bytes": 405381,
+    "sha256": "bf3eb9131980f5e54063c54f1802dfb30b8bd4d199f1399499a2cb9ac4fbc718"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-14.jpg",
+    "bytes": 419251,
+    "sha256": "5afe47b5f13f2676a70e66773e535374c13a214bca4e604f18e5ab2d99c465d5"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-15.jpg",
+    "bytes": 391121,
+    "sha256": "0b69641a23f1ae5d2f76ab6b6bf20c6e905d11b7390ebe2ab70f8dd518276c25"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-16.jpg",
+    "bytes": 374275,
+    "sha256": "fd600ab71ddfac5a48ed47e39f35d8b20296f7fc71d7e13e07ffa47cdcf849c0"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-17.jpg",
+    "bytes": 391816,
+    "sha256": "4bcfba779a2fe464ab885c3889ec54b0aad395dec94fce5c7b24b8683c9d590a"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-18.jpg",
+    "bytes": 416093,
+    "sha256": "aacc6d0976fef97d67f15368740130fad749fcf44fa3d3b5e2d3cc332e5622e2"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-19.jpg",
+    "bytes": 276089,
+    "sha256": "3de9a3e216267240cca882bac9df2e6a452f245a109b77ac16c95012ed8b8a7e"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-20.jpg",
+    "bytes": 333696,
+    "sha256": "b6b876ad3e7b27d5026afb1b338a044ecc6b56a4ae9cb153fdb0337d67cb4fdb"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-21.jpg",
+    "bytes": 233647,
+    "sha256": "d0e8d449a7d0c924a169d7352278cc9deff98dc74d68f6cf4a13b0a5200eb411"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-22.jpg",
+    "bytes": 306835,
+    "sha256": "b98f0f1208957d26a7b857ed2462613b4fe6a5e9d154eef78789f01e43923125"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-23.jpg",
+    "bytes": 340255,
+    "sha256": "c0a0c05d772527fac7a5e8c67b084bff92b9dd450a6c29d90ce452dd7020b55a"
+  },
+  {
+    "path": "assets/research/jurnal/jurnal-24.jpg",
+    "bytes": 180855,
+    "sha256": "2073c5641418d58afe704dfdcb82291d08ce8bee8e9bd8c6944f293b501ab103"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-01.jpg",
+    "bytes": 211397,
+    "sha256": "1cf56b402e372ada7a981372b35a938d8b5c9b93e5afd009c2ff4c3c7e765461"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-02.jpg",
+    "bytes": 162006,
+    "sha256": "1a977b8d1425199459756b0c4aa857ed34e4a99e6e29e318331af9d11b8d76d1"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-03.jpg",
+    "bytes": 376133,
+    "sha256": "e4d743cdbca383bb458031654d8bfb14a7e781c2b874dbe792af3969938895ec"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-04.jpg",
+    "bytes": 262321,
+    "sha256": "38bd45e5f1188610f507f1ab686248cd77d9103619a1ef4c460dcb755b996225"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-05.jpg",
+    "bytes": 190205,
+    "sha256": "d413a9eb58191f3a58b557a94b25942b79a2da89529ce9f3be5779dc64d9e6a3"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-06.jpg",
+    "bytes": 160008,
+    "sha256": "17fa2a7afbe1e78e8819bee5968a774fa32d1eb58698e1066078872482fa4668"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-07.jpg",
+    "bytes": 73877,
+    "sha256": "589c192a7c0760de2d8ed8e5909623bd694db0ddb4944898ca2d1960c63a4a29"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-08.jpg",
+    "bytes": 168734,
+    "sha256": "69f71245f99ebc282a30500fb4a3250ed844e7ab2f2791dd18efe2a177b43860"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-09.jpg",
+    "bytes": 289845,
+    "sha256": "c1be8c896d54239ab94ca2de24a5775ab6685786ca9eae1160524592b3816e70"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-10.jpg",
+    "bytes": 267178,
+    "sha256": "b0593e631aa45b82967d69d3120d0c05d50a1ca2249a0f3128ec6fc496ae8a22"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-11.jpg",
+    "bytes": 404444,
+    "sha256": "77a454debe7b1bcbbcfbf98318880e929f0910927a8b7b9a7502fe68cddaadbd"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-12.jpg",
+    "bytes": 250098,
+    "sha256": "dbd0639683c80954c1bdc8a541f8a4b5f2c804fcea9939ae73866be8b8343b0f"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-13.jpg",
+    "bytes": 286367,
+    "sha256": "4ff8262d42bdebd85b05cb7bf795412d5fe5041d3ba0df317727429fddc598f1"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-14.jpg",
+    "bytes": 254069,
+    "sha256": "3323227844d7e1d9ca1953c18957d724b55b052c384cfa6c306fd3dc445eb105"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-15.jpg",
+    "bytes": 325788,
+    "sha256": "fab1385a8b7937f95e5b50258192ddbd18ec139eb163dd12594bb92024b9dcc8"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-16.jpg",
+    "bytes": 321715,
+    "sha256": "7baf5596ae6987a4f6b9d7ae9a2194af309317d862d15ca5a2d55f1bd84c110f"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-17.jpg",
+    "bytes": 186039,
+    "sha256": "9f2f4429b5c013f496b0876f51450a4b59d41e6c8d5769405a3c02fdd228a265"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-18.jpg",
+    "bytes": 341280,
+    "sha256": "6e875f9ca71552874f83d2c516555489f5d198dbd3e93d8e1be57fea6f2d6610"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-19.jpg",
+    "bytes": 52631,
+    "sha256": "484241e9d1fe89725da689b1d98ca61354a97ff28770a76c1a39222da46eb158"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-20.jpg",
+    "bytes": 173481,
+    "sha256": "f0978a028320a90887526b1dd281950eaf5624a8291e2247f03624a9ba5cc847"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-21.jpg",
+    "bytes": 92312,
+    "sha256": "c6307c1850dc970423f5986b7c7235a7124172624dd51ced253e6069cafd441d"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-22.jpg",
+    "bytes": 391068,
+    "sha256": "d77895ac2eafd6500dc7ddb563215625f1032943d38ab2cbce00835b4e172500"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-23.jpg",
+    "bytes": 90467,
+    "sha256": "94639d3dc78490518b9f7876fc5b501d7472804119444f157bd14092badec073"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-24.jpg",
+    "bytes": 182415,
+    "sha256": "f5caef1d6af8f37acfa25dcc3bc5da3b7a2b81532a67464a3220949fa2ab70fa"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-25.jpg",
+    "bytes": 289227,
+    "sha256": "4b87da5504a1e44df03a3ea7d9c4eff2a6cae52eb01afa7493c96b0cb69a4b26"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-26.jpg",
+    "bytes": 35300,
+    "sha256": "ff81bf1a4a45f65153847bf937fe238995a75cf95896ada139590f9446296734"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-27.jpg",
+    "bytes": 96458,
+    "sha256": "01047298257608b68cad5c29ac1c5f072c705937410161470122d90397770862"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-28.jpg",
+    "bytes": 308832,
+    "sha256": "134173ee9db71f728f2fed9fce12b5f41549b291ce402e2c37461145adf8014f"
+  },
+  {
+    "path": "assets/research/proposal-p3/proposal-p3-29.jpg",
+    "bytes": 283194,
+    "sha256": "8d2065727c73d080caeb2d45a76a61ad6c768dcbd961cf8f64f97ceba8c71c69"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-01.jpg",
+    "bytes": 114461,
+    "sha256": "5704f7bdc473c48c2a9327db854253b6552030439417ebaefb1574aa98c4bd05"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-02.jpg",
+    "bytes": 185006,
+    "sha256": "97303d03305674dde9d32c4b723a96fb90a2d8514bf265f9d6d1f0d09c1598c5"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-03.jpg",
+    "bytes": 257275,
+    "sha256": "ab9cdd6a5e8948e26644b72bdf1db512685beff3249745bd871a29a519800353"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-04.jpg",
+    "bytes": 282056,
+    "sha256": "0dd2721e2b67f98f056f290c559f91ae01d1653b67f9089732741da286467449"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-05.jpg",
+    "bytes": 252933,
+    "sha256": "942a03bf4243f3deda28ac96202d5bcd2b964be7f875f510073c0de0e25d9667"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-06.jpg",
+    "bytes": 262975,
+    "sha256": "d59ffb79a1570dca557c61a81f67f46807b9bd0c63a2b04922d6131beab2ab3a"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-07.jpg",
+    "bytes": 185984,
+    "sha256": "94525e3376c531a29313f4db286e85468ec6f52112fedf9c277cd1474c375a84"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-08.jpg",
+    "bytes": 204918,
+    "sha256": "8782b3cc64f047c67d4b4de0178ad9fd8d5489b00875b9450f30d41ff90d463e"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-09.jpg",
+    "bytes": 188270,
+    "sha256": "58537344d857889690da55ea08d15cf30dca5b96ccd0cb201c6f18f4cf466e7a"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-10.jpg",
+    "bytes": 213880,
+    "sha256": "9c588418eb1c7c3d5f1571c77009bd9f9ecabb8cbc22268361ac5dd4d2b14eb7"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-11.jpg",
+    "bytes": 228421,
+    "sha256": "180a39cb3caf6aa19a1f1627f46819ce46ad04638716bbb8bab0251c4871bf6b"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-12.jpg",
+    "bytes": 187110,
+    "sha256": "06cab0a1c330c4581ecdc0f4a68da336c8280e5ce4f6ab4191db3981cb7520a0"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-13.jpg",
+    "bytes": 188537,
+    "sha256": "0afbf45b830bca1d1c1c038e6c279aa0dfec5444da722cd267a8a7bea3bdb3f1"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-14.jpg",
+    "bytes": 90484,
+    "sha256": "9049315f77a5d4a66673d754188029ce427c07bd3d821669f6ee42757bdadc7c"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-15.jpg",
+    "bytes": 126270,
+    "sha256": "dc3c18095ff58a03695c29fdf33e2ddc4ef850b258dbe949812d063cca56e59b"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-16.jpg",
+    "bytes": 125573,
+    "sha256": "82ae3a581ed0387f0ec4023e8218022c5692fdd8ab03670dfa1ed09814359b64"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-17.jpg",
+    "bytes": 110108,
+    "sha256": "133bb13706d86a6d98f0bddb017462dd2207de4a09815ac7ca4254a951b7b988"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-18.jpg",
+    "bytes": 114469,
+    "sha256": "95e92fedab46848611ef3622d244d9f4a9323d770237cf4d65e1decc9c201a58"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-19.jpg",
+    "bytes": 112960,
+    "sha256": "2eb4f4aad823cd482545f2f005afab53f31a6d4d816383105dfa88ec2d3bd3ea"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-20.jpg",
+    "bytes": 79917,
+    "sha256": "3b58230839fced8404c5433937a3af94a53b8ec45e1d713d5486a67c9e4dd364"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-21.jpg",
+    "bytes": 101557,
+    "sha256": "d2369d29bf2163475f0670522fa0b2d6e756932af93c56c5744f84a3ed4577fa"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-22.jpg",
+    "bytes": 112717,
+    "sha256": "d1948597d98408516fb71099dfa5f68aed0aa6aef9596a33679f083725398b88"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-23.jpg",
+    "bytes": 116116,
+    "sha256": "bcf3595671c683b8613c5a4e99cf65b3aa48359381191c30413d067a4aca6f5a"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-24.jpg",
+    "bytes": 109999,
+    "sha256": "0034867cc5ee52be84b846ec74bfdd82bffb41dcf5ce3833b82d546e8e745bdb"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-25.jpg",
+    "bytes": 127556,
+    "sha256": "0b9eee6c3b6596797f4c41bc8491476d08c6df1d273f248aa1041b93085fed83"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-26.jpg",
+    "bytes": 120869,
+    "sha256": "11731250d9632d20db582696e000c6e6f0029b5d070d7f3ee9c16c368ca5afba"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-27.jpg",
+    "bytes": 118172,
+    "sha256": "7c4c5ffae035f19bf4da3221b7907bd11ec7c2c3cb7a690de1763620b74caa7f"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-28.jpg",
+    "bytes": 119927,
+    "sha256": "19b6cccb950f14f095f6662776968b947c83616c8e1a12eeb581bf4281ad194d"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-29.jpg",
+    "bytes": 114094,
+    "sha256": "275486e0d21b86289c5b39114323443dc2a1e407ee3917a541f361be631bdf36"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-30.jpg",
+    "bytes": 88452,
+    "sha256": "11857598dc4b9dd5d23a6b2e89556613957284fe55607dcf81b26ae125e07be3"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-31.jpg",
+    "bytes": 73183,
+    "sha256": "9296e63824f14f88d587154c5faa479d19b8e44bad32ae77bcfea2fd3188e43f"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-32.jpg",
+    "bytes": 106081,
+    "sha256": "1187030819e193640ab6ca249714e457d5cfa03413538312e6cae8e3b3180f8c"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-33.jpg",
+    "bytes": 112291,
+    "sha256": "b9fb81a67161841017d654f6dd3565ff1fc1fecccee72c23fec893f1bb1f8946"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-34.jpg",
+    "bytes": 115328,
+    "sha256": "5af4eb1de03d0ac9cede695ed61912089484c1bf090340be1fe20c186323ec16"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-35.jpg",
+    "bytes": 110604,
+    "sha256": "a27cf2ba36e3b900b64e57fab1caf6b3f69ae0f2d31abd2e870b4bdc6630e295"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-36.jpg",
+    "bytes": 195244,
+    "sha256": "750ea60aadd967a04d29ebf02976256d29fdcfbd10898168ec3307a360b5cbd1"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-37.jpg",
+    "bytes": 106611,
+    "sha256": "d9110e336d5f18741a76362a29ec1216de8526bf11ef232d63a20713a94e17b4"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-38.jpg",
+    "bytes": 163959,
+    "sha256": "07ee05137ff63d19ae4ff63104e61ccd326f4e4ee3d9b832bfcae607c72a9045"
+  },
+  {
+    "path": "assets/research/reef-welfare/reef-welfare-39.jpg",
+    "bytes": 68630,
+    "sha256": "7876fe203e1616182de015ae069bea22ae18c747d8af6df547bf87c27c6f3d2b"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-01.jpg",
+    "bytes": 382588,
+    "sha256": "5fd3f6914953795186f228a48b80df4f5606d4092959864ef3f9d8205cba9fc2"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-02.jpg",
+    "bytes": 376825,
+    "sha256": "2a0d47c5d232a14a1be786862a13e6d365ba12539010d313d85cf32da8dad57f"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-03.jpg",
+    "bytes": 363656,
+    "sha256": "025d775516cfc4d6994d749aed8d60c5341268fec1ee1b202601889444af562d"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-04.jpg",
+    "bytes": 390900,
+    "sha256": "e57eda5e40305838e46c87b983a9753de7ad575fd5f1f7c74ba77b8bb193d8af"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-05.jpg",
+    "bytes": 372249,
+    "sha256": "22676f54345a41394453a9d0fa7a503b09747013a423c753d443e9948e70760d"
+  },
+  {
+    "path": "assets/research/tokyo/tokyo-06.jpg",
+    "bytes": 207736,
+    "sha256": "4ada5d189885043ac71824cde5cd170781c250c4b44c2528feb11d96a68fb01e"
+  },
+  {
+    "path": "assets/revision.css",
+    "bytes": 76289,
+    "sha256": "b7115e1605a2a783f72d81474b0e650d638a53dc990c7fba124c5cd505e8f609"
+  },
+  {
+    "path": "assets/revision.js",
+    "bytes": 10804,
+    "sha256": "ba5846515c68232e16273bd3307c296f1d87e7aa3757690864f263ac59fd7ae3"
+  },
+  {
+    "path": "assets/showcase-archive/02f4def16a36-footage-kegiatan-masyarakat-1ae99b.jpeg",
+    "bytes": 252554,
+    "sha256": "b462d96f8d84251b8bd0c565b1b1e7fc2a1a4e239235ca0c1edd52196f917915"
+  },
+  {
+    "path": "assets/showcase-archive/03d4b1826706-forest-culture-kids-7f1d6d.mp4",
+    "bytes": 2551380,
+    "sha256": "b5bc10d1a9b18eb99fd46c991334606ca01c57139f164fbcb33c07ae715eae95"
+  },
+  {
+    "path": "assets/showcase-archive/07307d20c5ab-bardi-outdorr-lite-1-523bed.jpg",
+    "bytes": 59259,
+    "sha256": "d95336ce9cf4a4fbc6cf1a295cadf90b0593b810653b14b5f3acd638a3bcc847"
+  },
+  {
+    "path": "assets/showcase-archive/09ac4ff38cf7-super-mama-ads-042eb0.mp4",
+    "bytes": 968678,
+    "sha256": "6a6eca5394d5e15d7794cb94396af0f7e1b6bdc0cc9fd4ac0693b96bc42d2527"
+  },
+  {
+    "path": "assets/showcase-archive/0aff6fd87e99-footage-kegiatan-masyarakat-bab2df.jpg",
+    "bytes": 249892,
+    "sha256": "695be8cfb1aeeed994852cd8aa7ecceef752a16c974a6f24a904dd4c9eee362c"
+  },
+  {
+    "path": "assets/showcase-archive/0d00a8a25081-sample-image-1-10d885.png",
+    "bytes": 1786270,
+    "sha256": "cb3d909466d0be000203de3605caebd858a624b202e6f08d3b299f24a09ba115"
+  },
+  {
+    "path": "assets/showcase-archive/102f87f9b207-bardi-outdorr-lite-1-481ed5.mp4",
+    "bytes": 1589171,
+    "sha256": "f9f71000aa3c3c79141082d3164b621b9258d0c72bc89ea725cc7dced941f77a"
+  },
+  {
+    "path": "assets/showcase-archive/1348af133774-footage-kegiatan-masyarakat-2-06efe7.jpeg",
+    "bytes": 308886,
+    "sha256": "6faa8d868a852e6e151bbfc9bfad6a83fe62833c937d9827c428e8437fb5b604"
+  },
+  {
+    "path": "assets/showcase-archive/1383c167f2c0-video-ajazz-mouse-2-15199c.mp4",
+    "bytes": 1197412,
+    "sha256": "c1af4ad6f29ab94650bb67ae5eb3982a166fe6a5b4781b237388d90ebb19e974"
+  },
+  {
+    "path": "assets/showcase-archive/13b9883a48f8-inilah-tanah-basse-sangtempe-9cceb4.mp4",
+    "bytes": 1467948,
+    "sha256": "d6ea2e41a5c9e450bf78e06d7d62ae664e1850208dcf9a2a642d2f9c1fe61740"
+  },
+  {
+    "path": "assets/showcase-archive/154e38af5d02-video-1-broke-my-heart-233c58.jpg",
+    "bytes": 39372,
+    "sha256": "f707f45bfbd0a831b56fbedd4692d9293092121215749d86004fab8b2a68aa84"
+  },
+  {
+    "path": "assets/showcase-archive/15d5703c9148-video-3-01bc6d.jpg",
+    "bytes": 20543,
+    "sha256": "328bac94b9559e47fd7ac31bd0b1ae2c0b559c76bcf55ea7c2fe607f3aa097a3"
+  },
+  {
+    "path": "assets/showcase-archive/16dcebcf3108-after-enhance-4k-7ae620.mp4",
+    "bytes": 1369449,
+    "sha256": "b395840aecfa5929b2dc2cb27991bf8a5c022fdf44a95ada08e9d46989c62ff9"
+  },
+  {
+    "path": "assets/showcase-archive/1a7dfd35496a-forest-culture-kids-3b84de.jpg",
+    "bytes": 84562,
+    "sha256": "e814a3cf468b324e2ff3e6a5977e3b1cef1105926b540c0126d4f5352edf6680"
+  },
+  {
+    "path": "assets/showcase-archive/1a91cddc0f78-bastem-profile-fin-7d97a7.jpg",
+    "bytes": 19731,
+    "sha256": "191c74696a957b1991d5c24f07b7d5e8d6b9b441d89ffcfe8cc3e07698e49374"
+  },
+  {
+    "path": "assets/showcase-archive/1ba01bfbcb4c-group-shot-medium-shot-dolly-in-movement-keluarga-bastem-ber-281de1.jpg",
+    "bytes": 84979,
+    "sha256": "648329e0e9a861cb11476f375414d771ad5af2bab6b99cc6937e00ca8c42dd24"
+  },
+  {
+    "path": "assets/showcase-archive/23f639786a20-video-ajazz-mouse-2-63e813.jpg",
+    "bytes": 15010,
+    "sha256": "68c01fb0fe7b8e9ec6783424ca995267df7ce621fa41b70a951ffbaa86988512"
+  },
+  {
+    "path": "assets/showcase-archive/27aeae6949d7-video-1-0b85d3.mp4",
+    "bytes": 1032907,
+    "sha256": "2924f9763ad77d75142e0e7b4fcfe0ff73f102f862dc0270d076c6f3a1d2cfe3"
+  },
+  {
+    "path": "assets/showcase-archive/2cf9ad18e979-ajazz-keys-2-501855.mp4",
+    "bytes": 1403249,
+    "sha256": "764f93b8a758dc9f884d635310c4ff82d62bd5248447bed64808d00b74190091"
+  },
+  {
+    "path": "assets/showcase-archive/2d9385cb6535-whatsapp-image-2026-06-20-at-11-07-04-b8efe2.jpeg",
+    "bytes": 439499,
+    "sha256": "4711d6e658c8d012dc8061a79924840701d9bc077ff2a9ab8450adad79b8afee"
+  },
+  {
+    "path": "assets/showcase-archive/314c9cc7b7b8-bardi-cctv-2-3-92a38b.jpg",
+    "bytes": 55214,
+    "sha256": "22c8339af453a31420bfb4d81deaacc873a039ff75799c44ebfa625b9f1138c7"
+  },
+  {
+    "path": "assets/showcase-archive/315c83d867ba-group-shot-medium-shot-dolly-in-movement-keluarga-bastem-ber-d539a4.mp4",
+    "bytes": 2545884,
+    "sha256": "02d527b18256aef98a1440fa4c0456680383eed275570bf4f660e2b4c319d37d"
+  },
+  {
+    "path": "assets/showcase-archive/34c0c7897c2c-video-1-0f482b.mp4",
+    "bytes": 611372,
+    "sha256": "c34dd7b1a595d3392a505d2a25b858f13fc5918673fa465461002888230330fa"
+  },
+  {
+    "path": "assets/showcase-archive/37c264c67e7a-inilah-tanah-basse-sangtempe-0081f7.jpg",
+    "bytes": 65952,
+    "sha256": "b5ae3444102ac59407de0db4fa12771c1e66f837af99df4c7f7383c0f0e79141"
+  },
+  {
+    "path": "assets/showcase-archive/3a4bc5abc245-video-1-96cf5f.mp4",
+    "bytes": 798275,
+    "sha256": "6f1e7ca7c9f08e8181697bcbd3139f8b4de5276215d77540b6e1eae7966dcee3"
+  },
+  {
+    "path": "assets/showcase-archive/3b04659d8061-video-1-c2c992.jpg",
+    "bytes": 50451,
+    "sha256": "867841d12a7c8799b93048bf32317c73a28bc98f8866931929a7731ffc5ebb7c"
+  },
+  {
+    "path": "assets/showcase-archive/43c495e0d34a-video-2-d80d79.mp4",
+    "bytes": 653163,
+    "sha256": "9cd541db44363d6e339a3b3d21b209491e7eb91cc649d8c9da3f88352dec2a4d"
+  },
+  {
+    "path": "assets/showcase-archive/455f9e175e4c-video-3-8ef732.mp4",
+    "bytes": 800958,
+    "sha256": "430f189f4b4171004e195795d4e6b6c441c6479a30480571e519a948f621d43f"
+  },
+  {
+    "path": "assets/showcase-archive/46f19349fe41-drone-view-ff708f.mp4",
+    "bytes": 2137979,
+    "sha256": "5004906e0605310864fbba3979821a9e7d333afa3800a9ddd44f91017e0956c5"
+  },
+  {
+    "path": "assets/showcase-archive/4a8b23ab2b98-video-2-48d8e2.jpg",
+    "bytes": 14149,
+    "sha256": "5f19d0057ac2f56848b4d3a5d533011660e8a441598f18d828914f5229caa823"
+  },
+  {
+    "path": "assets/showcase-archive/4e2080cb0b17-smart-door-1-f81447.mp4",
+    "bytes": 888047,
+    "sha256": "231989c9b6ba20616014f77c385f794c362f5e834b522bc0a1ce7472c1ed4eef"
+  },
+  {
+    "path": "assets/showcase-archive/4e36ae7f4300-bagian-1-5-5dfd9f.jpg",
+    "bytes": 66092,
+    "sha256": "f72c419603b477d63909d489ad9881c010b2f3eb19b666c7580f0a71d17c75c2"
+  },
+  {
+    "path": "assets/showcase-archive/5d3f0beb00c1-whatsapp-image-2026-06-20-at-11-12-37-a309e8.jpeg",
+    "bytes": 662973,
+    "sha256": "e22a138d1bc50d9bc8d3edcda3cc526ebb6ba7441dcd41257be67552e55af427"
+  },
+  {
+    "path": "assets/showcase-archive/6239cccdbf98-after-enhance-4k-a0f5c5.jpg",
+    "bytes": 24698,
+    "sha256": "a892bea63807356f5e741cd897dc1952562f46d2ae1ff897a88064749c1fa70c"
+  },
+  {
+    "path": "assets/showcase-archive/632f69cc4a1c-sample-image-7-a53c64.png",
+    "bytes": 1895711,
+    "sha256": "ca08ce179fa99eb8ea638ee345ed58f663d14d8a78ec85e574635709a785406c"
+  },
+  {
+    "path": "assets/showcase-archive/672c7a3256bc-whatsapp-video-2026-06-07-at-6-51-51-am-a98bb8.jpg",
+    "bytes": 42782,
+    "sha256": "139da23ca7e2bcf90a5c18104e72a25c0cf1da6983e0af626868de4830cf54fb"
+  },
+  {
+    "path": "assets/showcase-archive/67de15e6ddff-video-mouse-ajazz-2-1-8242f3.jpg",
+    "bytes": 50115,
+    "sha256": "4a4866e460d1a8e306d4e0150a4af5769c5a5b74754b69cfd26fd657ea6619dc"
+  },
+  {
+    "path": "assets/showcase-archive/67eef81d4645-after-enhance-4k-2-e59d7b.jpg",
+    "bytes": 27009,
+    "sha256": "26a2577a5407ecdff39921afcdc6679f3c0f42aeffefd42419e264e1e6f9a332"
+  },
+  {
+    "path": "assets/showcase-archive/6857f17944e1-mic-ks-5-b5df97.mp4",
+    "bytes": 1391624,
+    "sha256": "2b44d8a05de7a5a651258f1512ab62027f99ae2a7f6452075e8318d40d06482b"
+  },
+  {
+    "path": "assets/showcase-archive/69672eadd63a-video-1-b5ec1a.jpg",
+    "bytes": 28781,
+    "sha256": "378aa296253f46e9709da27f7fbbbe00733aac5f45f44fb2349364a081dd1689"
+  },
+  {
+    "path": "assets/showcase-archive/6cab470d0d03-bardi-cctv-2-3-a1f31b.mp4",
+    "bytes": 648273,
+    "sha256": "359391e0b4f41f6c53a06e461e0a2a4b11b1b6dc31df964e8c7826e60637429d"
+  },
+  {
+    "path": "assets/showcase-archive/6d7f65de2f95-bardi-sino-2-067f57.mp4",
+    "bytes": 1416468,
+    "sha256": "af8cbca133cf2bc39c6c7428909db7050410aaf5f225cb88e03594f0c051f22b"
+  },
+  {
+    "path": "assets/showcase-archive/6dd2fac03d58-sample-gambar-2-f7b34c.png",
+    "bytes": 2241231,
+    "sha256": "c525cf52748431ab89b0ab9ae97f875122e2457cef239b9e46d077c638cada5b"
+  },
+  {
+    "path": "assets/showcase-archive/6ddad932eaca-smile-kids-and-family-9ec407.jpg",
+    "bytes": 71082,
+    "sha256": "69ef8feed22fbf2fe049ea9cf9292db726a281783f07775c77edc1f1a574985e"
+  },
+  {
+    "path": "assets/showcase-archive/7605ba5f3c7d-sample-image-5-45bcd1.png",
+    "bytes": 1812391,
+    "sha256": "f53af6463350bf516549a436fd6fab4dc7b769cace524445f53661a922a3bf79"
+  },
+  {
+    "path": "assets/showcase-archive/7bbb3ff68293-video-bardi-sino-1-85ca17.mp4",
+    "bytes": 2412140,
+    "sha256": "bc65a3202597d7c054e639b0606504f27df28c0983103c789ecb2c6c19329f05"
+  },
+  {
+    "path": "assets/showcase-archive/7c2b30cb6044-chatgpt-image-20-jun-2026-18-20-11-7b1ac0.png",
+    "bytes": 1912973,
+    "sha256": "9e06b6ac780a1b1a8874f4305b3d170a6d021e68ee5a34836e2b99c585382b67"
+  },
+  {
+    "path": "assets/showcase-archive/7ea9c8e0965d-video-1-980cfd.mp4",
+    "bytes": 2896767,
+    "sha256": "28ea9f14d5deeb4a8dc20998a9a266076918e6501360d427eb480bd36bc1b786"
+  },
+  {
+    "path": "assets/showcase-archive/8119f411d647-ajazz-mouse-1-d1b527.jpg",
+    "bytes": 41440,
+    "sha256": "8490af4b5aa6d56be409515aa562948551fe98ed12de9c91b921cbc7ee54e8fb"
+  },
+  {
+    "path": "assets/showcase-archive/81f286751f6c-sample-image-6-ba6883.png",
+    "bytes": 2002781,
+    "sha256": "d269a683b33402e7e8771823c61d81d9c9de502424ea429c15cc72d1c6cbd522"
+  },
+  {
+    "path": "assets/showcase-archive/8404f5560904-bardi-sino-2-0bced0.jpg",
+    "bytes": 44828,
+    "sha256": "925b50d9bae33bdc815ee9b4d1d81e50cf40cbd5c1b5e798b62e1fe964239775"
+  },
+  {
+    "path": "assets/showcase-archive/8885a51743b3-whatsapp-video-2026-05-31-at-6-41-59-pm-fa76b8.jpg",
+    "bytes": 54155,
+    "sha256": "a426733a56c8ffd4f53839c8795095d3d7a12999832bfaf3b0c5f29fc40f3809"
+  },
+  {
+    "path": "assets/showcase-archive/89e6c3eaf5e2-whatsapp-image-2026-06-20-at-11-35-04-32b6de.jpeg",
+    "bytes": 381271,
+    "sha256": "7e756675b0f14d84dea5984eeee5365a08132c311dc15533a3bd5e475f73f479"
+  },
+  {
+    "path": "assets/showcase-archive/8b1e43d626a5-video-1-broke-my-heart-cfb4c2.mp4",
+    "bytes": 881051,
+    "sha256": "c706d56630f7d0216ee07b697f56d896912920ece1bc3025208db78c59e4422e"
+  },
+  {
+    "path": "assets/showcase-archive/8c1105d7f0d6-video-1-dd1a53.jpg",
+    "bytes": 71394,
+    "sha256": "46defef41e13c3166d5ef314f88db941aa7e3a83d08a8b5d5f4ab18cd0362ea3"
+  },
+  {
+    "path": "assets/showcase-archive/8c4882d08be5-super-mama-ads-c32cdc.jpg",
+    "bytes": 53848,
+    "sha256": "ad8aee72b7f712f42ff39bbcc98cd2ce65634b3ea0d5bb32b611403de1ad11cf"
+  },
+  {
+    "path": "assets/showcase-archive/8fc703dac29e-video-3-889cb9.mp4",
+    "bytes": 906978,
+    "sha256": "acc1adcca092f68b226980739707ecbf9999b667d337bb0dec1cb836962edc11"
+  },
+  {
+    "path": "assets/showcase-archive/903378e448cd-mic-ks-5-9890b5.jpg",
+    "bytes": 7745,
+    "sha256": "23b45ebc384131487b4847ac226c9e7dc4c22aea9a812e94716f5d572ffd27f9"
+  },
+  {
+    "path": "assets/showcase-archive/94b7757cc110-video-2-53bca6.jpg",
+    "bytes": 19685,
+    "sha256": "fec12ff1a669b5c2fc773ef1eb58ff79acf6010388c4643de30aa68437f310ee"
+  },
+  {
+    "path": "assets/showcase-archive/9b04b05b5640-009fd443-0664-4223-81fa-d6fd820f489e-e9413a.png",
+    "bytes": 2227680,
+    "sha256": "ecc4b0a7ef6e91b131300a1363e247a17ec953dc1261e4395838c65475bcda78"
+  },
+  {
+    "path": "assets/showcase-archive/9bbc175719ca-video-1-ab0e5b.jpg",
+    "bytes": 47278,
+    "sha256": "07ed4114f9bd199677494b1913c9efdbcdf71670bdef259545fa954450030b0e"
+  },
+  {
+    "path": "assets/showcase-archive/9c6cdbbdc0b2-rumah-adat-footage-d7323f.png",
+    "bytes": 2325342,
+    "sha256": "ed4b548fb1e48d2da68ac630eab4792ff3c41b322f5317d0838f6dc657a9e927"
+  },
+  {
+    "path": "assets/showcase-archive/9d14a1041c90-bardi-cctv-2-2-b6e87b.jpg",
+    "bytes": 18674,
+    "sha256": "a4dc4a3637daaf012ab9e75fac28955b8bf147b7c4801820db429b1d31618656"
+  },
+  {
+    "path": "assets/showcase-archive/a062c25ac128-sample-image-3-e57ade.png",
+    "bytes": 1821992,
+    "sha256": "7bbd650ae2d0605b440650af3873f352f59fbfca16c7214cf586487b7283d6cb"
+  },
+  {
+    "path": "assets/showcase-archive/a0bd232ad572-video-1-5349f3.mp4",
+    "bytes": 822723,
+    "sha256": "1a75c268b327e6d920eebeebdb1afab9af70463b4bd5a9867c2dd8e56d3c022a"
+  },
+  {
+    "path": "assets/showcase-archive/a3dc440ed021-bardi-cctv-2-2-3cc639.mp4",
+    "bytes": 1384776,
+    "sha256": "6faa3ce6fd88b1e970694cbcce6bb529af79736459cac9e8d0db68b673d6e3fd"
+  },
+  {
+    "path": "assets/showcase-archive/a709ab9148c3-after-enhance-4k-2-6bde89.mp4",
+    "bytes": 2084577,
+    "sha256": "51dd01ab3613020d9186bf405bf02baa9ddf0c2bacf8c322af2d9a6a42523e96"
+  },
+  {
+    "path": "assets/showcase-archive/af89feb7cbdd-footage-man-group-bd5f3c.png",
+    "bytes": 2098941,
+    "sha256": "9308f21210a47dfb2727b11b6f1a3f95650259014cded472c09aade36c0bc6f3"
+  },
+  {
+    "path": "assets/showcase-archive/b1935a81fb46-coconi-0770b8.jpg",
+    "bytes": 22685,
+    "sha256": "995ab3a1e493ca01fcced8284e9ae687457e0d4bc01b0f7da8345c863063a7a7"
+  },
+  {
+    "path": "assets/showcase-archive/b6a7e257e140-smart-door-1-87f2f0.jpg",
+    "bytes": 34568,
+    "sha256": "fc34cf5498577e32944e2fc91ab8721f8677042749bcd7f6530c7485f20c51da"
+  },
+  {
+    "path": "assets/showcase-archive/b9ae6705bebf-anak-kecil-footage-368ea5.png",
+    "bytes": 2193014,
+    "sha256": "3b53c6ac2740f7e0798c17b0ece6ab63cc2ea7be05b206b943f3c09a631ae1ec"
+  },
+  {
+    "path": "assets/showcase-archive/b9c54c86cfa9-d890d8e4-51fa-4bc3-ad9b-9c936b9ee2ae-731ccb.png",
+    "bytes": 2242849,
+    "sha256": "7e1ff1779f3708c020bbafbc5ba18bde3e279d9a4c74358e7536060baea2578e"
+  },
+  {
+    "path": "assets/showcase-archive/bbe8bd01e1b6-video-3-df1295.jpg",
+    "bytes": 14464,
+    "sha256": "96d148aec64fc31eb44076b98ea9b7594f799735808a78564fd1d7be6e73fa1e"
+  },
+  {
+    "path": "assets/showcase-archive/bd79556e648f-footage-landscape-gunung-b944d8.png",
+    "bytes": 1975957,
+    "sha256": "dbbff46b10b712de57e7542d65bd0b18ae46697948d6fc118f3dfb9c84387cfd"
+  },
+  {
+    "path": "assets/showcase-archive/be7a3592afda-whatsapp-image-2026-06-20-at-11-02-35-6c314d.jpeg",
+    "bytes": 387631,
+    "sha256": "f895adaaaa9ea3dc5557bbe4f321d63f706f31e0863d6d34f8fa01203bef2d91"
+  },
+  {
+    "path": "assets/showcase-archive/bf0e9b5300e0-bagian-1-5-7f39f5.mp4",
+    "bytes": 1467380,
+    "sha256": "0e07ce7f21d5a2cc756b82115622eb6185e2c1d9e098e3646548e54f9d426d5a"
+  },
+  {
+    "path": "assets/showcase-archive/c0973ee25895-video-mouse-ajazz-2-1-0eb493.mp4",
+    "bytes": 2317247,
+    "sha256": "fa8270ece4fdd4a9ea360df4f96e13cec77b0d2c57d3c36e172f66f4ce8b2047"
+  },
+  {
+    "path": "assets/showcase-archive/c4f866111bf1-ajazz-keys-1-f05a17.jpg",
+    "bytes": 50435,
+    "sha256": "34e7141bea4ab99fa970152df19b75e47e5041664dc9df6181da5532115e170f"
+  },
+  {
+    "path": "assets/showcase-archive/c8f2beaa708b-viceo-mouse-ajazz-2-2-9e966a.mp4",
+    "bytes": 2160736,
+    "sha256": "2ba057e73fed7ed9ac0ad29ae6462fb903d66ddf39bfbaec7a221b7bc0535781"
+  },
+  {
+    "path": "assets/showcase-archive/cb1621abb32f-video-bardi-lite-2-c78a08.jpg",
+    "bytes": 51675,
+    "sha256": "c600db5298dff635291e1a4255c7a40ad3b0742eca2595d5f0c0428bf4cd6a82"
+  },
+  {
+    "path": "assets/showcase-archive/cbfb473597cc-whatsapp-video-2026-05-31-at-6-41-59-pm-0d4c0a.mp4",
+    "bytes": 2054433,
+    "sha256": "baf209aab5c41257a1f14a58de1547258c401695bb78d93608c51180b3a0538b"
+  },
+  {
+    "path": "assets/showcase-archive/ce6874d70590-video-mouse-ajazz-2-3-f8648f.jpg",
+    "bytes": 103105,
+    "sha256": "75b444f6ffff560e3c103c69d60371e7ed82364017dcff43510b29f2d503a844"
+  },
+  {
+    "path": "assets/showcase-archive/cf37999ca381-ajazz-mouse-1-d7005d.mp4",
+    "bytes": 1523242,
+    "sha256": "8e3b36776d67d3dbc137574e6182a47dd9eadaa65f8e5bc2414e53165d07a81b"
+  },
+  {
+    "path": "assets/showcase-archive/cfbff6139553-video-mouse-ajazz-2-3-e38f6c.mp4",
+    "bytes": 2111057,
+    "sha256": "01f3f895343b1b3ed2934264d94d3cc63332fae10f5b6e9f4ae360d34cf8032b"
+  },
+  {
+    "path": "assets/showcase-archive/d1073fa5e5a8-dompet-hugo-6c5738.mp4",
+    "bytes": 1428496,
+    "sha256": "5d9f85c756d610983a0d64200b855871755608d771797b7daa14c5fc84fa7756"
+  },
+  {
+    "path": "assets/showcase-archive/d292886e1645-drone-view-2507f6.jpg",
+    "bytes": 49978,
+    "sha256": "e646870a6a6978c35ef8e036b740047943324300cd81ab59ba75a01f787f0c95"
+  },
+  {
+    "path": "assets/showcase-archive/d35160fa2d8e-video-1-f244d0.jpg",
+    "bytes": 7116,
+    "sha256": "c6e832df2565448be21f181412bf4eca844dc3296d04d904baf376229b88d536"
+  },
+  {
+    "path": "assets/showcase-archive/d5b48b8b7e50-video-2-df5dcf.mp4",
+    "bytes": 551863,
+    "sha256": "d02ece3f28f8512d51624dacf44af1c2b4c25269169d50dcf66f382b86bdf401"
+  },
+  {
+    "path": "assets/showcase-archive/d73f5899b1d6-video-bardi-sino-1-3bbf15.jpg",
+    "bytes": 33149,
+    "sha256": "05bddfe113c2e9cafe81f3f20b09a4c1aafad4598fde300ab107638590b014e8"
+  },
+  {
+    "path": "assets/showcase-archive/dbbf165e96cb-ajazz-keys-1-41fbfd.mp4",
+    "bytes": 988871,
+    "sha256": "126123db43335e116b34cef7534067abd76ec0c47c7ae59aba257360c288f709"
+  },
+  {
+    "path": "assets/showcase-archive/dd2f69436113-coconi-5c3f88.mp4",
+    "bytes": 803568,
+    "sha256": "e80afcbebb62e58eaba72ae871606a605c30bcf2763d0fd770c67505bd4a7912"
+  },
+  {
+    "path": "assets/showcase-archive/e89366728cd4-ajazz-keys-2-2453da.jpg",
+    "bytes": 17236,
+    "sha256": "758053f8fdc898391623ba929962d07304dd1e800a49892117275529b5d9bfe9"
+  },
+  {
+    "path": "assets/showcase-archive/eb61a37a8af7-sample-image-4-87dac5.png",
+    "bytes": 1727400,
+    "sha256": "36928f17d412586be9c60c3c34f8a246e90a442b71957ac12f89d6522364b175"
+  },
+  {
+    "path": "assets/showcase-archive/ecbf3acaa5d3-whatsapp-video-2026-06-07-at-6-51-51-am-2b796c.mp4",
+    "bytes": 1532714,
+    "sha256": "04afd0fe8d3f2ab2b3d297e7b7a617c1a650659bdb6b931c053fbefde1e9d17e"
+  },
+  {
+    "path": "assets/showcase-archive/efa9c95116e8-smile-kids-and-family-4448ae.mp4",
+    "bytes": 2424063,
+    "sha256": "f376f82d5b3b30f1506d7126fc04f76bd3b7ce863f3fd690e0568c9d8bdf5ad4"
+  },
+  {
+    "path": "assets/showcase-archive/effd8cfe0c0b-footage-kegiatan-masyarakat-1-b378ef.jpeg",
+    "bytes": 332594,
+    "sha256": "e297348f6057f30f441762445d2e6146cb062c0c4bcc394a16ae689322eae6b8"
+  },
+  {
+    "path": "assets/showcase-archive/f1ba19a81548-dompet-hugo-b305b3.jpg",
+    "bytes": 14816,
+    "sha256": "f4cb6368062bc86632c8a92dfe7a6b73117b54dea9e18ffe69313f4b048907ae"
+  },
+  {
+    "path": "assets/showcase-archive/f6df2a52efa9-bastem-profile-fin-154b9e.mp4",
+    "bytes": 30672940,
+    "sha256": "6459a9bbf9062c8666b64b582c058e41e01993b0a575db17707ebc6a89d23020"
+  },
+  {
+    "path": "assets/showcase-archive/f7207e96afc8-viceo-mouse-ajazz-2-2-fee8f8.jpg",
+    "bytes": 95766,
+    "sha256": "4428436fc80d259ba756307eb7439eb505d6df46c6a897078a0f7c49922baf15"
+  },
+  {
+    "path": "assets/showcase-archive/f97debfec880-video-bardi-lite-2-0fc04b.mp4",
+    "bytes": 1064861,
+    "sha256": "d6adf445dd3ebfde8c9d010a2da43846ade1c0302e72e0a0345021e564cb272e"
+  },
+  {
+    "path": "assets/showcase-mine/3-woman-cap.webp",
+    "bytes": 73038,
+    "sha256": "04191b04a17e934bd50b010714c825f1a9cee12e95e873b764b0f1d0d353070d"
+  },
+  {
+    "path": "assets/showcase-mine/agent-cap.webp",
+    "bytes": 79448,
+    "sha256": "3725f5ada50d2286564b6ccc3911afef707fc1320a8f65fd7852d0a8dbcbbda1"
+  },
+  {
+    "path": "assets/showcase-mine/berikut-adalah-master-prompt-y.mp4",
+    "bytes": 2537928,
+    "sha256": "e4819fc849ea960014f1e919ed94f9e2c5b1727806533aae32ed286fdcb47be3"
+  },
+  {
+    "path": "assets/showcase-mine/buatkan-lagi-dengan-konsep-yan.mp4",
+    "bytes": 2695835,
+    "sha256": "8a406c8f3b739469ae1e4c94d19165d36b17ffe8170d3efa1a06d5ce9c5938b7"
+  },
+  {
+    "path": "assets/showcase-mine/buatkan-vidio-lagi-dengan-kons.mp4",
+    "bytes": 2610821,
+    "sha256": "669b0486022683ee1a3f79b126e410bfa10c9698223a61f453afa5aec967f388"
+  },
+  {
+    "path": "assets/showcase-mine/build-a-brand-4k.webp",
+    "bytes": 135312,
+    "sha256": "1ec80066acfe52a124225f69f2b8c3e265bc6becb42dcca47990350fccfb4051"
+  },
+  {
+    "path": "assets/showcase-mine/cap-black-spiderman-4k.webp",
+    "bytes": 120058,
+    "sha256": "740a15dbb846a7372697364147309f608ebe5b2844faa93e479c58971e4148d9"
+  },
+  {
+    "path": "assets/showcase-mine/cap-build-the-scene.webp",
+    "bytes": 122996,
+    "sha256": "160d0029841eb491ee584d72d184083c162b5fd019e64f20dc225ab5fdd7b65a"
+  },
+  {
+    "path": "assets/showcase-mine/cap-cammpaign-4.webp",
+    "bytes": 192810,
+    "sha256": "24a85d7d260d5e568ef3a66d068f403f6b29ba782aab13b16ec6a88231ccd44d"
+  },
+  {
+    "path": "assets/showcase-mine/cap-campaign-4.webp",
+    "bytes": 125310,
+    "sha256": "71b3a3dba02a20ff687afc67ed2a066a21a639882e4706bdc3b9182756e3a721"
+  },
+  {
+    "path": "assets/showcase-mine/cap-campaign-5.webp",
+    "bytes": 256356,
+    "sha256": "9d8d27038938de304ee1c0951f96609d6332ba911fc6097cd51cbd28721a4cd5"
+  },
+  {
+    "path": "assets/showcase-mine/cap-campaing-1.webp",
+    "bytes": 159786,
+    "sha256": "a67c8c22f7e7b0570acf4940e7550326d2db53dadcfe20910f6c69bbf2909767"
+  },
+  {
+    "path": "assets/showcase-mine/cap-cmapaign-2.webp",
+    "bytes": 119872,
+    "sha256": "2e18ceaa6f84fa47cbe2f51af8578830413f859704c3daeefbb17d56a792c60d"
+  },
+  {
+    "path": "assets/showcase-mine/cap-frame-by-frame.webp",
+    "bytes": 190756,
+    "sha256": "f6236ded8fa47c6beed19a9046a25573a68ac6201958dc26553b91fe354bfb1b"
+  },
+  {
+    "path": "assets/showcase-mine/cap-imagine-in-motion.webp",
+    "bytes": 69784,
+    "sha256": "1fc78bfd39b69125f70841e5bc1b6379bebdab43a9433ac40cbecdbe23d35171"
+  },
+  {
+    "path": "assets/showcase-mine/cap-motion-made-visible.webp",
+    "bytes": 87154,
+    "sha256": "975d3fede181d8d57e4d05cf5b87c032540e4b4f5d342d787dd62d74d011af37"
+  },
+  {
+    "path": "assets/showcase-mine/cap-still-to-cinematic.webp",
+    "bytes": 132068,
+    "sha256": "38668e4c5819eace01f4cf1ef22d9e9746916e98ad0741f75133e4e1a8f346a7"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-14-13-17.webp",
+    "bytes": 116692,
+    "sha256": "90b5364ff753720a4a052146482b82a74f10350518d6ed2988e46f9546a68c5e"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-14-15-17.webp",
+    "bytes": 155044,
+    "sha256": "aa1e18fe84dd25973e225e7ae6019bdbbd544b0be837d1cdc580718b5671ae32"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-14-45-51.webp",
+    "bytes": 117328,
+    "sha256": "c790c5e2c3f904591dbe6d9a165ace136de1e7baf858def7cb7d6e3ab6643213"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-14-52-01.webp",
+    "bytes": 125520,
+    "sha256": "ccc46a692b9635dd1ad5a6a733477b125d622d83ad6d0b3eb00104e8865a5b30"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-15-12-13.webp",
+    "bytes": 165572,
+    "sha256": "b1398397a348dcde79ec9570d88f4c186b2910a4d5c67d179c328b6cbd237c87"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-15-37-46.webp",
+    "bytes": 234172,
+    "sha256": "34049448c6e469ad8df1a05a0e46d888b09319ea582c213acb5ed4b9b044ec4c"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-11-jul-2026-16-11-24.webp",
+    "bytes": 137332,
+    "sha256": "89efe4a8120db10d573ccbda05d2642908397e5a7b0d72c96fe439cf1b3206b1"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-11-06.webp",
+    "bytes": 189238,
+    "sha256": "2b8ffe2c5c4a1c4f8b8c07026ba45d552ee92a3a1a4898c1e3352d360eb1dedb"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-15-39.webp",
+    "bytes": 193700,
+    "sha256": "ac4f32298524594bca1f9c16526827ef2fda8b2fd1b35f877171401280f559b7"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-17-41.webp",
+    "bytes": 122484,
+    "sha256": "ff8679c3cb013a0711dcf5eebb70af3cbb87fb40b1fdb769e3e3f093b26fcffb"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-22-08.webp",
+    "bytes": 128180,
+    "sha256": "e66b0ea2cd77cc33d9ec18ade0ae7d568398745cc002b577053eca7e1bbdd46a"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-26-10.webp",
+    "bytes": 87376,
+    "sha256": "635741e4679b27efea5936092aeb5d341e887c3e7cf930e1ffa4d975789416e0"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-27-38.webp",
+    "bytes": 104312,
+    "sha256": "15c5372815cf7d4408c14f5fda93e122b8af87ca4155cd4ba2c37b1fe92351ce"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-29-55.webp",
+    "bytes": 91274,
+    "sha256": "bab554e656b7fd6cb337fcc3f51dd45eb57360305c320c5e27ecf233e7a9675a"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-14-agu-2026-20-31-43.webp",
+    "bytes": 92454,
+    "sha256": "40c44b1115a3833cf103546af0a9709a083abd957cdd19ffdab201555854ed07"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-7-agu-2026-17-23-06.webp",
+    "bytes": 123720,
+    "sha256": "3dcc1a6fe5bf5fddfb204b23e49a8b0d27b963b39b9e1f8041405308d3c05612"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-7-agu-2026-17-40-46.webp",
+    "bytes": 111046,
+    "sha256": "2f1ec2253019605b18ed5f75e8fd6c8ab7abd02e0a79430cc31ee60253cdd552"
+  },
+  {
+    "path": "assets/showcase-mine/chatgpt-image-7-agu-2026-18-11-12.webp",
+    "bytes": 107736,
+    "sha256": "a1ab5aab4125ee62b5b73dac291e72b0697872b4bf9501435209b59023dafb06"
+  },
+  {
+    "path": "assets/showcase-mine/create-a-second-luxury-beve.mp4",
+    "bytes": 2492875,
+    "sha256": "ffaca443d1fca3eb6c8dd648fa8665882115e1414e320f8e754f61a4ca0b9133"
+  },
+  {
+    "path": "assets/showcase-mine/create-a-second-premium-cin.mp4",
+    "bytes": 2753919,
+    "sha256": "e9c7b0409b4a6170461a95fbdd32c45fe53756b508706321bb4952ea20d559e8"
+  },
+  {
+    "path": "assets/showcase-mine/create-a-second-ultra-reali.mp4",
+    "bytes": 2685761,
+    "sha256": "cabef10d084acc9fc6d2eb522eba1fd94c24cc1b953522e99cadf13fc12d73ef"
+  },
+  {
+    "path": "assets/showcase-mine/create-without-limits-cap.webp",
+    "bytes": 133124,
+    "sha256": "9d41d7261a350701b81185b0038cfec52e2a0faf13b1ab73cfa10c7720f347a9"
+  },
+  {
+    "path": "assets/showcase-mine/create-your-content-with-cap.mp4",
+    "bytes": 2773620,
+    "sha256": "df02e3c84d6bbbb9e6e2b1e872f16c69e5d2ca13117f156f76b09aaf407ae712"
+  },
+  {
+    "path": "assets/showcase-mine/fadeaway-man.webp",
+    "bytes": 138200,
+    "sha256": "577130ecdb788bbfccb83d2c5a70486f6326567f49ce9859ded59a7b896d5ca8"
+  },
+  {
+    "path": "assets/showcase-mine/from-idea-to-image-cap.webp",
+    "bytes": 106642,
+    "sha256": "e73462cbeb0b581e8b1de17aacc3b12be24b94bfcb767087b477ae293faa5466"
+  },
+  {
+    "path": "assets/showcase-mine/make-every-frame-move.webp",
+    "bytes": 183932,
+    "sha256": "e20c1cab19eec40120acb30244a1d6aa2a94e2066422e909360da4a112263007"
+  },
+  {
+    "path": "assets/showcase-mine/man-on-the-ocean.webp",
+    "bytes": 149664,
+    "sha256": "234f47f6249453bc22debe61ca0e2f1fef389baa585538fd59c10a7916a9e49c"
+  },
+  {
+    "path": "assets/showcase-mine/master-prompt-create-a-premium.mp4",
+    "bytes": 2684948,
+    "sha256": "11ff10befaf7cb7b0a3f6a9dd7473f0f192d80561aa6644b0e74df97228a8b19"
+  },
+  {
+    "path": "assets/showcase-mine/master-prompt-ultra-photoreali.mp4",
+    "bytes": 2710996,
+    "sha256": "08ac480b2d6c0e40f7d324c978c99760b08c724d8a4b76adb0e7fddbcb895016"
+  },
+  {
+    "path": "assets/showcase-mine/posters/berikut-adalah-master-prompt-y.webp",
+    "bytes": 62578,
+    "sha256": "435e12c015047a4d16602c4f7ddb09cdb5f3f9438eb93e12282e4d28bd44ffd7"
+  },
+  {
+    "path": "assets/showcase-mine/posters/buatkan-lagi-dengan-konsep-yan.webp",
+    "bytes": 21646,
+    "sha256": "308c144f69b6f7e1c2f29d0a30f5446d3e89b6f83ef3fe83483e51796a48c9d2"
+  },
+  {
+    "path": "assets/showcase-mine/posters/buatkan-vidio-lagi-dengan-kons.webp",
+    "bytes": 42140,
+    "sha256": "e64ac414c00fd9f61a524235e30d7a86e9b62cc561ac34ea911fb33fed39c3cd"
+  },
+  {
+    "path": "assets/showcase-mine/posters/create-a-second-luxury-beve.webp",
+    "bytes": 31840,
+    "sha256": "76d99c1fcc9c4cea49cb2ad5078e38a84f310b78f807c47e4382be9a3f8657b4"
+  },
+  {
+    "path": "assets/showcase-mine/posters/create-a-second-premium-cin.webp",
+    "bytes": 31966,
+    "sha256": "cd7c610834096bfa6b2635f215ee2e656870126ca819404048d16531e6775ae7"
+  },
+  {
+    "path": "assets/showcase-mine/posters/create-a-second-ultra-reali.webp",
+    "bytes": 36280,
+    "sha256": "1181c1b0fe7d22df7e559e1084cf7f3530c45b746d319a6935a403204c330e7f"
+  },
+  {
+    "path": "assets/showcase-mine/posters/create-your-content-with-cap.webp",
+    "bytes": 29748,
+    "sha256": "0e80f7aa74b149519b0c8dc4276fa4eab5d15e460d0b8a38ddf231fa1e68a088"
+  },
+  {
+    "path": "assets/showcase-mine/posters/master-prompt-create-a-premium.webp",
+    "bytes": 61706,
+    "sha256": "eecd992d63c1b4d1ac4047cabfd6cd7ba5ca9eb60f0a0f10781493d99f3d93ba"
+  },
+  {
+    "path": "assets/showcase-mine/posters/master-prompt-ultra-photoreali.webp",
+    "bytes": 37390,
+    "sha256": "58b4d25107f99b8307db375e95e17b52381a1a2a1d1d987fdd202ebf8be3f026"
+  },
+  {
+    "path": "assets/showcase-mine/posters/style-cinematic-pixar-inspire.webp",
+    "bytes": 49860,
+    "sha256": "1006660bc80405488d19c3f77854f3dcb1175aa508bdf25c21161a296f4ca671"
+  },
+  {
+    "path": "assets/showcase-mine/posters/video-ai-agency-cap-4k.webp",
+    "bytes": 36638,
+    "sha256": "8b10f289593b28307ab594051acc96c668e3f0322799c0ae08e30f42dd11f3dc"
+  },
+  {
+    "path": "assets/showcase-mine/spiderman-coffee.webp",
+    "bytes": 172206,
+    "sha256": "8fe6a1bcc776260a24bb0ea32b3703efbc9af7ae01e410968949e22948fb94ad"
+  },
+  {
+    "path": "assets/showcase-mine/style-cinematic-pixar-inspire.mp4",
+    "bytes": 2533074,
+    "sha256": "b8d4de6feb08500572db55090addf2f66f98102731187a270960a7f495385f60"
+  },
+  {
+    "path": "assets/showcase-mine/video-ai-agency-cap-4k.mp4",
+    "bytes": 2635541,
+    "sha256": "1e563f7c09874f537a91881540af9f88843d77f7022bb2af461ae8f636716ebd"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-07-19-1.webp",
+    "bytes": 128298,
+    "sha256": "1b956549a8609ac7f4e33cffabc73151155f58e91ecfec2c303c4b9c7621c88f"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-07-19.webp",
+    "bytes": 114866,
+    "sha256": "295964191ee288b76d66b08bd1d4f78c33a4debf2988712e1f5810243350e801"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-10-34.webp",
+    "bytes": 147310,
+    "sha256": "fcdbb0f147a6d399648f4590dab2ce843928af01075611e6a2a82c086baa3d0b"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-14-32.webp",
+    "bytes": 120888,
+    "sha256": "9212b345ec4dedc9a9fefb835566e521bff83a13bbe56623d4ad9d0366098048"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-19-43.webp",
+    "bytes": 137262,
+    "sha256": "fefeec354416cee74e55ba5499abf807522771e83bbc072d3f727b4d4eef7d4e"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-10-at-23-24-04.webp",
+    "bytes": 128192,
+    "sha256": "1c436bebf26e10469632f8dffd3058d801ca58777d2dad7c3cba7bacf7af142c"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-20-at-20-27-22-1.webp",
+    "bytes": 119050,
+    "sha256": "71f867e1e7ae1e15397f299901e6141bdbec16b4b0b42d54d87217d0e77699bd"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-20-at-20-27-22.webp",
+    "bytes": 82828,
+    "sha256": "b21d4fb0c02f67a09eb3a5eb8a1a7dc7db2f23ade0d6fddb3723e039f819bd19"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-20-at-20-27-23.webp",
+    "bytes": 157002,
+    "sha256": "482de295ef36b46f643efbd7ab6a45dece71822af92e19f4784c2acc3597c9c9"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-20-at-20-27-24.webp",
+    "bytes": 191748,
+    "sha256": "5b87c30535a24932ab405c46e84dd955dad8ca9b0c25f045f8ad78437a40642c"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-20-00.webp",
+    "bytes": 264640,
+    "sha256": "f410c85d284330256583aecd8b5c04ae61ea51ab76a7df824465307bf17d454f"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-20-01-1.webp",
+    "bytes": 122908,
+    "sha256": "5b5a50f58bb896c8212c951251663a98a8712743ceec620b2a623464f1bb4add"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-20-01.webp",
+    "bytes": 129110,
+    "sha256": "d6b659e90ff20dba0c80aa3cb339af0f0045a1c7e5802b0a787c2fffcd9213dd"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-20-02.webp",
+    "bytes": 164490,
+    "sha256": "1eb670e6acb52658ed4eecdee328dbe1568db04f382648e8e2e0b62d39031238"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-26-18-1.webp",
+    "bytes": 160392,
+    "sha256": "a9f6289ee6453463729b76269f4d0053efcb545385d37c3095fe64940c0c6c4d"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-26-18-2.webp",
+    "bytes": 257254,
+    "sha256": "0dff8ee7c7a7a72d382f87dccd1f31ef819c843a3064e9c9f50d3c41cb5cc8cd"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-26-18-3.webp",
+    "bytes": 182988,
+    "sha256": "5b9d927f0a095f7a6bfb48ff2a32797e38c7563443146eb8bc7ecc0ff00b64a3"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-26-18.webp",
+    "bytes": 179066,
+    "sha256": "6039d8743a26ab832616370ef08517315e764d5791df2fceaa72129399e76f96"
+  },
+  {
+    "path": "assets/showcase-mine/whatsapp-image-2026-07-22-at-12-26-19.webp",
+    "bytes": 179718,
+    "sha256": "8401ecc1db101072b872d011f64c8cdc48c778754402cd4d4d28d8ef1d31c3b3"
+  },
+  {
+    "path": "assets/site.css",
+    "bytes": 32379,
+    "sha256": "465ec6236c96ee0e4735d6a4737c6f8102df96844ae8617273c9c2dc42b8f456"
+  },
+  {
+    "path": "assets/site.js",
+    "bytes": 10020,
+    "sha256": "b143049e23139fd548ad05e5761e3a6d89f6374e64c12c6d47f7816b51c8ba99"
+  },
+  {
+    "path": "assets/visuals/grain.svg",
+    "bytes": 294,
+    "sha256": "34a59bbee588c65bb1f8e2b7f1c004cd39194b5e663e2e8a7ef8d9b354879869"
+  },
+  {
+    "path": "assets/visuals/sky.png",
+    "bytes": 1888839,
+    "sha256": "ba2ff35a9aad9c3add0c0a16ad57ac14c883cbf106891a55c412c43a7a16e898"
+  },
+  {
+    "path": "assets/work/cap/ai-image.jpg",
+    "bytes": 32850,
+    "sha256": "bdd9b478725e56d0a492a7d236d737e05f1f3c05c03cc5ae7c4ba9650c816c52"
+  },
+  {
+    "path": "assets/work/cap/ai-video.jpg",
+    "bytes": 32403,
+    "sha256": "674cd51031163bef2e2784170674e5b9fd53878ad054c4048a8d58a3ae97275a"
+  },
+  {
+    "path": "assets/work/cap/blog-post.jpg",
+    "bytes": 32735,
+    "sha256": "62a91cf332fda190486d97d9d32bb8642f468c065bfefadd10adba5b8c5f094c"
+  },
+  {
+    "path": "assets/work/cap/blog.jpg",
+    "bytes": 31331,
+    "sha256": "db2ee2c4e886cccbfe0c3808b452b9b295432deab817ff238ca6a306688f9c15"
+  },
+  {
+    "path": "assets/work/cap/consult-training.jpg",
+    "bytes": 27071,
+    "sha256": "6da5d1e51b2bfcd6945c66610640bb592218c772ec25b6ed801ba54786fe9134"
+  },
+  {
+    "path": "assets/work/cap/harga.jpg",
+    "bytes": 30889,
+    "sha256": "48adfc227547cb5781a3350a15767cb42a990addbc5695d4b53ad91b3332d36e"
+  },
+  {
+    "path": "assets/work/cap/home.jpg",
+    "bytes": 26677,
+    "sha256": "f9f2751a6863b2c578db943515a1dc0b3f42e4bd41b10724abb32b007938c618"
+  },
+  {
+    "path": "assets/work/cap/kontak.jpg",
+    "bytes": 23455,
+    "sha256": "12e92336537bcf8315dade31a3b14cb1ae421d4a1389ae761a2451f1469babad"
+  },
+  {
+    "path": "assets/work/cap/signin.jpg",
+    "bytes": 12589,
+    "sha256": "ff7de3e61715947cd106a7bdcebd5c4c0cb999fa26edd26f1bcc2e59af10ef9b"
+  },
+  {
+    "path": "assets/work/cap/signup.jpg",
+    "bytes": 13275,
+    "sha256": "1dab98c063ace14c40cfe7cd6365fd4160c3795ee937285f708da0cb91ff8d5d"
+  },
+  {
+    "path": "assets/work/cap/untuk-creator.jpg",
+    "bytes": 31028,
+    "sha256": "15e45a50bb1fb17fc6c8b62c963b04acbeef8afb98516df3f91b9087aa6f0718"
+  },
+  {
+    "path": "assets/work/cap/untuk-umkm.jpg",
+    "bytes": 29638,
+    "sha256": "f31c172de03b84d7b32f346be54a7f80ed29c52d3e41494683c3efcf310c8a99"
+  },
+  {
+    "path": "assets/work/lumbung/home.jpg",
+    "bytes": 33090,
+    "sha256": "35b73c509afdd7e68976f6d6e8403f9795e3a950846dc693a3ea0c8c748c6d43"
+  },
+  {
+    "path": "assets/work/lumbung/pasar.jpg",
+    "bytes": 22248,
+    "sha256": "e3a19a17f108187b188f893034889ff148da802e7142c274c4c675f3c7dde667"
+  },
+  {
+    "path": "assets/work/lumbung/signin.jpg",
+    "bytes": 14256,
+    "sha256": "3a38f30970fccede0ff430c31f0ac128bdd25c40a3ab7a6a78319219298b711e"
+  },
+  {
+    "path": "assets/work/lumbung/signup.jpg",
+    "bytes": 15774,
+    "sha256": "f26126cbae1ab53d201e635784b12a0d44971634bd0b7e64b3176d1876c7f7b2"
+  },
+  {
+    "path": "assets/work/ms/community-join.jpg",
+    "bytes": 26099,
+    "sha256": "04f02b34f60794bbb8c1c379d3083f0b92a44d664bb7e6e04c8a50f140d6c3a3"
+  },
+  {
+    "path": "assets/work/ms/help.jpg",
+    "bytes": 12336,
+    "sha256": "a980363ecc0e43ffc616ccfeca564382de000cd758b70399db327ecbf8d1664f"
+  },
+  {
+    "path": "assets/work/ms/home.jpg",
+    "bytes": 30962,
+    "sha256": "89aba06098a9660d90976cf744f89afc8bbe3324f9ac6d778a610eb8a95d513b"
+  },
+  {
+    "path": "assets/work/ms/journey-wall.jpg",
+    "bytes": 50588,
+    "sha256": "ebc87db589d2d73e43e27ad6bf79485b1e4544bc37c8418dbd81bd0740f9c450"
+  },
+  {
+    "path": "assets/work/ms/partnership.jpg",
+    "bytes": 32714,
+    "sha256": "aa755ded4618af78a8966261dceeebae01f1cdb1045e241982aa3f077e11459f"
+  },
+  {
+    "path": "assets/work/ms/pricing.jpg",
+    "bytes": 38369,
+    "sha256": "51d2d820324c3f8be9d1f434e36fcdec621ee2bc56afca3dbac305596fd85580"
+  },
+  {
+    "path": "assets/work/ms/privacy.jpg",
+    "bytes": 31280,
+    "sha256": "79147b20af7b71c6c3551bcc9ad7cb37c9deb510dc7428df3afad9b059b17524"
+  },
+  {
+    "path": "assets/work/ms/terms.jpg",
+    "bytes": 32079,
+    "sha256": "e8ffc4949b19c6897aacddf707d52f37bc00c3debd38d0633808065b19fd9e39"
+  },
+  {
+    "path": "assets/work/msadmin-login.jpg",
+    "bytes": 11798,
+    "sha256": "99e405d58275fc493706ec1fdf9131ae3d7342415891dbb2938220a557583c89"
+  }
+]

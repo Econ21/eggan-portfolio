@@ -1,0 +1,188 @@
+/* v2.1 — Requested refinements; the approved paper / blue / orange design is retained. */
+/* Wider aperture leaves the original portrait's entire head visible. */
+@media (min-width:701px) {
+  .opening-portrait {left:46%;right:0;height:82%;bottom:0;transform-origin:bottom center}
+  .paper-left {clip-path:polygon(0 0,63% 0,49% 100%,0 100%)}
+  .paper-right {clip-path:polygon(85% 0,100% 0,100% 32%,90% 40%)}
+}
+.site-header {gap:20px;padding-inline:clamp(22px,3vw,56px)}
+.site-header .wordmark {flex-shrink:0}
+.desktop-nav {display:flex;gap:clamp(12px,1.4vw,28px);font-size:clamp(10px,.76vw,12px);white-space:nowrap}
+.header-tools {flex-shrink:0;gap:4px}
+.header-theme {display:inline-grid;place-items:center;font-size:22px;border:1px solid currentColor;border-radius:50%;width:38px;height:38px;min-width:38px;min-height:38px;padding:0;margin-inline:6px}
+.site-header .header-theme:hover {background:transparent;transform:rotate(30deg)}
+.menu-toggle {gap:12px;padding-inline:10px}
+.home-introduction {padding:72px var(--gutter) 80px;display:grid;grid-template-columns:1fr 1.2fr;gap:8%;border-bottom:1px solid var(--line);background:var(--paper)}
+.home-introduction .eyebrow {font-size:9px;color:var(--muted)}
+.home-introduction h2 {font-size:clamp(42px,4.3vw,72px);line-height:1;margin-top:28px;max-width:650px}
+.home-introduction .red-line {margin-bottom:0}
+.introduction-body>p {margin:0 0 30px;font-size:clamp(14px,1.1vw,18px);line-height:1.9;max-width:780px;color:var(--muted)}
+.introduction-actions {display:flex;gap:10px;flex-wrap:wrap}
+.intro-action {display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding:12px 16px;border:1px solid var(--line);font-size:11px;transition:background .25s,color .25s}
+.intro-action.primary {background:var(--blue);color:white;border-color:var(--blue)}
+.intro-action:hover {background:var(--ink);color:var(--paper)}
+.intro-action span {font-size:17px}
+/* Live cover compositions: original interface images, uncropped, with sharp native typography. */
+.project-cover {container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:4/5;overflow:hidden;display:flex;flex-direction:column;padding:6%;color:#fff;background:#0a1118}
+.cover-topline {display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:2.7cqw;font-weight:700;letter-spacing:.11em;line-height:1.5;position:relative;z-index:2}
+.cover-topline>span:first-child {max-width:82%}
+.cover-headline {font-family:var(--display);font-size:12cqw;letter-spacing:-.04em;line-height:.92;position:relative;z-index:2;margin:8% 0 7%;width:90%}
+.cover-orbit {position:absolute;z-index:-1;right:-20%;top:-7%;width:80%;aspect-ratio:1;border:1px solid #ffffff18;border-radius:50%;transform:rotate(-28deg)}
+.cover-orbit i {position:absolute;inset:10%;border:1px solid #ffffff18;border-radius:50%}
+.cover-orbit i:nth-child(2) {inset:20%}.cover-orbit i:nth-child(3) {inset:30%}
+.cover-screen {margin-top:auto;position:relative;border:1px solid #ffffff40;border-radius:5px;overflow:hidden;background:#10161c;box-shadow:0 12px 22px #0004}
+.cover-screen-bar {height:17px;padding:0 7px;display:flex;align-items:center;gap:3px;background:#20272c;color:#ffffffa6}
+.cover-screen-bar i {display:block;width:3px;height:3px;border-radius:50%;background:#92989b}
+.cover-screen-bar span {font-size:2.2cqw;margin-left:auto;letter-spacing:.02em}
+.project-cover .cover-screen img {width:100%;height:auto;max-height:none;display:block;object-fit:contain;object-position:center;transform:none;background:transparent;aspect-ratio:auto}
+.cover-bottomline {display:flex;align-items:center;gap:12px;padding-top:7%;font-size:2.6cqw;letter-spacing:.08em;line-height:1.5;font-weight:700;position:relative;z-index:2}
+.cover-bottomline>span:last-child {margin-left:auto;font-size:5cqw;line-height:1}
+.cover-cap {background:radial-gradient(ellipse at 100% 0%,#5b4e31 0%,#1e2020 38%,#0b1119 76%)}
+.cover-cap .cover-headline {color:#f1d59c}
+.cover-ms {background:linear-gradient(145deg,#f4ffff,#bdecfc);color:#044d78}
+.cover-ms .cover-headline {font-family:Manrope,Arial,sans-serif;font-size:12cqw;text-transform:uppercase;font-weight:800;letter-spacing:-.07em;line-height:.98;max-width:85%;color:#006eaf}
+.cover-ms .cover-orbit,.cover-ms .cover-orbit i {border-color:#048cd436}
+.cover-ms .cover-screen {border-color:#6fcae3;background:#e3f5fe;box-shadow:0 12px 22px #0574aa25}
+.cover-ms .cover-screen-bar {background:#effbff;color:#096386}
+.cover-lumbung {background:linear-gradient(145deg,#eef0e4 0%,#e3ead2 60%,#bdcbb0);color:#203e29}
+.cover-lumbung .cover-headline {font-size:10.7cqw;letter-spacing:-.035em}
+.cover-lumbung .cover-orbit,.cover-lumbung .cover-orbit i {border-color:#29553829;border-radius:28%;transform:rotate(18deg)}
+.cover-lumbung .cover-screen {border-color:#9fae89;background:#f8faf1;box-shadow:0 12px 22px #23481c22}
+.cover-lumbung .cover-screen-bar {background:#f4f4e9;color:#314530}
+/* A readable paper ribbon, with full artwork and visible destinations. */
+.journey-scroll {height:155svh}
+.journey-pin {height:calc(100svh - 80px);min-height:680px;display:flex;flex-direction:column;justify-content:center;padding:34px 0 66px;background-position:center calc(50% + var(--travel)*30px)}
+.journey-copy {position:relative;inset:auto;display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:center;padding:0 var(--gutter);gap:30px;margin-bottom:14px}
+.journey-copy .eyebrow {margin:0;width:auto;flex-shrink:0;font-size:9px}
+.journey-copy h2 {font-size:clamp(23px,2.5vw,42px);line-height:1.12;letter-spacing:.08em;max-width:none;margin:0 auto 0 0}
+.journey-copy h2 br {display:none}
+.journey-copy h2 br:after {content:' '}
+.journey-copy>.red-line {display:none}
+.journey-collection {position:relative;min-width:0;width:100%}
+.artwork-rail {overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#acaca488 transparent;cursor:grab;touch-action:pan-x pan-y pinch-zoom;-webkit-overflow-scrolling:touch;scroll-padding-inline:var(--gutter)}
+.artwork-rail.is-dragging {cursor:grabbing;scroll-snap-type:none;user-select:none}
+.artwork-rail.is-dragging a {cursor:grabbing}
+.artwork-rail img {user-select:none;-webkit-user-drag:none}
+.journey-film {position:relative;left:auto;top:auto;height:auto;width:100%;gap:22px;padding:18px var(--gutter) 34px;perspective:1800px;transform:none!important;will-change:auto;align-items:flex-start}
+.journey-film a.journey-card {width:clamp(248px,20vw,370px);height:auto;flex:0 0 auto;padding:9px;background:#f5f3ed;color:#111;border-radius:1px;transform:none;box-shadow:7px 12px 20px #00133355;scroll-snap-align:start;transition:transform .35s}
+.journey-film a.journey-card:nth-child(even) {transform:translateY(9px)}
+.journey-film a.journey-card:hover,.journey-film a.journey-card:focus-visible {transform:translateY(-5px)}
+.journey-art {aspect-ratio:4/5;display:grid;place-items:center;background:#08131b}
+.journey-film .journey-art img {width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.journey-card-caption {display:flex;gap:8px;justify-content:space-between;align-items:center;padding:13px 5px 5px;min-height:64px}
+.journey-card-caption small {font-size:8px;letter-spacing:.1em;display:block;opacity:.6}
+.journey-card-caption strong {font-size:12px;line-height:1.4;display:block;margin-top:4px}
+.card-open {font-size:10px;white-space:nowrap;border-bottom:1px solid #ff4c24;padding-block:4px}
+.rail-controls {display:flex;justify-content:space-between;align-items:center;gap:20px;padding:0 var(--gutter);position:relative;z-index:2}
+.rail-hint {font-size:11px;line-height:1.5;margin:0}
+.rail-pagination {display:flex;gap:9px;align-items:center;flex-shrink:0}
+.rail-count {font-size:11px;min-width:48px;text-align:center;margin-right:10px;font-variant-numeric:tabular-nums}
+.rail-pagination button {border:1px solid currentColor;border-radius:50%;width:38px;height:38px;min-width:38px;padding:0;font-size:20px;display:grid;place-items:center;color:inherit;background:transparent}
+.rail-pagination button:hover:not(:disabled) {background:#ffffff22}
+.journey-pin .chapter-label {font-size:11px;bottom:22px}
+/* Keep the architectural product stage, replacing only its blurry poster surfaces. */
+.systems-stage {height:auto;min-height:1040px;max-height:none;padding-bottom:110px}
+.product-monuments {max-width:1140px;margin-top:40px;grid-template-columns:1.16fr 1fr 1fr;gap:3%}
+.product-monument>.project-cover {width:100%}
+.monument-title {min-height:80px;padding:18px 17px 14px}
+.monument-title>span {font-size:clamp(19px,1.75vw,28px)}
+.monument-caption {min-height:90px;padding:16px 17px}
+/* The creative installation is now a usable 10-work carousel. Artwork is never cropped. */
+.creative-stage {min-height:0;padding:40px 0 0}
+.creative-stage>h2 {margin-bottom:-5%;font-size:clamp(100px,23vw,390px)}
+.featured-creative {position:relative;z-index:2}
+.featured-creative>.rail-controls {background:var(--paper);padding-block:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 var(--gutter);padding-inline:0}
+.creative-rail {display:flex;gap:25px;align-items:flex-end;padding:28px var(--gutter) 32px}
+.featured-work {flex:0 0 auto;width:clamp(245px,26vw,440px);padding:8px 8px 0;background:var(--paper);border:1px solid var(--line);box-shadow:8px 13px 17px #0002;scroll-snap-align:start;transition:transform .35s}
+.featured-work:hover {transform:translateY(-7px)}
+.featured-art {height:clamp(330px,35vw,550px);background:#081219;display:grid;place-items:center}
+.featured-art img {height:100%;width:100%;object-fit:contain;object-position:center;transform:none}
+.featured-caption {display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;font-size:10px;padding:8px 6px}
+.featured-caption span:last-child {white-space:nowrap}
+.featured-work[data-type=video] .featured-caption span:last-child {color:var(--accent)}
+.creative-stage-bottom {padding-top:12px;padding-bottom:42px;align-items:center}
+.creative-stage-bottom>.text-link {font-family:var(--display);font-size:clamp(25px,2.8vw,42px);letter-spacing:-.025em;max-width:none}
+/* Preserve complete typography in the full archive, too. */
+.media-card {aspect-ratio:auto}
+.media-card>img {aspect-ratio:var(--aspect);height:auto;object-fit:contain}
+.media-card:hover>img {transform:none}
+.media-card>div {position:static;background:var(--paper);color:var(--ink);opacity:1;padding:8px 6px}
+@media (min-width:701px) and (max-width:1199px) {
+  .site-header {height:112px;align-items:flex-start;padding-top:18px}
+  .desktop-nav {position:absolute;inset:auto var(--gutter) 5px;justify-content:space-between;gap:14px;font-size:10px}
+  .header-tools {margin-top:-5px}
+  .opening-scroll {margin-top:-112px}
+  .opening-copy {top:25%}
+  .opening-copy h1 {font-size:10.2vw}
+  .opening-portrait {left:42%;right:-4%;height:76%}
+  .paper-left {clip-path:polygon(0 0,60% 0,46% 100%,0 100%)}
+  .paper-right {clip-path:polygon(87% 0,100% 0,100% 28%,94% 40%)}
+  .journey-pin {top:112px;height:calc(100svh - 112px)}
+  html {scroll-padding-top:124px}
+  .home-introduction {gap:5%;padding-block:55px}
+}
+@media (min-width:701px) and (max-height:850px) {
+  .journey-pin {min-height:630px}
+  .journey-film a.journey-card {width:250px}
+}
+@media (max-width:700px) {
+  .site-header {height:65px;gap:8px;padding-inline:20px}
+  .desktop-nav {display:none}
+  .header-tools {gap:0}
+  .header-theme {width:31px;height:31px;min-width:31px;min-height:31px;font-size:19px;margin-inline:5px}
+  .menu-toggle {padding-inline:6px;gap:7px}
+  .header-tools select {font-size:11px;padding-inline:2px}
+  .opening-pin {min-height:780px}
+  .opening-copy {top:105px;left:22px}
+  .opening-copy h1 {font-size:clamp(64px,16vw,96px)}
+  .opening-copy p {margin-top:22px}
+  .opening-portrait {left:-9%;right:-12%;height:49%;bottom:4%;z-index:2}
+  .paper-left {clip-path:polygon(0 0,100% 0,100% 37%,0 54%);z-index:1}
+  .paper-right {clip-path:polygon(100% 33%,100% 46%,78% 64%,89% 44%);z-index:1}
+  .opening-side {display:none}
+  .home-introduction {display:block;padding:42px 22px 46px}
+  .home-introduction h2 {font-size:47px;margin-top:20px}
+  .home-introduction .eyebrow {font-size:7px}
+  .introduction-body {margin-top:25px}
+  .introduction-body>p {font-size:13px;line-height:1.85}
+  .introduction-actions {gap:8px}
+  .intro-action {font-size:10px;padding:10px 12px;flex:1 1 auto;gap:10px}
+  .intro-action.primary {flex-basis:100%}
+  .journey-scroll {height:140svh}
+  .journey-pin {top:65px;min-height:640px;height:calc(100svh - 65px);padding-top:24px;padding-bottom:50px;justify-content:center}
+  .journey-copy {padding-inline:22px;gap:15px;margin-bottom:18px}
+  .journey-copy h2 {font-size:22px;max-width:190px;line-height:1.2}
+  .journey-copy .eyebrow {font-size:6px;max-width:75px}
+  .journey-film {gap:17px;padding:16px 22px 30px}
+  .journey-film a.journey-card {width:248px;padding:7px}
+  .rail-controls {padding-inline:22px;gap:10px;align-items:center}
+  .rail-hint {font-size:9px;max-width:180px}
+  .rail-count {font-size:9px;min-width:36px;margin-right:0}
+  .rail-pagination {gap:6px}
+  .rail-pagination button {width:32px;height:32px;min-width:32px;font-size:18px}
+  .journey-pin .chapter-label {left:22px;bottom:17px;font-size:9px}
+  .systems-stage {min-height:0;padding-bottom:75px}
+  .product-monuments {grid-template-columns:repeat(3,265px);gap:23px;width:calc(100% + 44px);margin:30px -22px 0;padding:12px 27px 35px;max-width:none}
+  .monument-title {min-height:76px}
+  .monument-title>span {font-size:22px}
+  .monument-title small {font-size:9px}
+  .monument-caption {min-height:83px}
+  .monument-caption p {font-size:11px}
+  .creative-stage {padding-top:30px;min-height:0}
+  .creative-stage>h2 {font-size:25vw;margin-bottom:-2%}
+  .featured-creative>.rail-controls {margin-inline:22px;gap:10px;padding-block:12px}
+  .creative-rail {gap:17px;padding:24px 22px 30px}
+  .featured-work {width:268px;max-width:82vw}
+  .featured-art {height:340px}
+  .featured-caption {font-size:9px;padding-inline:3px}
+  .creative-stage-bottom {display:block;padding:8px 22px 30px}
+  .creative-stage-bottom>.text-link {font-size:28px;max-width:100%;gap:16px}
+  .creative-stage-bottom>p {text-align:left;font-size:7px;margin:12px 0 0}
+}
+@media (prefers-reduced-motion:reduce) {
+  .journey-scroll {height:auto}.journey-pin {height:auto;position:relative;top:0}
+  .journey-film a.journey-card:nth-child(even) {transform:none}
+}
+html[data-motion=off] .journey-scroll {height:auto}
+html[data-motion=off] .journey-pin {height:auto;position:relative;top:0}
+html[data-motion=off] .journey-film a.journey-card:nth-child(even) {transform:none}

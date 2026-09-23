@@ -1,0 +1,17 @@
+{
+  "version": "2.1.0",
+  "basis": "User ZIP and supplied image/video references",
+  "attemptedLivePages": [
+    "https://eggan.vercel.app/en"
+  ],
+  "attemptedLocalPreview": [
+    "http://127.0.0.1:8914/en/index.html"
+  ],
+  "livePagesOpenedSuccessfully": 0,
+  "browserPreviewOpenedSuccessfully": true,
+  "reason": "Browser access became available on 23 September 2026; changed sections were inspected directly.",
+  "sourceArchiveChanged": false,
+  "deploymentChanged": false,
+  "visualQA": "Sampled desktop/mobile browser verification; see browser-verification.json",
+  "automatedQA": "See verification.json, style-verification.json and polish-verification.json"
+}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-20T15:47:55.085704",
+  "counts": {
+    ".css": 2,
+    ".png": 22,
+    ".js": 2,
+    ".jpg": 753,
+    ".mp4": 50,
+    ".jpeg": 7,
+    ".svg": 22,
+    ".webp": 68,
+    ".ttf": 3,
+    ".txt": 2,
+    ".pdf": 6,
+    ".zip": 1,
+    ".json": 1
+  },
+  "imagesVerified": 850,
+  "videosFirstFrameDecoded": 50,
+  "errors": [],
+  "scope": "Local image decoding, first-frame video decode, ZIP integrity. Does not verify browser playback, visual fidelity, or photography provenance."
+}

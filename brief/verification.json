@@ -1,0 +1,176 @@
+{
+  "date": "2026-09-23T20:20:02.945Z",
+  "htmlPages": 480,
+  "checkedLinks": 21052,
+  "tests": [
+    {
+      "name": "480 routes; 160 per locale",
+      "passed": true
+    },
+    {
+      "name": "All HTML local links, sources, posters and image alt attributes",
+      "passed": true,
+      "checkedLinks": 21052
+    },
+    {
+      "name": "Theme and menu keyboard state",
+      "passed": true
+    },
+    {
+      "name": "Archive all 129 media, 79 image / 50 video and filter state",
+      "passed": true
+    },
+    {
+      "name": "Reader bounds, thumbnail, zoom and persistence: jurnal",
+      "passed": true
+    },
+    {
+      "name": "Reader bounds, thumbnail, zoom and persistence: tokyo",
+      "passed": true
+    },
+    {
+      "name": "Reader bounds, thumbnail, zoom and persistence: proposal-p3",
+      "passed": true
+    },
+    {
+      "name": "Reader bounds, thumbnail, zoom and persistence: reef-welfare",
+      "passed": true
+    },
+    {
+      "name": "No people/photo images on leadership index or field cover",
+      "passed": true
+    },
+    {
+      "name": "Original photo lightbox opens, navigates, zooms and closes",
+      "passed": true
+    },
+    {
+      "name": "Thesis language updates preview and download together",
+      "passed": true
+    },
+    {
+      "name": "98 public research page images present",
+      "passed": true
+    },
+    {
+      "name": "All creative media bundled locally",
+      "passed": true
+    },
+    {
+      "name": "No generated Critical Grounds event media bundled",
+      "passed": true
+    },
+    {
+      "name": "Product gallery thumbnails, wraparound, image viewer: creative-ai-partner",
+      "passed": true
+    },
+    {
+      "name": "Product gallery thumbnails, wraparound, image viewer: matchupskills",
+      "passed": true
+    },
+    {
+      "name": "Product gallery thumbnails, wraparound, image viewer: lumbung-jakut",
+      "passed": true
+    },
+    {
+      "name": "Research status filters all four statuses",
+      "passed": true
+    },
+    {
+      "name": "Home has all six reference scenes and original portrait",
+      "passed": true
+    },
+    {
+      "name": "All locale menus expose eight main destinations",
+      "passed": true
+    },
+    {
+      "name": "Document page image counts match original PDF manifest",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browserVisualQA": {
+    "date": "2026-09-23T20:11:42.661245+00:00",
+    "version": "2.1.0",
+    "browser": "Codex In-app Browser",
+    "scope": "Changed homepage sections and sampled linked media; not all 480 pages visually inspected.",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 968,
+        "height": 988,
+        "note": "Initial default viewport, approximate screenshot size"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Desktop portrait entire head visible inside paper aperture",
+        "passed": true
+      },
+      {
+        "name": "Mobile portrait entire head visible",
+        "passed": true
+      },
+      {
+        "name": "Desktop complete primary navigation plus language and theme toggle",
+        "passed": true
+      },
+      {
+        "name": "Bio and all three destination buttons visible",
+        "passed": true
+      },
+      {
+        "name": "Journey covers show original product screenshots and complete creative artwork",
+        "passed": true
+      },
+      {
+        "name": "Systems covers use sharp live text and original screenshots",
+        "passed": true
+      },
+      {
+        "name": "Creative original artwork typography visible without cover cropping",
+        "passed": true
+      },
+      {
+        "name": "Creative next arrow scrolls rail and updates count",
+        "passed": true
+      },
+      {
+        "name": "Mouse drag advances carousel without navigation",
+        "passed": true
+      },
+      {
+        "name": "Click after drag opens actual Motion 004 detail route",
+        "passed": true
+      },
+      {
+        "name": "Motion 004 native video loads duration 10 seconds and plays",
+        "passed": true
+      },
+      {
+        "name": "Mobile dark theme visible",
+        "passed": true
+      },
+      {
+        "name": "Mobile menu exposes eight destination links",
+        "passed": true
+      },
+      {
+        "name": "Theme restored to light and temporary viewport reset",
+        "passed": true
+      }
+    ],
+    "limitations": [
+      "No exhaustive browser/device matrix or pixel-diff claim.",
+      "Live production website was not deployed or modified."
+    ]
+  }
+}

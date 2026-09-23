@@ -1,0 +1,14 @@
+{
+  "name": "eggan-editorial-portfolio-handoff",
+  "version": "2.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tools/verify.cjs && node tools/verify-styles.cjs && node tools/verify-polish.cjs",
+    "preview": "python3 -m http.server 8914 --bind 127.0.0.1"
+  },
+  "devDependencies": {
+    "css-tree": "^3.2.1",
+    "jsdom": "^26.0.0"
+  }
+}

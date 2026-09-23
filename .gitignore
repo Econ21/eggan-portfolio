@@ -1,5 +1,6 @@
-.DS_Store
 node_modules/
-.vercel
-dist/
+.DS_Store
+.vercel/
+_ai-handoff/
+_downloads-backup-*/
 photos-inbox/

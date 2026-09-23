@@ -1,0 +1,2882 @@
+[
+  {
+    "lang": "nl",
+    "route": "",
+    "file": "index.html",
+    "title": "Home"
+  },
+  {
+    "lang": "nl",
+    "route": "work",
+    "file": "work/index.html",
+    "title": "Werk"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work",
+    "file": "creative-work/index.html",
+    "title": "Creatief Werk"
+  },
+  {
+    "lang": "nl",
+    "route": "education",
+    "file": "education/index.html",
+    "title": "Ervaring & Opleiding"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership",
+    "file": "leadership/index.html",
+    "title": "Leiderschap"
+  },
+  {
+    "lang": "nl",
+    "route": "research",
+    "file": "research/index.html",
+    "title": "Onderzoek"
+  },
+  {
+    "lang": "nl",
+    "route": "documents",
+    "file": "documents/index.html",
+    "title": "Documenten"
+  },
+  {
+    "lang": "nl",
+    "route": "contact",
+    "file": "contact/index.html",
+    "title": "Contact"
+  },
+  {
+    "lang": "nl",
+    "route": "work/creative-ai-partner",
+    "file": "work/creative-ai-partner/index.html",
+    "title": "Creative AI Partner"
+  },
+  {
+    "lang": "nl",
+    "route": "work/matchupskills",
+    "file": "work/matchupskills/index.html",
+    "title": "MatchupSkills"
+  },
+  {
+    "lang": "nl",
+    "route": "work/lumbung-jakut",
+    "file": "work/lumbung-jakut/index.html",
+    "title": "Lumbung Jakut"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/iccn",
+    "file": "leadership/iccn/index.html",
+    "title": "Indonesian Creative Cities Network"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/indonesia-mengglobal",
+    "file": "leadership/indonesia-mengglobal/index.html",
+    "title": "Indonesia Mengglobal"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/unesco-undp",
+    "file": "leadership/unesco-undp/index.html",
+    "title": "UNESCO & UNDP Indonesia"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/timur-growth",
+    "file": "leadership/timur-growth/index.html",
+    "title": "Timur Growth 2 Startup Competition"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/titik-terang",
+    "file": "leadership/titik-terang/index.html",
+    "title": "Titik Terang Community"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/iluni-ui",
+    "file": "leadership/iluni-ui/index.html",
+    "title": "ILUNI UI"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/youthranger",
+    "file": "leadership/youthranger/index.html",
+    "title": "YouthRanger.id"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/biru-muda",
+    "file": "leadership/biru-muda/index.html",
+    "title": "Biru Muda Project Community"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/pt-pindad",
+    "file": "leadership/pt-pindad/index.html",
+    "title": "Studi Ekskursi PT Pindad"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/study-hub",
+    "file": "leadership/study-hub/index.html",
+    "title": "Study Hub — PUSAT AHLI × PT Sentra Solusi"
+  },
+  {
+    "lang": "nl",
+    "route": "leadership/field-notes",
+    "file": "leadership/field-notes/index.html",
+    "title": "MOMENTEN UIT HET VELD"
+  },
+  {
+    "lang": "nl",
+    "route": "research/jurnal",
+    "file": "research/jurnal/index.html",
+    "title": "Strategic Intelligence Foresight on Ransomware Threats in State-Owned Bankings in Indonesia"
+  },
+  {
+    "lang": "nl",
+    "route": "research/tokyo",
+    "file": "research/tokyo/index.html",
+    "title": "Digital Policy Bundles and Food-System Resilience in Rural Solo/Surakarta"
+  },
+  {
+    "lang": "nl",
+    "route": "research/proposal-p3",
+    "file": "research/proposal-p3/index.html",
+    "title": "Smart Monitoring Food System Resilience — AI-Based Urban Farming Community in North Jakarta"
+  },
+  {
+    "lang": "nl",
+    "route": "research/reef-welfare",
+    "file": "research/reef-welfare/index.html",
+    "title": "Reef to Welfare: Integrating Marine Conservation and Coastal Food-Water Security for Sustainable Livelihoods in Indonesia's Coral Triangle (Wakatobi)"
+  },
+  {
+    "lang": "nl",
+    "route": "documents/cv",
+    "file": "documents/cv/index.html",
+    "title": "Curriculum Vitae"
+  },
+  {
+    "lang": "nl",
+    "route": "documents/bachelor",
+    "file": "documents/bachelor/index.html",
+    "title": "Bachelordiploma & cijferlijst"
+  },
+  {
+    "lang": "nl",
+    "route": "documents/masters",
+    "file": "documents/masters/index.html",
+    "title": "Masterdiploma's & cijferlijsten"
+  },
+  {
+    "lang": "nl",
+    "route": "documents/thesis",
+    "file": "documents/thesis/index.html",
+    "title": "Masterscriptie — Intelligence Analysis of Cyberattacks on the Security of Banking Institutions in Indonesia"
+  },
+  {
+    "lang": "nl",
+    "route": "documents/certificates",
+    "file": "documents/certificates/index.html",
+    "title": "Certificaten & prijzen"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/001",
+    "file": "creative-work/001/index.html",
+    "title": "Beeld 001"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/002",
+    "file": "creative-work/002/index.html",
+    "title": "Beeld 002"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/003",
+    "file": "creative-work/003/index.html",
+    "title": "Beeld 003"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/004",
+    "file": "creative-work/004/index.html",
+    "title": "Video 004"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/005",
+    "file": "creative-work/005/index.html",
+    "title": "Beeld 005"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/006",
+    "file": "creative-work/006/index.html",
+    "title": "Beeld 006"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/007",
+    "file": "creative-work/007/index.html",
+    "title": "Beeld 007"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/008",
+    "file": "creative-work/008/index.html",
+    "title": "Video 008"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/009",
+    "file": "creative-work/009/index.html",
+    "title": "Video 009"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/010",
+    "file": "creative-work/010/index.html",
+    "title": "Video 010"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/011",
+    "file": "creative-work/011/index.html",
+    "title": "Beeld 011"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/012",
+    "file": "creative-work/012/index.html",
+    "title": "Beeld 012"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/013",
+    "file": "creative-work/013/index.html",
+    "title": "Beeld 013"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/014",
+    "file": "creative-work/014/index.html",
+    "title": "Beeld 014"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/015",
+    "file": "creative-work/015/index.html",
+    "title": "Beeld 015"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/016",
+    "file": "creative-work/016/index.html",
+    "title": "Beeld 016"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/017",
+    "file": "creative-work/017/index.html",
+    "title": "Beeld 017"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/018",
+    "file": "creative-work/018/index.html",
+    "title": "Beeld 018"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/019",
+    "file": "creative-work/019/index.html",
+    "title": "Beeld 019"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/020",
+    "file": "creative-work/020/index.html",
+    "title": "Beeld 020"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/021",
+    "file": "creative-work/021/index.html",
+    "title": "Beeld 021"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/022",
+    "file": "creative-work/022/index.html",
+    "title": "Video 022"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/023",
+    "file": "creative-work/023/index.html",
+    "title": "Video 023"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/024",
+    "file": "creative-work/024/index.html",
+    "title": "Video 024"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/025",
+    "file": "creative-work/025/index.html",
+    "title": "Video 025"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/026",
+    "file": "creative-work/026/index.html",
+    "title": "Video 026"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/027",
+    "file": "creative-work/027/index.html",
+    "title": "Video 027"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/028",
+    "file": "creative-work/028/index.html",
+    "title": "Video 028"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/029",
+    "file": "creative-work/029/index.html",
+    "title": "Beeld 029"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/030",
+    "file": "creative-work/030/index.html",
+    "title": "Beeld 030"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/031",
+    "file": "creative-work/031/index.html",
+    "title": "Beeld 031"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/032",
+    "file": "creative-work/032/index.html",
+    "title": "Beeld 032"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/033",
+    "file": "creative-work/033/index.html",
+    "title": "Beeld 033"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/034",
+    "file": "creative-work/034/index.html",
+    "title": "Beeld 034"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/035",
+    "file": "creative-work/035/index.html",
+    "title": "Beeld 035"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/036",
+    "file": "creative-work/036/index.html",
+    "title": "Beeld 036"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/037",
+    "file": "creative-work/037/index.html",
+    "title": "Beeld 037"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/038",
+    "file": "creative-work/038/index.html",
+    "title": "Beeld 038"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/039",
+    "file": "creative-work/039/index.html",
+    "title": "Beeld 039"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/040",
+    "file": "creative-work/040/index.html",
+    "title": "Beeld 040"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/041",
+    "file": "creative-work/041/index.html",
+    "title": "Beeld 041"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/042",
+    "file": "creative-work/042/index.html",
+    "title": "Beeld 042"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/043",
+    "file": "creative-work/043/index.html",
+    "title": "Beeld 043"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/044",
+    "file": "creative-work/044/index.html",
+    "title": "Beeld 044"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/045",
+    "file": "creative-work/045/index.html",
+    "title": "Beeld 045"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/046",
+    "file": "creative-work/046/index.html",
+    "title": "Beeld 046"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/047",
+    "file": "creative-work/047/index.html",
+    "title": "Beeld 047"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/048",
+    "file": "creative-work/048/index.html",
+    "title": "Beeld 048"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/049",
+    "file": "creative-work/049/index.html",
+    "title": "Beeld 049"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/050",
+    "file": "creative-work/050/index.html",
+    "title": "Beeld 050"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/051",
+    "file": "creative-work/051/index.html",
+    "title": "Beeld 051"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/052",
+    "file": "creative-work/052/index.html",
+    "title": "Beeld 052"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/053",
+    "file": "creative-work/053/index.html",
+    "title": "Beeld 053"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/054",
+    "file": "creative-work/054/index.html",
+    "title": "Beeld 054"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/055",
+    "file": "creative-work/055/index.html",
+    "title": "Beeld 055"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/056",
+    "file": "creative-work/056/index.html",
+    "title": "Beeld 056"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/057",
+    "file": "creative-work/057/index.html",
+    "title": "Beeld 057"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/058",
+    "file": "creative-work/058/index.html",
+    "title": "Beeld 058"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/059",
+    "file": "creative-work/059/index.html",
+    "title": "Beeld 059"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/060",
+    "file": "creative-work/060/index.html",
+    "title": "Beeld 060"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/061",
+    "file": "creative-work/061/index.html",
+    "title": "Beeld 061"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/062",
+    "file": "creative-work/062/index.html",
+    "title": "Beeld 062"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/063",
+    "file": "creative-work/063/index.html",
+    "title": "Beeld 063"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/064",
+    "file": "creative-work/064/index.html",
+    "title": "Beeld 064"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/065",
+    "file": "creative-work/065/index.html",
+    "title": "Beeld 065"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/066",
+    "file": "creative-work/066/index.html",
+    "title": "Beeld 066"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/067",
+    "file": "creative-work/067/index.html",
+    "title": "Beeld 067"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/068",
+    "file": "creative-work/068/index.html",
+    "title": "Beeld 068"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/069",
+    "file": "creative-work/069/index.html",
+    "title": "Beeld 069"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/070",
+    "file": "creative-work/070/index.html",
+    "title": "Beeld 070"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/071",
+    "file": "creative-work/071/index.html",
+    "title": "Beeld 071"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/072",
+    "file": "creative-work/072/index.html",
+    "title": "Beeld 072"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/073",
+    "file": "creative-work/073/index.html",
+    "title": "Beeld 073"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/074",
+    "file": "creative-work/074/index.html",
+    "title": "Beeld 074"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/075",
+    "file": "creative-work/075/index.html",
+    "title": "Beeld 075"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/076",
+    "file": "creative-work/076/index.html",
+    "title": "Beeld 076"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/077",
+    "file": "creative-work/077/index.html",
+    "title": "Video 077"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/078",
+    "file": "creative-work/078/index.html",
+    "title": "Video 078"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/079",
+    "file": "creative-work/079/index.html",
+    "title": "Beeld 079"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/080",
+    "file": "creative-work/080/index.html",
+    "title": "Beeld 080"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/081",
+    "file": "creative-work/081/index.html",
+    "title": "Beeld 081"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/082",
+    "file": "creative-work/082/index.html",
+    "title": "Beeld 082"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/083",
+    "file": "creative-work/083/index.html",
+    "title": "Beeld 083"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/084",
+    "file": "creative-work/084/index.html",
+    "title": "Beeld 084"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/085",
+    "file": "creative-work/085/index.html",
+    "title": "Beeld 085"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/086",
+    "file": "creative-work/086/index.html",
+    "title": "Beeld 086"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/087",
+    "file": "creative-work/087/index.html",
+    "title": "Beeld 087"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/088",
+    "file": "creative-work/088/index.html",
+    "title": "Beeld 088"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/089",
+    "file": "creative-work/089/index.html",
+    "title": "Beeld 089"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/090",
+    "file": "creative-work/090/index.html",
+    "title": "Beeld 090"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/091",
+    "file": "creative-work/091/index.html",
+    "title": "Beeld 091"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/092",
+    "file": "creative-work/092/index.html",
+    "title": "Beeld 092"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/093",
+    "file": "creative-work/093/index.html",
+    "title": "Video 093"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/094",
+    "file": "creative-work/094/index.html",
+    "title": "Video 094"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/095",
+    "file": "creative-work/095/index.html",
+    "title": "Video 095"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/096",
+    "file": "creative-work/096/index.html",
+    "title": "Video 096"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/097",
+    "file": "creative-work/097/index.html",
+    "title": "Video 097"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/098",
+    "file": "creative-work/098/index.html",
+    "title": "Video 098"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/099",
+    "file": "creative-work/099/index.html",
+    "title": "Video 099"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/100",
+    "file": "creative-work/100/index.html",
+    "title": "Video 100"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/101",
+    "file": "creative-work/101/index.html",
+    "title": "Video 101"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/102",
+    "file": "creative-work/102/index.html",
+    "title": "Video 102"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/103",
+    "file": "creative-work/103/index.html",
+    "title": "Video 103"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/104",
+    "file": "creative-work/104/index.html",
+    "title": "Video 104"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/105",
+    "file": "creative-work/105/index.html",
+    "title": "Video 105"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/106",
+    "file": "creative-work/106/index.html",
+    "title": "Video 106"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/107",
+    "file": "creative-work/107/index.html",
+    "title": "Video 107"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/108",
+    "file": "creative-work/108/index.html",
+    "title": "Video 108"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/109",
+    "file": "creative-work/109/index.html",
+    "title": "Video 109"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/110",
+    "file": "creative-work/110/index.html",
+    "title": "Video 110"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/111",
+    "file": "creative-work/111/index.html",
+    "title": "Video 111"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/112",
+    "file": "creative-work/112/index.html",
+    "title": "Video 112"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/113",
+    "file": "creative-work/113/index.html",
+    "title": "Video 113"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/114",
+    "file": "creative-work/114/index.html",
+    "title": "Video 114"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/115",
+    "file": "creative-work/115/index.html",
+    "title": "Video 115"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/116",
+    "file": "creative-work/116/index.html",
+    "title": "Video 116"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/117",
+    "file": "creative-work/117/index.html",
+    "title": "Video 117"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/118",
+    "file": "creative-work/118/index.html",
+    "title": "Video 118"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/119",
+    "file": "creative-work/119/index.html",
+    "title": "Video 119"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/120",
+    "file": "creative-work/120/index.html",
+    "title": "Video 120"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/121",
+    "file": "creative-work/121/index.html",
+    "title": "Video 121"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/122",
+    "file": "creative-work/122/index.html",
+    "title": "Video 122"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/123",
+    "file": "creative-work/123/index.html",
+    "title": "Video 123"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/124",
+    "file": "creative-work/124/index.html",
+    "title": "Video 124"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/125",
+    "file": "creative-work/125/index.html",
+    "title": "Video 125"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/126",
+    "file": "creative-work/126/index.html",
+    "title": "Video 126"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/127",
+    "file": "creative-work/127/index.html",
+    "title": "Video 127"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/128",
+    "file": "creative-work/128/index.html",
+    "title": "Video 128"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/129",
+    "file": "creative-work/129/index.html",
+    "title": "Video 129"
+  },
+  {
+    "lang": "en",
+    "route": "",
+    "file": "en/index.html",
+    "title": "Home"
+  },
+  {
+    "lang": "en",
+    "route": "work",
+    "file": "en/work/index.html",
+    "title": "Work"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work",
+    "file": "en/creative-work/index.html",
+    "title": "Creative Work"
+  },
+  {
+    "lang": "en",
+    "route": "education",
+    "file": "en/education/index.html",
+    "title": "Experience & Education"
+  },
+  {
+    "lang": "en",
+    "route": "leadership",
+    "file": "en/leadership/index.html",
+    "title": "Leadership"
+  },
+  {
+    "lang": "en",
+    "route": "research",
+    "file": "en/research/index.html",
+    "title": "Research"
+  },
+  {
+    "lang": "en",
+    "route": "documents",
+    "file": "en/documents/index.html",
+    "title": "Documents"
+  },
+  {
+    "lang": "en",
+    "route": "contact",
+    "file": "en/contact/index.html",
+    "title": "Contact"
+  },
+  {
+    "lang": "en",
+    "route": "work/creative-ai-partner",
+    "file": "en/work/creative-ai-partner/index.html",
+    "title": "Creative AI Partner"
+  },
+  {
+    "lang": "en",
+    "route": "work/matchupskills",
+    "file": "en/work/matchupskills/index.html",
+    "title": "MatchupSkills"
+  },
+  {
+    "lang": "en",
+    "route": "work/lumbung-jakut",
+    "file": "en/work/lumbung-jakut/index.html",
+    "title": "Lumbung Jakut"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/iccn",
+    "file": "en/leadership/iccn/index.html",
+    "title": "Indonesian Creative Cities Network"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/indonesia-mengglobal",
+    "file": "en/leadership/indonesia-mengglobal/index.html",
+    "title": "Indonesia Mengglobal"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/unesco-undp",
+    "file": "en/leadership/unesco-undp/index.html",
+    "title": "UNESCO & UNDP Indonesia"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/timur-growth",
+    "file": "en/leadership/timur-growth/index.html",
+    "title": "Timur Growth 2 Startup Competition"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/titik-terang",
+    "file": "en/leadership/titik-terang/index.html",
+    "title": "Titik Terang Community"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/iluni-ui",
+    "file": "en/leadership/iluni-ui/index.html",
+    "title": "ILUNI UI"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/youthranger",
+    "file": "en/leadership/youthranger/index.html",
+    "title": "YouthRanger.id"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/biru-muda",
+    "file": "en/leadership/biru-muda/index.html",
+    "title": "Biru Muda Project Community"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/pt-pindad",
+    "file": "en/leadership/pt-pindad/index.html",
+    "title": "Studi Ekskursi PT Pindad"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/study-hub",
+    "file": "en/leadership/study-hub/index.html",
+    "title": "Study Hub — PUSAT AHLI × PT Sentra Solusi"
+  },
+  {
+    "lang": "en",
+    "route": "leadership/field-notes",
+    "file": "en/leadership/field-notes/index.html",
+    "title": "MOMENTS FROM THE FIELD"
+  },
+  {
+    "lang": "en",
+    "route": "research/jurnal",
+    "file": "en/research/jurnal/index.html",
+    "title": "Strategic Intelligence Foresight on Ransomware Threats in State-Owned Bankings in Indonesia"
+  },
+  {
+    "lang": "en",
+    "route": "research/tokyo",
+    "file": "en/research/tokyo/index.html",
+    "title": "Digital Policy Bundles and Food-System Resilience in Rural Solo/Surakarta"
+  },
+  {
+    "lang": "en",
+    "route": "research/proposal-p3",
+    "file": "en/research/proposal-p3/index.html",
+    "title": "Smart Monitoring Food System Resilience — AI-Based Urban Farming Community in North Jakarta"
+  },
+  {
+    "lang": "en",
+    "route": "research/reef-welfare",
+    "file": "en/research/reef-welfare/index.html",
+    "title": "Reef to Welfare: Integrating Marine Conservation and Coastal Food-Water Security for Sustainable Livelihoods in Indonesia's Coral Triangle (Wakatobi)"
+  },
+  {
+    "lang": "en",
+    "route": "documents/cv",
+    "file": "en/documents/cv/index.html",
+    "title": "Curriculum Vitae"
+  },
+  {
+    "lang": "en",
+    "route": "documents/bachelor",
+    "file": "en/documents/bachelor/index.html",
+    "title": "Bachelor's Certificate & Transcript"
+  },
+  {
+    "lang": "en",
+    "route": "documents/masters",
+    "file": "en/documents/masters/index.html",
+    "title": "Master's Certificates & Transcripts"
+  },
+  {
+    "lang": "en",
+    "route": "documents/thesis",
+    "file": "en/documents/thesis/index.html",
+    "title": "Master Thesis — Intelligence Analysis of Cyberattacks on the Security of Banking Institutions in Indonesia"
+  },
+  {
+    "lang": "en",
+    "route": "documents/certificates",
+    "file": "en/documents/certificates/index.html",
+    "title": "Certificates & Awards"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/001",
+    "file": "en/creative-work/001/index.html",
+    "title": "Visual 001"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/002",
+    "file": "en/creative-work/002/index.html",
+    "title": "Visual 002"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/003",
+    "file": "en/creative-work/003/index.html",
+    "title": "Visual 003"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/004",
+    "file": "en/creative-work/004/index.html",
+    "title": "Motion 004"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/005",
+    "file": "en/creative-work/005/index.html",
+    "title": "Visual 005"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/006",
+    "file": "en/creative-work/006/index.html",
+    "title": "Visual 006"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/007",
+    "file": "en/creative-work/007/index.html",
+    "title": "Visual 007"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/008",
+    "file": "en/creative-work/008/index.html",
+    "title": "Motion 008"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/009",
+    "file": "en/creative-work/009/index.html",
+    "title": "Motion 009"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/010",
+    "file": "en/creative-work/010/index.html",
+    "title": "Motion 010"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/011",
+    "file": "en/creative-work/011/index.html",
+    "title": "Visual 011"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/012",
+    "file": "en/creative-work/012/index.html",
+    "title": "Visual 012"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/013",
+    "file": "en/creative-work/013/index.html",
+    "title": "Visual 013"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/014",
+    "file": "en/creative-work/014/index.html",
+    "title": "Visual 014"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/015",
+    "file": "en/creative-work/015/index.html",
+    "title": "Visual 015"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/016",
+    "file": "en/creative-work/016/index.html",
+    "title": "Visual 016"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/017",
+    "file": "en/creative-work/017/index.html",
+    "title": "Visual 017"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/018",
+    "file": "en/creative-work/018/index.html",
+    "title": "Visual 018"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/019",
+    "file": "en/creative-work/019/index.html",
+    "title": "Visual 019"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/020",
+    "file": "en/creative-work/020/index.html",
+    "title": "Visual 020"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/021",
+    "file": "en/creative-work/021/index.html",
+    "title": "Visual 021"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/022",
+    "file": "en/creative-work/022/index.html",
+    "title": "Motion 022"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/023",
+    "file": "en/creative-work/023/index.html",
+    "title": "Motion 023"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/024",
+    "file": "en/creative-work/024/index.html",
+    "title": "Motion 024"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/025",
+    "file": "en/creative-work/025/index.html",
+    "title": "Motion 025"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/026",
+    "file": "en/creative-work/026/index.html",
+    "title": "Motion 026"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/027",
+    "file": "en/creative-work/027/index.html",
+    "title": "Motion 027"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/028",
+    "file": "en/creative-work/028/index.html",
+    "title": "Motion 028"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/029",
+    "file": "en/creative-work/029/index.html",
+    "title": "Visual 029"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/030",
+    "file": "en/creative-work/030/index.html",
+    "title": "Visual 030"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/031",
+    "file": "en/creative-work/031/index.html",
+    "title": "Visual 031"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/032",
+    "file": "en/creative-work/032/index.html",
+    "title": "Visual 032"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/033",
+    "file": "en/creative-work/033/index.html",
+    "title": "Visual 033"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/034",
+    "file": "en/creative-work/034/index.html",
+    "title": "Visual 034"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/035",
+    "file": "en/creative-work/035/index.html",
+    "title": "Visual 035"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/036",
+    "file": "en/creative-work/036/index.html",
+    "title": "Visual 036"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/037",
+    "file": "en/creative-work/037/index.html",
+    "title": "Visual 037"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/038",
+    "file": "en/creative-work/038/index.html",
+    "title": "Visual 038"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/039",
+    "file": "en/creative-work/039/index.html",
+    "title": "Visual 039"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/040",
+    "file": "en/creative-work/040/index.html",
+    "title": "Visual 040"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/041",
+    "file": "en/creative-work/041/index.html",
+    "title": "Visual 041"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/042",
+    "file": "en/creative-work/042/index.html",
+    "title": "Visual 042"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/043",
+    "file": "en/creative-work/043/index.html",
+    "title": "Visual 043"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/044",
+    "file": "en/creative-work/044/index.html",
+    "title": "Visual 044"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/045",
+    "file": "en/creative-work/045/index.html",
+    "title": "Visual 045"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/046",
+    "file": "en/creative-work/046/index.html",
+    "title": "Visual 046"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/047",
+    "file": "en/creative-work/047/index.html",
+    "title": "Visual 047"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/048",
+    "file": "en/creative-work/048/index.html",
+    "title": "Visual 048"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/049",
+    "file": "en/creative-work/049/index.html",
+    "title": "Visual 049"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/050",
+    "file": "en/creative-work/050/index.html",
+    "title": "Visual 050"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/051",
+    "file": "en/creative-work/051/index.html",
+    "title": "Visual 051"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/052",
+    "file": "en/creative-work/052/index.html",
+    "title": "Visual 052"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/053",
+    "file": "en/creative-work/053/index.html",
+    "title": "Visual 053"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/054",
+    "file": "en/creative-work/054/index.html",
+    "title": "Visual 054"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/055",
+    "file": "en/creative-work/055/index.html",
+    "title": "Visual 055"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/056",
+    "file": "en/creative-work/056/index.html",
+    "title": "Visual 056"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/057",
+    "file": "en/creative-work/057/index.html",
+    "title": "Visual 057"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/058",
+    "file": "en/creative-work/058/index.html",
+    "title": "Visual 058"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/059",
+    "file": "en/creative-work/059/index.html",
+    "title": "Visual 059"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/060",
+    "file": "en/creative-work/060/index.html",
+    "title": "Visual 060"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/061",
+    "file": "en/creative-work/061/index.html",
+    "title": "Visual 061"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/062",
+    "file": "en/creative-work/062/index.html",
+    "title": "Visual 062"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/063",
+    "file": "en/creative-work/063/index.html",
+    "title": "Visual 063"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/064",
+    "file": "en/creative-work/064/index.html",
+    "title": "Visual 064"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/065",
+    "file": "en/creative-work/065/index.html",
+    "title": "Visual 065"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/066",
+    "file": "en/creative-work/066/index.html",
+    "title": "Visual 066"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/067",
+    "file": "en/creative-work/067/index.html",
+    "title": "Visual 067"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/068",
+    "file": "en/creative-work/068/index.html",
+    "title": "Visual 068"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/069",
+    "file": "en/creative-work/069/index.html",
+    "title": "Visual 069"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/070",
+    "file": "en/creative-work/070/index.html",
+    "title": "Visual 070"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/071",
+    "file": "en/creative-work/071/index.html",
+    "title": "Visual 071"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/072",
+    "file": "en/creative-work/072/index.html",
+    "title": "Visual 072"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/073",
+    "file": "en/creative-work/073/index.html",
+    "title": "Visual 073"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/074",
+    "file": "en/creative-work/074/index.html",
+    "title": "Visual 074"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/075",
+    "file": "en/creative-work/075/index.html",
+    "title": "Visual 075"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/076",
+    "file": "en/creative-work/076/index.html",
+    "title": "Visual 076"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/077",
+    "file": "en/creative-work/077/index.html",
+    "title": "Motion 077"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/078",
+    "file": "en/creative-work/078/index.html",
+    "title": "Motion 078"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/079",
+    "file": "en/creative-work/079/index.html",
+    "title": "Visual 079"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/080",
+    "file": "en/creative-work/080/index.html",
+    "title": "Visual 080"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/081",
+    "file": "en/creative-work/081/index.html",
+    "title": "Visual 081"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/082",
+    "file": "en/creative-work/082/index.html",
+    "title": "Visual 082"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/083",
+    "file": "en/creative-work/083/index.html",
+    "title": "Visual 083"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/084",
+    "file": "en/creative-work/084/index.html",
+    "title": "Visual 084"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/085",
+    "file": "en/creative-work/085/index.html",
+    "title": "Visual 085"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/086",
+    "file": "en/creative-work/086/index.html",
+    "title": "Visual 086"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/087",
+    "file": "en/creative-work/087/index.html",
+    "title": "Visual 087"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/088",
+    "file": "en/creative-work/088/index.html",
+    "title": "Visual 088"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/089",
+    "file": "en/creative-work/089/index.html",
+    "title": "Visual 089"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/090",
+    "file": "en/creative-work/090/index.html",
+    "title": "Visual 090"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/091",
+    "file": "en/creative-work/091/index.html",
+    "title": "Visual 091"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/092",
+    "file": "en/creative-work/092/index.html",
+    "title": "Visual 092"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/093",
+    "file": "en/creative-work/093/index.html",
+    "title": "Motion 093"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/094",
+    "file": "en/creative-work/094/index.html",
+    "title": "Motion 094"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/095",
+    "file": "en/creative-work/095/index.html",
+    "title": "Motion 095"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/096",
+    "file": "en/creative-work/096/index.html",
+    "title": "Motion 096"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/097",
+    "file": "en/creative-work/097/index.html",
+    "title": "Motion 097"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/098",
+    "file": "en/creative-work/098/index.html",
+    "title": "Motion 098"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/099",
+    "file": "en/creative-work/099/index.html",
+    "title": "Motion 099"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/100",
+    "file": "en/creative-work/100/index.html",
+    "title": "Motion 100"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/101",
+    "file": "en/creative-work/101/index.html",
+    "title": "Motion 101"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/102",
+    "file": "en/creative-work/102/index.html",
+    "title": "Motion 102"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/103",
+    "file": "en/creative-work/103/index.html",
+    "title": "Motion 103"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/104",
+    "file": "en/creative-work/104/index.html",
+    "title": "Motion 104"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/105",
+    "file": "en/creative-work/105/index.html",
+    "title": "Motion 105"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/106",
+    "file": "en/creative-work/106/index.html",
+    "title": "Motion 106"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/107",
+    "file": "en/creative-work/107/index.html",
+    "title": "Motion 107"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/108",
+    "file": "en/creative-work/108/index.html",
+    "title": "Motion 108"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/109",
+    "file": "en/creative-work/109/index.html",
+    "title": "Motion 109"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/110",
+    "file": "en/creative-work/110/index.html",
+    "title": "Motion 110"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/111",
+    "file": "en/creative-work/111/index.html",
+    "title": "Motion 111"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/112",
+    "file": "en/creative-work/112/index.html",
+    "title": "Motion 112"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/113",
+    "file": "en/creative-work/113/index.html",
+    "title": "Motion 113"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/114",
+    "file": "en/creative-work/114/index.html",
+    "title": "Motion 114"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/115",
+    "file": "en/creative-work/115/index.html",
+    "title": "Motion 115"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/116",
+    "file": "en/creative-work/116/index.html",
+    "title": "Motion 116"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/117",
+    "file": "en/creative-work/117/index.html",
+    "title": "Motion 117"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/118",
+    "file": "en/creative-work/118/index.html",
+    "title": "Motion 118"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/119",
+    "file": "en/creative-work/119/index.html",
+    "title": "Motion 119"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/120",
+    "file": "en/creative-work/120/index.html",
+    "title": "Motion 120"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/121",
+    "file": "en/creative-work/121/index.html",
+    "title": "Motion 121"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/122",
+    "file": "en/creative-work/122/index.html",
+    "title": "Motion 122"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/123",
+    "file": "en/creative-work/123/index.html",
+    "title": "Motion 123"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/124",
+    "file": "en/creative-work/124/index.html",
+    "title": "Motion 124"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/125",
+    "file": "en/creative-work/125/index.html",
+    "title": "Motion 125"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/126",
+    "file": "en/creative-work/126/index.html",
+    "title": "Motion 126"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/127",
+    "file": "en/creative-work/127/index.html",
+    "title": "Motion 127"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/128",
+    "file": "en/creative-work/128/index.html",
+    "title": "Motion 128"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/129",
+    "file": "en/creative-work/129/index.html",
+    "title": "Motion 129"
+  },
+  {
+    "lang": "id",
+    "route": "",
+    "file": "id/index.html",
+    "title": "Beranda"
+  },
+  {
+    "lang": "id",
+    "route": "work",
+    "file": "id/work/index.html",
+    "title": "Karya"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work",
+    "file": "id/creative-work/index.html",
+    "title": "Karya Kreatif"
+  },
+  {
+    "lang": "id",
+    "route": "education",
+    "file": "id/education/index.html",
+    "title": "Pengalaman & Pendidikan"
+  },
+  {
+    "lang": "id",
+    "route": "leadership",
+    "file": "id/leadership/index.html",
+    "title": "Kepemimpinan"
+  },
+  {
+    "lang": "id",
+    "route": "research",
+    "file": "id/research/index.html",
+    "title": "Riset"
+  },
+  {
+    "lang": "id",
+    "route": "documents",
+    "file": "id/documents/index.html",
+    "title": "Dokumen"
+  },
+  {
+    "lang": "id",
+    "route": "contact",
+    "file": "id/contact/index.html",
+    "title": "Kontak"
+  },
+  {
+    "lang": "id",
+    "route": "work/creative-ai-partner",
+    "file": "id/work/creative-ai-partner/index.html",
+    "title": "Creative AI Partner"
+  },
+  {
+    "lang": "id",
+    "route": "work/matchupskills",
+    "file": "id/work/matchupskills/index.html",
+    "title": "MatchupSkills"
+  },
+  {
+    "lang": "id",
+    "route": "work/lumbung-jakut",
+    "file": "id/work/lumbung-jakut/index.html",
+    "title": "Lumbung Jakut"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/iccn",
+    "file": "id/leadership/iccn/index.html",
+    "title": "Indonesian Creative Cities Network"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/indonesia-mengglobal",
+    "file": "id/leadership/indonesia-mengglobal/index.html",
+    "title": "Indonesia Mengglobal"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/unesco-undp",
+    "file": "id/leadership/unesco-undp/index.html",
+    "title": "UNESCO & UNDP Indonesia"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/timur-growth",
+    "file": "id/leadership/timur-growth/index.html",
+    "title": "Timur Growth 2 Startup Competition"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/titik-terang",
+    "file": "id/leadership/titik-terang/index.html",
+    "title": "Titik Terang Community"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/iluni-ui",
+    "file": "id/leadership/iluni-ui/index.html",
+    "title": "ILUNI UI"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/youthranger",
+    "file": "id/leadership/youthranger/index.html",
+    "title": "YouthRanger.id"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/biru-muda",
+    "file": "id/leadership/biru-muda/index.html",
+    "title": "Biru Muda Project Community"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/pt-pindad",
+    "file": "id/leadership/pt-pindad/index.html",
+    "title": "Studi Ekskursi PT Pindad"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/study-hub",
+    "file": "id/leadership/study-hub/index.html",
+    "title": "Study Hub — PUSAT AHLI × PT Sentra Solusi"
+  },
+  {
+    "lang": "id",
+    "route": "leadership/field-notes",
+    "file": "id/leadership/field-notes/index.html",
+    "title": "MOMEN DARI LAPANGAN"
+  },
+  {
+    "lang": "id",
+    "route": "research/jurnal",
+    "file": "id/research/jurnal/index.html",
+    "title": "Strategic Intelligence Foresight on Ransomware Threats in State-Owned Bankings in Indonesia"
+  },
+  {
+    "lang": "id",
+    "route": "research/tokyo",
+    "file": "id/research/tokyo/index.html",
+    "title": "Digital Policy Bundles and Food-System Resilience in Rural Solo/Surakarta"
+  },
+  {
+    "lang": "id",
+    "route": "research/proposal-p3",
+    "file": "id/research/proposal-p3/index.html",
+    "title": "Smart Monitoring Food System Resilience — AI-Based Urban Farming Community in North Jakarta"
+  },
+  {
+    "lang": "id",
+    "route": "research/reef-welfare",
+    "file": "id/research/reef-welfare/index.html",
+    "title": "Reef to Welfare: Integrating Marine Conservation and Coastal Food-Water Security for Sustainable Livelihoods in Indonesia's Coral Triangle (Wakatobi)"
+  },
+  {
+    "lang": "id",
+    "route": "documents/cv",
+    "file": "id/documents/cv/index.html",
+    "title": "Curriculum Vitae"
+  },
+  {
+    "lang": "id",
+    "route": "documents/bachelor",
+    "file": "id/documents/bachelor/index.html",
+    "title": "Ijazah & Transkrip S1"
+  },
+  {
+    "lang": "id",
+    "route": "documents/masters",
+    "file": "id/documents/masters/index.html",
+    "title": "Ijazah & Transkrip S2"
+  },
+  {
+    "lang": "id",
+    "route": "documents/thesis",
+    "file": "id/documents/thesis/index.html",
+    "title": "Tesis Magister — Analisis Intelijen Terhadap Serangan Siber Pada Keamanan Institusi Perbankan Indonesia"
+  },
+  {
+    "lang": "id",
+    "route": "documents/certificates",
+    "file": "id/documents/certificates/index.html",
+    "title": "Sertifikat & Penghargaan"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/001",
+    "file": "id/creative-work/001/index.html",
+    "title": "Visual 001"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/002",
+    "file": "id/creative-work/002/index.html",
+    "title": "Visual 002"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/003",
+    "file": "id/creative-work/003/index.html",
+    "title": "Visual 003"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/004",
+    "file": "id/creative-work/004/index.html",
+    "title": "Video 004"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/005",
+    "file": "id/creative-work/005/index.html",
+    "title": "Visual 005"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/006",
+    "file": "id/creative-work/006/index.html",
+    "title": "Visual 006"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/007",
+    "file": "id/creative-work/007/index.html",
+    "title": "Visual 007"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/008",
+    "file": "id/creative-work/008/index.html",
+    "title": "Video 008"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/009",
+    "file": "id/creative-work/009/index.html",
+    "title": "Video 009"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/010",
+    "file": "id/creative-work/010/index.html",
+    "title": "Video 010"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/011",
+    "file": "id/creative-work/011/index.html",
+    "title": "Visual 011"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/012",
+    "file": "id/creative-work/012/index.html",
+    "title": "Visual 012"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/013",
+    "file": "id/creative-work/013/index.html",
+    "title": "Visual 013"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/014",
+    "file": "id/creative-work/014/index.html",
+    "title": "Visual 014"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/015",
+    "file": "id/creative-work/015/index.html",
+    "title": "Visual 015"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/016",
+    "file": "id/creative-work/016/index.html",
+    "title": "Visual 016"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/017",
+    "file": "id/creative-work/017/index.html",
+    "title": "Visual 017"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/018",
+    "file": "id/creative-work/018/index.html",
+    "title": "Visual 018"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/019",
+    "file": "id/creative-work/019/index.html",
+    "title": "Visual 019"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/020",
+    "file": "id/creative-work/020/index.html",
+    "title": "Visual 020"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/021",
+    "file": "id/creative-work/021/index.html",
+    "title": "Visual 021"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/022",
+    "file": "id/creative-work/022/index.html",
+    "title": "Video 022"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/023",
+    "file": "id/creative-work/023/index.html",
+    "title": "Video 023"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/024",
+    "file": "id/creative-work/024/index.html",
+    "title": "Video 024"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/025",
+    "file": "id/creative-work/025/index.html",
+    "title": "Video 025"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/026",
+    "file": "id/creative-work/026/index.html",
+    "title": "Video 026"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/027",
+    "file": "id/creative-work/027/index.html",
+    "title": "Video 027"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/028",
+    "file": "id/creative-work/028/index.html",
+    "title": "Video 028"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/029",
+    "file": "id/creative-work/029/index.html",
+    "title": "Visual 029"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/030",
+    "file": "id/creative-work/030/index.html",
+    "title": "Visual 030"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/031",
+    "file": "id/creative-work/031/index.html",
+    "title": "Visual 031"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/032",
+    "file": "id/creative-work/032/index.html",
+    "title": "Visual 032"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/033",
+    "file": "id/creative-work/033/index.html",
+    "title": "Visual 033"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/034",
+    "file": "id/creative-work/034/index.html",
+    "title": "Visual 034"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/035",
+    "file": "id/creative-work/035/index.html",
+    "title": "Visual 035"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/036",
+    "file": "id/creative-work/036/index.html",
+    "title": "Visual 036"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/037",
+    "file": "id/creative-work/037/index.html",
+    "title": "Visual 037"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/038",
+    "file": "id/creative-work/038/index.html",
+    "title": "Visual 038"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/039",
+    "file": "id/creative-work/039/index.html",
+    "title": "Visual 039"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/040",
+    "file": "id/creative-work/040/index.html",
+    "title": "Visual 040"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/041",
+    "file": "id/creative-work/041/index.html",
+    "title": "Visual 041"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/042",
+    "file": "id/creative-work/042/index.html",
+    "title": "Visual 042"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/043",
+    "file": "id/creative-work/043/index.html",
+    "title": "Visual 043"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/044",
+    "file": "id/creative-work/044/index.html",
+    "title": "Visual 044"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/045",
+    "file": "id/creative-work/045/index.html",
+    "title": "Visual 045"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/046",
+    "file": "id/creative-work/046/index.html",
+    "title": "Visual 046"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/047",
+    "file": "id/creative-work/047/index.html",
+    "title": "Visual 047"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/048",
+    "file": "id/creative-work/048/index.html",
+    "title": "Visual 048"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/049",
+    "file": "id/creative-work/049/index.html",
+    "title": "Visual 049"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/050",
+    "file": "id/creative-work/050/index.html",
+    "title": "Visual 050"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/051",
+    "file": "id/creative-work/051/index.html",
+    "title": "Visual 051"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/052",
+    "file": "id/creative-work/052/index.html",
+    "title": "Visual 052"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/053",
+    "file": "id/creative-work/053/index.html",
+    "title": "Visual 053"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/054",
+    "file": "id/creative-work/054/index.html",
+    "title": "Visual 054"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/055",
+    "file": "id/creative-work/055/index.html",
+    "title": "Visual 055"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/056",
+    "file": "id/creative-work/056/index.html",
+    "title": "Visual 056"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/057",
+    "file": "id/creative-work/057/index.html",
+    "title": "Visual 057"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/058",
+    "file": "id/creative-work/058/index.html",
+    "title": "Visual 058"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/059",
+    "file": "id/creative-work/059/index.html",
+    "title": "Visual 059"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/060",
+    "file": "id/creative-work/060/index.html",
+    "title": "Visual 060"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/061",
+    "file": "id/creative-work/061/index.html",
+    "title": "Visual 061"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/062",
+    "file": "id/creative-work/062/index.html",
+    "title": "Visual 062"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/063",
+    "file": "id/creative-work/063/index.html",
+    "title": "Visual 063"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/064",
+    "file": "id/creative-work/064/index.html",
+    "title": "Visual 064"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/065",
+    "file": "id/creative-work/065/index.html",
+    "title": "Visual 065"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/066",
+    "file": "id/creative-work/066/index.html",
+    "title": "Visual 066"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/067",
+    "file": "id/creative-work/067/index.html",
+    "title": "Visual 067"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/068",
+    "file": "id/creative-work/068/index.html",
+    "title": "Visual 068"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/069",
+    "file": "id/creative-work/069/index.html",
+    "title": "Visual 069"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/070",
+    "file": "id/creative-work/070/index.html",
+    "title": "Visual 070"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/071",
+    "file": "id/creative-work/071/index.html",
+    "title": "Visual 071"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/072",
+    "file": "id/creative-work/072/index.html",
+    "title": "Visual 072"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/073",
+    "file": "id/creative-work/073/index.html",
+    "title": "Visual 073"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/074",
+    "file": "id/creative-work/074/index.html",
+    "title": "Visual 074"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/075",
+    "file": "id/creative-work/075/index.html",
+    "title": "Visual 075"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/076",
+    "file": "id/creative-work/076/index.html",
+    "title": "Visual 076"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/077",
+    "file": "id/creative-work/077/index.html",
+    "title": "Video 077"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/078",
+    "file": "id/creative-work/078/index.html",
+    "title": "Video 078"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/079",
+    "file": "id/creative-work/079/index.html",
+    "title": "Visual 079"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/080",
+    "file": "id/creative-work/080/index.html",
+    "title": "Visual 080"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/081",
+    "file": "id/creative-work/081/index.html",
+    "title": "Visual 081"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/082",
+    "file": "id/creative-work/082/index.html",
+    "title": "Visual 082"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/083",
+    "file": "id/creative-work/083/index.html",
+    "title": "Visual 083"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/084",
+    "file": "id/creative-work/084/index.html",
+    "title": "Visual 084"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/085",
+    "file": "id/creative-work/085/index.html",
+    "title": "Visual 085"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/086",
+    "file": "id/creative-work/086/index.html",
+    "title": "Visual 086"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/087",
+    "file": "id/creative-work/087/index.html",
+    "title": "Visual 087"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/088",
+    "file": "id/creative-work/088/index.html",
+    "title": "Visual 088"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/089",
+    "file": "id/creative-work/089/index.html",
+    "title": "Visual 089"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/090",
+    "file": "id/creative-work/090/index.html",
+    "title": "Visual 090"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/091",
+    "file": "id/creative-work/091/index.html",
+    "title": "Visual 091"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/092",
+    "file": "id/creative-work/092/index.html",
+    "title": "Visual 092"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/093",
+    "file": "id/creative-work/093/index.html",
+    "title": "Video 093"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/094",
+    "file": "id/creative-work/094/index.html",
+    "title": "Video 094"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/095",
+    "file": "id/creative-work/095/index.html",
+    "title": "Video 095"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/096",
+    "file": "id/creative-work/096/index.html",
+    "title": "Video 096"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/097",
+    "file": "id/creative-work/097/index.html",
+    "title": "Video 097"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/098",
+    "file": "id/creative-work/098/index.html",
+    "title": "Video 098"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/099",
+    "file": "id/creative-work/099/index.html",
+    "title": "Video 099"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/100",
+    "file": "id/creative-work/100/index.html",
+    "title": "Video 100"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/101",
+    "file": "id/creative-work/101/index.html",
+    "title": "Video 101"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/102",
+    "file": "id/creative-work/102/index.html",
+    "title": "Video 102"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/103",
+    "file": "id/creative-work/103/index.html",
+    "title": "Video 103"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/104",
+    "file": "id/creative-work/104/index.html",
+    "title": "Video 104"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/105",
+    "file": "id/creative-work/105/index.html",
+    "title": "Video 105"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/106",
+    "file": "id/creative-work/106/index.html",
+    "title": "Video 106"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/107",
+    "file": "id/creative-work/107/index.html",
+    "title": "Video 107"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/108",
+    "file": "id/creative-work/108/index.html",
+    "title": "Video 108"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/109",
+    "file": "id/creative-work/109/index.html",
+    "title": "Video 109"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/110",
+    "file": "id/creative-work/110/index.html",
+    "title": "Video 110"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/111",
+    "file": "id/creative-work/111/index.html",
+    "title": "Video 111"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/112",
+    "file": "id/creative-work/112/index.html",
+    "title": "Video 112"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/113",
+    "file": "id/creative-work/113/index.html",
+    "title": "Video 113"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/114",
+    "file": "id/creative-work/114/index.html",
+    "title": "Video 114"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/115",
+    "file": "id/creative-work/115/index.html",
+    "title": "Video 115"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/116",
+    "file": "id/creative-work/116/index.html",
+    "title": "Video 116"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/117",
+    "file": "id/creative-work/117/index.html",
+    "title": "Video 117"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/118",
+    "file": "id/creative-work/118/index.html",
+    "title": "Video 118"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/119",
+    "file": "id/creative-work/119/index.html",
+    "title": "Video 119"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/120",
+    "file": "id/creative-work/120/index.html",
+    "title": "Video 120"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/121",
+    "file": "id/creative-work/121/index.html",
+    "title": "Video 121"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/122",
+    "file": "id/creative-work/122/index.html",
+    "title": "Video 122"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/123",
+    "file": "id/creative-work/123/index.html",
+    "title": "Video 123"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/124",
+    "file": "id/creative-work/124/index.html",
+    "title": "Video 124"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/125",
+    "file": "id/creative-work/125/index.html",
+    "title": "Video 125"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/126",
+    "file": "id/creative-work/126/index.html",
+    "title": "Video 126"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/127",
+    "file": "id/creative-work/127/index.html",
+    "title": "Video 127"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/128",
+    "file": "id/creative-work/128/index.html",
+    "title": "Video 128"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/129",
+    "file": "id/creative-work/129/index.html",
+    "title": "Video 129"
+  }
+]
