@@ -241,3 +241,12 @@ body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744
 /* Gambar galeri memakai rasio aslinya, tidak dipaksa ke kotak --aspect (2026-09-23) */
 .media-card>img{aspect-ratio:auto;height:auto;width:100%;object-fit:fill}
 .media-card{aspect-ratio:auto;overflow:visible}
+
+/* Galeri proyek: kotak slide dulu tingginya dipaksa (clamp) + object-fit cover,
+   jadi screenshot terpotong; di sebagian breakpoint malah contain sehingga muncul
+   area kosong lebar. Sekarang tinggi mengikuti gambar → tampil UTUH, tanpa potongan
+   dan tanpa ruang kosong. (2026-09-23) */
+.project-slide{height:auto;display:block}
+.project-slide>img{width:100%;height:auto;display:block;object-fit:fill;aspect-ratio:auto}
+@media(max-width:1000px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
+@media(max-width:760px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
