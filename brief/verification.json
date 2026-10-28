@@ -1,7 +1,7 @@
 {
-  "date": "2026-09-23T22:13:43.879Z",
+  "date": "2026-10-28T05:20:15.408Z",
   "htmlPages": 480,
-  "checkedLinks": 21394,
+  "checkedLinks": 21400,
   "tests": [
     {
       "name": "480 routes; 160 per locale",
@@ -10,7 +10,7 @@
     {
       "name": "All HTML local links, sources, posters and image alt attributes",
       "passed": true,
-      "checkedLinks": 21394
+      "checkedLinks": 21400
     },
     {
       "name": "Theme and menu keyboard state",
