@@ -375,8 +375,8 @@ untuk surat PhD:
   Sciences (2026–2027, sedang berjalan).
 - **Domisili**: The Hague, Belanda, sudah terdaftar sebagai resident (boleh disebut sebagai alasan
   sekunder/logistik, JANGAN jadi alasan utama "kenapa universitas ini").
-- **Kontak resmi untuk surat**: email `nachson21@gmail.com`, WA `+31 6 8472 7383` (link
-  `wa.me/31684727383`), portfolio `eggan.vercel.app` — samakan dengan yang dipakai di Credentials Dossier
+- **Kontak resmi untuk surat**: email `nachson21@gmail.com`, WA `+31 6 5901 3974` (link
+  `wa.me/31659013974`), portfolio `eggan.vercel.app` — samakan dengan yang dipakai di Credentials Dossier
   CAP, jangan pakai email/nomor lain.
 - **Tanda tangan asli** (scan, sudah dipakai di motivation letter Leiden & Credentials Dossier CAP):
   `/Users/eggan/Desktop/website CAP/assets/private/signatures/eggan_nachson_cropped.png` — file itu ada
