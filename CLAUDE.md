@@ -105,6 +105,15 @@ diambil dari tag git `pre-revisi-2.0`.
   `/en/research`, `/en/documents`, `/en/leadership`, `/en/contact`, `/id/*`, `/work/*` semua 200; 22 URL yang
   dipakai situs lama semuanya masih ada; tema gelap, mobile, dan galeri karya diperiksa di browser.
 
+## Halaman Data Modeling (21 Nov 2026)
+Permintaan pemilik: halaman portofolio yang menunjukkan keahlian data modeling / agent modeling setingkat senior, data disamarkan.
+Route `data-modeling` (3 bahasa, total 483 halaman), di menu sesudah Creative ("Data"). Isi + diagram ER (SVG inline yang digambar
+kode) ada di **`tools/data-modeling.mjs`** (bukan content.json), gaya di **`assets/data-modeling.css`** (token `--dm-card` untuk
+mode gelap, karena `--white` tidak berubah di tema gelap). Semua struktur = sistem asli (MatchupSkills, CAP, Career Agent,
+rekrutmen); nilai sintetis/agregat, tanpa data pribadi. Tes yang ikut diubah: verify.cjs (483/161, menu 9), verify-polish.cjs (nav 8).
+Jebakan: `git stash` di folder iCloud ini butuh ±10 menit dan `verify-styles.cjs` menulis ulang `brief/style-verification.json`
+(kembalikan dengan `git checkout` sebelum stash pop).
+
 ## [RIWAYAT] Struktur file lama (REWRITE TOTAL 2026-08-14 — arsitektur lama single-file sudah tidak berlaku)
 - `data.js` — **satu-satunya sumber konten**: semua UI string + Leadership entries + Project
   entries + Skills + Research metadata, masing-masing field `{nl, en, id}`. Edit di sini untuk ubah
