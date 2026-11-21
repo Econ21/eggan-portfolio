@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-11T03:27:27.814Z",
-  "htmlPages": 480,
-  "checkedLinks": 21400,
+  "date": "2026-11-21T14:38:32.375Z",
+  "htmlPages": 483,
+  "checkedLinks": 23440,
   "tests": [
     {
-      "name": "480 routes; 160 per locale",
+      "name": "483 routes; 161 per locale",
       "passed": true
     },
     {
       "name": "All HTML local links, sources, posters and image alt attributes",
       "passed": true,
-      "checkedLinks": 21400
+      "checkedLinks": 23440
     },
     {
       "name": "Theme and menu keyboard state",
@@ -81,7 +81,7 @@
       "passed": true
     },
     {
-      "name": "All locale menus expose eight main destinations",
+      "name": "All locale menus expose nine main destinations",
       "passed": true
     },
     {

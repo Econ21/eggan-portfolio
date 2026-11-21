@@ -19,6 +19,12 @@
   },
   {
     "lang": "nl",
+    "route": "data-modeling",
+    "file": "data-modeling/index.html",
+    "title": "Datamodellering"
+  },
+  {
+    "lang": "nl",
     "route": "education",
     "file": "education/index.html",
     "title": "Ervaring & Opleiding"
@@ -979,6 +985,12 @@
   },
   {
     "lang": "en",
+    "route": "data-modeling",
+    "file": "en/data-modeling/index.html",
+    "title": "Data Modeling"
+  },
+  {
+    "lang": "en",
     "route": "education",
     "file": "en/education/index.html",
     "title": "Experience & Education"
@@ -1936,6 +1948,12 @@
     "route": "creative-work",
     "file": "id/creative-work/index.html",
     "title": "Karya Kreatif"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling",
+    "file": "id/data-modeling/index.html",
+    "title": "Data Modeling"
   },
   {
     "lang": "id",
