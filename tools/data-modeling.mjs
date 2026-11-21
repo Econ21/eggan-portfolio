@@ -26,7 +26,7 @@ function er({ w, h, entities, rels, label }) {
     const end = card === '1:1' ? bar(q[0], q[1], qx, qy) : crow(q[0], q[1], qx, qy);
     const mid = horiz ? [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2] : [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
     if (note) notes.push(`<text class="er-note" x="${mid[0]}" y="${mid[1] - 7}" text-anchor="middle">${esc(note)}</text>`);
-    return `<path class="er-line" d="${d}"/>${bar(p[0], p[1], px, py)}${end}`;
+    return `<g class="er-rel" data-a="${a}" data-b="${b}"><path class="er-line" d="${d}"/><path class="er-flow" d="${d}"/>${bar(p[0], p[1], px, py)}${end}</g>`;
   }).join('');
   const boxes = Object.values(box).map((e) => {
     const rows = e.fields.map(([n, t, k], i) => {
@@ -34,7 +34,7 @@ function er({ w, h, entities, rels, label }) {
       const key = k ? `<text class="er-key er-key-${k.toLowerCase()}" x="${e.x + e.w - 10}" y="${y}" text-anchor="end">${k}</text>` : '';
       return `<text class="er-field" x="${e.x + 12}" y="${y}">${esc(n)}<tspan class="er-type"> ${esc(t)}</tspan></text>${key}`;
     }).join('');
-    return `<g class="er-entity${e.accent ? ' is-accent' : ''}"><rect class="er-box" x="${e.x}" y="${e.y}" width="${e.w}" height="${e.h}" rx="4"/><rect class="er-head" x="${e.x}" y="${e.y}" width="${e.w}" height="${HEAD}" rx="4"/><rect class="er-head" x="${e.x}" y="${e.y + HEAD - 6}" width="${e.w}" height="6"/><text class="er-title" x="${e.x + 12}" y="${e.y + 20}">${esc(e.name)}</text>${rows}</g>`;
+    return `<g class="er-entity${e.accent ? ' is-accent' : ''}" data-id="${e.id}" tabindex="0"><rect class="er-box" x="${e.x}" y="${e.y}" width="${e.w}" height="${e.h}" rx="4"/><rect class="er-head" x="${e.x}" y="${e.y}" width="${e.w}" height="${HEAD}" rx="4"/><rect class="er-head" x="${e.x}" y="${e.y + HEAD - 6}" width="${e.w}" height="6"/><text class="er-title" x="${e.x + 12}" y="${e.y + 20}">${esc(e.name)}</text>${rows}</g>`;
   }).join('');
   return `<div class="dm-scroll"><svg class="er" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">${lines}${boxes}${notes.join('')}</svg></div>`;
 }
@@ -132,106 +132,350 @@ const MODELS = [
   },
 ];
 
+// ── Syntax highlighting (build time, no library) ─────────────────────────────────────────────────────────────────
+const KW = {
+  sql: 'select|from|where|and|or|not|in|is|null|as|on|join|left|using|group|by|order|desc|asc|with|insert|into|values|update|set|returning|create|or|replace|function|returns|trigger|language|security|definer|begin|end|return|new|case|when|then|else|conflict|do|count|distinct|filter|between|interval|now|round|min|max|date_trunc|extract|epoch|at|time|zone|for|each|row|execute|procedure|after|table|unique|primary|key|references|check|default|not|exists|if|declare|perform|limit',
+  py: 'import|from|as|def|return|for|in|if|else|elif|with|lambda|and|or|not|None|True|False|class|print|yield|assert',
+  js: 'const|let|var|function|return|if|else|for|of|in|await|async|export|import|from|new|true|false|null|undefined|throw|try|catch|typeof|continue|break',
+};
+function hl(code, lang) {
+  const kw = new RegExp(`^(?:${KW[lang]})$`, lang === 'sql' ? 'i' : '');
+  const re = lang === 'py'
+    ? /(#[^\n]*)|("""[\s\S]*?"""|'[^'\n]*'|"[^"\n]*"|f'[^'\n]*'|f"[^"\n]*")|(\b\d+(?:\.\d+)?\b)|([A-Za-z_][A-Za-z0-9_]*)(\s*\()?|([^\sA-Za-z0-9_'"#]+)|(\s+)/g
+    : lang === 'sql'
+      ? /(--[^\n]*)|('[^'\n]*'|\$\$)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_][A-Za-z0-9_.]*)(\s*\()?|([^\sA-Za-z0-9_'-]+|-)|(\s+)/g
+      : /(\/\/[^\n]*)|(`[^`]*`|'[^'\n]*'|"[^"\n]*")|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][A-Za-z0-9_$]*)(\s*\()?|([^\sA-Za-z0-9_$'"`/]+|\/)|(\s+)/g;
+  let out = '', m;
+  while ((m = re.exec(code))) {
+    if (m[1]) out += `<span class="t-c">${esc(m[1])}</span>`;
+    else if (m[2]) out += `<span class="t-s">${esc(m[2])}</span>`;
+    else if (m[3]) out += `<span class="t-n">${esc(m[3])}</span>`;
+    else if (m[4]) {
+      const w = m[4];
+      if (kw.test(w)) out += `<span class="t-k">${esc(w)}</span>`;
+      else if (m[5]) out += `<span class="t-f">${esc(w)}</span>`;
+      else out += esc(w);
+      if (m[5]) out += esc(m[5]);
+    } else if (m[6]) out += `<span class="t-p">${esc(m[6])}</span>`;
+    else out += esc(m[0]);
+  }
+  return out.split('\n').map((l) => `<span class="ln">${l || ' '}</span>`).join('');
+}
+
+// ── Code notebook: real patterns, simplified; every value in the outputs is synthetic ────────────────────────────
+const CELLS = [
+  {
+    id: 'trigger', lang: 'sql', file: 'migrations/learning_activity.sql',
+    title: ['One activity index fed by triggers', 'Satu indeks aktivitas dari trigger', 'Eén activiteitenindex via triggers'],
+    note: ['12 feature tables write their own rows; a trigger mirrors each session into one index, so dashboards and the AI tutor never join twelve tables.', '12 tabel fitur menulis barisnya sendiri; trigger mencerminkan tiap sesi ke satu indeks, jadi dashboard dan tutor AI tidak perlu menggabungkan 12 tabel.', '12 featuretabellen schrijven hun eigen rijen; een trigger spiegelt elke sessie naar één index, zodat dashboards en de AI-tutor nooit twaalf tabellen joinen.'],
+    code: `create or replace function log_learning_activity()
+returns trigger language plpgsql security definer as $$
+begin
+  insert into learning_activity
+    (learner_id, feature, status, score, score_max, ref_table, ref_id)
+  values
+    (new.learner_id, tg_argv[0],
+     case when new.completed_at is null then 'started' else 'completed' end,
+     new.score, new.score_max, tg_table_name, new.id::text)
+  on conflict (ref_table, ref_id) do update
+     set status = excluded.status,
+         score  = excluded.score;          -- idempotent: replays never duplicate
+  return new;
+end $$;
+
+create trigger trg_activity after insert or update on ielts_sessions
+  for each row execute function log_learning_activity('ielts');`,
+    out: { type: 'log', lines: ['CREATE FUNCTION', 'CREATE TRIGGER  ×12 feature tables', 'backfill: 14 days → 66 sessions across 10 features (was 0 visible)'] },
+  },
+  {
+    id: 'claim', lang: 'sql', file: 'jobs/finalize_render.sql',
+    title: ['Exactly-once job finalisation', 'Finalisasi job tepat sekali', 'Job precies één keer afronden'],
+    note: ['A webhook, a status poll and a cron can all try to finish the same render. A compare-and-swap claim lets exactly one win; a stale claim is taken over after 10 minutes.', 'Webhook, polling status, dan cron bisa sama-sama mencoba menyelesaikan render yang sama. Klaim compare-and-swap memastikan hanya satu yang menang; klaim basi diambil alih setelah 10 menit.', 'Een webhook, een statuspoll en een cron kunnen dezelfde render willen afronden. Een compare-and-swap-claim laat er precies één winnen; een verouderde claim wordt na 10 minuten overgenomen.'],
+    code: `update generation_job
+   set status        = 'finalizing',
+       finalizing_at = now()
+ where job_id = $1
+   and (   status = 'processing'
+        or (status = 'finalizing'
+            and finalizing_at < now() - interval '10 minutes'))
+returning job_id;          -- 0 rows → another worker owns this job
+
+-- refund at most once, even if two failures race
+update app_user u
+   set credits = u.credits + j.credits
+  from generation_job j
+ where j.job_id = $1 and j.user_id = u.user_id
+   and j.refunded_at is null
+returning u.credits;`,
+    out: { type: 'table', cols: ['trigger', 'claimed', 'project rows', 'cost rows', 'refunds'], rows: [['webhook', 'yes', '1', '1', '0'], ['status poll', 'no (0 rows)', '—', '—', '—'], ['daily cron', 'no (0 rows)', '—', '—', '—']], caption: ['3 concurrent triggers on one finished render (test, real DB)', '3 pemicu bersamaan pada satu render (uji, DB asli)', '3 gelijktijdige triggers op één render (test, echte DB)'] },
+  },
+  {
+    id: 'cohort', lang: 'sql', file: 'analytics/retention_by_cohort.sql',
+    title: ['Weekly cohort retention', 'Retensi kohort mingguan', 'Wekelijkse cohortretentie'],
+    note: ['Business dates are computed in the market’s time zone, never UTC. The output below is synthetic.', 'Tanggal bisnis dihitung dalam zona waktu pasar, tidak pernah UTC. Hasil di bawah ini sintetis.', 'Bedrijfsdatums worden in de tijdzone van de markt berekend, nooit UTC. De uitvoer hieronder is synthetisch.'],
+    code: `with first_seen as (
+  select learner_id,
+         min((created_at at time zone 'Asia/Jakarta')::date) as day0
+    from learning_activity
+   group by learner_id
+), aged as (
+  select f.learner_id,
+         date_trunc('week', f.day0)::date                       as cohort,
+         (a.created_at at time zone 'Asia/Jakarta')::date - f.day0 as age_days
+    from learning_activity a
+    join first_seen f using (learner_id)
+)
+select cohort,
+       count(distinct learner_id)                                  as learners,
+       round(100.0 * count(distinct learner_id)
+             filter (where age_days between 7 and 13)
+             / count(distinct learner_id), 1)                       as w1_pct,
+       round(100.0 * count(distinct learner_id)
+             filter (where age_days between 28 and 34)
+             / count(distinct learner_id), 1)                       as w4_pct
+  from aged
+ group by cohort
+ order by cohort desc
+ limit 4;`,
+    out: { type: 'table', cols: ['cohort', 'learners', 'w1_pct', 'w4_pct'], rows: [['2026-W45', '412', '31.6', '—'], ['2026-W44', '388', '29.4', '—'], ['2026-W43', '351', '33.0', '18.2'], ['2026-W42', '297', '27.9', '15.8']], caption: ['synthetic data · 4 rows', 'data sintetis · 4 baris', 'synthetische data · 4 rijen'] },
+  },
+  {
+    id: 'python', lang: 'py', file: 'notebooks/content_lift.py',
+    title: ['Anonymise, classify, measure lift', 'Anonimkan, klasifikasi, ukur lift', 'Anonimiseren, classificeren, lift meten'],
+    note: ['Personal identifiers are hashed before analysis; posts are classified from caption text by reproducible rules, then collaboration lift is a ratio of medians (robust to viral outliers).', 'Identitas pribadi di-hash sebelum dianalisis; postingan diklasifikasikan dari teks caption dengan aturan yang bisa diulang, lalu lift kolaborasi dihitung sebagai rasio median (tahan terhadap outlier viral).', 'Persoonsgegevens worden gehasht vóór analyse; posts worden met reproduceerbare regels uit de captiontekst geclassificeerd, daarna is de samenwerkingslift een ratio van medianen (robuust tegen virale uitschieters).'],
+    code: `import hashlib, re
+import pandas as pd
+
+posts = pd.read_json("posts_dataset.json")
+
+# 1 · anonymise: no handle or name leaves this cell
+salt = "rotate-me"
+posts["author"] = posts["author"].map(
+    lambda h: hashlib.sha256((salt + h).encode()).hexdigest()[:10])
+
+# 2 · classify from caption text (deterministic, re-runnable)
+RULES = {"scholarship": r"lpdp|daad|beasiswa|scholar",
+         "ielts":       r"ielts|band \\d",
+         "career":      r"cv|interview|intern"}
+posts["topic"] = posts["caption"].str.lower().apply(
+    lambda c: next((t for t, p in RULES.items() if re.search(p, c)), "other"))
+posts["collab"] = posts["coauthors"].str.len() > 0
+
+# 3 · lift = ratio of medians (robust to one viral post)
+med = posts.groupby("collab")["views"].median()
+lift = med[True] / med[False]
+print(posts.groupby(["topic", "collab"])["views"].median().unstack().round(0))
+print(f"collaboration lift ≈ {lift:.0f}×  (n={len(posts)})")`,
+    out: { type: 'table', cols: ['topic', 'solo', 'collab'], rows: [['career', '1 240', '41 800'], ['ielts', '980', '55 300'], ['scholarship', '1 410', '72 900'], ['other', '760', '38 100']], caption: ['collaboration lift ≈ 52×  (n=109) · values rescaled', 'lift kolaborasi ≈ 52×  (n=109) · nilai diskalakan', 'samenwerkingslift ≈ 52×  (n=109) · waarden geschaald'] },
+  },
+  {
+    id: 'agent', lang: 'js', file: 'agent/career_turn.js',
+    title: ['Tool schema + model escalation', 'Skema tool + eskalasi model', 'Toolschema + modelescalatie'],
+    note: ['The model chooses tools; the code enforces the rules. A document-writing call made by the small model is discarded and replayed on the stronger one.', 'Model memilih tool; kode yang menegakkan aturan. Panggilan penulisan dokumen dari model kecil dibuang dan diulang di model yang lebih kuat.', 'Het model kiest tools; de code handhaaft de regels. Een schrijfopdracht van het kleine model wordt verworpen en op het sterkere model herhaald.'],
+    code: `export const buildPackage = {
+  name: 'career_build_package',
+  input_schema: {
+    type: 'object',
+    properties: {
+      application_id: { type: 'string' },
+      cv:     { type: 'object' },   // facts only from the evidence bank
+      letter: { type: 'object' },
+    },
+    required: ['application_id', 'cv'],
+  },
+  async run(args, ctx) {
+    const pdf = await renderCv(args.cv);
+    if (pages(pdf) > 1 && isEarlyCareer(ctx.app))
+      return { error: 'CV must fit one page — tighten it and rebuild.' };
+    return savePackage(ctx, pdf);
+  },
+};
+
+const isDocumentCall = (c) =>
+  c.name === 'career_build_package' || !!c.input?.cv_master;
+
+for (let round = 0; round < MAX_ROUNDS; round++) {
+  const res = await model(engine).send(messages, tools);
+  usage.add(engine.model, res.usage);                 // cost per model
+  const calls = toolCalls(res);
+  if (!calls.length) break;
+  if (engine.tier === 'small' && calls.some(isDocumentCall)) {
+    engine = engines.strong;                          // replay this round
+    round--; continue;
+  }
+  messages.push(res, await runTools(calls, ctx));
+}`,
+    out: { type: 'log', lines: ['turn 1  haiku   career_get_state → answer             $0.0044', 'turn 2  haiku   save_jobs(fit=risky, 70)              $0.0027', 'turn 3  haiku   build_package ✕ discarded → escalate  $0.0025', 'turn 3  sonnet  build_package → CV.pdf (1 page) + .docx $0.1103', 'total   $0.120 · documents never written by the small model'] },
+  },
+];
+
+function cellHtml(c, T3) {
+  let out = '';
+  if (c.out.type === 'log') out = `<pre class="nb-log">${c.out.lines.map((l) => `<span>${esc(l)}</span>`).join('')}</pre>`;
+  else out = `<div class="nb-table-wrap"><table class="nb-table"><thead><tr>${c.out.cols.map((x) => `<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${c.out.rows.map((r) => `<tr>${r.map((x) => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table><p class="nb-cap">${esc(T3(c.out.caption))}</p></div>`;
+  return `<div class="nb-cell" data-cell="${c.id}"><div class="nb-bar"><span class="nb-dots"><i></i><i></i><i></i></span><span class="nb-file">${esc(c.file)}</span><span class="nb-lang">${c.lang === 'py' ? 'python' : c.lang === 'js' ? 'javascript' : 'postgresql'}</span><button type="button" class="nb-copy" data-copy>copy</button></div><pre class="nb-code"><code>${hl(c.code, c.lang)}</code></pre><div class="nb-out"><span class="nb-out-label">Out [${CELLS.indexOf(c) + 1}]</span>${out}</div></div>`;
+}
+
 const STATS = [
-  ['296', ['production tables', 'tabel produksi', 'productietabellen'], ['two schemas, one Postgres', 'dua schema, satu Postgres', 'twee schema’s, één Postgres']],
-  ['44k+', ['rows modelled', 'baris data dimodelkan', 'rijen gemodelleerd'], ['checksummed weekly', 'di-checksum tiap minggu', 'wekelijks gecontroleerd']],
-  ['600+', ['API routes', 'route API', 'API-routes'], ['each with an explicit access rule', 'masing-masing dengan aturan akses', 'elk met een expliciete toegangsregel']],
-  ['30+', ['scheduled jobs', 'job terjadwal', 'geplande jobs'], ['idempotent by design', 'idempoten sejak desain', 'idempotent door ontwerp']],
-  ['5', ['AI agents in production', 'agent AI di produksi', 'AI-agents in productie'], ['tutor, career, ops ×2, interviewer', 'tutor, karier, ops ×2, pewawancara', 'tutor, carrière, ops ×2, interviewer']],
-  ['3', ['products on one data platform', 'produk di satu platform data', 'producten op één dataplatform'], ['isolated by schema + storage prefix', 'diisolasi per schema + prefix storage', 'gescheiden per schema + opslagprefix']],
+  [296, '', ['production tables', 'tabel produksi', 'productietabellen'], ['two schemas · one Postgres', 'dua schema · satu Postgres', 'twee schema’s · één Postgres']],
+  [44, 'k+', ['rows modelled', 'baris dimodelkan', 'rijen gemodelleerd'], ['checksummed weekly', 'di-checksum tiap minggu', 'wekelijks gecontroleerd']],
+  [600, '+', ['API routes', 'route API', 'API-routes'], ['explicit access rule each', 'aturan akses tiap route', 'expliciete toegangsregel']],
+  [30, '+', ['scheduled jobs', 'job terjadwal', 'geplande jobs'], ['idempotent by design', 'idempoten sejak desain', 'idempotent door ontwerp']],
+  [5, '', ['AI agents live', 'agent AI live', 'AI-agents live'], ['tutor · career · ops ×2 · interviewer', 'tutor · karier · ops ×2 · pewawancara', 'tutor · carrière · ops ×2 · interviewer']],
+  [4, '', ['UI languages', 'bahasa UI', 'UI-talen'], ['EN · ID · NL · TR', 'EN · ID · NL · TR', 'EN · ID · NL · TR']],
 ];
 
-const LAYERS = [
-  [['Sources', 'Sumber', 'Bronnen'], ['Web & mobile apps', 'Payment webhooks', 'AI model providers', 'Public data crawlers', 'Email & calendar']],
-  [['Ingestion', 'Ingesti', 'Inname'], ['Typed API routes', 'Signed webhooks', 'Cron & queues', 'Signed-URL uploads', 'Trigger-fed events']],
-  [['Storage', 'Penyimpanan', 'Opslag'], ['Postgres, 2 schemas', 'Row-level security', 'Private buckets', 'Append-only logs', 'Weekly checksummed backups']],
-  [['Intelligence', 'Kecerdasan', 'Intelligentie'], ['Tool-using agents', 'Model routing', 'Scoring models', 'Pricing engine', 'Data-quality monitors']],
-  [['Consumption', 'Konsumsi', 'Gebruik'], ['Product UI (4 languages)', 'Monitoring dashboards', 'Reports & PDFs', 'Transactional email', 'Owner alerts']],
+// Pipeline: columns of nodes, every link animated (SMIL animateMotion; static lines without it).
+const PIPE = {
+  cols: [
+    ['Sources', 'Sumber', 'Bronnen', ['Web & mobile', 'Payments', 'AI providers', 'Crawlers']],
+    ['Ingestion', 'Ingesti', 'Inname', ['API routes', 'Webhooks', 'Cron & queues']],
+    ['Storage', 'Penyimpanan', 'Opslag', ['Postgres · public', 'Postgres · ms', 'Private buckets']],
+    ['Intelligence', 'Kecerdasan', 'Intelligentie', ['Agents', 'Scoring', 'Pricing']],
+    ['Consumption', 'Konsumsi', 'Gebruik', ['Product UI', 'Dashboards', 'Email & PDF']],
+  ],
+};
+function pipeline(T3) {
+  const W = 1100, H = 360, cw = W / PIPE.cols.length;
+  const pos = PIPE.cols.map((c, i) => c[3].map((_, j) => [cw * i + cw / 2, 90 + j * ((H - 120) / Math.max(1, c[3].length - 1 || 1)) * (c[3].length > 1 ? 1 : 0) + (c[3].length === 1 ? (H - 60) / 2 : 0)]));
+  const spread = (n, j) => (n === 1 ? H / 2 : 95 + j * ((H - 150) / (n - 1)));
+  PIPE.cols.forEach((c, i) => c[3].forEach((_, j) => { pos[i][j] = [cw * i + cw / 2, spread(c[3].length, j)]; }));
+  let links = '', k = 0;
+  for (let i = 0; i < PIPE.cols.length - 1; i++) {
+    pos[i].forEach((a, ai) => pos[i + 1].forEach((b, bi) => {
+      if ((ai + bi) % 2 && pos[i].length > 2 && pos[i + 1].length > 2) return; // keep it readable
+      const mx = (a[0] + b[0]) / 2;
+      const d = `M${a[0] + 70},${a[1]} C${mx},${a[1]} ${mx},${b[1]} ${b[0] - 70},${b[1]}`;
+      links += `<path class="pp-link" d="${d}"/><circle class="pp-dot" r="3"><animateMotion dur="${(2.4 + (k % 5) * 0.45).toFixed(2)}s" begin="-${((k * 0.37) % 3).toFixed(2)}s" repeatCount="indefinite" path="${d}"/></circle>`;
+      k++;
+    }));
+  }
+  const nodes = PIPE.cols.map((c, i) => `<text class="pp-col" x="${cw * i + cw / 2}" y="34" text-anchor="middle">${String(i + 1).padStart(2, '0')} · ${esc(T3([c[0], c[1], c[2]]))}</text>` + c[3].map((n, j) => {
+    const [x, y] = pos[i][j];
+    return `<g class="pp-node${i === 2 ? ' is-core' : ''}"><rect x="${x - 70}" y="${y - 17}" width="140" height="34" rx="17"/><text x="${x}" y="${y + 4}" text-anchor="middle">${esc(n)}</text></g>`;
+  }).join('')).join('');
+  return `<div class="dm-scroll"><svg class="pp" viewBox="0 0 ${W} ${H}" role="img" aria-label="Data platform pipeline">${links}${nodes}</svg></div>`;
+}
+
+// Career application state machine.
+function stateMachine(T3) {
+  const main = [['saved', 'saved'], ['ready', 'ready'], ['applied', 'applied'], ['assessment', 'assessment'], ['interview', 'interview'], ['offer', 'offer'], ['hired', 'hired']];
+  const W = 1100, y = 110, gap = (W - 120) / (main.length - 1);
+  const xs = main.map((_, i) => 60 + i * gap);
+  const path = `M${xs[0]},${y} H${xs[xs.length - 1]}`;
+  const nodes = main.map(([id], i) => `<g class="sm-node${i === 6 ? ' is-end' : ''}"><circle cx="${xs[i]}" cy="${y}" r="${i === 6 ? 15 : 12}"/><text x="${xs[i]}" y="${y - 28}" text-anchor="middle">${id}</text></g>`).join('');
+  const side = [['rejected', 4], ['withdrawn', 2], ['skipped', 0]];
+  const branches = side.map(([id, at]) => {
+    const x = 60 + at * gap, bx = x + 40;
+    return `<path class="sm-branch" d="M${x},${y + 12} C${x},${y + 70} ${bx},${y + 60} ${bx},${y + 110}"/><g class="sm-node is-term"><rect x="${bx - 48}" y="${y + 112}" width="96" height="26" rx="13"/><text x="${bx}" y="${y + 129}" text-anchor="middle">${id}</text></g>`;
+  }).join('');
+  const who = [[0.5, ['agent: build_package', 'agent: build_package', 'agent: build_package']], [2.5, ['human confirms', 'manusia konfirmasi', 'mens bevestigt']], [4.5, ['agent: interview prep', 'agent: persiapan wawancara', 'agent: interviewvoorbereiding']]];
+  const labels = who.map(([at, t]) => `<text class="sm-who" x="${60 + at * gap}" y="${y - 52}" text-anchor="middle">${esc(T3(t))}</text>`).join('');
+  return `<div class="dm-scroll"><svg class="sm" viewBox="0 0 ${W} 270" role="img" aria-label="Application state machine"><path class="sm-track" d="${path}"/><path class="sm-run" d="${path}"/>${branches}${nodes}${labels}<circle class="sm-token" r="6"><animateMotion dur="7s" repeatCount="indefinite" path="${path}"/></circle></svg></div>`;
+}
+
+// Real trace from the 21 Nov 2026 test run (costs measured, per model).
+const TRACE = [
+  ['T1', 'haiku-5.5', 'career_get_state → reply', 0.0044],
+  ['T2', 'haiku-5.5', 'get_state · save_jobs(risky, 70) · get_cv_review', 0.0027],
+  ['T3', 'haiku-5.5', 'build_package ✕ discarded → escalate', 0.0025],
+  ['T3', 'sonnet-5.5', 'build_package → CV.pdf (1 page) + CV.docx', 0.1103],
 ];
 
-const AGENT_STEPS = [
-  [['Intake', 'Intake', 'Intake'], ['Reads the CV, saves evidence, asks only what is missing', 'Membaca CV, menyimpan bukti, hanya menanyakan yang belum ada', 'Leest het cv, slaat bewijs op, vraagt alleen wat ontbreekt'], ['get_state', 'save_profile']],
-  [['Search', 'Cari', 'Zoeken'], ['Official job pages only, ≤ 3 days old, eligibility per ad', 'Hanya halaman lowongan resmi, ≤ 3 hari, kelayakan per iklan', 'Alleen officiële vacaturepagina’s, ≤ 3 dagen, geschiktheid per vacature'], ['web_search', 'web_fetch', 'save_jobs']],
-  [['Judge', 'Nilai', 'Beoordelen'], ['good / risky / skip with a one-line reason and a 0–100 fit', 'good / risky / skip dengan alasan satu kalimat dan skor 0–100', 'good / risky / skip met een reden van één regel en fit 0–100'], ['fit model', 'dedupe']],
-  [['Build', 'Susun', 'Bouwen'], ['Tailored ATS CV + letter, facts only from the evidence bank', 'CV ATS + surat yang disesuaikan, fakta hanya dari bank bukti', 'Op maat gemaakt ATS-cv + brief, feiten alleen uit de bewijsbank'], ['build_package', 'page check']],
-  [['Human submits', 'Manusia mengirim', 'Mens verstuurt'], ['The learner presses submit; the agent never logs in or sends', 'Pengguna yang menekan kirim; agent tidak pernah login atau mengirim', 'De leerling verstuurt; de agent logt nooit in en verstuurt niets'], ['apply kit']],
-  [['Track & learn', 'Lacak & belajar', 'Volgen & leren'], ['Stage changes only on confirmation; one lesson per rejection', 'Tahap hanya berubah setelah konfirmasi; satu pelajaran per penolakan', 'Fase wijzigt alleen na bevestiging; één les per afwijzing'], ['update_stage']],
+const RADAR = { ind: [['AI tools', 23], ['Editing', 23], ['Ideas & taste', 12], ['Content sense', 12], ['Communication', 8], ['Ownership', 8], ['Time mgmt', 6], ['Coachability', 8]], a: [8, 7, 9, 7, 8, 9, 6, 8], b: [7, 7, 8, 8, 7, 8, 7, 9] };
+function radar() {
+  const cx = 190, cy = 190, R = 140, n = RADAR.ind.length;
+  const pt = (i, v) => { const ang = -Math.PI / 2 + (i * 2 * Math.PI) / n; return [cx + Math.cos(ang) * R * (v / 10), cy + Math.sin(ang) * R * (v / 10)]; };
+  const rings = [2, 4, 6, 8, 10].map((v) => `<polygon class="rd-ring" points="${RADAR.ind.map((_, i) => pt(i, v).join(',')).join(' ')}"/>`).join('');
+  const axes = RADAR.ind.map(([name, w], i) => { const [x, y] = pt(i, 10); const [lx, ly] = pt(i, 12.2); return `<line class="rd-axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/><text class="rd-lab" x="${lx}" y="${ly}" text-anchor="middle">${esc(name)} <tspan class="rd-w">${w}</tspan></text>`; }).join('');
+  const poly = (vals, cls) => `<polygon class="${cls}" points="${vals.map((v, i) => pt(i, v).join(',')).join(' ')}"/>`;
+  const score = (v) => v.reduce((s, x, i) => s + x * RADAR.ind[i][1], 0) / 100;
+  return { svg: `<svg class="rd" viewBox="-40 -20 460 420" role="img" aria-label="Weighted interview scorecard">${rings}${axes}${poly(RADAR.a, 'rd-a')}${poly(RADAR.b, 'rd-b')}</svg>`, a: score(RADAR.a), b: score(RADAR.b) };
+}
+
+const MONITORS = [
+  ['discount-health', ['Discount & order reconciliation', 'Rekonsiliasi diskon & order', 'Afstemming kortingen & orders'], 'daily 07:15 WIB'],
+  ['reconcile-payments', ['Payment status vs provider', 'Status pembayaran vs penyedia', 'Betaalstatus vs provider'], 'daily 02:00 UTC'],
+  ['isolation-suite', ['Cross-tenant isolation tests', 'Uji isolasi antar tenant', 'Isolatietests tussen tenants'], 'every deploy'],
+  ['link-verifier', ['Every AI-cited link opened', 'Setiap link dari AI dibuka', 'Elke AI-link geopend'], 'every answer'],
+  ['interview-sweep', ['Abandoned sessions + 90-day deletion', 'Sesi terbengkalai + hapus 90 hari', 'Verlaten sessies + verwijdering na 90 dagen'], 'every 10 min'],
+  ['weekly-backup', ['Row counts + checksums per table', 'Jumlah baris + checksum per tabel', 'Rijtellingen + checksums per tabel'], 'weekly'],
 ];
 
-const ROUTES = [
-  ['Haiku', ['Conversation, intake, tracking', 'Percakapan, intake, pelacakan', 'Gesprek, intake, tracking'], '≈ $0.004', ['per turn', 'per giliran', 'per beurt'], 18],
-  ['Sonnet', ['Documents: CV, letter, master CV — auto-escalated when the agent calls a writing tool', 'Dokumen: CV, surat, CV utama — otomatis naik saat agent memanggil tool penulisan', 'Documenten: cv, brief, master-cv — automatisch opgeschaald bij een schrijftool'], '≈ $0.11', ['per package', 'per paket', 'per pakket'], 62],
-  ['Opus', ['Deep planning, long essays, thick documents (user-chosen)', 'Perencanaan mendalam, esai panjang, dokumen tebal (dipilih pengguna)', 'Diepe planning, lange essays, dikke documenten (door gebruiker gekozen)'], ['tiered', 'berjenjang', 'gestaffeld'], ['price floor + real cost', 'harga dasar + biaya nyata', 'minimumprijs + echte kosten'], 100],
-];
-
-const FORMULAS = [
-  {
-    title: ['Cost-plus credit pricing', 'Harga kredit cost-plus', 'Cost-plus kredietprijs'],
-    math: 'credits = ⌈ cost<sub>usd</sub> ÷ ( value<sub>credit</sub> × (1 − m) ) ⌉ ,&nbsp; m = 0.50',
-    text: ['Every model, resolution and duration is priced from its measured provider cost, so margin holds when providers change prices. A turn is charged max(tier floor, real cost).', 'Setiap model, resolusi, dan durasi diberi harga dari biaya penyedia yang terukur, jadi margin tetap saat penyedia mengubah harga. Satu giliran ditagih max(harga dasar, biaya nyata).', 'Elk model, elke resolutie en duur krijgt een prijs uit de gemeten providerkosten, zodat de marge blijft als providers prijzen wijzigen. Een beurt kost max(minimum, echte kosten).'],
-  },
-  {
-    title: ['Weighted interview score', 'Skor wawancara berbobot', 'Gewogen interviewscore'],
-    math: 'S<sub>r</sub> = Σ<sub>i=1..8</sub> w<sub>i</sub>·x<sub>i</sub> ÷ 100 ,&nbsp; Ŝ = mean(S<sub>r</sub>) ,&nbsp; flag ⇔ max S<sub>r</sub> − min S<sub>r</sub> ≥ 3.0',
-    text: ['Weights favour the craft skills of the role (23 + 23 of 100). Bands: ≥ 8.5 strongly recommend, ≥ 7.0 recommend, ≥ 5.5 neutral.', 'Bobot mengutamakan keahlian inti peran (23 + 23 dari 100). Kategori: ≥ 8,5 sangat direkomendasikan, ≥ 7,0 direkomendasikan, ≥ 5,5 netral.', 'Gewichten leggen nadruk op het vakmanschap van de rol (23 + 23 van 100). Banden: ≥ 8,5 sterk aanbevolen, ≥ 7,0 aanbevolen, ≥ 5,5 neutraal.'],
-  },
-  {
-    title: ['Unit economics of an AI add-on', 'Unit economics add-on AI', 'Unit economics van een AI-add-on'],
-    math: 'LTV = ARPU × gross margin × lifetime ,&nbsp; c<sub>break-even</sub> = cost<sub>free users</sub> ÷ ( LTV × N )',
-    text: ['The Career Agent business case: at a 54 % gross margin the add-on breaks even at ≈ 5.6 % conversion against a 4 % assumption, which is why conversation now runs on a ~50× cheaper model and only documents use the stronger one.', 'Business case Career Agent: dengan margin kotor 54 % add-on impas pada konversi ≈ 5,6 % dibanding asumsi 4 %, karena itu percakapan kini memakai model ±50× lebih murah dan hanya dokumen yang memakai model kuat.', 'De businesscase van de Career Agent: bij 54 % brutomarge is de add-on break-even bij ≈ 5,6 % conversie tegenover een aanname van 4 %, daarom loopt het gesprek nu via een ±50× goedkoper model en gebruiken alleen documenten het sterkere model.'],
-  },
-  {
-    title: ['Content performance model', 'Model performa konten', 'Contentprestatiemodel'],
-    math: 'lift = median(views | collab) ÷ median(views | solo) ≈ 52×',
-    text: ['109 Instagram posts classified by format, topic, era and partner from caption text, reproducible end to end. Collaborations outperformed solo posts by a median factor of about 52.', '109 postingan Instagram diklasifikasikan menurut format, topik, era, dan mitra dari teks caption, bisa diulang dari awal sampai akhir. Kolaborasi mengungguli postingan sendiri dengan median sekitar 52 kali.', '109 Instagramposts geclassificeerd op formaat, onderwerp, periode en partner uit de captiontekst, volledig reproduceerbaar. Samenwerkingen presteerden mediaan ongeveer 52× beter dan solo-posts.'],
-  },
-];
-
-const SAMPLE = [
-  ['app_7f3c…', 'Logistics scale-up', 'Data Analyst Intern', 'good', 86, 'interview', 'CV · Letter'],
-  ['app_19ae…', 'Fintech, Series B', 'BI & Automation Student', 'good', 81, 'applied', 'CV'],
-  ['app_c04d…', 'Retail group', 'Operations Analyst', 'risky', 64, 'ready', 'CV · Letter'],
-  ['app_5b21…', 'Energy utility', 'AI Product Intern', 'risky', 58, 'saved', '—'],
-  ['app_e8a0…', 'Consumer brand', 'Brand Marketing Intern', 'skip', 31, 'skipped', '—'],
-];
-
-const GOVERNANCE = [
-  [['Isolation by design', 'Isolasi sejak desain', 'Isolatie door ontwerp'], ['Two products share one database; separation lives in schema, storage prefix and a scoped client, verified by an automated isolation suite.', 'Dua produk berbagi satu database; pemisahan ada di schema, prefix storage, dan client yang dikunci, diverifikasi oleh suite isolasi otomatis.', 'Twee producten delen één database; scheiding zit in schema, opslagprefix en een afgeschermde client, gecontroleerd door een automatische isolatietest.']],
-  [['Least privilege', 'Hak akses minimum', 'Minimale rechten'], ['Row-level security on every table, public roles revoked by default, sensitive files in private buckets behind short-lived signed links.', 'Row-level security di setiap tabel, peran publik dicabut secara default, file sensitif di bucket privat dengan link bertanda tangan berumur pendek.', 'Row-level security op elke tabel, publieke rollen standaard ingetrokken, gevoelige bestanden in privébuckets achter kortlevende ondertekende links.']],
-  [['Exactly-once money', 'Uang tepat sekali', 'Geld precies één keer'], ['Compare-and-swap status updates, unique keys per order and claim-before-send rows make webhooks, crons and retries safe to repeat.', 'Update status compare-and-swap, kunci unik per order, dan klaim sebelum kirim membuat webhook, cron, dan percobaan ulang aman diulang.', 'Compare-and-swap-statusupdates, unieke sleutels per order en claim-voor-verzenden maken webhooks, crons en retries veilig herhaalbaar.']],
-  [['Time is a data type', 'Waktu adalah tipe data', 'Tijd is een datatype'], ['Business dates in the market’s time zone (WIB), periods closed at 23:59 local, never inferred from UTC.', 'Tanggal bisnis dalam zona waktu pasar (WIB), periode ditutup pukul 23.59 lokal, tidak pernah ditebak dari UTC.', 'Bedrijfsdatums in de tijdzone van de markt (WIB), periodes sluiten om 23:59 lokaal, nooit afgeleid uit UTC.']],
-  [['Monitored quality', 'Kualitas terpantau', 'Bewaakte kwaliteit'], ['Daily health checks reconcile discounts, usage counters and orders; every outbound link in an AI answer is opened before it is kept.', 'Cek harian mencocokkan diskon, penghitung pemakaian, dan order; setiap link di jawaban AI dibuka dulu sebelum disimpan.', 'Dagelijkse controles stemmen kortingen, gebruikstellers en orders af; elke link in een AI-antwoord wordt geopend voordat hij blijft staan.']],
-  [['Recoverable', 'Bisa dipulihkan', 'Herstelbaar'], ['Weekly numbered backups with per-table row counts and checksums, plus lossless storage compression verified pixel by pixel.', 'Backup mingguan bernomor dengan jumlah baris dan checksum per tabel, plus kompresi storage lossless yang diverifikasi piksel demi piksel.', 'Wekelijkse genummerde back-ups met rijtellingen en checksums per tabel, plus verliesvrije compressie die pixel voor pixel wordt gecontroleerd.']],
-];
-
-const TOOLKIT = [
-  [['Data modeling', 'Pemodelan data', 'Datamodellering'], ['Relational & ER design', 'Event sourcing / append-only logs', 'JSONB document modeling', 'State machines', 'Multi-tenant schema isolation']],
-  [['Engineering', 'Rekayasa', 'Engineering'], ['PostgreSQL / SQL', 'Supabase (RLS, RPC, triggers)', 'Node.js & Next.js APIs', 'Python (pandas, NumPy, OpenCV)', 'Webhooks, crons, queues']],
-  [['AI systems', 'Sistem AI', 'AI-systemen'], ['Tool-using agents', 'Model routing & cost control', 'Prompt caching', 'Speech pipelines (STT → LLM → TTS)', 'Evaluation & guardrails']],
-  [['Analytics', 'Analitik', 'Analytics'], ['Power BI', 'Google Analytics', 'Unit economics & pricing', 'fsQCA (research)', 'Survey & experiment design']],
+const KIT = [
+  [['Modeling', 'Pemodelan', 'Modellering'], ['Relational / ER', 'Event sourcing', 'JSONB documents', 'State machines', 'Multi-tenant isolation', 'Star schemas for BI']],
+  [['Engineering', 'Rekayasa', 'Engineering'], ['PostgreSQL', 'Supabase · RLS · RPC', 'Node.js · Next.js', 'Python · pandas · NumPy', 'Webhooks · queues · cron']],
+  [['AI systems', 'Sistem AI', 'AI-systemen'], ['Tool-using agents', 'Model routing', 'Prompt caching', 'STT → LLM → TTS', 'Evals & guardrails']],
+  [['Analytics', 'Analitik', 'Analytics'], ['Power BI', 'Cohorts & funnels', 'Unit economics', 'fsQCA', 'Experiment design']],
 ];
 
 export function dataModeling({ L, link }) {
   const T3 = (a) => L(a[0], a[1], a[2]);
-  const stat = STATS.map(([n, k, s], i) => `<div class="dm-stat reveal" style="--i:${i}"><strong>${n}</strong><span>${T3(k)}</span><small>${T3(s)}</small></div>`).join('');
-  const layers = LAYERS.map(([name, items], i) => `<div class="dm-layer reveal" style="--i:${i}"><span class="dm-layer-no">0${i + 1}</span><h3>${T3(name)}</h3><ul>${items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('<i class="dm-arrow" aria-hidden="true">→</i>');
-  const models = MODELS.map((m, i) => `<article class="dm-model reveal" id="model-${m.id}"><div class="dm-model-copy"><span class="dm-kicker">${String(i + 1).padStart(2, '0')} · ${esc(m.kicker)}</span><h3>${T3(m.title)}</h3><p>${esc(T3(m.text))}</p><dl class="dm-facts">${m.facts.map(([n, t]) => `<div><dt>${esc(n)}</dt><dd>${esc(T3(t))}</dd></div>`).join('')}</dl></div>${er(m.svg)}</article>`).join('');
-  const steps = AGENT_STEPS.map(([n, t, tools], i) => `<li class="dm-step reveal" style="--i:${i}"><span class="dm-step-no">${i + 1}</span><h4>${T3(n)}</h4><p>${esc(T3(t))}</p><div class="dm-tools">${tools.map((x) => `<code>${esc(x)}</code>`).join('')}</div></li>`).join('');
-  const routes = ROUTES.map(([m, use, cost, unit, bar]) => `<div class="dm-route"><div class="dm-route-model">${m}</div><div class="dm-route-use">${esc(T3(use))}</div><div class="dm-route-cost"><strong>${typeof cost === 'string' ? cost : T3(cost)}</strong><small>${T3(unit)}</small></div><div class="dm-route-bar" aria-hidden="true"><i style="width:${bar}%"></i></div></div>`).join('');
-  const formulas = FORMULAS.map((f, i) => `<article class="dm-formula reveal" style="--i:${i}"><span class="dm-kicker">${String(i + 1).padStart(2, '0')}</span><h3>${T3(f.title)}</h3><p class="dm-math">${f.math}</p><p>${esc(T3(f.text))}</p></article>`).join('');
-  const sampleHead = [L('ID', 'ID', 'ID'), L('Employer (generalised)', 'Pemberi kerja (digeneralisasi)', 'Werkgever (gegeneraliseerd)'), L('Role', 'Peran', 'Rol'), L('Fit', 'Kecocokan', 'Fit'), L('Score', 'Skor', 'Score'), L('Stage', 'Tahap', 'Fase'), L('Documents', 'Dokumen', 'Documenten')];
-  const sample = `<div class="dm-scroll"><table class="dm-table"><thead><tr>${sampleHead.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>${SAMPLE.map((r) => `<tr><td><code>${r[0]}</code></td><td>${r[1]}</td><td>${r[2]}</td><td><span class="dm-pill dm-${r[3]}">${r[3]}</span></td><td><span class="dm-score"><i style="width:${r[4]}%"></i></span>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td></tr>`).join('')}</tbody></table></div>`;
-  const gov = GOVERNANCE.map(([t, d], i) => `<div class="dm-gov reveal" style="--i:${i}"><span>${String(i + 1).padStart(2, '0')}</span><h3>${T3(t)}</h3><p>${esc(T3(d))}</p></div>`).join('');
-  const kit = TOOLKIT.map(([t, items]) => `<div class="dm-kit"><h3>${T3(t)}</h3><ul>${items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
-  const head = (no, title) => `<div class="section-head reveal"><h2><span class="dm-sec-no">${no}</span>${title}</h2><span class="section-rule"></span></div>`;
+  const head = (no, title, sub = '', dark = false) => `<div class="dm-head${dark ? ' is-dark' : ''} reveal"><span class="dm-head-no">${no}</span><h2>${title}</h2>${sub ? `<p>${sub}</p>` : ''}</div>`;
 
-  return `<section class="blue-paper-banner dm-banner"><div class="paper-planes" aria-hidden="true"><i></i><i></i><i></i></div><h1>${L('Data,<br>modelled.', 'Data,<br>dimodelkan.', 'Data,<br>gemodelleerd.')}</h1><i class="red-line"></i><p class="eyebrow">SCHEMAS.<br>AGENTS.<br>METRICS THAT<br>HOLD UP.</p></section>
-<section class="section dm-intro"><p class="dm-lede reveal">${L('I design the data layer behind three live products, from the first entity diagram to the agents that read and write it. Below are the real structures of those systems, with field names simplified and every value synthetic or aggregated.', 'Saya merancang lapisan data di balik tiga produk yang sudah live, dari diagram entitas pertama sampai agent yang membaca dan menulisnya. Di bawah ini struktur asli sistem-sistem itu, dengan nama kolom disederhanakan dan semua nilai berupa data sintetis atau agregat.', 'Ik ontwerp de datalaag achter drie live producten, van het eerste entiteitendiagram tot de agents die ermee lezen en schrijven. Hieronder staan de echte structuren van die systemen, met vereenvoudigde veldnamen en alle waarden synthetisch of geaggregeerd.')}</p><div class="dm-stats">${stat}</div><p class="dm-privacy">${L('Privacy note: no personal data, order, amount or identifier from production is shown on this page.', 'Catatan privasi: tidak ada data pribadi, order, nominal, atau ID dari produksi yang ditampilkan di halaman ini.', 'Privacy: op deze pagina staat geen persoonsgegeven, order, bedrag of identificatie uit productie.')}</p></section>
-<section class="section dm-arch">${head('01', L('Platform architecture', 'Arsitektur platform', 'Platformarchitectuur'))}<div class="dm-layers">${layers}</div></section>
-<section class="section">${head('02', L('Entity models', 'Model entitas', 'Entiteitsmodellen'))}<p class="dm-legend"><span><b class="k-pk">PK</b> ${L('primary key', 'kunci utama', 'primaire sleutel')}</span><span><b class="k-fk">FK</b> ${L('foreign key', 'kunci asing', 'vreemde sleutel')}</span><span><b class="k-uq">UQ</b> ${L('unique', 'unik', 'uniek')}</span><span>⟞ ${L('one', 'satu', 'één')} · ⋲ ${L('many', 'banyak', 'veel')}</span></p>${models}<p class="dm-swipe">${L('Swipe the diagrams sideways on a phone.', 'Geser diagram ke samping di HP.', 'Veeg de diagrammen opzij op een telefoon.')}</p></section>
-<section class="section dm-agent">${head('03', L('Modelling an agent', 'Memodelkan sebuah agent', 'Een agent modelleren'))}<p class="dm-sub reveal">${L('Career Agent, live in Ask Matchi: a tool-using model that turns a CV into tracked applications. The model decides; the data model and the tools enforce the rules.', 'Career Agent, live di Ask Matchi: model yang memakai tool untuk mengubah CV menjadi lamaran yang terlacak. Model yang memutuskan; model data dan tool yang menegakkan aturan.', 'Career Agent, live in Ask Matchi: een model met tools dat een cv omzet in gevolgde sollicitaties. Het model beslist; het datamodel en de tools handhaven de regels.')}</p><ol class="dm-steps">${steps}</ol><div class="dm-routing reveal"><div class="dm-routing-head"><h3>${L('Model routing by task', 'Routing model per tugas', 'Modelroutering per taak')}</h3><p>${L('A turn starts on the cheapest capable model. When the agent calls a document-writing tool, that round is discarded and replayed on a stronger model, so documents are never written by the small one. Costs are logged per model.', 'Satu giliran mulai di model termurah yang mampu. Saat agent memanggil tool penulisan dokumen, ronde itu dibuang dan diulang di model yang lebih kuat, jadi dokumen tidak pernah ditulis model kecil. Biaya dicatat per model.', 'Een beurt start op het goedkoopste geschikte model. Roept de agent een schrijftool aan, dan wordt die ronde verworpen en op een sterker model herhaald, zodat documenten nooit door het kleine model worden geschreven. Kosten worden per model gelogd.')}</p></div>${routes}</div><ul class="dm-guards reveal">${[L('Truth rule: claims only from the evidence bank', 'Aturan kebenaran: klaim hanya dari bank bukti', 'Waarheidsregel: claims alleen uit de bewijsbank'), L('One company, one application (enforced on save)', 'Satu perusahaan, satu lamaran (dipaksa saat simpan)', 'Eén bedrijf, één sollicitatie (afgedwongen bij opslaan)'), L('Human-in-the-loop for submitting and stage changes', 'Manusia tetap memegang kirim dan perubahan tahap', 'Mens beslist over versturen en fasewijzigingen'), L('Per-turn budget caps and rate limits', 'Batas biaya per giliran dan pembatas laju', 'Budgetlimieten per beurt en rate limits')].map((x) => `<li>${x}</li>`).join('')}</ul></section>
-<section class="section">${head('04', L('Analytical models', 'Model analitik', 'Analytische modellen'))}<div class="dm-formulas">${formulas}</div></section>
-<section class="section">${head('05', L('Sample output, anonymised', 'Contoh hasil, disamarkan', 'Voorbeelduitvoer, geanonimiseerd'))}<p class="dm-sub reveal">${L('What the tracker model produces. Rows are synthetic; employers are generalised to their sector.', 'Yang dihasilkan model tracker. Baris ini sintetis; pemberi kerja digeneralisasi ke sektornya.', 'Wat het trackermodel oplevert. Rijen zijn synthetisch; werkgevers zijn gegeneraliseerd naar hun sector.')}</p>${sample}</section>
-<section class="section">${head('06', L('Data quality & governance', 'Kualitas & tata kelola data', 'Datakwaliteit & governance'))}<div class="dm-govs">${gov}</div></section>
-<section class="section">${head('07', L('Toolkit', 'Perangkat', 'Gereedschap'))}<div class="dm-kits">${kit}</div><div class="dm-cta">${link('work', L('See the live products', 'Lihat produk live', 'Bekijk de live producten'))}${link('contact', L('Talk about a data role', 'Bicara soal peran data', 'Praat over een datarol'))}</div></section>`;
+  // hero graph data: every entity of every model becomes a node, relations become edges
+  const graph = { nodes: [], edges: [] };
+  MODELS.forEach((m, gi) => {
+    m.svg.entities.forEach((e) => graph.nodes.push({ id: `${m.id}.${e.id}`, label: e.name, g: gi, hub: !!e.accent }));
+    m.svg.rels.forEach(([a, , b]) => graph.edges.push([`${m.id}.${a}`, `${m.id}.${b}`]));
+  });
+  graph.edges.push(['learning.l', 'career.l'], ['learning.l', 'hiring.a'], ['generation.u', 'learning.l'], ['career.a', 'hiring.a']);
+
+  const stats = STATS.map(([n, suf, k, s], i) => `<div class="dm-stat" style="--i:${i}"><strong><span data-count="${n}">${n}</span>${suf}</strong><span>${T3(k)}</span><small>${T3(s)}</small></div>`).join('');
+
+  const tabs = MODELS.map((m, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-model="${m.id}"><small>${String(i + 1).padStart(2, '0')}</small>${T3(m.title)}</button>`).join('');
+  const panes = MODELS.map((m, i) => `<div class="dm-pane" role="tabpanel" data-pane="${m.id}" ${i ? 'data-hidden' : ''}><div class="dm-pane-copy"><span class="dm-kicker">${esc(m.kicker)}</span><h3>${T3(m.title)}</h3><p>${esc(T3(m.text))}</p><dl class="dm-facts">${m.facts.map(([n, t]) => `<div><dt>${esc(n)}</dt><dd>${esc(T3(t))}</dd></div>`).join('')}</dl><p class="dm-hint">${L('Hover or tap a table to trace its relations.', 'Arahkan atau ketuk tabel untuk melihat relasinya.', 'Wijs of tik een tabel aan om de relaties te volgen.')}</p></div>${er(m.svg)}</div>`).join('');
+
+  const maxCost = Math.max(...TRACE.map((t) => t[3]));
+  const trace = TRACE.map(([turn, model, what, cost], i) => `<div class="tr-row${model.startsWith('sonnet') ? ' is-strong' : ''}${what.includes('✕') ? ' is-void' : ''}" style="--i:${i}"><span class="tr-turn">${turn}</span><span class="tr-model">${model}</span><span class="tr-what">${esc(what)}</span><span class="tr-bar"><i style="--w:${Math.max(2, (cost / maxCost) * 100).toFixed(1)}%"></i></span><span class="tr-cost">$${cost.toFixed(4)}</span></div>`).join('');
+
+  const rd = radar();
+  const cellTabs = CELLS.map((c, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-cell-tab="${c.id}"><span class="nb-tab-lang">${c.lang === 'py' ? 'py' : c.lang === 'js' ? 'js' : 'sql'}</span>${T3(c.title)}</button>`).join('');
+  const cells = CELLS.map((c, i) => `<div class="nb-pane" data-cell-pane="${c.id}" ${i ? 'data-hidden' : ''}><p class="nb-note">${esc(T3(c.note))}</p>${cellHtml(c, T3)}</div>`).join('');
+
+  const monitors = MONITORS.map(([id, t, when], i) => `<div class="mon" style="--i:${i}"><span class="mon-dot"></span><div><code>${id}</code><p>${T3(t)}</p></div><span class="mon-when">${when}</span><span class="mon-spark" aria-hidden="true">${Array.from({ length: 18 }, (_, k) => `<i style="--h:${(30 + ((k * 37 + i * 11) % 60)).toFixed(0)}%"></i>`).join('')}</span></div>`).join('');
+
+  const kit = KIT.map(([t, items]) => `<div class="kit"><h3>${T3(t)}</h3>${items.map((x) => `<span>${esc(x)}</span>`).join('')}</div>`).join('');
+
+  return `<section class="dm-hero" data-graph='${JSON.stringify(graph).replaceAll("'", '&#39;')}'>
+  <canvas class="dm-graph" aria-hidden="true"></canvas>
+  <div class="dm-hero-in">
+    <p class="dm-eyebrow"><span class="dm-live"></span>${L('Data modeling · AI systems · Analytics', 'Data modeling · Sistem AI · Analitik', 'Datamodellering · AI-systemen · Analytics')}</p>
+    <h1>${L('Data,<br><em>modelled.</em>', 'Data,<br><em>dimodelkan.</em>', 'Data,<br><em>gemodelleerd.</em>')}</h1>
+    <p class="dm-hero-sub">${L('From the first entity diagram to the agents that read and write it. Three live products, one data platform, designed and run end to end.', 'Dari diagram entitas pertama sampai agent yang membaca dan menulisnya. Tiga produk live, satu platform data, dirancang dan dijalankan dari ujung ke ujung.', 'Van het eerste entiteitendiagram tot de agents die ermee werken. Drie live producten, één dataplatform, van begin tot eind ontworpen en beheerd.')}</p>
+    <pre class="dm-term" aria-label="terminal"><span class="p">$</span> psql -c "select count(*) from information_schema.tables where table_schema in ('public','ms')"
+<span class="o"> count</span>
+<span class="o">-------</span>
+<span class="o">   296</span>
+<span class="p">$</span> <span class="cur"></span></pre>
+  </div>
+  <div class="dm-stats">${stats}</div>
+</section>
+<section class="section dm-sec">${head('01', L('System map', 'Peta sistem', 'Systeemkaart'), L('Every product writes into the same governed platform; each arrow below is a real path data takes in production.', 'Setiap produk menulis ke platform yang sama dan terkelola; setiap panah di bawah adalah jalur nyata data di produksi.', 'Elk product schrijft naar hetzelfde beheerde platform; elke pijl hieronder is een echt pad dat data in productie aflegt.'))}${pipeline(T3)}<p class="dm-swipe">${L('Swipe sideways to see the full diagram.', 'Geser ke samping untuk melihat diagram lengkap.', 'Veeg opzij voor het volledige diagram.')}</p></section>
+<section class="section dm-sec dm-dark">${head('02', L('Entity model explorer', 'Penjelajah model entitas', 'Entiteitsmodel-verkenner'), L('Four production models. Field names simplified, values never shown.', 'Empat model produksi. Nama kolom disederhanakan, nilai tidak pernah ditampilkan.', 'Vier productiemodellen. Veldnamen vereenvoudigd, waarden nooit getoond.'), true)}<div class="dm-tabs" role="tablist">${tabs}</div>${panes}</section>
+<section class="section dm-sec">${head('03', L('Modelling an agent', 'Memodelkan agent', 'Een agent modelleren'), L('Career Agent, live in Ask Matchi. The model decides; the data model and the tools enforce the rules.', 'Career Agent, live di Ask Matchi. Model yang memutuskan; model data dan tool yang menegakkan aturan.', 'Career Agent, live in Ask Matchi. Het model beslist; het datamodel en de tools handhaven de regels.'))}
+  <h3 class="dm-h3">${L('Application lifecycle', 'Siklus lamaran', 'Levenscyclus van een sollicitatie')}</h3>${stateMachine(T3)}
+  <div class="dm-trace reveal"><div class="dm-trace-head"><h3 class="dm-h3">${L('Real trace · model routing', 'Trace asli · routing model', 'Echte trace · modelroutering')}</h3><p>${L('Measured test run, 21 Nov 2026. Chat runs on the small model; when it reaches for a document tool, that round is replayed on the strong one.', 'Uji terukur, 21 Nov 2026. Percakapan memakai model kecil; saat ia meraih tool dokumen, ronde itu diulang di model kuat.', 'Gemeten testrun, 21 nov 2026. Gesprekken lopen op het kleine model; grijpt het naar een documenttool, dan wordt die ronde op het sterke model herhaald.')}</p></div>${trace}<div class="tr-total"><span>${L('Total', 'Total', 'Totaal')}</span><strong>$0.120</strong><span>${L('chat ≈ 50× cheaper than before', 'percakapan ≈ 50× lebih murah dari sebelumnya', 'gesprek ≈ 50× goedkoper dan voorheen')}</span></div></div>
+</section>
+<section class="section dm-sec dm-dark dm-code">${head('04', L('Code, with anonymised output', 'Kode, dengan hasil yang disamarkan', 'Code, met geanonimiseerde uitvoer'), L('Patterns from production, simplified. Every output value is synthetic or rescaled.', 'Pola dari produksi, disederhanakan. Setiap nilai hasil bersifat sintetis atau diskalakan.', 'Patronen uit productie, vereenvoudigd. Elke uitvoerwaarde is synthetisch of geschaald.'), true)}<div class="nb-tabs" role="tablist">${cellTabs}</div>${cells}</section>
+<section class="section dm-sec">${head('05', L('Analytical models you can move', 'Model analitik yang bisa Anda geser', 'Analytische modellen om mee te spelen'))}
+  <div class="dm-sims">
+    <div class="sim reveal" data-sim="price"><h3>${L('Cost-plus pricing engine', 'Mesin harga cost-plus', 'Cost-plus prijsmotor')}</h3><p class="sim-f">credits = ⌈ cost ÷ ( value × (1 − m) ) ⌉</p>
+      <label>${L('Provider cost per call', 'Biaya penyedia per panggilan', 'Providerkosten per aanroep')} <output data-o="cost">$0.110</output><input type="range" min="0" max="100" value="62" data-i="cost"></label>
+      <label>${L('Target margin', 'Target margin', 'Doelmarge')} <output data-o="m">50%</output><input type="range" min="20" max="80" value="50" data-i="m"></label>
+      <div class="sim-res"><div><small>${L('Credits charged', 'Kredit ditagih', 'Gerekende credits')}</small><strong data-o="credits">35</strong></div><div><small>${L('Revenue', 'Pendapatan', 'Omzet')}</small><strong data-o="rev">$0.22</strong></div><div><small>${L('Gross profit', 'Laba kotor', 'Brutowinst')}</small><strong data-o="gp">$0.11</strong></div></div>
+      <div class="sim-bar"><i data-o="costbar"></i><i data-o="gpbar"></i></div></div>
+    <div class="sim reveal" data-sim="be"><h3>${L('Break-even simulator', 'Simulator titik impas', 'Break-evensimulator')}</h3><p class="sim-f">c* = ( F ÷ N + f ) ÷ ( p − a + f )</p>
+      <label>${L('Monthly active users', 'Pengguna aktif bulanan', 'Maandelijks actieve gebruikers')} <output data-o="n">5 000</output><input type="range" min="500" max="50000" step="500" value="5000" data-i="n"></label>
+      <label>${L('Paid conversion', 'Konversi berbayar', 'Betaalde conversie')} <output data-o="c">4.0%</output><input type="range" min="0" max="120" value="40" data-i="c"></label>
+      <svg class="sim-chart" viewBox="0 0 400 170" preserveAspectRatio="none" aria-hidden="true"><line class="sc-zero" x1="0" x2="400"/><path class="sc-line"/><line class="sc-be" y1="0" y2="170"/><circle class="sc-dot" r="5"/></svg>
+      <div class="sim-res"><div><small>${L('Break-even', 'Titik impas', 'Break-even')}</small><strong data-o="be">—</strong></div><div><small>${L('Monthly result', 'Hasil per bulan', 'Maandresultaat')}</small><strong data-o="pl">—</strong></div></div>
+      <p class="sim-note">${L('Illustrative inputs: price 43, AI cost 20 per paid user, 1.07 per free user, fixed 3 500 (thousands, per month).', 'Input ilustratif: harga 43, biaya AI 20 per pengguna berbayar, 1,07 per pengguna gratis, biaya tetap 3.500 (ribuan, per bulan).', 'Illustratieve invoer: prijs 43, AI-kosten 20 per betalende gebruiker, 1,07 per gratis gebruiker, vaste kosten 3 500 (duizenden, per maand).')}</p></div>
+    <div class="sim reveal"><h3>${L('Weighted scorecard', 'Kartu skor berbobot', 'Gewogen scorekaart')}</h3><p class="sim-f">S = Σ wᵢxᵢ ÷ 100 · flag ⇔ ΔS ≥ 3.0</p>${rd.svg}<div class="sim-res"><div><small>${L('Reviewer A', 'Penilai A', 'Beoordelaar A')}</small><strong class="c-a">${rd.a.toFixed(2)}</strong></div><div><small>${L('Reviewer B', 'Penilai B', 'Beoordelaar B')}</small><strong class="c-b">${rd.b.toFixed(2)}</strong></div><div><small>${L('Composite', 'Gabungan', 'Samengesteld')}</small><strong>${((rd.a + rd.b) / 2).toFixed(2)}</strong></div></div><p class="sim-note">${L('Synthetic reviewers. Verdict bands are computed, never typed: ≥ 8.5 strong, ≥ 7.0 recommend.', 'Penilai sintetis. Kategori dihitung, tidak pernah diketik: ≥ 8,5 sangat, ≥ 7,0 direkomendasikan.', 'Synthetische beoordelaars. Oordelen worden berekend, nooit getypt: ≥ 8,5 sterk, ≥ 7,0 aanbevolen.')}</p></div>
+  </div>
+</section>
+<section class="section dm-sec dm-dark">${head('06', L('Data quality, monitored', 'Kualitas data, terpantau', 'Datakwaliteit, bewaakt'), L('Checks that run in production without anyone remembering to run them.', 'Pemeriksaan yang berjalan di produksi tanpa perlu ada yang ingat menjalankannya.', 'Controles die in productie draaien zonder dat iemand eraan hoeft te denken.'), true)}<div class="mons">${monitors}</div>
+  <div class="dm-rules">${[[L('Row-level security', 'Row-level security', 'Row-level security'), L('on every table, public roles revoked', 'di setiap tabel, peran publik dicabut', 'op elke tabel, publieke rollen ingetrokken')], [L('Exactly-once money', 'Uang tepat sekali', 'Geld precies één keer'), L('compare-and-swap + unique keys', 'compare-and-swap + kunci unik', 'compare-and-swap + unieke sleutels')], [L('Time as a type', 'Waktu sebagai tipe', 'Tijd als type'), L('market time zone, periods close 23:59', 'zona waktu pasar, periode tutup 23.59', 'tijdzone van de markt, periodes sluiten 23:59')], [L('Lossless by proof', 'Lossless terbukti', 'Verliesvrij aantoonbaar'), L('pixel-compared before replacing a file', 'dibandingkan per piksel sebelum mengganti file', 'pixel voor pixel vergeleken vóór vervanging')]].map(([a, b]) => `<div><strong>${a}</strong><span>${b}</span></div>`).join('')}</div>
+</section>
+<section class="section dm-sec">${head('07', L('Toolkit', 'Perangkat', 'Gereedschap'))}<div class="kits">${kit}</div><div class="dm-cta">${link('work', L('See the live products', 'Lihat produk live', 'Bekijk de live producten'))}${link('contact', L('Talk about a data role', 'Bicara soal peran data', 'Praat over een datarol'))}${link('documents/cv', L('Download CV', 'Unduh CV', 'Download cv'))}</div><p class="dm-privacy">${L('Privacy: no personal data, order, amount or identifier from production appears on this page.', 'Privasi: tidak ada data pribadi, order, nominal, atau ID dari produksi di halaman ini.', 'Privacy: op deze pagina staat geen persoonsgegeven, order, bedrag of identificatie uit productie.')}</p></section>`;
 }
