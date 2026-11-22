@@ -502,3 +502,11 @@ produk itu sebagai bukti kerja — tidak pernah mengubah kode di repo-repo terse
 - Foto kampus + cover riset = foto asli (Wikimedia Commons, kredit di `.photo-credit`; Swadharma dari swadharma.ac.id).
 - Creative: 10 video promo terbaik (sumber master di repo website CAP/matchupskills, encode 720p CRF 24) masuk `content.json`
   dengan `title` + `featured:true` → tampil pertama di arsip (`SHOW_ORDER`), URL lama tetap. Total 139 karya, 513 halaman.
+
+## Revisi 22 Nov 2026 (lanjutan) — halaman "di balik layar" tiap AI agent
+- `tools/agents.mjs` = 5 halaman `/data-modeling/<slug>` (ask-matchi, career-agent, ai-interviewer, aria, market-desk) × 3 bahasa → 528 halaman.
+  Isi: alasan dibuat, alur satu permintaan yang bisa diklik/diputar (SVG + langkah + kode), tabel alat, 2 potongan kode, data + pengaman, angka + grafik.
+- Aturan pemilik: tunjukkan semua di balik layar yang AMAN. Nama tabel, endpoint, nama header/env, project ref, batas laju persis TIDAK boleh asli di snippet.
+  Data pribadi/angka internal boleh disintesis tanpa keterangan "synthetic".
+- Kasus A diganti "Should I trust the market desk's trend signal?" (cara membaca grafik + kesimpulan), kasus C "biaya AI per pelajar + harga aman terendah" (USD + Rp, kurs 17.900).
+- Pemeriksaan data: strip 4 langkah + tiap kartu bisa dibuka (cara kerja, contoh nyata, kode). JS agent page = IIFE kedua di `assets/data-modeling.js`.
