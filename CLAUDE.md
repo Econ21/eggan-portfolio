@@ -489,3 +489,16 @@ Repo CAP (`~/Desktop/website CAP`), MatchupSkills (`~/Desktop/matchupskills`), m
 (`~/Desktop/ms-admin`), Lumbung Jakut (`~/Desktop/lumbung-jakut`) adalah bisnis nyata terpisah
 dengan `CLAUDE.md` masing-masing. Portofolio ini cuma MENAMPILKAN screenshot publik dari produk-
 produk itu sebagai bukti kerja — tidak pernah mengubah kode di repo-repo tersebut.
+
+## Revisi 22 Nov 2026 (commit 7bdb8b4) — Data v3, teks, foto asli, video
+- **Aturan pemilik (Data):** jangan pernah menulis "simplified", "synthetic", "rescaled" di halaman. Angka yang bisa membuka data
+  pribadi dibuat/diagregasi diam-diam di `tools/data-modeling.mjs`. Warna: palet tinta tenang (`--lab:#111416`, aksen biru `#9bb6ff`
+  + coral `#ff7a5c`), tanpa gradient neon/glow (pemilik: "AI slop").
+- Bagian Data: 03 AI agents in production (+ siklus lamaran + "One request, step by step"), 04 notebook 8 sel (tambah market desk
+  backtest, interview ranking SQL, ARIA guardrails), 05 "Analyses I run" = 4 studi kasus interaktif (`assets/data-modeling.js`:
+  desk/funnel/cost/score), 06 pemeriksaan data yang bisa dijalankan + "Break something first".
+- Teks: slogan samar diganti kalimat jelas (pemilik tidak suka "Research for what's next", "People make it matter", "Ideas into
+  impact"). Tulis judul yang langsung bilang isinya.
+- Foto kampus + cover riset = foto asli (Wikimedia Commons, kredit di `.photo-credit`; Swadharma dari swadharma.ac.id).
+- Creative: 10 video promo terbaik (sumber master di repo website CAP/matchupskills, encode 720p CRF 24) masuk `content.json`
+  dengan `title` + `featured:true` → tampil pertama di arsip (`SHOW_ORDER`), URL lama tetap. Total 139 karya, 513 halaman.
