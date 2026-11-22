@@ -1802,6 +1802,126 @@
       "file": "/assets/showcase-archive/f6df2a52efa9-bastem-profile-fin-154b9e.mp4",
       "poster": "/assets/showcase-archive/1a91cddc0f78-bastem-profile-fin-7d97a7.jpg",
       "ratio": "16:9"
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-posters-and-video-ads.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-posters-and-video-ads.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · Posters & video ads for every brand",
+        "id": "CAP · Poster & iklan video untuk setiap brand",
+        "nl": "CAP · Posters & videoads voor elk merk"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-less-noise-more-craft.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-less-noise-more-craft.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · Less noise. More craft.",
+        "id": "CAP · Less noise. More craft.",
+        "nl": "CAP · Less noise. More craft."
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-one-idea-is-enough.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-one-idea-is-enough.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · One idea is enough",
+        "id": "CAP · Satu ide sudah cukup",
+        "nl": "CAP · Eén idee is genoeg"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/matchupskills-everything-connected.mp4",
+      "poster": "/assets/showcase-mine/posters/matchupskills-everything-connected.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "MatchupSkills · Everything, connected",
+        "id": "MatchupSkills · Semua terhubung",
+        "nl": "MatchupSkills · Alles verbonden"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/matchupskills-ask-matchi.mp4",
+      "poster": "/assets/showcase-mine/posters/matchupskills-ask-matchi.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "MatchupSkills · Ask Matchi launch",
+        "id": "MatchupSkills · Peluncuran Ask Matchi",
+        "nl": "MatchupSkills · Lancering Ask Matchi"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/matchupskills-career-agent.mp4",
+      "poster": "/assets/showcase-mine/posters/matchupskills-career-agent.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "MatchupSkills · Career Agent demo",
+        "id": "MatchupSkills · Demo Career Agent",
+        "nl": "MatchupSkills · Career Agent-demo"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-sound-stinger.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-sound-stinger.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · 10-second sound stinger",
+        "id": "CAP · Stinger suara 10 detik",
+        "nl": "CAP · Geluidsstinger van 10 seconden"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/matchupskills-sound-stinger.mp4",
+      "poster": "/assets/showcase-mine/posters/matchupskills-sound-stinger.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "MatchupSkills · 10-second sound stinger",
+        "id": "MatchupSkills · Stinger suara 10 detik",
+        "nl": "MatchupSkills · Geluidsstinger van 10 seconden"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-city-sized.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-city-sized.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · City-sized iced coffee",
+        "id": "CAP · Es kopi seukuran kota",
+        "nl": "CAP · IJskoffie zo groot als een stad"
+      },
+      "featured": true
+    },
+    {
+      "type": "video",
+      "file": "/assets/showcase-mine/cap-why-ai-ads-look-the-same.mp4",
+      "poster": "/assets/showcase-mine/posters/cap-why-ai-ads-look-the-same.webp",
+      "ratio": "720:1280",
+      "title": {
+        "en": "CAP · Why every AI ad looks the same",
+        "id": "CAP · Kenapa semua iklan AI terlihat sama",
+        "nl": "CAP · Waarom elke AI-advertentie hetzelfde lijkt"
+      },
+      "featured": true
     }
   ],
   "LEADERSHIP": [

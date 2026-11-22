@@ -250,3 +250,4 @@ body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744
 .project-slide>img{width:100%;height:auto;display:block;object-fit:fill;aspect-ratio:auto}
 @media(max-width:1000px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
 @media(max-width:760px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
+.photo-credit{font-size:11px;line-height:1.5;color:var(--muted);margin:40px 0 0;position:relative;z-index:1}

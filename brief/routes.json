@@ -966,6 +966,66 @@
     "title": "Video 129"
   },
   {
+    "lang": "nl",
+    "route": "creative-work/130",
+    "file": "creative-work/130/index.html",
+    "title": "CAP · Posters &amp; videoads voor elk merk"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/131",
+    "file": "creative-work/131/index.html",
+    "title": "CAP · Less noise. More craft."
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/132",
+    "file": "creative-work/132/index.html",
+    "title": "CAP · Eén idee is genoeg"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/133",
+    "file": "creative-work/133/index.html",
+    "title": "MatchupSkills · Alles verbonden"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/134",
+    "file": "creative-work/134/index.html",
+    "title": "MatchupSkills · Lancering Ask Matchi"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/135",
+    "file": "creative-work/135/index.html",
+    "title": "MatchupSkills · Career Agent-demo"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/136",
+    "file": "creative-work/136/index.html",
+    "title": "CAP · Geluidsstinger van 10 seconden"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/137",
+    "file": "creative-work/137/index.html",
+    "title": "MatchupSkills · Geluidsstinger van 10 seconden"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/138",
+    "file": "creative-work/138/index.html",
+    "title": "CAP · IJskoffie zo groot als een stad"
+  },
+  {
+    "lang": "nl",
+    "route": "creative-work/139",
+    "file": "creative-work/139/index.html",
+    "title": "CAP · Waarom elke AI-advertentie hetzelfde lijkt"
+  },
+  {
     "lang": "en",
     "route": "",
     "file": "en/index.html",
@@ -1932,6 +1992,66 @@
     "title": "Motion 129"
   },
   {
+    "lang": "en",
+    "route": "creative-work/130",
+    "file": "en/creative-work/130/index.html",
+    "title": "CAP · Posters &amp; video ads for every brand"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/131",
+    "file": "en/creative-work/131/index.html",
+    "title": "CAP · Less noise. More craft."
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/132",
+    "file": "en/creative-work/132/index.html",
+    "title": "CAP · One idea is enough"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/133",
+    "file": "en/creative-work/133/index.html",
+    "title": "MatchupSkills · Everything, connected"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/134",
+    "file": "en/creative-work/134/index.html",
+    "title": "MatchupSkills · Ask Matchi launch"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/135",
+    "file": "en/creative-work/135/index.html",
+    "title": "MatchupSkills · Career Agent demo"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/136",
+    "file": "en/creative-work/136/index.html",
+    "title": "CAP · 10-second sound stinger"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/137",
+    "file": "en/creative-work/137/index.html",
+    "title": "MatchupSkills · 10-second sound stinger"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/138",
+    "file": "en/creative-work/138/index.html",
+    "title": "CAP · City-sized iced coffee"
+  },
+  {
+    "lang": "en",
+    "route": "creative-work/139",
+    "file": "en/creative-work/139/index.html",
+    "title": "CAP · Why every AI ad looks the same"
+  },
+  {
     "lang": "id",
     "route": "",
     "file": "id/index.html",
@@ -2896,5 +3016,65 @@
     "route": "creative-work/129",
     "file": "id/creative-work/129/index.html",
     "title": "Video 129"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/130",
+    "file": "id/creative-work/130/index.html",
+    "title": "CAP · Poster &amp; iklan video untuk setiap brand"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/131",
+    "file": "id/creative-work/131/index.html",
+    "title": "CAP · Less noise. More craft."
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/132",
+    "file": "id/creative-work/132/index.html",
+    "title": "CAP · Satu ide sudah cukup"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/133",
+    "file": "id/creative-work/133/index.html",
+    "title": "MatchupSkills · Semua terhubung"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/134",
+    "file": "id/creative-work/134/index.html",
+    "title": "MatchupSkills · Peluncuran Ask Matchi"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/135",
+    "file": "id/creative-work/135/index.html",
+    "title": "MatchupSkills · Demo Career Agent"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/136",
+    "file": "id/creative-work/136/index.html",
+    "title": "CAP · Stinger suara 10 detik"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/137",
+    "file": "id/creative-work/137/index.html",
+    "title": "MatchupSkills · Stinger suara 10 detik"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/138",
+    "file": "id/creative-work/138/index.html",
+    "title": "CAP · Es kopi seukuran kota"
+  },
+  {
+    "lang": "id",
+    "route": "creative-work/139",
+    "file": "id/creative-work/139/index.html",
+    "title": "CAP · Kenapa semua iklan AI terlihat sama"
   }
 ]

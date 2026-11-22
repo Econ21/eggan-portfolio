@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-21T15:03:27.404Z",
+  "date": "2026-11-22T13:26:16.493Z",
   "tests": [
     {
       "name": "en: full navigation, original bio and three destinations",
@@ -10,7 +10,7 @@
       "passed": true
     },
     {
-      "name": "en: ten unique creative works with two playable video destinations",
+      "name": "en: ten unique creative works with six playable video destinations",
       "passed": true
     },
     {
@@ -22,7 +22,7 @@
       "passed": true
     },
     {
-      "name": "id: ten unique creative works with two playable video destinations",
+      "name": "id: ten unique creative works with six playable video destinations",
       "passed": true
     },
     {
@@ -34,7 +34,7 @@
       "passed": true
     },
     {
-      "name": "nl: ten unique creative works with two playable video destinations",
+      "name": "nl: ten unique creative works with six playable video destinations",
       "passed": true
     },
     {

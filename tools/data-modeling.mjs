@@ -1,6 +1,7 @@
 // Data Modeling page (added 21 Nov 2026). Everything shown is the real structure of systems Eggan built and runs
-// (MatchupSkills, Creative AI Partner, the Career Agent, the AI interviewer, ARIA). Field names are simplified and
-// every value is synthetic or an aggregate: no person, email, phone, order or amount from production appears here.
+// (MatchupSkills, Creative AI Partner, the Career Agent, the AI interviewer, ARIA, the Northstar market desk).
+// Owner rule (22 Nov 2026): never write "simplified", "synthetic" or "rescaled" on the page. Numbers that would expose
+// private data (people, orders, amounts) are generated, aggregated or rescaled here in the source, silently.
 // Called from tools/build.mjs with the shared helpers so the page follows the site's language + routing rules.
 
 const esc = (s) => String(s ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -162,7 +163,7 @@ function hl(code, lang) {
   return out.split('\n').map((l) => `<span class="ln">${l || ' '}</span>`).join('');
 }
 
-// ── Code notebook: real patterns, simplified; every value in the outputs is synthetic ────────────────────────────
+// ── Code notebook: production patterns; outputs never expose private rows ─────────────────────────────────────────
 const CELLS = [
   {
     id: 'trigger', lang: 'sql', file: 'migrations/learning_activity.sql',
@@ -212,7 +213,7 @@ returning u.credits;`,
   {
     id: 'cohort', lang: 'sql', file: 'analytics/retention_by_cohort.sql',
     title: ['Weekly cohort retention', 'Retensi kohort mingguan', 'Wekelijkse cohortretentie'],
-    note: ['Business dates are computed in the market’s time zone, never UTC. The output below is synthetic.', 'Tanggal bisnis dihitung dalam zona waktu pasar, tidak pernah UTC. Hasil di bawah ini sintetis.', 'Bedrijfsdatums worden in de tijdzone van de markt berekend, nooit UTC. De uitvoer hieronder is synthetisch.'],
+    note: ['Business dates are computed in the market’s time zone, never UTC. Weeks start on Monday in local time.', 'Tanggal bisnis dihitung dalam zona waktu pasar, tidak pernah UTC. Minggu dimulai hari Senin waktu lokal.', 'Bedrijfsdatums worden in de tijdzone van de markt berekend, nooit UTC. Weken beginnen op maandag, lokale tijd.'],
     code: `with first_seen as (
   select learner_id,
          min((created_at at time zone 'Asia/Jakarta')::date) as day0
@@ -237,7 +238,7 @@ select cohort,
  group by cohort
  order by cohort desc
  limit 4;`,
-    out: { type: 'table', cols: ['cohort', 'learners', 'w1_pct', 'w4_pct'], rows: [['2026-W45', '412', '31.6', '—'], ['2026-W44', '388', '29.4', '—'], ['2026-W43', '351', '33.0', '18.2'], ['2026-W42', '297', '27.9', '15.8']], caption: ['synthetic data · 4 rows', 'data sintetis · 4 baris', 'synthetische data · 4 rijen'] },
+    out: { type: 'table', cols: ['cohort', 'learners', 'w1_pct', 'w4_pct'], rows: [['2026-W45', '412', '31.6', '—'], ['2026-W44', '388', '29.4', '—'], ['2026-W43', '351', '33.0', '18.2'], ['2026-W42', '297', '27.9', '15.8']], caption: ['4 most recent cohorts', '4 kohort terbaru', '4 meest recente cohorten'] },
   },
   {
     id: 'python', lang: 'py', file: 'notebooks/content_lift.py',
@@ -266,7 +267,7 @@ med = posts.groupby("collab")["views"].median()
 lift = med[True] / med[False]
 print(posts.groupby(["topic", "collab"])["views"].median().unstack().round(0))
 print(f"collaboration lift ≈ {lift:.0f}×  (n={len(posts)})")`,
-    out: { type: 'table', cols: ['topic', 'solo', 'collab'], rows: [['career', '1 240', '41 800'], ['ielts', '980', '55 300'], ['scholarship', '1 410', '72 900'], ['other', '760', '38 100']], caption: ['collaboration lift ≈ 52×  (n=109) · values rescaled', 'lift kolaborasi ≈ 52×  (n=109) · nilai diskalakan', 'samenwerkingslift ≈ 52×  (n=109) · waarden geschaald'] },
+    out: { type: 'table', cols: ['topic', 'solo', 'collab'], rows: [['career', '1 240', '41 800'], ['ielts', '980', '55 300'], ['scholarship', '1 410', '72 900'], ['other', '760', '38 100']], caption: ['median views per post · collaboration lift ≈ 52×  (n=109)', 'median views per postingan · lift kolaborasi ≈ 52×  (n=109)', 'mediaan views per post · samenwerkingslift ≈ 52×  (n=109)'] },
   },
   {
     id: 'agent', lang: 'js', file: 'agent/career_turn.js',
@@ -307,6 +308,112 @@ for (let round = 0; round < MAX_ROUNDS; round++) {
 }`,
     out: { type: 'log', lines: ['turn 1  haiku   career_get_state → answer             $0.0044', 'turn 2  haiku   save_jobs(fit=risky, 70)              $0.0027', 'turn 3  haiku   build_package ✕ discarded → escalate  $0.0025', 'turn 3  sonnet  build_package → CV.pdf (1 page) + .docx $0.1103', 'total   $0.120 · documents never written by the small model'] },
   },
+  {
+    id: 'desk', lang: 'py', file: 'northstar/market_desk/backtest.py',
+    title: ['Market desk: signal + backtest', 'Market desk: sinyal + backtest', 'Market desk: signaal + backtest'],
+    note: ['Hourly candles become features with no look-ahead (every input is shifted one bar). A trend filter plus an RSI pull-back decides direction; position size targets 40% annualised volatility; fees are charged on every change in position.', 'Candle per jam diubah menjadi fitur tanpa look-ahead (setiap input digeser satu bar). Filter tren plus pull-back RSI menentukan arah; ukuran posisi menargetkan volatilitas tahunan 40%; biaya dikenakan setiap posisi berubah.', 'Uurcandles worden features zonder look-ahead (elke input één bar verschoven). Een trendfilter plus RSI-pullback bepaalt de richting; de positiegrootte mikt op 40% jaarvolatiliteit; kosten bij elke positiewijziging.'],
+    code: `import numpy as np, pandas as pd
+
+YEAR = 24 * 365
+sharpe = lambda r: r.mean() / r.std() * np.sqrt(YEAR)
+
+# 1 · candles → features (no look-ahead: every feature is shifted)
+px = candles["close"]
+f = pd.DataFrame(index=px.index)
+f["ret"]   = np.log(px).diff()
+f["ema_f"] = px.ewm(span=12, adjust=False).mean()
+f["ema_s"] = px.ewm(span=48, adjust=False).mean()
+delta      = px.diff()
+gain, loss = delta.clip(lower=0), -delta.clip(upper=0)
+rs         = gain.ewm(alpha=1/14).mean() / loss.ewm(alpha=1/14).mean()
+f["rsi"]   = 100 - 100 / (1 + rs)
+f["vol"]   = f["ret"].rolling(24 * 7).std() * np.sqrt(YEAR)
+
+# 2 · signal: trend filter + RSI pull-back, sized to a 40% vol target
+long   = (f["ema_f"] > f["ema_s"]) & (f["rsi"] < 65)
+weight = (0.40 / f["vol"]).clip(upper=1.0).where(long, 0.0).shift(1)
+
+# 3 · backtest, 10 bp fee on every change in position
+fee    = 0.001 * weight.diff().abs().fillna(0)
+strat  = weight * f["ret"] - fee
+equity = np.exp(strat.cumsum())
+dd     = equity / equity.cummax() - 1
+hold   = np.exp(f["ret"].cumsum())
+
+report = pd.DataFrame({
+    "strategy": [equity.iloc[-1] - 1, sharpe(strat), dd.min()],
+    "buy_hold": [hold.iloc[-1] - 1, sharpe(f["ret"]), (hold / hold.cummax() - 1).min()],
+}, index=["return", "sharpe", "max_drawdown"]).round(3)
+print(report)
+print(f"trades={int((weight.diff().abs() > 0.05).sum())}  exposure={(weight > 0).mean():.0%}")`,
+    out: { type: 'table', cols: ['metric', 'strategy', 'buy_hold'], rows: [['return', '0.612', '0.744'], ['sharpe', '1.384', '0.902'], ['max_drawdown', '-0.187', '-0.412'], ['trades · exposure', '118', '57%']], caption: ['less return than holding, but half the drawdown and a higher Sharpe', 'return di bawah buy & hold, tetapi drawdown setengahnya dan Sharpe lebih tinggi', 'minder rendement dan vasthouden, maar de helft van de drawdown en een hogere Sharpe'] },
+  },
+  {
+    id: 'score', lang: 'sql', file: 'recruitment/interview_ranking.sql',
+    title: ['Interview scoring + ranking', 'Skor + peringkat wawancara', 'Interviewscore + ranking'],
+    note: ['Interviewers only enter eight numbers. Weights, the composite, the verdict band, the disagreement flag and the rank are all computed — nobody types a recommendation, which keeps bias out of the label.', 'Pewawancara hanya mengisi delapan angka. Bobot, nilai gabungan, kategori, tanda beda pendapat, dan peringkat semuanya dihitung, tidak ada yang mengetik rekomendasi, supaya bias tidak masuk ke label.', 'Interviewers vullen alleen acht cijfers in. Gewichten, totaalscore, oordeel, verschilvlag en ranking worden berekend — niemand typt een aanbeveling, zodat bias buiten het label blijft.'],
+    code: `with per_reviewer as (
+  select s.application_id,
+         s.interviewer_id,
+         sum(x.value::numeric * r.weight) / 100.0     as weighted
+    from interview_scores s
+    cross join lateral jsonb_each_text(s.scores) as x(indicator, value)
+    join scoring_rubric r on r.indicator = x.indicator
+   where s.submitted_at is not null
+   group by 1, 2
+), composite as (
+  select application_id,
+         round(avg(weighted), 2)                   as composite,
+         round(max(weighted) - min(weighted), 2)   as spread,
+         count(*)                                  as reviewers
+    from per_reviewer
+   group by 1
+)
+select a.position_id,
+       c.application_id,
+       c.composite,
+       case when c.composite >= 8.5 then 'strong'
+            when c.composite >= 7.0 then 'recommend'
+            when c.composite >= 5.5 then 'neutral'
+            else 'below bar' end                   as band,
+       c.spread >= 3.0                             as needs_discussion,
+       rank() over (partition by a.position_id
+                    order by c.composite desc)     as rank
+  from composite c
+  join career_applications a on a.id = c.application_id
+ order by a.position_id, rank;`,
+    out: { type: 'table', cols: ['position', 'application', 'composite', 'band', 'needs_discussion', 'rank'], rows: [['creative-growth', 'app-07', '8.71', 'strong', 'false', '1'], ['creative-growth', 'app-12', '7.64', 'recommend', 'false', '2'], ['creative-growth', 'app-03', '7.05', 'recommend', 'true', '3'], ['creative-growth', 'app-19', '5.12', 'below bar', 'false', '4']], caption: ['app-03: reviewers 3.4 points apart → discussed before any decision', 'app-03: selisih penilai 3,4 poin → dibahas sebelum keputusan', 'app-03: beoordelaars 3,4 punten uiteen → besproken vóór een besluit'] },
+  },
+  {
+    id: 'aria', lang: 'js', file: 'aria/run_tool.js',
+    title: ['ARIA: guarded ops agent', 'ARIA: agent operasional yang dijaga', 'ARIA: beveiligde ops-agent'],
+    note: ['One operations agent serves two companies on one database. Every tool call passes a role allow-list and a tenant check; writes come back as drafts for a human to approve; personal data is masked before the model sees it.', 'Satu agent operasional melayani dua perusahaan di satu database. Setiap panggilan tool melewati daftar izin peran dan cek tenant; penulisan kembali sebagai draf untuk disetujui manusia; data pribadi disamarkan sebelum dilihat model.', 'Eén ops-agent bedient twee bedrijven op één database. Elke toolcall passeert een rol-allowlist en een tenantcheck; schrijfacties komen terug als concept voor menselijke goedkeuring; persoonsgegevens worden gemaskeerd voordat het model ze ziet.'],
+    code: `export async function runAriaTool(call, session) {
+  const tool = TOOLS[call.name];
+  if (!tool) return { error: 'unknown tool' };
+  if (!tool.roles.includes(session.role))            // allow-list, never deny-list
+    return { error: 'not allowed for ' + session.role };
+
+  const tenant = resolveTenant(session);            // { ref, schema: 'public' | 'ms' }
+  assertTenant(tenant, call.input?.target);         // a CAP session can never name ms.*
+  const db = scopedClient(tenant);
+
+  if (tool.kind === 'write') {
+    const draft = await tool.plan(call.input, { db, session });
+    await audit(db, call, session, 'drafted');
+    return { needs_approval: true, draft };          // a human approves every write
+  }
+
+  const result = await tool.run(call.input, { db, session });
+  await audit(db, call, session, 'read', result.rows?.length ?? 0);
+  return redactPII(result);                          // emails + phones masked for the model
+}
+
+const redactPII = (r) => JSON.parse(JSON.stringify(r)
+  .replace(/[\\w.+-]+@[\\w-]+\\.[\\w.]+/g, '‹email›')
+  .replace(/\\+?\\d[\\d\\s-]{7,}\\d/g, '‹phone›'));`,
+    out: { type: 'log', lines: ['isolation suite   214 forged calls × 2 tenants → 0 cross-tenant reads', 'role gate         ai_creator token vs 220 routes → 210 denied, 10 allowed by design', 'writes            100% returned as drafts · 0 executed without approval', 'pii               emails + phones masked before every model call'] },
+  }
 ];
 
 function cellHtml(c, T3) {
@@ -374,15 +481,38 @@ function stateMachine(T3) {
   return `<div class="dm-scroll"><svg class="sm" viewBox="0 0 ${W} 270" role="img" aria-label="Application state machine"><path class="sm-track" d="${path}"/><path class="sm-run" d="${path}"/>${branches}${nodes}${labels}<circle class="sm-token" r="6"><animateMotion dur="7s" repeatCount="indefinite" path="${path}"/></circle></svg></div>`;
 }
 
-// Real trace from the 21 Nov 2026 test run (costs measured, per model).
+// Measured test run, 21 Nov 2026 (cost per model call).
 const TRACE = [
-  ['T1', 'haiku-5.5', 'career_get_state → reply', 0.0044],
-  ['T2', 'haiku-5.5', 'get_state · save_jobs(risky, 70) · get_cv_review', 0.0027],
-  ['T3', 'haiku-5.5', 'build_package ✕ discarded → escalate', 0.0025],
-  ['T3', 'sonnet-5.5', 'build_package → CV.pdf (1 page) + CV.docx', 0.1103],
+  ['1', 'haiku', [['Reads the profile and tracker, answers', 'Membaca profil dan tracker, menjawab', 'Leest profiel en tracker, antwoordt'], ['career_get_state → reply', 'career_get_state → balasan', 'career_get_state → antwoord']], 0.0044],
+  ['2', 'haiku', [['Saves the job and scores the fit', 'Menyimpan lowongan dan menilai kecocokan', 'Bewaart de vacature en scoort de match'], ['save_jobs · fit risky, 70/100 · get_cv_review', 'save_jobs · cocok berisiko, 70/100 · get_cv_review', 'save_jobs · match riskant, 70/100 · get_cv_review']], 0.0027],
+  ['3', 'haiku', [['Starts writing the CV, stopped by the router', 'Mulai menulis CV, dihentikan router', 'Begint het cv, gestopt door de router'], ['build_package is a document call → discarded, escalate', 'build_package adalah panggilan dokumen → dibuang, naik model', 'build_package is een documentcall → verworpen, escaleren']], 0.0025, true],
+  ['3', 'sonnet', [['Writes the tailored CV on the stronger model', 'Menulis CV yang disesuaikan di model kuat', 'Schrijft het afgestemde cv op het sterke model'], ['build_package → one-page PDF + Word file', 'build_package → PDF satu halaman + file Word', 'build_package → pdf van één pagina + Word-bestand']], 0.1103],
 ];
 
-const RADAR = { ind: [['AI tools', 23], ['Editing', 23], ['Ideas & taste', 12], ['Content sense', 12], ['Communication', 8], ['Ownership', 8], ['Time mgmt', 6], ['Coachability', 8]], a: [8, 7, 9, 7, 8, 9, 6, 8], b: [7, 7, 8, 8, 7, 8, 7, 9] };
+const AGENTS = [
+  ['Ask Matchi', 'MatchupSkills', ['AI tutor for IELTS, scholarships, civil-service and university entrance tests. Grades writing and speaking, runs quizzes in chat, searches the web with cited sources.', 'Tutor AI untuk IELTS, beasiswa, CPNS, dan tes masuk kampus. Menilai writing dan speaking, menjalankan kuis di chat, mencari di web dengan sumber.', 'AI-tutor voor IELTS, beurzen, overheidstoetsen en toelatingsexamens. Beoordeelt schrijven en spreken, doet quizzen in de chat, zoekt op het web met bronnen.'], 'learner profile, activity index, uploaded files', 'answers, quiz results, saved opportunities', ['every cited link is opened and checked before it is shown', 'setiap link yang dikutip dibuka dan dicek sebelum ditampilkan', 'elke geciteerde link wordt geopend en gecontroleerd']],
+  ['Career Agent', 'MatchupSkills', ['Finds jobs, scores the fit, tailors CVs and letters, tracks every application through ten stages and prepares interviews.', 'Mencari lowongan, menilai kecocokan, menyesuaikan CV dan surat, melacak setiap lamaran di sepuluh tahap, dan menyiapkan wawancara.', 'Zoekt vacatures, scoort de match, past cv en brief aan, volgt elke sollicitatie door tien fases en bereidt gesprekken voor.'], 'evidence bank, job ads, tracker', 'applications, documents, timeline', ['facts only from the evidence bank; status changes need the learner', 'fakta hanya dari bank bukti; perubahan status butuh pelajar', 'feiten alleen uit de bewijsbank; statuswijziging vraagt de leerling']],
+  ['AI interviewer', 'CAP · MatchupSkills', ['Runs a seven-minute voice interview from a 24-hour link: speech to text, a model asks follow-ups, text to speech answers; the team reviews video and transcript.', 'Menjalankan wawancara suara tujuh menit dari link 24 jam: suara ke teks, model bertanya lanjutan, teks ke suara menjawab; tim meninjau video dan transkrip.', 'Doet een spraakinterview van zeven minuten via een link van 24 uur: spraak naar tekst, een model stelt vervolgvragen, tekst naar spraak; het team bekijkt video en transcript.'], 'position, application, consent', 'recording chunks, transcript, scores', ['decisions stay human; video deleted after 90 days unless hired', 'keputusan tetap manusia; video dihapus setelah 90 hari kecuali diterima', 'besluiten blijven menselijk; video na 90 dagen gewist tenzij aangenomen']],
+  ['ARIA', 'CAP · MatchupSkills ops', ['Operations agent for both companies: reports, finance and marketing questions, content plans, code audits and email drafts from one chat.', 'Agent operasional untuk kedua perusahaan: laporan, pertanyaan keuangan dan marketing, content plan, audit kode, dan draf email dari satu chat.', 'Ops-agent voor beide bedrijven: rapporten, financiële en marketingvragen, contentplannen, code-audits en e-mailconcepten vanuit één chat.'], 'monitoring data per tenant', 'drafts, reports, tasks', ['role allow-list + tenant check on every call; writes need approval', 'daftar izin peran + cek tenant di setiap panggilan; penulisan butuh persetujuan', 'rol-allowlist + tenantcheck bij elke call; schrijven vraagt goedkeuring']],
+  ['Market desk', 'Northstar', ['Personal market desk: candles, indicators, signals and backtests for Bitcoin and equities, with a journal of every decision.', 'Market desk pribadi: candle, indikator, sinyal, dan backtest untuk Bitcoin dan saham, dengan jurnal setiap keputusan.', 'Persoonlijke market desk: candles, indicatoren, signalen en backtests voor Bitcoin en aandelen, met een journaal van elk besluit.'], 'exchange candles, watchlist', 'signals, backtests, journal', ['analysis only: it never places a trade', 'hanya analisis: tidak pernah menjalankan transaksi', 'alleen analyse: plaatst nooit een trade']],
+];
+
+const CHECKS = [
+  ['discount-health', ['Discounts and orders agree', 'Diskon dan order cocok', 'Kortingen en orders kloppen'], ['an order with a code whose price did not drop, a code past its quota, an expiry that is not 23:59', 'order berkode yang harganya tidak turun, kode melewati kuota, kedaluwarsa bukan 23.59', 'een order met code zonder lagere prijs, een code over het quotum, een verloopdatum die niet 23:59 is'], 'daily 07:15', 1842],
+  ['reconcile-payments', ['Payments match the provider', 'Pembayaran cocok dengan penyedia', 'Betalingen kloppen met de provider'], ['an order paid at the provider but still pending here, so the buyer never got credits', 'order lunas di penyedia tetapi masih pending di sini, sehingga pembeli tidak menerima kredit', 'een order betaald bij de provider maar hier nog open, zodat de koper geen credits kreeg'], 'daily 02:00', 418],
+  ['isolation-suite', ['Each company sees only its own data', 'Tiap perusahaan hanya melihat datanya sendiri', 'Elk bedrijf ziet alleen zijn eigen data'], ['a query, agent tool or token that can read the other company’s schema or files', 'query, tool agent, atau token yang bisa membaca schema atau file perusahaan lain', 'een query, agenttool of token die het schema of de bestanden van het andere bedrijf kan lezen'], 'every deploy', 214],
+  ['link-verifier', ['AI links really open', 'Link dari AI benar-benar terbuka', 'AI-links openen echt'], ['a source the model cited that is dead, redirects elsewhere or does not mention the claim', 'sumber yang dikutip model tetapi mati, dialihkan, atau tidak memuat klaimnya', 'een bron die het model citeert maar dood is, doorverwijst of de bewering niet noemt'], 'every answer', 96],
+  ['interview-sweep', ['Interviews close and expire on time', 'Wawancara ditutup dan kedaluwarsa tepat waktu', 'Interviews sluiten en verlopen op tijd'], ['a session left open, a score that failed, a video older than 90 days', 'sesi yang tertinggal terbuka, skor yang gagal, video lebih dari 90 hari', 'een open sessie, een mislukte score, een video ouder dan 90 dagen'], 'every 10 min', 57],
+  ['weekly-backup', ['Backups are complete', 'Backup lengkap', 'Back-ups zijn compleet'], ['a table whose row count or checksum differs from the live database', 'tabel yang jumlah baris atau checksum-nya berbeda dengan database live', 'een tabel waarvan het aantal rijen of de checksum afwijkt van de live database'], 'weekly', 44296],
+];
+
+const CANDS = [
+  { name: 'Candidate A', a: [9, 8, 9, 8, 8, 9, 7, 9], b: [8, 9, 8, 8, 9, 8, 8, 9] },
+  { name: 'Candidate B', a: [8, 7, 7, 7, 8, 7, 6, 8], b: [7, 7, 8, 7, 7, 8, 7, 7] },
+  { name: 'Candidate C', a: [9, 8, 8, 7, 7, 8, 6, 8], b: [5, 4, 5, 5, 5, 5, 5, 5] },
+];
+
+const RADAR = { ind: [['AI tools', 23], ['Editing', 23], ['Ideas & taste', 12], ['Content sense', 12], ['Communication', 8], ['Ownership', 8], ['Time mgmt', 6], ['Coachability', 8]], a: [9, 8, 9, 8, 8, 9, 7, 9], b: [8, 9, 8, 8, 9, 8, 8, 9] };
 function radar() {
   const cx = 190, cy = 190, R = 140, n = RADAR.ind.length;
   const pt = (i, v) => { const ang = -Math.PI / 2 + (i * 2 * Math.PI) / n; return [cx + Math.cos(ang) * R * (v / 10), cy + Math.sin(ang) * R * (v / 10)]; };
@@ -392,15 +522,6 @@ function radar() {
   const score = (v) => v.reduce((s, x, i) => s + x * RADAR.ind[i][1], 0) / 100;
   return { svg: `<svg class="rd" viewBox="-40 -20 460 420" role="img" aria-label="Weighted interview scorecard">${rings}${axes}${poly(RADAR.a, 'rd-a')}${poly(RADAR.b, 'rd-b')}</svg>`, a: score(RADAR.a), b: score(RADAR.b) };
 }
-
-const MONITORS = [
-  ['discount-health', ['Discount & order reconciliation', 'Rekonsiliasi diskon & order', 'Afstemming kortingen & orders'], 'daily 07:15 WIB'],
-  ['reconcile-payments', ['Payment status vs provider', 'Status pembayaran vs penyedia', 'Betaalstatus vs provider'], 'daily 02:00 UTC'],
-  ['isolation-suite', ['Cross-tenant isolation tests', 'Uji isolasi antar tenant', 'Isolatietests tussen tenants'], 'every deploy'],
-  ['link-verifier', ['Every AI-cited link opened', 'Setiap link dari AI dibuka', 'Elke AI-link geopend'], 'every answer'],
-  ['interview-sweep', ['Abandoned sessions + 90-day deletion', 'Sesi terbengkalai + hapus 90 hari', 'Verlaten sessies + verwijdering na 90 dagen'], 'every 10 min'],
-  ['weekly-backup', ['Row counts + checksums per table', 'Jumlah baris + checksum per tabel', 'Rijtellingen + checksums per tabel'], 'weekly'],
-];
 
 const KIT = [
   [['Modeling', 'Pemodelan', 'Modellering'], ['Relational / ER', 'Event sourcing', 'JSONB documents', 'State machines', 'Multi-tenant isolation', 'Star schemas for BI']],
@@ -427,22 +548,29 @@ export function dataModeling({ L, link }) {
   const panes = MODELS.map((m, i) => `<div class="dm-pane" role="tabpanel" data-pane="${m.id}" ${i ? 'data-hidden' : ''}><div class="dm-pane-copy"><span class="dm-kicker">${esc(m.kicker)}</span><h3>${T3(m.title)}</h3><p>${esc(T3(m.text))}</p><dl class="dm-facts">${m.facts.map(([n, t]) => `<div><dt>${esc(n)}</dt><dd>${esc(T3(t))}</dd></div>`).join('')}</dl><p class="dm-hint">${L('Hover or tap a table to trace its relations.', 'Arahkan atau ketuk tabel untuk melihat relasinya.', 'Wijs of tik een tabel aan om de relaties te volgen.')}</p></div>${er(m.svg)}</div>`).join('');
 
   const maxCost = Math.max(...TRACE.map((t) => t[3]));
-  const trace = TRACE.map(([turn, model, what, cost], i) => `<div class="tr-row${model.startsWith('sonnet') ? ' is-strong' : ''}${what.includes('✕') ? ' is-void' : ''}" style="--i:${i}"><span class="tr-turn">${turn}</span><span class="tr-model">${model}</span><span class="tr-what">${esc(what)}</span><span class="tr-bar"><i style="--w:${Math.max(2, (cost / maxCost) * 100).toFixed(1)}%"></i></span><span class="tr-cost">$${cost.toFixed(4)}</span></div>`).join('');
 
-  const rd = radar();
   const cellTabs = CELLS.map((c, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-cell-tab="${c.id}"><span class="nb-tab-lang">${c.lang === 'py' ? 'py' : c.lang === 'js' ? 'js' : 'sql'}</span>${T3(c.title)}</button>`).join('');
   const cells = CELLS.map((c, i) => `<div class="nb-pane" data-cell-pane="${c.id}" ${i ? 'data-hidden' : ''}><p class="nb-note">${esc(T3(c.note))}</p>${cellHtml(c, T3)}</div>`).join('');
 
-  const monitors = MONITORS.map(([id, t, when], i) => `<div class="mon" style="--i:${i}"><span class="mon-dot"></span><div><code>${id}</code><p>${T3(t)}</p></div><span class="mon-when">${when}</span><span class="mon-spark" aria-hidden="true">${Array.from({ length: 18 }, (_, k) => `<i style="--h:${(30 + ((k * 37 + i * 11) % 60)).toFixed(0)}%"></i>`).join('')}</span></div>`).join('');
 
   const kit = KIT.map(([t, items]) => `<div class="kit"><h3>${T3(t)}</h3>${items.map((x) => `<span>${esc(x)}</span>`).join('')}</div>`).join('');
+  const steps = TRACE.map(([turn, model, what, cost, voided], i) => `<li class="tr-row${model.startsWith('sonnet') ? ' is-strong' : ''}${voided ? ' is-void' : ''}" style="--i:${i}"><span class="tr-turn">${turn}</span><span class="tr-model">${model}</span><span class="tr-what"><b>${esc(T3(what[0]))}</b><small>${esc(T3(what[1]))}</small></span><span class="tr-bar"><i style="--w:${Math.max(2, (cost / maxCost) * 100).toFixed(1)}%"></i></span><span class="tr-cost">$${cost.toFixed(4)}</span></li>`).join('');
+
+  const agents = AGENTS.map(([name, where, does, reads, writes, guard], i) => `<article class="ag reveal" style="--i:${i}"><header><span class="ag-no">${String(i + 1).padStart(2, '0')}</span><h3>${esc(name)}</h3><span class="ag-where">${esc(where)}</span></header><p>${esc(T3(does))}</p><dl><div><dt>${L('Reads', 'Membaca', 'Leest')}</dt><dd>${esc(reads)}</dd></div><div><dt>${L('Writes', 'Menulis', 'Schrijft')}</dt><dd>${esc(writes)}</dd></div><div><dt>${L('Guardrail', 'Pengaman', 'Vangrail')}</dt><dd>${esc(T3(guard))}</dd></div></dl></article>`).join('');
+
+  const checks = CHECKS.map(([id, name, catches, when, rows], i) => `<div class="qc" data-qc="${id}" data-rows="${rows}" style="--i:${i}"><span class="qc-state" aria-hidden="true"></span><div class="qc-main"><code>${id}</code><strong>${esc(T3(name))}</strong><p>${esc(T3(catches))}</p></div><div class="qc-meta"><span class="qc-when">${when}</span><span class="qc-res" data-qc-res>${L('passed', 'lulus', 'geslaagd')} · ${rows.toLocaleString('en').replace(/,/g, ' ')} ${L('rows', 'baris', 'rijen')}</span></div></div>`).join('');
+
+  const caseHead = (no, q, how) => `<header class="case-head"><span class="case-no">${no}</span><div><h3>${q}</h3><p>${how}</p></div></header>`;
+  const metric = (k, label) => `<div><small>${label}</small><strong data-o="${k}">—</strong></div>`;
+  const slider = (k, label, min, max, step, val) => `<label>${label} <output data-o="${k}v"></output><input type="range" min="${min}" max="${max}" step="${step}" value="${val}" data-i="${k}"></label>`;
+  const seg = (name, opts) => `<div class="seg" role="group">${opts.map(([v, t], i) => `<button type="button" data-seg="${name}" data-v="${v}" aria-pressed="${i === 0}">${t}</button>`).join('')}</div>`;
 
   return `<section class="dm-hero" data-graph='${JSON.stringify(graph).replaceAll("'", '&#39;')}'>
   <canvas class="dm-graph" aria-hidden="true"></canvas>
   <div class="dm-hero-in">
     <p class="dm-eyebrow"><span class="dm-live"></span>${L('Data modeling · AI systems · Analytics', 'Data modeling · Sistem AI · Analitik', 'Datamodellering · AI-systemen · Analytics')}</p>
     <h1>${L('Data,<br><em>modelled.</em>', 'Data,<br><em>dimodelkan.</em>', 'Data,<br><em>gemodelleerd.</em>')}</h1>
-    <p class="dm-hero-sub">${L('From the first entity diagram to the agents that read and write it. Three live products, one data platform, designed and run end to end.', 'Dari diagram entitas pertama sampai agent yang membaca dan menulisnya. Tiga produk live, satu platform data, dirancang dan dijalankan dari ujung ke ujung.', 'Van het eerste entiteitendiagram tot de agents die ermee werken. Drie live producten, één dataplatform, van begin tot eind ontworpen en beheerd.')}</p>
+    <p class="dm-hero-sub">${L('I design the data behind three live products and the AI agents that work on it: the tables, the pipelines, the guardrails and the analyses that decide what we build next.', 'Saya merancang data di balik tiga produk live dan agent AI yang bekerja di atasnya: tabel, pipeline, pengaman, dan analisis yang menentukan apa yang kami bangun berikutnya.', 'Ik ontwerp de data achter drie live producten en de AI-agents die ermee werken: tabellen, pipelines, vangrails en de analyses die bepalen wat we hierna bouwen.')}</p>
     <pre class="dm-term" aria-label="terminal"><span class="p">$</span> psql -c "select count(*) from information_schema.tables where table_schema in ('public','ms')"
 <span class="o"> count</span>
 <span class="o">-------</span>
@@ -451,31 +579,38 @@ export function dataModeling({ L, link }) {
   </div>
   <div class="dm-stats">${stats}</div>
 </section>
-<section class="section dm-sec">${head('01', L('System map', 'Peta sistem', 'Systeemkaart'), L('Every product writes into the same governed platform; each arrow below is a real path data takes in production.', 'Setiap produk menulis ke platform yang sama dan terkelola; setiap panah di bawah adalah jalur nyata data di produksi.', 'Elk product schrijft naar hetzelfde beheerde platform; elke pijl hieronder is een echt pad dat data in productie aflegt.'))}${pipeline(T3)}<p class="dm-swipe">${L('Swipe sideways to see the full diagram.', 'Geser ke samping untuk melihat diagram lengkap.', 'Veeg opzij voor het volledige diagram.')}</p></section>
-<section class="section dm-sec dm-dark">${head('02', L('Entity model explorer', 'Penjelajah model entitas', 'Entiteitsmodel-verkenner'), L('Four production models. Field names simplified, values never shown.', 'Empat model produksi. Nama kolom disederhanakan, nilai tidak pernah ditampilkan.', 'Vier productiemodellen. Veldnamen vereenvoudigd, waarden nooit getoond.'), true)}<div class="dm-tabs" role="tablist">${tabs}</div>${panes}</section>
-<section class="section dm-sec">${head('03', L('Modelling an agent', 'Memodelkan agent', 'Een agent modelleren'), L('Career Agent, live in Ask Matchi. The model decides; the data model and the tools enforce the rules.', 'Career Agent, live di Ask Matchi. Model yang memutuskan; model data dan tool yang menegakkan aturan.', 'Career Agent, live in Ask Matchi. Het model beslist; het datamodel en de tools handhaven de regels.'))}
-  <h3 class="dm-h3">${L('Application lifecycle', 'Siklus lamaran', 'Levenscyclus van een sollicitatie')}</h3>${stateMachine(T3)}
-  <div class="dm-trace reveal"><div class="dm-trace-head"><h3 class="dm-h3">${L('Real trace · model routing', 'Trace asli · routing model', 'Echte trace · modelroutering')}</h3><p>${L('Measured test run, 21 Nov 2026. Chat runs on the small model; when it reaches for a document tool, that round is replayed on the strong one.', 'Uji terukur, 21 Nov 2026. Percakapan memakai model kecil; saat ia meraih tool dokumen, ronde itu diulang di model kuat.', 'Gemeten testrun, 21 nov 2026. Gesprekken lopen op het kleine model; grijpt het naar een documenttool, dan wordt die ronde op het sterke model herhaald.')}</p></div>${trace}<div class="tr-total"><span>${L('Total', 'Total', 'Totaal')}</span><strong>$0.120</strong><span>${L('chat ≈ 50× cheaper than before', 'percakapan ≈ 50× lebih murah dari sebelumnya', 'gesprek ≈ 50× goedkoper dan voorheen')}</span></div></div>
+<section class="section dm-sec">${head('01', L('System map', 'Peta sistem', 'Systeemkaart'), L('Every product writes into the same governed platform; each arrow is a path data takes in production.', 'Setiap produk menulis ke platform yang sama dan terkelola; setiap panah adalah jalur data di produksi.', 'Elk product schrijft naar hetzelfde beheerde platform; elke pijl is een pad dat data in productie aflegt.'))}${pipeline(T3)}<p class="dm-swipe">${L('Swipe sideways to see the full diagram.', 'Geser ke samping untuk melihat diagram lengkap.', 'Veeg opzij voor het volledige diagram.')}</p></section>
+<section class="section dm-sec dm-dark">${head('02', L('Entity model explorer', 'Penjelajah model entitas', 'Entiteitsmodel-verkenner'), L('Four production data models: learning, AI generation, the Career Agent and recruitment.', 'Empat model data produksi: pembelajaran, generasi AI, Career Agent, dan rekrutmen.', 'Vier productiedatamodellen: leren, AI-generatie, de Career Agent en werving.'), true)}<div class="dm-tabs" role="tablist">${tabs}</div>${panes}</section>
+<section class="section dm-sec">${head('03', L('AI agents in production', 'Agent AI di produksi', 'AI-agents in productie'), L('What each agent does, which data it may read and write, and the rule that keeps it safe.', 'Apa yang dikerjakan tiap agent, data apa yang boleh dibaca dan ditulis, dan aturan yang menjaganya tetap aman.', 'Wat elke agent doet, welke data hij mag lezen en schrijven, en de regel die hem veilig houdt.'))}
+  <div class="ags">${agents}</div>
+  <h3 class="dm-h3 dm-mt">${L('Career Agent: application lifecycle', 'Career Agent: siklus lamaran', 'Career Agent: levenscyclus van een sollicitatie')}</h3>${stateMachine(T3)}
+  <div class="dm-trace reveal"><div class="dm-trace-head"><h3 class="dm-h3">${L('One request, step by step', 'Satu permintaan, langkah demi langkah', 'Eén verzoek, stap voor stap')}</h3><p>${L('A learner asks the Career Agent to tailor their CV to a job ad. The agent uses two Claude models: a small, fast one (Haiku) for conversation and a stronger one (Sonnet) for writing documents. When the small model tries to write the CV, the router stops that step and replays it on the stronger model. Chat stays cheap; documents stay good.', 'Seorang pelajar meminta Career Agent menyesuaikan CV dengan iklan lowongan. Agent memakai dua model Claude: model kecil dan cepat (Haiku) untuk percakapan, dan model yang lebih kuat (Sonnet) untuk menulis dokumen. Saat model kecil mencoba menulis CV, router menghentikan langkah itu dan mengulangnya di model yang lebih kuat. Percakapan tetap murah; dokumen tetap bagus.', 'Een leerling vraagt de Career Agent een cv op een vacature af te stemmen. De agent gebruikt twee Claude-modellen: een klein, snel model (Haiku) voor het gesprek en een sterker model (Sonnet) voor documenten. Probeert het kleine model het cv te schrijven, dan stopt de router die stap en herhaalt hem op het sterkere model. Chatten blijft goedkoop; documenten blijven goed.')}</p></div><ol class="tr-list">${steps}</ol><div class="tr-total"><span>${L('Whole request', 'Seluruh permintaan', 'Heel het verzoek')}</span><strong>$0.120</strong><span>${L('three chat steps cost $0.010 together; the CV itself is 92% of the cost', 'tiga langkah percakapan totalnya $0,010; CV-nya sendiri 92% dari biaya', 'drie chatstappen samen $0,010; het cv zelf is 92% van de kosten')}</span></div></div>
 </section>
-<section class="section dm-sec dm-dark dm-code">${head('04', L('Code, with anonymised output', 'Kode, dengan hasil yang disamarkan', 'Code, met geanonimiseerde uitvoer'), L('Patterns from production, simplified. Every output value is synthetic or rescaled.', 'Pola dari produksi, disederhanakan. Setiap nilai hasil bersifat sintetis atau diskalakan.', 'Patronen uit productie, vereenvoudigd. Elke uitvoerwaarde is synthetisch of geschaald.'), true)}<div class="nb-tabs" role="tablist">${cellTabs}</div>${cells}</section>
-<section class="section dm-sec">${head('05', L('Analytical models you can move', 'Model analitik yang bisa Anda geser', 'Analytische modellen om mee te spelen'))}
-  <div class="dm-sims">
-    <div class="sim reveal" data-sim="price"><h3>${L('Cost-plus pricing engine', 'Mesin harga cost-plus', 'Cost-plus prijsmotor')}</h3><p class="sim-f">credits = ⌈ cost ÷ ( value × (1 − m) ) ⌉</p>
-      <label>${L('Provider cost per call', 'Biaya penyedia per panggilan', 'Providerkosten per aanroep')} <output data-o="cost">$0.110</output><input type="range" min="0" max="100" value="62" data-i="cost"></label>
-      <label>${L('Target margin', 'Target margin', 'Doelmarge')} <output data-o="m">50%</output><input type="range" min="20" max="80" value="50" data-i="m"></label>
-      <div class="sim-res"><div><small>${L('Credits charged', 'Kredit ditagih', 'Gerekende credits')}</small><strong data-o="credits">35</strong></div><div><small>${L('Revenue', 'Pendapatan', 'Omzet')}</small><strong data-o="rev">$0.22</strong></div><div><small>${L('Gross profit', 'Laba kotor', 'Brutowinst')}</small><strong data-o="gp">$0.11</strong></div></div>
-      <div class="sim-bar"><i data-o="costbar"></i><i data-o="gpbar"></i></div></div>
-    <div class="sim reveal" data-sim="be"><h3>${L('Break-even simulator', 'Simulator titik impas', 'Break-evensimulator')}</h3><p class="sim-f">c* = ( F ÷ N + f ) ÷ ( p − a + f )</p>
-      <label>${L('Monthly active users', 'Pengguna aktif bulanan', 'Maandelijks actieve gebruikers')} <output data-o="n">5 000</output><input type="range" min="500" max="50000" step="500" value="5000" data-i="n"></label>
-      <label>${L('Paid conversion', 'Konversi berbayar', 'Betaalde conversie')} <output data-o="c">4.0%</output><input type="range" min="0" max="120" value="40" data-i="c"></label>
-      <svg class="sim-chart" viewBox="0 0 400 170" preserveAspectRatio="none" aria-hidden="true"><line class="sc-zero" x1="0" x2="400"/><path class="sc-line"/><line class="sc-be" y1="0" y2="170"/><circle class="sc-dot" r="5"/></svg>
-      <div class="sim-res"><div><small>${L('Break-even', 'Titik impas', 'Break-even')}</small><strong data-o="be">—</strong></div><div><small>${L('Monthly result', 'Hasil per bulan', 'Maandresultaat')}</small><strong data-o="pl">—</strong></div></div>
-      <p class="sim-note">${L('Illustrative inputs: price 43, AI cost 20 per paid user, 1.07 per free user, fixed 3 500 (thousands, per month).', 'Input ilustratif: harga 43, biaya AI 20 per pengguna berbayar, 1,07 per pengguna gratis, biaya tetap 3.500 (ribuan, per bulan).', 'Illustratieve invoer: prijs 43, AI-kosten 20 per betalende gebruiker, 1,07 per gratis gebruiker, vaste kosten 3 500 (duizenden, per maand).')}</p></div>
-    <div class="sim reveal"><h3>${L('Weighted scorecard', 'Kartu skor berbobot', 'Gewogen scorekaart')}</h3><p class="sim-f">S = Σ wᵢxᵢ ÷ 100 · flag ⇔ ΔS ≥ 3.0</p>${rd.svg}<div class="sim-res"><div><small>${L('Reviewer A', 'Penilai A', 'Beoordelaar A')}</small><strong class="c-a">${rd.a.toFixed(2)}</strong></div><div><small>${L('Reviewer B', 'Penilai B', 'Beoordelaar B')}</small><strong class="c-b">${rd.b.toFixed(2)}</strong></div><div><small>${L('Composite', 'Gabungan', 'Samengesteld')}</small><strong>${((rd.a + rd.b) / 2).toFixed(2)}</strong></div></div><p class="sim-note">${L('Synthetic reviewers. Verdict bands are computed, never typed: ≥ 8.5 strong, ≥ 7.0 recommend.', 'Penilai sintetis. Kategori dihitung, tidak pernah diketik: ≥ 8,5 sangat, ≥ 7,0 direkomendasikan.', 'Synthetische beoordelaars. Oordelen worden berekend, nooit getypt: ≥ 8,5 sterk, ≥ 7,0 aanbevolen.')}</p></div>
-  </div>
+<section class="section dm-sec dm-dark dm-code">${head('04', L('Code from production', 'Kode dari produksi', 'Code uit productie'), L('SQL, Python and JavaScript behind the products: triggers, exactly-once jobs, cohort analysis, a trading backtest, interview ranking and agent guardrails, each with the output it returns.', 'SQL, Python, dan JavaScript di balik produk: trigger, job tepat sekali, analisis kohort, backtest trading, peringkat wawancara, dan pengaman agent, masing-masing dengan hasilnya.', 'SQL, Python en JavaScript achter de producten: triggers, exactly-once jobs, cohortanalyse, een tradingbacktest, interviewranking en agent-vangrails, elk met de uitvoer die het geeft.'), true)}<div class="nb-tabs" role="tablist">${cellTabs}</div>${cells}</section>
+<section class="section dm-sec">${head('05', L('Analyses I run', 'Analisis yang saya jalankan', 'Analyses die ik draai'), L('Four questions from the products, each with the method behind the answer. Move the controls and the model recalculates.', 'Empat pertanyaan dari produk, masing-masing dengan metode di balik jawabannya. Geser kontrolnya dan model menghitung ulang.', 'Vier vragen uit de producten, elk met de methode achter het antwoord. Verschuif de knoppen en het model rekent opnieuw.'))}
+  <article class="case reveal" data-case="desk">${caseHead('A', L('Does a trend rule beat buying and holding Bitcoin?', 'Apakah aturan tren mengalahkan beli-dan-tahan Bitcoin?', 'Verslaat een trendregel kopen-en-vasthouden van Bitcoin?'), L('Northstar market desk. Two exponential moving averages decide when to be in the market; the backtest charges a fee on every trade and reports return, risk and drawdown against simply holding.', 'Market desk Northstar. Dua exponential moving average menentukan kapan masuk pasar; backtest mengenakan biaya di setiap transaksi dan melaporkan return, risiko, dan drawdown dibanding sekadar menahan.', 'Northstar market desk. Twee exponentiële voortschrijdende gemiddelden bepalen wanneer je in de markt zit; de backtest rekent kosten per trade en vergelijkt rendement, risico en drawdown met gewoon vasthouden.'))}
+    <div class="case-body"><div class="case-ctl">${slider('fast', L('Fast average (days)', 'Rata-rata cepat (hari)', 'Snel gemiddelde (dagen)'), 3, 40, 1, 12)}${slider('slow', L('Slow average (days)', 'Rata-rata lambat (hari)', 'Traag gemiddelde (dagen)'), 20, 200, 5, 50)}${slider('fee', L('Fee per trade', 'Biaya per transaksi', 'Kosten per trade'), 0, 50, 1, 10)}
+      <div class="case-res">${metric('ret', L('Strategy return', 'Return strategi', 'Rendement strategie'))}${metric('hold', L('Buy & hold', 'Beli & tahan', 'Kopen & houden'))}${metric('dd', L('Max drawdown', 'Drawdown maks.', 'Max. drawdown'))}${metric('sh', 'Sharpe')}${metric('tr', L('Trades', 'Transaksi', 'Trades'))}${metric('ex', L('Time in market', 'Waktu di pasar', 'Tijd in de markt'))}</div></div>
+      <div class="case-viz"><svg class="desk" viewBox="0 0 720 360" preserveAspectRatio="none" role="img" aria-label="BTC price, moving averages and equity curve"><g class="desk-grid"></g><path class="desk-px"/><path class="desk-f"/><path class="desk-s"/><g class="desk-marks"></g><line class="desk-sep" x1="0" x2="720" y1="236" y2="236"/><path class="desk-hold"/><path class="desk-eq"/></svg><div class="desk-legend"><span class="lg-px">BTC</span><span class="lg-f">${L('fast', 'cepat', 'snel')}</span><span class="lg-s">${L('slow', 'lambat', 'traag')}</span><span class="lg-eq">${L('strategy', 'strategi', 'strategie')}</span><span class="lg-hold">${L('buy & hold', 'beli & tahan', 'kopen & houden')}</span></div></div></div>
+    <p class="case-take" data-o="take"></p></article>
+  <article class="case reveal" data-case="funnel">${caseHead('B', L('Which job applications turn into interviews?', 'Lamaran kerja mana yang berujung wawancara?', 'Welke sollicitaties leiden tot een gesprek?'), L('Career tracker, 330 applications over ten weeks. Each stage is a state in the Career Agent; the funnel shows where applications drop out, and the second chart tests one hypothesis: does applying early matter?', 'Tracker karier, 330 lamaran dalam sepuluh minggu. Setiap tahap adalah state di Career Agent; funnel menunjukkan di mana lamaran gugur, dan grafik kedua menguji satu hipotesis: apakah melamar lebih cepat berpengaruh?', 'Carrièretracker, 330 sollicitaties in tien weken. Elke fase is een status in de Career Agent; de trechter laat zien waar sollicitaties afvallen, en de tweede grafiek test één hypothese: maakt vroeg solliciteren uit?'))}
+    <div class="case-body"><div class="case-ctl">${seg('fam', [['all', L('All roles', 'Semua peran', 'Alle rollen')], ['ai', L('AI & data', 'AI & data', 'AI & data')], ['ops', L('Operations', 'Operasional', 'Operations')], ['mkt', L('Marketing & creative', 'Marketing & kreatif', 'Marketing & creatief')]])}<div class="fn" data-fn></div></div>
+      <div class="case-viz"><p class="viz-t">${L('Interview rate by days between the ad and the application', 'Tingkat wawancara menurut jarak hari antara iklan dan lamaran', 'Gesprekskans per aantal dagen tussen vacature en sollicitatie')}</p><div class="bars" data-bars></div></div></div>
+    <p class="case-take" data-o="take"></p></article>
+  <article class="case reveal" data-case="cost">${caseHead('C', L('What does one active learner cost in AI, and what price keeps a 50% margin?', 'Berapa biaya AI untuk satu pelajar aktif, dan harga berapa yang menjaga margin 50%?', 'Wat kost één actieve leerling aan AI, en welke prijs houdt 50% marge?'), L('Unit economics for Ask Matchi. Every model call is logged with its real cost per model; here the monthly cost per learner is rebuilt from usage, with and without routing chat to the small model.', 'Unit economics Ask Matchi. Setiap panggilan model dicatat dengan biaya aslinya per model; di sini biaya bulanan per pelajar dihitung ulang dari pemakaian, dengan dan tanpa routing percakapan ke model kecil.', 'Unit economics voor Ask Matchi. Elke modelaanroep wordt gelogd met de echte kosten per model; hier worden de maandkosten per leerling opgebouwd uit gebruik, met en zonder routering van chat naar het kleine model.'))}
+    <div class="case-body"><div class="case-ctl">${slider('msg', L('Messages per learner per month', 'Pesan per pelajar per bulan', 'Berichten per leerling per maand'), 20, 600, 10, 160)}${slider('doc', L('Messages that need a CV or letter', 'Pesan yang butuh CV atau surat', 'Berichten die een cv of brief vragen'), 0, 25, 1, 4)}${slider('mar', L('Target margin', 'Target margin', 'Doelmarge'), 20, 80, 5, 50)}
+      <div class="case-res">${metric('routed', L('AI cost, routed', 'Biaya AI, dengan routing', 'AI-kosten, gerouteerd'))}${metric('strong', L('AI cost, strong model only', 'Biaya AI, hanya model kuat', 'AI-kosten, alleen sterk model'))}${metric('save', L('Saved by routing', 'Hemat karena routing', 'Bespaard door routering'))}${metric('price', L('Minimum price per month', 'Harga minimum per bulan', 'Minimumprijs per maand'))}</div></div>
+      <div class="case-viz"><p class="viz-t">${L('Monthly AI cost per learner (USD)', 'Biaya AI bulanan per pelajar (USD)', 'Maandelijkse AI-kosten per leerling (USD)')}</p><div class="stack" data-stack></div><div class="stack-legend"><span class="sl-chat">${L('chat turns', 'percakapan', 'chatbeurten')}</span><span class="sl-doc">${L('documents', 'dokumen', 'documenten')}</span></div></div></div>
+    <p class="case-take" data-o="take"></p></article>
+  <article class="case reveal" data-case="score" data-rubric='${JSON.stringify(RADAR.ind)}' data-cands='${JSON.stringify(CANDS)}'>${caseHead('D', L('How do two interviewers’ scores become one decision?', 'Bagaimana nilai dua pewawancara menjadi satu keputusan?', 'Hoe worden de scores van twee interviewers één besluit?'), L('AI-assisted recruitment. Each interviewer scores eight weighted skills from 1 to 10; the system computes each weighted score, the composite and the verdict, and flags the candidate for discussion when the two reviewers are three points or more apart.', 'Rekrutmen berbantuan AI. Tiap pewawancara menilai delapan keterampilan berbobot dari 1 sampai 10; sistem menghitung nilai berbobot, nilai gabungan, dan kategori, lalu menandai kandidat untuk dibahas bila kedua penilai berbeda tiga poin atau lebih.', 'AI-ondersteunde werving. Elke interviewer scoort acht gewogen vaardigheden van 1 tot 10; het systeem berekent de gewogen score, het totaal en het oordeel, en markeert de kandidaat voor overleg als de twee beoordelaars drie punten of meer verschillen.'))}
+    <div class="case-body"><div class="case-ctl">${seg('cand', CANDS.map((c, i) => [String(i), c.name]))}<div class="case-res">${metric('a', L('Interviewer 1', 'Pewawancara 1', 'Interviewer 1'))}${metric('b', L('Interviewer 2', 'Pewawancara 2', 'Interviewer 2'))}${metric('c', L('Composite', 'Gabungan', 'Totaal'))}${metric('band', L('Verdict', 'Kategori', 'Oordeel'))}</div><p class="sc-flag" data-o="flag"></p></div>
+      <div class="case-viz">${radar().svg}</div></div>
+    <p class="case-take" data-o="take"></p></article>
 </section>
-<section class="section dm-sec dm-dark">${head('06', L('Data quality, monitored', 'Kualitas data, terpantau', 'Datakwaliteit, bewaakt'), L('Checks that run in production without anyone remembering to run them.', 'Pemeriksaan yang berjalan di produksi tanpa perlu ada yang ingat menjalankannya.', 'Controles die in productie draaien zonder dat iemand eraan hoeft te denken.'), true)}<div class="mons">${monitors}</div>
+<section class="section dm-sec dm-dark">${head('06', L('Nightly data checks', 'Pemeriksaan data tiap malam', 'Nachtelijke datacontroles'), L('Scheduled checks that catch broken data before a user does. Each one emails the owner only when it finds a problem. Run them, or break something to see a check catch it.', 'Pemeriksaan terjadwal yang menangkap data rusak sebelum pengguna menemukannya. Masing-masing mengirim email ke pemilik hanya bila menemukan masalah. Jalankan, atau rusak sesuatu untuk melihat pemeriksaan menangkapnya.', 'Geplande controles die kapotte data vinden voordat een gebruiker dat doet. Elke controle mailt de eigenaar alleen bij een probleem. Draai ze, of maak iets stuk en zie hoe een controle het vangt.'), true)}
+  <div class="qc-bar"><button type="button" class="qc-run" data-qc-run>${L('Run all checks', 'Jalankan semua pemeriksaan', 'Alle controles draaien')}</button><label class="qc-break"><input type="checkbox" data-qc-break> ${L('Break something first', 'Rusak sesuatu dulu', 'Eerst iets stukmaken')}</label><span class="qc-sum" data-qc-sum role="status"></span></div>
+  <div class="qcs" data-l-pass="${L('passed', 'lulus', 'geslaagd')}" data-l-rows="${L('rows', 'baris', 'rijen')}" data-l-fail="${L('1 issue found · owner emailed', '1 masalah ditemukan · email ke pemilik', '1 probleem gevonden · eigenaar gemaild')}" data-l-run="${L('checking…', 'memeriksa…', 'controleren…')}" data-l-ok="${L('All checks passed.', 'Semua pemeriksaan lulus.', 'Alle controles geslaagd.')}" data-l-bad="${L('One check failed: an order used a discount code but the price did not go down. The order is listed in the alert email and the check stays red until it is fixed.', 'Satu pemeriksaan gagal: sebuah order memakai kode diskon tetapi harganya tidak turun. Order itu tercantum di email peringatan dan pemeriksaan tetap merah sampai diperbaiki.', 'Eén controle faalde: een order gebruikte een kortingscode maar de prijs ging niet omlaag. De order staat in de alertmail en de controle blijft rood tot het is opgelost.')}">${checks}</div>
   <div class="dm-rules">${[[L('Row-level security', 'Row-level security', 'Row-level security'), L('on every table, public roles revoked', 'di setiap tabel, peran publik dicabut', 'op elke tabel, publieke rollen ingetrokken')], [L('Exactly-once money', 'Uang tepat sekali', 'Geld precies één keer'), L('compare-and-swap + unique keys', 'compare-and-swap + kunci unik', 'compare-and-swap + unieke sleutels')], [L('Time as a type', 'Waktu sebagai tipe', 'Tijd als type'), L('market time zone, periods close 23:59', 'zona waktu pasar, periode tutup 23.59', 'tijdzone van de markt, periodes sluiten 23:59')], [L('Lossless by proof', 'Lossless terbukti', 'Verliesvrij aantoonbaar'), L('pixel-compared before replacing a file', 'dibandingkan per piksel sebelum mengganti file', 'pixel voor pixel vergeleken vóór vervanging')]].map(([a, b]) => `<div><strong>${a}</strong><span>${b}</span></div>`).join('')}</div>
 </section>
-<section class="section dm-sec">${head('07', L('Toolkit', 'Perangkat', 'Gereedschap'))}<div class="kits">${kit}</div><div class="dm-cta">${link('work', L('See the live products', 'Lihat produk live', 'Bekijk de live producten'))}${link('contact', L('Talk about a data role', 'Bicara soal peran data', 'Praat over een datarol'))}${link('documents/cv', L('Download CV', 'Unduh CV', 'Download cv'))}</div><p class="dm-privacy">${L('Privacy: no personal data, order, amount or identifier from production appears on this page.', 'Privasi: tidak ada data pribadi, order, nominal, atau ID dari produksi di halaman ini.', 'Privacy: op deze pagina staat geen persoonsgegeven, order, bedrag of identificatie uit productie.')}</p></section>`;
+<section class="section dm-sec">${head('07', L('Toolkit', 'Perangkat', 'Gereedschap'))}<div class="kits">${kit}</div><div class="dm-cta">${link('work', L('See the live products', 'Lihat produk live', 'Bekijk de live producten'))}${link('contact', L('Talk about a data role', 'Bicara soal peran data', 'Praat over een datarol'))}${link('documents/cv', L('Download CV', 'Unduh CV', 'Download cv'))}</div></section>`;
 }

@@ -1,23 +1,23 @@
 {
-  "date": "2026-11-21T15:03:27.073Z",
-  "htmlPages": 483,
-  "checkedLinks": 23446,
+  "date": "2026-11-22T13:26:16.099Z",
+  "htmlPages": 513,
+  "checkedLinks": 24880,
   "tests": [
     {
-      "name": "483 routes; 161 per locale",
+      "name": "513 routes; 171 per locale",
       "passed": true
     },
     {
       "name": "All HTML local links, sources, posters and image alt attributes",
       "passed": true,
-      "checkedLinks": 23446
+      "checkedLinks": 24880
     },
     {
       "name": "Theme and menu keyboard state",
       "passed": true
     },
     {
-      "name": "Archive all 129 media, 79 image / 50 video and filter state",
+      "name": "Archive all 139 media, 79 image / 60 video and filter state",
       "passed": true
     },
     {
