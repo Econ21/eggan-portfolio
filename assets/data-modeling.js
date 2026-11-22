@@ -352,6 +352,16 @@
     nodes.forEach(function (g, i) { g.classList.toggle('is-on', i === n); g.classList.toggle('is-seen', !!seen[i] && i !== n); });
     edges.forEach(function (e, i) { e.classList.toggle('is-on', !!seen[i] && !!seen[i + 1]); });
     var g = nodes[n]; if (g && dot) { var m = /translate\(([\d.]+),([\d.]+)\)/.exec(g.getAttribute('transform')); if (m) { dot.setAttribute('cx', m[1]); dot.setAttribute('cy', +m[2] + 34); } }
+    var wrap = af.querySelector('.af-svg-wrap'), beh = reduce ? 'auto' : 'smooth';
+    if (wrap && g && wrap.scrollWidth > wrap.clientWidth + 2) {
+      var svg = wrap.querySelector('svg'), mm = /translate\(([\d.]+)/.exec(g.getAttribute('transform'));
+      if (mm) { var x = +mm[1] * svg.getBoundingClientRect().width / 980; try { wrap.scrollTo({ left: x - wrap.clientWidth / 2, behavior: beh }); } catch (e) { wrap.scrollLeft = x - wrap.clientWidth / 2; } }
+    }
+    var list = btns[cur].closest('.af-steps');
+    if (list && list.scrollWidth > list.clientWidth + 2) {
+      var li = btns[cur].parentElement, left = li.getBoundingClientRect().left - list.getBoundingClientRect().left + list.scrollLeft - 4;
+      try { list.scrollTo({ left: left, behavior: beh }); } catch (e) { list.scrollLeft = left; }
+    }
     if (fromUser) stop();
   }
   function stop() { if (timer) { clearInterval(timer); timer = null; } play.textContent = play.dataset.lPlay; play.classList.remove('is-on'); }

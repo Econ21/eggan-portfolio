@@ -296,9 +296,6 @@ body[data-route="data-modeling"] main{overflow-x:clip}
 .qc-main code{font:600 11px var(--mono);color:var(--lab-mute)}
 .qc-main strong{display:block;font:22px/1.1 var(--display);color:#fff;margin:4px 0 6px}
 .qc-main p{margin:0;font-size:12.5px;line-height:1.55;color:#c9c4b8}
-.qc-main p:before{content:"Catches: ";color:var(--lab-mute)}
-html[lang=id] .qc-main p:before{content:"Menangkap: "}
-html[lang=nl] .qc-main p:before{content:"Vangt: "}
 .qc-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
 .qc-when{font:11px var(--mono);color:var(--lab-mute);white-space:nowrap}
 .qc-res{font:11px var(--mono);color:#a9d6b8;white-space:nowrap}
@@ -514,3 +511,11 @@ body[data-route^="data-modeling"] main{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){.agp-bbar i{animation:none}}
 .qcs{align-items:start}
 .af-body>*,.af-panels,.agp-two>*,.agp-why>*{min-width:0}.af-panel .nb-cell{max-width:100%}
+@media (max-width:700px){
+  .af-svg{min-width:640px}
+  .af-node text{font-size:13.5px}
+  .af-steps li{flex:0 0 172px}
+  .af-steps{scroll-snap-type:x proximity}.af-steps li{scroll-snap-align:start}
+  .af-d{font-size:15px}
+}
+@media (max-width:700px){.case-head{grid-template-columns:minmax(0,1fr);gap:6px}.case-head h3{font-size:28px}}
