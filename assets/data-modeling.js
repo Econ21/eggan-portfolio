@@ -112,7 +112,7 @@
       var sd = Math.sqrt(rets.reduce(function (a, b) { return a + (b - m) * (b - m); }, 0) / rets.length) || 1;
       var sharpe = m / sd * Math.sqrt(365), ret = eq[N - 1] - 1, hr = hold[N - 1] - 1;
       var o = function (k, v, cls) { var el = dq('[data-o=' + k + ']'); el.textContent = v; el.className = cls || ''; };
-      o('ret', pct(ret), ret >= hr ? 'up' : ''); o('hold', pct(hr)); o('dd', pct(dd), 'down'); o('sh', nf(sharpe, 2)); o('tr', String(trades.length)); o('ex', nf(inMkt / (N - 1) * 100) + '%');
+      o('ret', pct(ret), ret >= hr ? 'up' : ''); o('hold', pct(hr)); o('dd', pct(dd), 'down'); o('hdd', pct(hdd), 'down'); o('tr', String(trades.length)); o('ex', nf(inMkt / (N - 1) * 100) + '%');
       // chart
       var lo = Math.min.apply(null, px), hi = Math.max.apply(null, px), X = function (t) { return t / (N - 1) * 720; };
       var Y = function (v) { return 14 + (1 - (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo))) * 205; };
@@ -123,11 +123,15 @@
       dq('.desk-eq').setAttribute('d', line(eq, EY)); dq('.desk-hold').setAttribute('d', line(hold, EY));
       dq('.desk-marks').innerHTML = trades.map(function (tr) { var x = X(tr[0]), y = Y(px[tr[0]]); return tr[1] ? '<path class="b" d="M' + x + ',' + (y + 4) + 'l-4,8h8z"/>' : '<path class="s" d="M' + x + ',' + (y - 4) + 'l-4,-8h8z"/>'; }).join('');
       if (!dq('.desk-grid').childNodes.length) dq('.desk-grid').innerHTML = [0.25, 0.5, 0.75].map(function (k) { return '<line x1="0" x2="720" y1="' + (14 + k * 205) + '" y2="' + (14 + k * 205) + '"/>'; }).join('');
-      var better = sharpe > 0 && ret > hr;
+      var v100 = function (x) { return nf(100 * (1 + x)); };
+      var safer = dd > hdd + 0.08, richer = ret >= hr;
+      var vEN = richer && safer ? 'Keep it: the signal earned more <i>and</i> fell less.' : safer ? 'Keep it as a safety filter: it earns less than holding, but it avoids most of the big crash.' : richer ? 'Not convincing: it earned more here, but it did not protect against the falls.' : 'Reject it: it earns less and does not protect you either.';
+      var vID = richer && safer ? 'Pakai: sinyal menghasilkan lebih banyak <i>dan</i> turunnya lebih kecil.' : safer ? 'Pakai sebagai pengaman: hasilnya di bawah menahan, tetapi menghindari sebagian besar kejatuhan besar.' : richer ? 'Belum meyakinkan: hasilnya lebih tinggi di sini, tetapi tidak melindungi saat harga jatuh.' : 'Tolak: hasilnya lebih kecil dan tidak melindungi juga.';
+      var vNL = richer && safer ? 'Houden: het signaal verdiende meer <i>en</i> daalde minder.' : safer ? 'Houden als veiligheidsfilter: het verdient minder dan vasthouden, maar ontwijkt het grootste deel van de crash.' : richer ? 'Niet overtuigend: het verdiende hier meer, maar beschermde niet tegen de dalingen.' : 'Afwijzen: het verdient minder en beschermt ook niet.';
       dq('[data-o=take]').innerHTML = W3(
-        'With a <b>' + f + '/' + s + '-day</b> crossover the rule returns <b>' + pct(ret) + '</b> against <b>' + pct(hr) + '</b> for holding, with a worst fall of <b>' + pct(dd) + '</b> instead of <b>' + pct(hdd) + '</b>. ' + (better ? 'It wins on both return and risk here.' : 'It gives up return but cuts the drawdown — the usual trade-off of a trend filter.') + ' More trades mean more fees: raise the fee and watch the fast settings lose.',
-        'Dengan crossover <b>' + f + '/' + s + ' hari</b>, aturan ini menghasilkan <b>' + pct(ret) + '</b> dibanding <b>' + pct(hr) + '</b> bila ditahan, dengan penurunan terburuk <b>' + pct(dd) + '</b> alih-alih <b>' + pct(hdd) + '</b>. ' + (better ? 'Di sini aturan menang di return dan risiko.' : 'Return-nya lebih kecil tetapi drawdown terpangkas — kompromi khas filter tren.') + ' Makin banyak transaksi makin besar biaya: naikkan biaya dan lihat pengaturan cepat kalah.',
-        'Met een <b>' + f + '/' + s + '-daagse</b> crossover levert de regel <b>' + pct(ret) + '</b> op tegen <b>' + pct(hr) + '</b> voor vasthouden, met een grootste daling van <b>' + pct(dd) + '</b> in plaats van <b>' + pct(hdd) + '</b>. ' + (better ? 'Hier wint hij op rendement én risico.' : 'Hij levert rendement in maar halveert de drawdown — de klassieke ruil van een trendfilter.') + ' Meer trades betekent meer kosten: verhoog de kosten en zie de snelle instellingen verliezen.');
+        'Following the signal turned <b>100</b> into <b>' + v100(ret) + '</b>; just holding turned it into <b>' + v100(hr) + '</b>. On the way, the worst fall was <b>' + pct(dd) + '</b> with the signal and <b>' + pct(hdd) + '</b> when holding, after ' + trades.length + ' trades. <b>Verdict:</b> ' + vEN,
+        'Dengan mengikuti sinyal, <b>100</b> menjadi <b>' + v100(ret) + '</b>; bila hanya ditahan menjadi <b>' + v100(hr) + '</b>. Selama itu, penurunan terburuk <b>' + pct(dd) + '</b> dengan sinyal dan <b>' + pct(hdd) + '</b> bila ditahan, setelah ' + trades.length + ' transaksi. <b>Kesimpulan:</b> ' + vID,
+        'Het signaal volgen maakte van <b>100</b> <b>' + v100(ret) + '</b>; gewoon vasthouden maakte er <b>' + v100(hr) + '</b> van. Onderweg was de grootste daling <b>' + pct(dd) + '</b> met het signaal en <b>' + pct(hdd) + '</b> bij vasthouden, na ' + trades.length + ' trades. <b>Oordeel:</b> ' + vNL);
     };
     desk.addEventListener('input', run); run();
   }
@@ -170,11 +174,12 @@
       CQ('[data-o=routed]').textContent = money(routed); CQ('[data-o=strong]').textContent = money(strong);
       CQ('[data-o=save]').textContent = nf((1 - routed / strong) * 100) + '%'; CQ('[data-o=price]').textContent = money(price);
       var mx = strong || 1;
-      CQ('[data-stack]').innerHTML = [[W3('Routed (Haiku + Sonnet)', 'Routing (Haiku + Sonnet)', 'Gerouteerd (Haiku + Sonnet)'), routedChat, routed], [W3('Sonnet for everything', 'Sonnet untuk semuanya', 'Sonnet voor alles'), strongChat, strong]].map(function (r) { return '<div class="st-row"><span>' + r[0] + '</span><span class="st-bar"><i style="width:' + (r[1] / mx * 100).toFixed(1) + '%"></i><i style="width:' + (docCost / mx * 100).toFixed(1) + '%"></i></span><b>' + money(r[2]) + '</b></div>'; }).join('');
+      CQ('[data-stack]').innerHTML = [[W3('With the router (small + big model)', 'Dengan router (model kecil + besar)', 'Met router (klein + groot model)'), routedChat, routed], [W3('Big model for everything', 'Model besar untuk semuanya', 'Groot model voor alles'), strongChat, strong]].map(function (r) { return '<div class="st-row"><span>' + r[0] + '</span><span class="st-bar"><i style="width:' + (r[1] / mx * 100).toFixed(1) + '%"></i><i style="width:' + (docCost / mx * 100).toFixed(1) + '%"></i></span><b>' + money(r[2]) + '</b></div>'; }).join('');
+      var idr = function (v) { return 'Rp' + nf(Math.round(v * 17900 / 1000) * 1000); };
       CQ('[data-o=take]').innerHTML = W3(
-        'At <b>' + m + ' messages</b> a month, routing chat to the small model cuts the AI bill per learner from <b>' + money(strong) + '</b> to <b>' + money(routed) + '</b>. Documents now dominate the cost (' + nf(docCost / (routed || 1) * 100) + '%), so the next lever is fewer rewrites, not a cheaper chat model. To keep a ' + Math.round(mar * 100) + '% margin the plan must charge at least <b>' + money(price) + '</b> for this learner.',
-        'Dengan <b>' + m + ' pesan</b> sebulan, routing percakapan ke model kecil memangkas biaya AI per pelajar dari <b>' + money(strong) + '</b> menjadi <b>' + money(routed) + '</b>. Kini dokumen mendominasi biaya (' + nf(docCost / (routed || 1) * 100) + '%), jadi pengungkit berikutnya adalah mengurangi tulis ulang, bukan model chat yang lebih murah. Untuk menjaga margin ' + Math.round(mar * 100) + '%, paket harus menagih minimal <b>' + money(price) + '</b> untuk pelajar ini.',
-        'Bij <b>' + m + ' berichten</b> per maand verlaagt routering van chat naar het kleine model de AI-kosten per leerling van <b>' + money(strong) + '</b> naar <b>' + money(routed) + '</b>. Documenten domineren nu de kosten (' + nf(docCost / (routed || 1) * 100) + '%), dus de volgende hefboom is minder herschrijven, niet een goedkoper chatmodel. Voor ' + Math.round(mar * 100) + '% marge moet het plan minstens <b>' + money(price) + '</b> rekenen.');
+        'A student who sends <b>' + m + ' messages</b> a month costs us <b>' + money(routed) + '</b> in AI. Without the router, the same student would cost <b>' + money(strong) + '</b>. Most of the bill is now the CVs and letters (' + nf(docCost / (routed || 1) * 100) + '%). <b>So:</b> to keep ' + Math.round(mar * 100) + '% of the price as margin, this student’s plan must cost at least <b>' + money(price) + '</b> a month (about ' + idr(price) + ').',
+        'Pelajar yang mengirim <b>' + m + ' pesan</b> sebulan menghabiskan biaya AI <b>' + money(routed) + '</b>. Tanpa router, pelajar yang sama akan menghabiskan <b>' + money(strong) + '</b>. Sebagian besar biaya kini untuk CV dan surat (' + nf(docCost / (routed || 1) * 100) + '%). <b>Jadi:</b> untuk menjaga margin ' + Math.round(mar * 100) + '% dari harga, paket pelajar ini minimal <b>' + money(price) + '</b> per bulan (sekitar ' + idr(price) + ').',
+        'Een student die <b>' + m + ' berichten</b> per maand stuurt, kost ons <b>' + money(routed) + '</b> aan AI. Zonder router zou dezelfde student <b>' + money(strong) + '</b> kosten. Het grootste deel zijn nu de cv’s en brieven (' + nf(docCost / (routed || 1) * 100) + '%). <b>Dus:</b> om ' + Math.round(mar * 100) + '% van de prijs als marge te houden, moet het abonnement minstens <b>' + money(price) + '</b> per maand kosten (ongeveer ' + idr(price) + ').');
     };
     cost.addEventListener('input', cr); cr();
   }
@@ -303,4 +308,62 @@
   if (typeof IntersectionObserver === 'function') {
     new IntersectionObserver(function (es) { var vis = es[0].isIntersecting; if (vis && !running && !reduce) { running = true; requestAnimationFrame(loop); } running = vis || reduce; }).observe(hero);
   }
+})();
+
+/* AI agent detail pages (/data-modeling/<agent>): request player, code tabs, copy buttons. */
+(function () {
+  'use strict';
+  var doc = document;
+  if (!doc.querySelector('.agp-hero')) return;
+  doc.documentElement.classList.add('dm-js');
+  var reduce = false;
+  try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || doc.documentElement.dataset.motion === 'off'; } catch (e) {}
+
+  [].forEach.call(doc.querySelectorAll('[data-copy]'), function (b) {
+    b.addEventListener('click', function () {
+      var code = b.closest('.nb-cell').querySelector('.nb-code').innerText;
+      var done = function () { b.textContent = 'copied ✓'; setTimeout(function () { b.textContent = 'copy'; }, 1500); };
+      try { navigator.clipboard.writeText(code).then(done, function () {}); } catch (e) {}
+    });
+  });
+
+  var tabs = [].slice.call(doc.querySelectorAll('[data-agc]'));
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+      [].forEach.call(doc.querySelectorAll('[data-agc-pane]'), function (p) { p.hidden = p.getAttribute('data-agc-pane') !== b.getAttribute('data-agc'); });
+    });
+  });
+
+  var af = doc.querySelector('[data-agent-flow]');
+  if (!af) return;
+  var btns = [].slice.call(af.querySelectorAll('[data-step]'));
+  var panels = [].slice.call(af.querySelectorAll('[data-panel]'));
+  var nodes = [].slice.call(af.querySelectorAll('[data-node]'));
+  var edges = [].slice.call(af.querySelectorAll('[data-edge]'));
+  var dot = af.querySelector('.af-dot'), play = af.querySelector('[data-af-play]');
+  var cur = 0, timer = null, seen = {};
+  function go(k, fromUser) {
+    cur = (k + btns.length) % btns.length;
+    var n = +btns[cur].getAttribute('data-node-ref');
+    seen = {}; for (var j = 0; j <= cur; j++) seen[+btns[j].getAttribute('data-node-ref')] = true;
+    btns.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === cur)); b.classList.toggle('is-done', i < cur); });
+    panels.forEach(function (p, i) { p.hidden = i !== cur; });
+    nodes.forEach(function (g, i) { g.classList.toggle('is-on', i === n); g.classList.toggle('is-seen', !!seen[i] && i !== n); });
+    edges.forEach(function (e, i) { e.classList.toggle('is-on', !!seen[i] && !!seen[i + 1]); });
+    var g = nodes[n]; if (g && dot) { var m = /translate\(([\d.]+),([\d.]+)\)/.exec(g.getAttribute('transform')); if (m) { dot.setAttribute('cx', m[1]); dot.setAttribute('cy', +m[2] + 34); } }
+    if (fromUser) stop();
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } play.textContent = play.dataset.lPlay; play.classList.remove('is-on'); }
+  function start() {
+    if (cur === btns.length - 1) go(0);
+    play.textContent = play.dataset.lPause; play.classList.add('is-on');
+    timer = setInterval(function () { if (cur >= btns.length - 1) { stop(); return; } go(cur + 1); }, reduce ? 6000 : 4200);
+  }
+  btns.forEach(function (b, i) { b.addEventListener('click', function () { go(i, true); }); });
+  nodes.forEach(function (g, i) { g.addEventListener('click', function () { for (var k = 0; k < btns.length; k++) if (+btns[k].getAttribute('data-node-ref') === i) { go(k, true); return; } }); });
+  [].forEach.call(af.querySelectorAll('[data-af-step]'), function (b) { b.addEventListener('click', function () { go(cur + +b.getAttribute('data-af-step'), true); }); });
+  play.addEventListener('click', function () { if (timer) stop(); else start(); });
+  af.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { go(cur + 1, true); } else if (e.key === 'ArrowLeft') { go(cur - 1, true); } });
+  go(0);
 })();

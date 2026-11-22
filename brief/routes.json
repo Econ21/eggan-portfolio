@@ -25,6 +25,36 @@
   },
   {
     "lang": "nl",
+    "route": "data-modeling/ask-matchi",
+    "file": "data-modeling/ask-matchi/index.html",
+    "title": "Ask Matchi · AI-agent"
+  },
+  {
+    "lang": "nl",
+    "route": "data-modeling/career-agent",
+    "file": "data-modeling/career-agent/index.html",
+    "title": "Career Agent · AI-agent"
+  },
+  {
+    "lang": "nl",
+    "route": "data-modeling/ai-interviewer",
+    "file": "data-modeling/ai-interviewer/index.html",
+    "title": "AI interviewer · AI-agent"
+  },
+  {
+    "lang": "nl",
+    "route": "data-modeling/aria",
+    "file": "data-modeling/aria/index.html",
+    "title": "ARIA · AI-agent"
+  },
+  {
+    "lang": "nl",
+    "route": "data-modeling/market-desk",
+    "file": "data-modeling/market-desk/index.html",
+    "title": "Market desk · AI-agent"
+  },
+  {
+    "lang": "nl",
     "route": "education",
     "file": "education/index.html",
     "title": "Ervaring & Opleiding"
@@ -1051,6 +1081,36 @@
   },
   {
     "lang": "en",
+    "route": "data-modeling/ask-matchi",
+    "file": "en/data-modeling/ask-matchi/index.html",
+    "title": "Ask Matchi · AI agent"
+  },
+  {
+    "lang": "en",
+    "route": "data-modeling/career-agent",
+    "file": "en/data-modeling/career-agent/index.html",
+    "title": "Career Agent · AI agent"
+  },
+  {
+    "lang": "en",
+    "route": "data-modeling/ai-interviewer",
+    "file": "en/data-modeling/ai-interviewer/index.html",
+    "title": "AI interviewer · AI agent"
+  },
+  {
+    "lang": "en",
+    "route": "data-modeling/aria",
+    "file": "en/data-modeling/aria/index.html",
+    "title": "ARIA · AI agent"
+  },
+  {
+    "lang": "en",
+    "route": "data-modeling/market-desk",
+    "file": "en/data-modeling/market-desk/index.html",
+    "title": "Market desk · AI agent"
+  },
+  {
+    "lang": "en",
     "route": "education",
     "file": "en/education/index.html",
     "title": "Experience & Education"
@@ -2074,6 +2134,36 @@
     "route": "data-modeling",
     "file": "id/data-modeling/index.html",
     "title": "Data Modeling"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling/ask-matchi",
+    "file": "id/data-modeling/ask-matchi/index.html",
+    "title": "Ask Matchi · Agent AI"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling/career-agent",
+    "file": "id/data-modeling/career-agent/index.html",
+    "title": "Career Agent · Agent AI"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling/ai-interviewer",
+    "file": "id/data-modeling/ai-interviewer/index.html",
+    "title": "AI interviewer · Agent AI"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling/aria",
+    "file": "id/data-modeling/aria/index.html",
+    "title": "ARIA · Agent AI"
+  },
+  {
+    "lang": "id",
+    "route": "data-modeling/market-desk",
+    "file": "id/data-modeling/market-desk/index.html",
+    "title": "Market desk · Agent AI"
   },
   {
     "lang": "id",

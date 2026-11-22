@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path'),assert=require('assert');const {JSDOM}=require(process.env.JSDOM_PATH||'jsdom');const root=path.resolve(__dirname,'..'),routes=JSON.parse(fs.readFileSync(root+'/brief/routes.json'));const data=JSON.parse(fs.readFileSync(root+'/content.json'));let checkedLinks=0;const errors=[],tests=[];
 function ok(name,fn){try{fn();tests.push({name,passed:true})}catch(e){tests.push({name,passed:false,error:e.message});errors.push(name+': '+e.message)}}
-ok('513 routes; 171 per locale',()=>{assert.equal(routes.length,513);for(const l of ['nl','en','id'])assert.equal(routes.filter(r=>r.lang===l).length,171)});
+ok('528 routes; 176 per locale',()=>{assert.equal(routes.length,528);for(const l of ['nl','en','id'])assert.equal(routes.filter(r=>r.lang===l).length,176)});
 for(const r of routes){const file=path.join(root,r.file),html=fs.readFileSync(file,'utf8');const dom=new JSDOM(html),doc=dom.window.document;
  if(!doc.querySelector('h1'))errors.push(r.file+': missing h1');if(doc.documentElement.lang!==r.lang)errors.push(r.file+': wrong lang');
  if(/\{\{RESEARCH_LINK\}\}|\[object Object\]|undefined|3× Master|3× Gelar/.test(html))errors.push(r.file+': unresolved or stale content');
