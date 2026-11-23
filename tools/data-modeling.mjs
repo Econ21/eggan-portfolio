@@ -1,3 +1,4 @@
+import { AGENTS_DETAIL } from './agents.mjs';
 // Data Modeling page (added 21 Nov 2026). Everything shown is the real structure of systems Eggan built and runs
 // (MatchupSkills, Creative AI Partner, the Career Agent, the AI interviewer, ARIA, the Northstar market desk).
 // Owner rule (22 Nov 2026): never write "simplified", "synthetic" or "rescaled" on the page. Numbers that would expose
@@ -658,4 +659,20 @@ export function dataModeling({ L, link }) {
   <div class="dm-rules">${[[L('Row-level security', 'Row-level security', 'Row-level security'), L('on every table, public roles revoked', 'di setiap tabel, peran publik dicabut', 'op elke tabel, publieke rollen ingetrokken')], [L('Exactly-once money', 'Uang tepat sekali', 'Geld precies één keer'), L('compare-and-swap + unique keys', 'compare-and-swap + kunci unik', 'compare-and-swap + unieke sleutels')], [L('Time as a type', 'Waktu sebagai tipe', 'Tijd als type'), L('market time zone, periods close 23:59', 'zona waktu pasar, periode tutup 23.59', 'tijdzone van de markt, periodes sluiten 23:59')], [L('Lossless by proof', 'Lossless terbukti', 'Verliesvrij aantoonbaar'), L('pixel-compared before replacing a file', 'dibandingkan per piksel sebelum mengganti file', 'pixel voor pixel vergeleken vóór vervanging')]].map(([a, b]) => `<div><strong>${a}</strong><span>${b}</span></div>`).join('')}</div>
 </section>
 <section class="section dm-sec">${head('07', L('Toolkit', 'Perangkat', 'Gereedschap'))}<div class="kits">${kit}</div><div class="dm-cta">${link('work', L('See the live products', 'Lihat produk live', 'Bekijk de live producten'))}${link('contact', L('Talk about a data role', 'Bicara soal peran data', 'Praat over een datarol'))}${link('documents/cv', L('Download CV', 'Unduh CV', 'Download cv'))}</div></section>`;
+}
+
+// ── Home-page teaser (added 23 Nov 2026): the DATA band before CREATIVE on the home page. ─────────────────────────
+// Four data-model cards (real ER diagram as the artwork) + five agent cards, each opening its page.
+export function dataTeaser({ L }) {
+  const T3 = (a) => L(a[0], a[1], a[2]);
+  const models = MODELS.map((m) => ({
+    href: 'data-modeling', kind: L('Data model', 'Model data', 'Datamodel'), kicker: m.kicker, title: T3(m.title),
+    fact: m.facts[0][0], factLabel: T3(m.facts[0][1]),
+    art: er(m.svg).replace(/^<div class="dm-scroll">|<\/div>$/g, ''),
+  }));
+  const agents = AGENTS_DETAIL.map((a) => ({
+    href: 'data-modeling/' + a.slug, kind: L('AI agent', 'Agent AI', 'AI-agent'), kicker: a.product, title: a.name,
+    fact: a.facts[0][0], factLabel: T3(a.facts[0][1]), tag: T3(a.tag), art: '',
+  }));
+  return [models[0], agents[0], models[1], agents[1], models[2], agents[2], models[3], agents[3], agents[4]];
 }

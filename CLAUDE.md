@@ -510,3 +510,9 @@ produk itu sebagai bukti kerja — tidak pernah mengubah kode di repo-repo terse
   Data pribadi/angka internal boleh disintesis tanpa keterangan "synthetic".
 - Kasus A diganti "Should I trust the market desk's trend signal?" (cara membaca grafik + kesimpulan), kasus C "biaya AI per pelajar + harga aman terendah" (USD + Rp, kurs 17.900).
 - Pemeriksaan data: strip 4 langkah + tiap kartu bisa dibuka (cara kerja, contoh nyata, kode). JS agent page = IIFE kedua di `assets/data-modeling.js`.
+
+## Home: band DATA sebelum CREATIVE (23 Nov 2026)
+Permintaan pemilik: di beranda, sebelum CREATIVE, ada band **DATA** yang masuk ke halaman Data. `featuredData()` di
+`tools/build.mjs` + `dataTeaser()` di `tools/data-modeling.mjs` (4 kartu model data dengan diagram ER asli + 5 kartu agent
+→ `data-modeling/<slug>`), memakai carousel yang sama dengan Creative (rail WAJIB berkelas `artwork-rail`, kalau tidak
+`polish.js` crash dan 3 tes runtime gagal). CSS di akhir `assets/polish.css` (`.data-*`). Section `id="data"`.

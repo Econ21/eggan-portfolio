@@ -251,3 +251,23 @@ body[data-theme=dark] .monument-live:hover{background:var(--paper);color:#061744
 @media(max-width:1000px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
 @media(max-width:760px){.project-slide{height:auto}.project-slide>img{object-fit:fill}}
 .photo-credit{font-size:11px;line-height:1.5;color:var(--muted);margin:40px 0 0;position:relative;z-index:1}
+
+/* Home DATA band (23 Nov 2026) — sits before CREATIVE, same rail as the creative works */
+.data-stage>h2{margin-bottom:-4%}
+.data-card .data-art{position:relative;background:#0f1316;color:#ece7dc;display:flex;flex-direction:column;justify-content:space-between;place-items:stretch;overflow:hidden}
+.data-er{flex:1;display:flex;align-items:center;padding:18px 14px 0;min-height:0}
+.data-er svg.er{width:100%;height:auto;max-height:100%}
+.data-agent{flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:26px 24px 0;background:radial-gradient(ellipse at 80% 10%,#0646cd55,transparent 60%)}
+.data-agent strong{font:700 clamp(64px,7vw,112px)/.9 var(--display);letter-spacing:-.05em;color:#fff}
+.data-agent small{font-size:13px;line-height:1.35;color:#b9b4a9;max-width:28ch}
+.data-agent p{font-size:14px;line-height:1.45;color:#ddd8cd;margin:14px 0 0;max-width:32ch}
+.data-kind{font:600 10px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#9bb6ff}
+.data-label{padding:16px 20px 20px;border-top:1px solid #ffffff1a;background:#0b0e10}
+.data-label h3{font:600 clamp(20px,1.9vw,28px)/1.05 var(--display);letter-spacing:-.03em;color:#fff;margin:6px 0 0}
+.data-label p{font-size:12px;color:#b9b4a9;margin:8px 0 0}
+.data-label b{color:#fff}
+.data-agent .data-kind{color:#9bb6ff}
+@media(max-width:700px){.data-agent strong{font-size:72px}.data-label h3{font-size:21px}.data-er{padding:12px 8px 0}}
+.data-er{justify-content:flex-start;align-items:flex-start;overflow:hidden}
+.data-er svg.er{flex:0 0 auto;width:760px;max-height:none;border:0;background-color:transparent}
+@media(max-width:700px){.data-er svg.er{width:560px;min-width:560px}}
